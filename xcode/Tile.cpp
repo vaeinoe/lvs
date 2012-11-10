@@ -85,44 +85,73 @@ void Tile::draw()
     
     gl::color (1.0, 1.0, 1.0, val);
     
-    float a = 0.3;
+/*    float a = 0.3;
     for (int i = 1; i < 3; i++) {
         gl::color (1.0, 1.0, 1.0, a);
         gl::drawStrokedCircle( draw_pos, tileSize + (3 * i) + 2, 6 );
         a = a * 0.5;
-    }
+    } */
 
     if (type == 0) drawHex(draw_pos, val);
     else if (type == 1) drawStar(draw_pos, val);
+    else if (type == 2) drawGram(draw_pos, val);
 
     if (active) drawActive(draw_pos, val);    
     if (selected) drawSelected(draw_pos, val);
 }
 
+
+inline void Tile::drawGram(Vec2f draw_pos, float val) {
+    int segments = 6;
+    
+    for (int i = 0; i < FILTER_SIZE; i++) {
+        float a = i * 1.0 / FILTER_SIZE;
+        gl::color(0.4, 0.1 * (i / FILTER_SIZE) * val, 1.0 - val * 0.25 * i, a);
+        gl::drawStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2), segments );
+    }
+}
+
 // Draw a hex tile
 inline void Tile::drawHex(Vec2f draw_pos, float val)
 {
+    int hexCount = 4;
+    int segments = 6;
+    
     for (int i = 0; i < FILTER_SIZE; i++) {
         float a = i * 1.0 / FILTER_SIZE;
-        for (int j = 0; j < 4; j++) {
-            gl::color (0.0, (0.1 * j) * val, 1.0 - val * (0.25 * j), a);
-            gl::drawStrokedCircle( draw_pos, prevTileSize[i] - (4 - j) * mConfig->tileBorderSpacing, 6 );
+        for (int j = 0; j < hexCount; j++) {
+            gl::color((i / FILTER_SIZE) * 0.25, 0.1 * j * val, 1.0 - val * 0.25 * j, a);
+            gl::drawStrokedCircle( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments );
         }
     }
 }
 
-// Draw a star tile
+// Create and draw a star tile
 inline void Tile::drawStar(Vec2f draw_pos, float val)
 {
-    for (int i = 0; i < 32; i++) {
+    int lineCount = 32;
+    GLfloat lines[lineCount * 4];
+    GLfloat colors[lineCount * 8];
+
+    for (int i = 0; i < lineCount; i++) {
+        int lineIdx = i * 4;
+
+        // Gradient color lines
         float a = (i % 2 == 0) ? 0.5 : 0.25;
-        gl::color (1.0, 0.6, 1.0, a);
+        colors[2 * lineIdx + 0] = 0.0; colors[2 * lineIdx + 1] = 0.6;
+        colors[2 * lineIdx + 2] = 1.0; colors[2 *lineIdx + 3] = a;
+        colors[2 * lineIdx + 4] = 1.0; colors[2 * lineIdx + 5] = 0.6;
+        colors[2 * lineIdx + 6] = 1.0; colors[2 * lineIdx + 7] = a;
         
-        float angle = (i / 32.0f) * (2 * pi);
+        float angle = (i / (1.0 * lineCount)) * (2 * pi);
         float x = draw_pos.x + tileSize * cos(angle);
         float y = draw_pos.y + tileSize * sin(angle);
-        gl::drawLine(Vec2f( x, y ), Vec2f( draw_pos.x, draw_pos.y ));
+
+        lines[lineIdx] = x; lines[lineIdx + 1] = y;
+        lines[lineIdx + 2] = draw_pos.x; lines[lineIdx + 3] = draw_pos.y;        
     }
+    
+    drawLines(lines, colors, lineCount);
 }
 
 // Draw active tile highlight
@@ -130,7 +159,7 @@ inline void Tile::drawActive(Vec2f draw_pos, float val) {
 	gl::color(1, 1, 1, 0.5);
     gl::drawStrokedCircle( draw_pos, mConfig->tileSize, 6 );
     
-    gl::color (0.6, 0.0, 0.8, 0.4);
+    gl::color (0.6, val, 0.8, 0.4);
     gl::drawSolidCircle( draw_pos, mConfig->tileSize, 6 );    
 }
 

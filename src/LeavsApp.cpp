@@ -23,11 +23,15 @@ private:
 void LeavsApp::prepareSettings( Settings *settings )
 {
     settings->setWindowSize( 950 , 650 );
-    settings->setFrameRate( 60.0f );
+    settings->setFrameRate( 30.0f );
 }
 
 void LeavsApp::setup()
 {
+    gl::disableVerticalSync();
+    gl::disableDepthRead();
+    gl::disableDepthWrite();
+
     // setFullScreen(true);
 
     gl::enable( GL_LINE_SMOOTH );
@@ -42,6 +46,8 @@ void LeavsApp::setup()
     config->worldWidth = 5;
     config->worldHeight = 11;
     config->padding = 10.0f;
+    config->numTileTypes = 3;
+    config->solverDelayFrames = 60;
 
     engine = new LVSEngine();
     engine->setup(config);

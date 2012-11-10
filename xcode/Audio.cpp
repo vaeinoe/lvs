@@ -51,7 +51,7 @@ void Audio::update()
 
 void Audio::draw()
 {
-	if ( mFft ) {
+/*	if ( mFft ) {
         
 		float dataSizef = (float)dataSize;
         
@@ -79,7 +79,7 @@ void Audio::draw()
         gl::color( 1.0, 0.0, 0.8, 0.5);
 		gl::draw( freqLine );
 		gl::draw( timeLine );
-	}    
+	}    */
 }
 
 void Audio::shutdown()

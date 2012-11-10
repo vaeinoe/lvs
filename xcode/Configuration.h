@@ -7,6 +7,8 @@
 //
 
 #pragma once
+#include "Common.h"
+
 class Configuration {
 public:
     int toolbarHeight;
@@ -16,5 +18,7 @@ public:
     float tileBorderSpacing;
     int worldWidth;
     int worldHeight;
+    int numTileTypes;
     float padding;
+    int solverDelayFrames;
 };
