@@ -9,9 +9,10 @@
 
 #include "Audio.h"
 
-void Audio::setup()
+void Audio::setup(Configuration *config)
 {
-    mAudioSource = audio::load( loadResource( "palojarven_neuvostot.mp3" ) );
+    mConfig = config;
+    mAudioSource = audio::load( loadResource( "gametest1.mp3" ) );
 	mTrack = audio::Output::addTrack( mAudioSource, false );
 	mTrack->enablePcmBuffering( true );
 	mTrack->play();

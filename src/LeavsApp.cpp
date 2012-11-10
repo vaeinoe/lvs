@@ -32,9 +32,19 @@ void LeavsApp::setup()
 
     gl::enable( GL_LINE_SMOOTH );
 	glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+    
+    Configuration *config = new Configuration();
+    config->tileSize = 50.0f;
+    config->tileUpperLimit = 80.0f;
+    config->tileGrid = 120.0f;
+    config->toolbarHeight = 75;
+    config->tileBorderSpacing = 10.0f;
+    config->worldWidth = 5;
+    config->worldHeight = 11;
+    config->padding = 10.0f;
 
     engine = new LVSEngine();
-    engine->setup();
+    engine->setup(config);
 }
 
 void LeavsApp::shutdown()

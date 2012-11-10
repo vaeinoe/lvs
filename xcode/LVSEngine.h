@@ -16,7 +16,7 @@
 
 class LVSEngine {
 public:
-	void setup();
+	void setup(Configuration *config);
 	void update();
 	void draw();
 	void shutdown();
@@ -28,4 +28,5 @@ private:
     Player *mPlayer;
     Vec2i *mMouseLoc;
     Audio *mAudio;
+    Configuration *mConfig;
 };

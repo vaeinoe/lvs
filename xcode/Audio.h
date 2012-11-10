@@ -11,7 +11,7 @@
 
 class Audio {
 public:
-	void setup();
+	void setup(Configuration *config);
 	void update();
 	void draw();
 	void shutdown();
@@ -24,5 +24,7 @@ public:
 
     float *freqData;
     float *timeData;
-    int32_t dataSize;            
+    int32_t dataSize;
+private:
+    Configuration *mConfig;
 };

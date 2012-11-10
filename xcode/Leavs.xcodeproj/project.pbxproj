@@ -19,13 +19,13 @@
 		053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83D163D79B30095EBEF /* kiss_fftr.c */; };
 		053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83F163D79B30095EBEF /* KissFFT.cpp */; };
 		053BA84B163D7AB20095EBEF /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA84A163D7AB20095EBEF /* Audio.cpp */; };
-		055365BC1641A589001274D9 /* palojarven_neuvostot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 055365BB1641A589001274D9 /* palojarven_neuvostot.mp3 */; };
 		058D9F91163C0BDD006F86BC /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 058D9F90163C0BDD006F86BC /* nevis.ttf */; };
 		058D9FDE163C2356006F86BC /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FDD163C2356006F86BC /* Toolbar.cpp */; };
 		058D9FE5163C24C0006F86BC /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FE4163C24C0006F86BC /* World.cpp */; };
 		058D9FF0163C268D006F86BC /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FEF163C268D006F86BC /* LVSEngine.cpp */; };
 		058DA0F8163C3666006F86BC /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058DA0F7163C3666006F86BC /* Player.cpp */; };
 		058DA165163C468E006F86BC /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058DA164163C468E006F86BC /* Tile.cpp */; };
+		05EC300E164D7AFC00EAD929 /* gametest1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05EC300D164D7AFC00EAD929 /* gametest1.mp3 */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
@@ -50,7 +50,6 @@
 		053BA840163D79B30095EBEF /* KissFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissFFT.h; sourceTree = "<group>"; };
 		053BA849163D7AB20095EBEF /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		053BA84A163D7AB20095EBEF /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
-		055365BB1641A589001274D9 /* palojarven_neuvostot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = palojarven_neuvostot.mp3; sourceTree = "<group>"; };
 		058D9F18163BFE83006F86BC /* ciUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI.h; sourceTree = "<group>"; };
 		058D9F19163BFE83006F86BC /* ciUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI2DPad.h; sourceTree = "<group>"; };
 		058D9F1A163BFE83006F86BC /* ciUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIBiLabelSlider.h; sourceTree = "<group>"; };
@@ -100,6 +99,8 @@
 		058DA163163C468E006F86BC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		058DA164163C468E006F86BC /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		058DA19D163C4DB5006F86BC /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		05EC300D164D7AFC00EAD929 /* gametest1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gametest1.mp3; sourceTree = "<group>"; };
+		05EC3010164D7DDC00EAD929 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -217,6 +218,7 @@
 				058DA19D163C4DB5006F86BC /* Common.h */,
 				053BA849163D7AB20095EBEF /* Audio.h */,
 				053BA84A163D7AB20095EBEF /* Audio.cpp */,
+				05EC3010164D7DDC00EAD929 /* Configuration.h */,
 			);
 			name = engine;
 			sourceTree = "<group>";
@@ -290,7 +292,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				055365BB1641A589001274D9 /* palojarven_neuvostot.mp3 */,
+				05EC300D164D7AFC00EAD929 /* gametest1.mp3 */,
 				058D9F90163C0BDD006F86BC /* nevis.ttf */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				00CCAF14116A9FEE008396D5 /* CinderApp.icns */,
@@ -363,7 +365,7 @@
 			files = (
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
 				058D9F91163C0BDD006F86BC /* nevis.ttf in Resources */,
-				055365BC1641A589001274D9 /* palojarven_neuvostot.mp3 in Resources */,
+				05EC300E164D7AFC00EAD929 /* gametest1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

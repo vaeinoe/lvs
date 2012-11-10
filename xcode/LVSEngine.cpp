@@ -9,16 +9,17 @@
 
 #include "LVSEngine.h"
 
-void LVSEngine::setup()
+void LVSEngine::setup(Configuration *config)
 {
+    mConfig = config;
     mAudio = new Audio();
     mToolbar = new Toolbar();
     mWorld = new World();
     mPlayer = new Player();
 
-    mAudio->setup();
-    mToolbar->setup(Vec2i(0, 0), Vec2i(getWindowWidth(), TOOLBAR_HEIGHT));
-    mWorld->setup(Vec2i(WORLD_WIDTH, WORLD_HEIGHT));
+    mAudio->setup(config);
+    mToolbar->setup(config, Vec2i(0, 0), Vec2i(getWindowWidth(), config->toolbarHeight));
+    mWorld->setup(config, Vec2i(config->worldWidth, config->worldHeight));
     //    mPlayer->setup();
 
     mMouseLoc = new Vec2i(0, 0);
@@ -27,7 +28,7 @@ void LVSEngine::setup()
 void LVSEngine::update()
 {
     mAudio->update();
-    mToolbar->update( mAudio->dataSize );
+    mToolbar->update(mAudio->dataSize);
     mWorld->update(mMouseLoc, mAudio->freqData, mAudio->dataSize);
     //    mPlayer->update();
 }
