@@ -8,7 +8,6 @@
  */
 
 #pragma once
-#include "Configuration.h"
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "cinder/audio/Io.h"

@@ -7,7 +7,10 @@
  *
  */
 #pragma once
+#include "Configuration.h"
 #include "Common.h"
+
+class Configuration;
 
 class Toolbar {
 public:
@@ -16,8 +19,9 @@ public:
 	void draw();
 	void shutdown();
 	void guiEvent( ciUIEvent *event );
+    void updateScore( int score );
 private:
     Configuration *mConfig;
 	ciUICanvas *gui;
-    ciUILabel *freqLabel;
+    ciUILabel *scoreLabel;
 };

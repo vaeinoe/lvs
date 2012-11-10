@@ -16,11 +16,16 @@ void LVSEngine::setup(Configuration *config)
     mToolbar = new Toolbar();
     mWorld = new World();
     mPlayer = new Player();
+    
+    mConfig->engine = this;
+    mConfig->toolbar = mToolbar;
+    mConfig->world = mWorld;
+    mConfig->player = mPlayer;
 
     mAudio->setup(config);
     mToolbar->setup(config, Vec2i(0, 0), Vec2i(getWindowWidth(), config->toolbarHeight));
     mWorld->setup(config, Vec2i(config->worldWidth, config->worldHeight));
-    //    mPlayer->setup();
+    mPlayer->setup(config);
 
     mMouseLoc = new Vec2i(0, 0);
 }
@@ -30,7 +35,7 @@ void LVSEngine::update()
     mAudio->update();
     mToolbar->update(mAudio->dataSize);
     mWorld->update(mMouseLoc, mAudio->freqData, mAudio->dataSize);
-    //    mPlayer->update();
+    mPlayer->update();
 }
 
 void LVSEngine::draw()
@@ -38,7 +43,7 @@ void LVSEngine::draw()
     mAudio->draw();
     mWorld->draw();
     mToolbar->draw();
-    //    mPlayer->draw();
+    mPlayer->draw();
 }
 
 void LVSEngine::mouseMove ( const MouseEvent event ) {
@@ -59,7 +64,7 @@ void LVSEngine::shutdown()
     mToolbar->shutdown();
     mWorld->shutdown();
     mAudio->shutdown();
-    //    mPlayer->shutdown();
+    mPlayer->shutdown();
     
     delete mToolbar;
     delete mWorld;

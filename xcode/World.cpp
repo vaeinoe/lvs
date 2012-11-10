@@ -16,14 +16,16 @@ void World::setup( Configuration *config, const Vec2i newSize )
     mConfig = config;
     size = new Vec2i( newSize.x, newSize.y );
     
+    tiles.reserve( size->x * size->y );
+    
     Rand rnd = Rand();
     
     for (int x = 0; x < size->x; x++) {
         for (int y = 0; y < size->y; y++) {
             int type = rnd.nextInt(mConfig->numTileTypes);
-            Tile tile;
-            tile.setup(mConfig, Vec2i( x, y ), type);
-            tiles.push_back( tile );
+            Tile *tile = new Tile();
+            tile->setup(mConfig, Vec2i( x, y ), type);
+            tiles.push_back(tile);
         }
     }
     
@@ -39,8 +41,8 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
     int n = 0;
     float dataSizef = (float)dataSize;
     
-    for( vector<Tile>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
-        Vec2f pos = t->getScreenPositionVector();
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+        Vec2f pos = (*t)->getScreenPositionVector();
         Vec2i dir = pos - (*mouseLoc);
         float modifier = 0;
         for (int i = 0; i < binsPerTile; i++) {
@@ -51,7 +53,7 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
 //        if (n < dataSize) {
 //            modifier = freqData[n];
 //        }
-        t->update(dir.length(), modifier);
+        (*t)->update(dir.length(), modifier);
         n++;
     }
     
@@ -63,52 +65,70 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
 }
 
 inline int World::tileIndex(int x, int y) {
-    return (x * size->y + y);
+    return ((x * size->y) + y);
 }
 
 void World::resolveTiles() {
+    for (int x = 0; x < size->x; x++) {
+        for (int y = 1; y < size->y; y++) {
+            resolveTile(x,y);
+        }
+    }
+}
+
+void World::resolveTile(int x, int y) {
+    int idx = tileIndex(x, y);
+    int idx2 = tileIndex(x, y - 1);
+    int idx3 = tileIndex(x, y + 1);
     
+    if (tiles[idx]->type != -1 &&
+        tiles[idx2]->type == tiles[idx]->type &&
+        tiles[idx3]->type == tiles[idx]->type) {
+        int score = 0;
+        score += tiles[idx]->kill();
+        score += tiles[idx2]->kill();
+        score += tiles[idx3]->kill();
+        mConfig->player->addScore(score);
+    }
 }
 
 void World::draw()
 {
-    for( vector<Tile>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
-        t->draw();
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+        (*t)->draw();
     }
 }
 
 void World::selectTile( const Vec2i mouseLoc ) {
-    for( vector<Tile>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
-        Vec2f pos = t->getScreenPositionVector();
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+        Vec2f pos = (*t)->getScreenPositionVector();
         Vec2i dir = pos - mouseLoc;
         
         bool hit = dir.length() < (0.9 * mConfig->tileSize);
         if (hit) {
             
-        }
-        
-        if (dir.length() < (0.9 * mConfig->tileSize)) {
-            
             if ( selectedTile ) {
-                if ( selectedTile != &*t ) {
+                if ( selectedTile != &**t ) {
                     selectedTile->toggleSelected();
-                    if (areNeighbours(&*t, selectedTile)) {
-                        swapTiles(&*t, selectedTile);
+                    if (areNeighbours(&**t, selectedTile) &&
+                        selectedTile->dead == false &&
+                        (*t)->dead == false) {
+                        swapTiles(&**t, selectedTile);
                         selectedTile = NULL;
                     }
                     else {
-                        t->toggleSelected();
-                        selectedTile = &*t;
+                        (*t)->toggleSelected();
+                        selectedTile = &**t;
                     }
                 }
                 else {
-                    t->toggleSelected();
+                    (*t)->toggleSelected();
                     selectedTile = NULL;
                 }
             }
             else {
-                t->toggleSelected();
-                selectedTile = &*t;
+                (*t)->toggleSelected();
+                selectedTile = &**t;
             }
             
             return;
@@ -152,13 +172,18 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
     pos2.x = tile2->pos->x;
     pos2.y = tile2->pos->y;
     
+    Tile *tileTmp = tile1;
+    
+    tiles[tileIndex(pos1.x, pos1.y)] = tile2;
+    tiles[tileIndex(pos2.x, pos2.y)] = tileTmp;
+    
     tile1->moveTo(pos2);
     tile2->moveTo(pos1);
 }
 
 void World::shutdown()
 {
-    for( vector<Tile>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
-        tiles.pop_back();
-    }
+//    for( vector<Tile>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+//        tiles.pop_back();
+//    }
 }

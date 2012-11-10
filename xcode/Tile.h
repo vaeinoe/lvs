@@ -8,6 +8,9 @@
  */
 #pragma once
 #include "Common.h"
+#include "Configuration.h"
+
+class Configuration;
 
 class Tile {
 public:
@@ -19,6 +22,10 @@ public:
     Vec2i *pos;
 
     void moveTo( const Vec2i newPos );
+    int kill();
+
+    bool dead;
+    int type;
 private:
     Configuration *mConfig;
     
@@ -26,7 +33,6 @@ private:
     float prevTileSize[FILTER_SIZE];
     
     float tileSize;
-    int type;
     bool active;
     bool selected;
     

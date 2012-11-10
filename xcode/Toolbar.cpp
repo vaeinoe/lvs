@@ -30,14 +30,21 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     ColorA cpo = ColorA( 0.294118, 0.34902, 0.419608, 0.784314 ); 
     gui-> setUIColors( cb, co, coh, cf, cfh, cp, cpo );             
     
-    freqLabel = new ciUILabel("FB: 0", CI_UI_FONT_SMALL);
 
     gui->addWidgetRight(new ciUILabel("LVS",CI_UI_FONT_SMALL));
     gui->addWidgetRight(new ciUIFPS(CI_UI_FONT_SMALL));
-    gui->addWidgetRight(freqLabel);
+
+    scoreLabel = new ciUILabel("Score: 0", CI_UI_FONT_SMALL);
+    gui->addWidgetRight(scoreLabel);
                         
     gui->autoSizeToFitWidgets();
     gui->registerUIEvents(this, &Toolbar::guiEvent);
+}
+
+void Toolbar::updateScore( int score ) {
+    char buf[20];
+    snprintf(buf, 20, "Score: %d", score);
+    scoreLabel->setLabel(buf);
 }
 
 void Toolbar::shutdown()
@@ -47,10 +54,9 @@ void Toolbar::shutdown()
 
 void Toolbar::update( int fftDataBins )
 {
-    char buf[10];
-    snprintf(buf, 9, "%d", fftDataBins);
-
-    freqLabel->setLabel(buf);
+//    char buf[10];
+//    snprintf(buf, 9, "%d", fftDataBins);
+//    freqLabel->setLabel(buf);
 	gui->update();
 }
 

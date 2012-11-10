@@ -19,6 +19,7 @@
 		053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83D163D79B30095EBEF /* kiss_fftr.c */; };
 		053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83F163D79B30095EBEF /* KissFFT.cpp */; };
 		053BA84B163D7AB20095EBEF /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA84A163D7AB20095EBEF /* Audio.cpp */; };
+		05429AEE164ED4D900C9923D /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05429AEC164ED37C00C9923D /* World.cpp */; };
 		058D9F91163C0BDD006F86BC /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 058D9F90163C0BDD006F86BC /* nevis.ttf */; };
 		058D9FDE163C2356006F86BC /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FDD163C2356006F86BC /* Toolbar.cpp */; };
 		058D9FF0163C268D006F86BC /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FEF163C268D006F86BC /* LVSEngine.cpp */; };
@@ -375,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05429AEE164ED4D900C9923D /* World.cpp in Sources */,
 				00BAE65A0E7ED9C10018A608 /* LeavsApp.cpp in Sources */,
 				058D9FDE163C2356006F86BC /* Toolbar.cpp in Sources */,
 				058D9FF0163C268D006F86BC /* LVSEngine.cpp in Sources */,

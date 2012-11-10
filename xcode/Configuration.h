@@ -8,6 +8,15 @@
 
 #pragma once
 #include "Common.h"
+#include "Player.h"
+#include "World.h"
+#include "Toolbar.h"
+#include "LVSEngine.h"
+
+class Player;
+class World;
+class LVSEngine;
+class Toolbar;
 
 class Configuration {
 public:
@@ -21,4 +30,9 @@ public:
     int numTileTypes;
     float padding;
     int solverDelayFrames;
+    
+    Player *player;
+    World *world;
+    LVSEngine *engine;
+    Toolbar *toolbar;
 };

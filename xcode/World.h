@@ -7,8 +7,12 @@
  *
  */
 #pragma once
+#include "Configuration.h"
 #include "Common.h"
 #include "Tile.h"
+
+class Configuration;
+class Tile;
 
 class World {
 public:
@@ -20,13 +24,14 @@ public:
 private:
     Configuration *mConfig;
     Vec2i *size;
-    std::vector<Tile> tiles;
+    std::vector<Tile*> tiles;
     Tile *selectedTile;
 
     bool areNeighbours ( Tile *tile1, Tile *tile2 );
     void swapTiles( Tile *tile1, Tile *tile2 );
     void resolveTiles();
+    void resolveTile(int x, int y);
     int tileIndex(int x, int y);
-    
+
     int solverTimer;
 };
