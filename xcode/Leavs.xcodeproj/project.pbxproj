@@ -21,7 +21,6 @@
 		053BA84B163D7AB20095EBEF /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA84A163D7AB20095EBEF /* Audio.cpp */; };
 		058D9F91163C0BDD006F86BC /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 058D9F90163C0BDD006F86BC /* nevis.ttf */; };
 		058D9FDE163C2356006F86BC /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FDD163C2356006F86BC /* Toolbar.cpp */; };
-		058D9FE5163C24C0006F86BC /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FE4163C24C0006F86BC /* World.cpp */; };
 		058D9FF0163C268D006F86BC /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FEF163C268D006F86BC /* LVSEngine.cpp */; };
 		058DA0F8163C3666006F86BC /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058DA0F7163C3666006F86BC /* Player.cpp */; };
 		058DA165163C468E006F86BC /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058DA164163C468E006F86BC /* Tile.cpp */; };
@@ -50,6 +49,8 @@
 		053BA840163D79B30095EBEF /* KissFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissFFT.h; sourceTree = "<group>"; };
 		053BA849163D7AB20095EBEF /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		053BA84A163D7AB20095EBEF /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
+		05429AEC164ED37C00C9923D /* World.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		05429AED164ED37D00C9923D /* World.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		058D9F18163BFE83006F86BC /* ciUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI.h; sourceTree = "<group>"; };
 		058D9F19163BFE83006F86BC /* ciUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI2DPad.h; sourceTree = "<group>"; };
 		058D9F1A163BFE83006F86BC /* ciUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIBiLabelSlider.h; sourceTree = "<group>"; };
@@ -90,8 +91,6 @@
 		058D9F90163C0BDD006F86BC /* nevis.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nevis.ttf; sourceTree = "<group>"; };
 		058D9FDC163C2356006F86BC /* Toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
 		058D9FDD163C2356006F86BC /* Toolbar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toolbar.cpp; sourceTree = "<group>"; };
-		058D9FE3163C24C0006F86BC /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = World.h; path = ../../cinder_0.8.4_mac/blocks/ciUI/src/World.h; sourceTree = "<group>"; };
-		058D9FE4163C24C0006F86BC /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = World.cpp; path = ../../cinder_0.8.4_mac/blocks/ciUI/src/World.cpp; sourceTree = "<group>"; };
 		058D9FEE163C268D006F86BC /* LVSEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVSEngine.h; sourceTree = "<group>"; };
 		058D9FEF163C268D006F86BC /* LVSEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LVSEngine.cpp; sourceTree = "<group>"; };
 		058DA0F6163C3666006F86BC /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
@@ -207,14 +206,14 @@
 			children = (
 				058D9FDC163C2356006F86BC /* Toolbar.h */,
 				058D9FDD163C2356006F86BC /* Toolbar.cpp */,
-				058D9FE3163C24C0006F86BC /* World.h */,
-				058D9FE4163C24C0006F86BC /* World.cpp */,
 				058D9FEE163C268D006F86BC /* LVSEngine.h */,
 				058D9FEF163C268D006F86BC /* LVSEngine.cpp */,
 				058DA0F6163C3666006F86BC /* Player.h */,
 				058DA0F7163C3666006F86BC /* Player.cpp */,
 				058DA163163C468E006F86BC /* Tile.h */,
 				058DA164163C468E006F86BC /* Tile.cpp */,
+				05429AEC164ED37C00C9923D /* World.cpp */,
+				05429AED164ED37D00C9923D /* World.h */,
 				058DA19D163C4DB5006F86BC /* Common.h */,
 				053BA849163D7AB20095EBEF /* Audio.h */,
 				053BA84A163D7AB20095EBEF /* Audio.cpp */,
@@ -378,7 +377,6 @@
 			files = (
 				00BAE65A0E7ED9C10018A608 /* LeavsApp.cpp in Sources */,
 				058D9FDE163C2356006F86BC /* Toolbar.cpp in Sources */,
-				058D9FE5163C24C0006F86BC /* World.cpp in Sources */,
 				058D9FF0163C268D006F86BC /* LVSEngine.cpp in Sources */,
 				058DA0F8163C3666006F86BC /* Player.cpp in Sources */,
 				058DA165163C468E006F86BC /* Tile.cpp in Sources */,

@@ -24,4 +24,18 @@ inline float fast_sin(float x)
     const float C = -4 / (pi * pi);
     
     return -(B * x + C * x * ((x < 0) ? -x : x));
-} 
+}
+
+inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int numLines )
+{
+	glEnableClientState( GL_VERTEX_ARRAY );
+	glEnableClientState( GL_COLOR_ARRAY );
+
+	glColorPointer( 4, GL_FLOAT, 0, colors );
+	glVertexPointer( 2, GL_FLOAT, 0, verts );
+	glDrawArrays( GL_LINES, 0, numLines * 2 );
+
+	glDisableClientState( GL_COLOR_ARRAY );
+	glDisableClientState( GL_VERTEX_ARRAY );
+}
+

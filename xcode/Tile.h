@@ -32,6 +32,7 @@ private:
     
     void drawHex(Vec2f pos, float val);
     void drawStar(Vec2f pos, float val);
+    void drawGram(Vec2f draw_pos, float val);
 
     void drawSelected(Vec2f pos, float val);
     void drawActive(Vec2f pos, float val);
