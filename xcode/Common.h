@@ -8,6 +8,7 @@
  */
 
 #pragma once
+#include "Configuration.h"
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "cinder/audio/Io.h"
@@ -16,14 +17,6 @@
 #include "cinder/Rand.h"
 #include "ciUI.h"
 #include "KissFFT.h"
-
-const static int TOOLBAR_HEIGHT = 75;
-const static float TILE_SIZE = 50.0f;
-const static float TILE_GRID = 120.0f;
-const static float TILE_BORDER_SPACING = 10.0f;
-const static int WORLD_WIDTH = 5;
-const static int WORLD_HEIGHT = 11;
-const static float PADDING = 10.0f;
 
 inline float fast_sin(float x)
 {

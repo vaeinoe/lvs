@@ -11,20 +11,30 @@
 
 class Tile {
 public:
-    void setup( const Vec2i pos, const float sz, int type);
+    void setup( Configuration *config, const Vec2i pos, int type);
     void update( const float dist, const float modifier );
     void draw();
     void toggleSelected();
     Vec2f getScreenPositionVector();
     Vec2i *pos;
+
+    void moveTo( const Vec2i newPos );
 private:
-    float baseTileSize;
-    float prevTileSize[4];
+    Configuration *mConfig;
+    
+    const static int FILTER_SIZE = 16;
+    float prevTileSize[FILTER_SIZE];
+    
     float tileSize;
     int type;
     bool active;
     bool selected;
-    void drawHex(Vec2f pos);
-    void drawStar(Vec2f pos);
-    void drawSelected(Vec2f pos);
+    
+    void drawHex(Vec2f pos, float val);
+    void drawStar(Vec2f pos, float val);
+
+    void drawSelected(Vec2f pos, float val);
+    void drawActive(Vec2f pos, float val);
+    
+    bool moving;
 };

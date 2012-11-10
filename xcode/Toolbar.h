@@ -11,12 +11,13 @@
 
 class Toolbar {
 public:
-	void setup( const Vec2i loc, const Vec2i size );
+	void setup( Configuration *config, const Vec2i loc, const Vec2i size );
 	void update( int fftDataBins );
 	void draw();
 	void shutdown();
 	void guiEvent( ciUIEvent *event );
 private:
+    Configuration *mConfig;
 	ciUICanvas *gui;
     ciUILabel *freqLabel;
 };

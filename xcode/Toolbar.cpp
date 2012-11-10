@@ -10,8 +10,9 @@
 #include "Toolbar.h"
 #include <string>
 
-void Toolbar::setup( const Vec2i loc, const Vec2i size )
+void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
 {
+    mConfig = config;
     gui = new ciUICanvas(loc.x, loc.y, size.x, size.y);
     gui->setFont("nevis.ttf");
     
