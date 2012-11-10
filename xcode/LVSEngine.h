@@ -7,12 +7,18 @@
  *
  */
 #pragma once
-
+#include "Configuration.h"
 #include "Common.h"
 #include "World.h"
 #include "Toolbar.h"
 #include "Player.h"
 #include "Audio.h"
+
+class Toolbar;
+class World;
+class Player;
+class Audio;
+class Configuration;
 
 class LVSEngine {
 public:

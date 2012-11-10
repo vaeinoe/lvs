@@ -25,40 +25,53 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType)
     type = newType;
     
     moving = false;
+    dead = false;
 }
 
 // Activates / deactivates selected hex
 void Tile::toggleSelected() {
-    selected = !selected;
+    if (!dead) {
+        selected = !selected;        
+    }
+}
+
+int Tile::kill() {
+    dead = true;
+    type = -1;
+    return 1; // XXX: return score
 }
 
 // Starts moving the tile to another position
 void Tile::moveTo( Vec2i newPos ) {
-    pos->x = newPos.x;
-    pos->y = newPos.y;
-    
-    moving = true;
+    if (!dead) {
+        pos->x = newPos.x;
+        pos->y = newPos.y;
+        
+        moving = true;        
+    }
 }
 
 void Tile::update( const float dist, const float modifier )
 {
-    // Activate if cursor is over the hex
-    active = (dist < (0.9 * mConfig->tileSize)) ? true : false;
-
-    // Shift averages
-    for (int i = 1; i < FILTER_SIZE; i++) {
-        prevTileSize[i - 1] = prevTileSize[i];
+    if (!dead) {
+        // Activate if cursor is over the hex
+        active = (dist < (0.9 * mConfig->tileSize)) ? true : false;
+        
+        // Shift averages
+        for (int i = 1; i < FILTER_SIZE; i++) {
+            prevTileSize[i - 1] = prevTileSize[i];
+        }
+        
+        // Init the new tile size
+        prevTileSize[FILTER_SIZE - 1] = math<float>::clamp(mConfig->tileUpperLimit * (modifier * 16), (mConfig->tileSize / 4), mConfig->tileUpperLimit);
+        
+        // Calculate moving average
+        float sum = 0;
+        for (int i = 0; i < FILTER_SIZE; i++) {
+            sum += prevTileSize[i];
+        }
+        tileSize = (sum / FILTER_SIZE);        
     }
-    
-    // Init the new tile size
-    prevTileSize[FILTER_SIZE - 1] = math<float>::clamp(mConfig->tileUpperLimit * (modifier * 16), (mConfig->tileSize / 4), mConfig->tileUpperLimit);
-    
-    // Calculate moving average
-    float sum = 0;
-    for (int i = 0; i < FILTER_SIZE; i++) {
-        sum += prevTileSize[i];
-    }
-    tileSize = (sum / FILTER_SIZE);
 }
 
 // Returns the screen position of this hex
@@ -74,30 +87,37 @@ Vec2f Tile::getScreenPositionVector() {
 void Tile::draw()
 {
     Vec2f draw_pos = getScreenPositionVector();
-    float val = sin((getElapsedSeconds() * 2 + sin(draw_pos.x) + cos(draw_pos.y))) * 0.2f + 0.5f;
-
     float lightness = sin(getElapsedSeconds() / 10);
-	gl::color(0, 0, lightness * 0.4, 0.75);
-    gl::drawSolidCircle( draw_pos, mConfig->tileSize, 6 );
 
-    gl::color (0.8, 0.5, 1.0, 0.25);
-    gl::drawStrokedCircle( draw_pos, mConfig->tileSize, 6 );
-    
-    gl::color (1.0, 1.0, 1.0, val);
-    
-/*    float a = 0.3;
-    for (int i = 1; i < 3; i++) {
-        gl::color (1.0, 1.0, 1.0, a);
-        gl::drawStrokedCircle( draw_pos, tileSize + (3 * i) + 2, 6 );
-        a = a * 0.5;
-    } */
-
-    if (type == 0) drawHex(draw_pos, val);
-    else if (type == 1) drawStar(draw_pos, val);
-    else if (type == 2) drawGram(draw_pos, val);
-
-    if (active) drawActive(draw_pos, val);    
-    if (selected) drawSelected(draw_pos, val);
+    if (!dead) {
+        float val = sin((getElapsedSeconds() * 2 + sin(draw_pos.x) + cos(draw_pos.y))) * 0.2f + 0.5f;
+        
+        gl::color(0, 0, lightness * 0.4, 0.75);
+        gl::drawSolidCircle( draw_pos, mConfig->tileSize, 6 );
+        
+        gl::color (0.8, 0.5, 1.0, 0.25);
+        gl::drawStrokedCircle( draw_pos, mConfig->tileSize, 6 );
+        
+        gl::color (1.0, 1.0, 1.0, val);
+        
+        /*    float a = 0.3;
+         for (int i = 1; i < 3; i++) {
+         gl::color (1.0, 1.0, 1.0, a);
+         gl::drawStrokedCircle( draw_pos, tileSize + (3 * i) + 2, 6 );
+         a = a * 0.5;
+         } */
+        
+        if (type == 0) drawHex(draw_pos, val);
+        else if (type == 1) drawStar(draw_pos, val);
+        else if (type == 2) drawGram(draw_pos, val);
+        
+        if (active) drawActive(draw_pos, val);    
+        if (selected) drawSelected(draw_pos, val);
+    }
+    else {
+        gl::color(0.8, 0.1, lightness * 0.8, 0.4);
+        gl::drawStrokedCircle( draw_pos, mConfig->tileSize, 6 );
+    }
 }
 
 

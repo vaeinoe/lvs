@@ -9,12 +9,19 @@
 
 #include "Player.h"
 
-void Player::setup()
+void Player::setup(Configuration *config)
 {
-    
+    mScore = 0;
+    mConfig = config;
 }
 
-void Player::update( const Vec2i pos )
+void Player::addScore(int score)
+{
+    mScore += score;
+    mConfig->toolbar->updateScore(mScore);
+}
+
+void Player::update()
 {
     
 }
