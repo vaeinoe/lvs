@@ -13,12 +13,14 @@
 #include "Toolbar.h"
 #include "Player.h"
 #include "Audio.h"
+#include "Mainmenu.h"
 
 class Toolbar;
 class World;
 class Player;
 class Audio;
 class Configuration;
+class Mainmenu;
 
 class LVSEngine {
 public:
@@ -29,6 +31,8 @@ public:
     void mouseMove ( const MouseEvent event );
     void mouseDown ( const MouseEvent event );
 private:
+    bool gameRunning;
+    Mainmenu *mMenu;
     Toolbar *mToolbar;
     World *mWorld;
     Player *mPlayer;

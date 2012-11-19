@@ -70,8 +70,6 @@ void LeavsApp::update()
 
 void LeavsApp::draw()
 {
-    float lightness = sin(getElapsedSeconds() / 10);
-	gl::clear( Color( 0, 0, lightness * 0.4 ) ); 
     engine->draw();
 }
 
