@@ -12,6 +12,12 @@
 void Audio::setup(Configuration *config)
 {
     mConfig = config;
+
+    for (int i = 0; i < 5; i++) {
+        PolyLine<Vec2f> line;
+        prevLines[i] = line;
+    }
+    
     mAudioSource = audio::load( loadResource( "gametest1.mp3" ) );
 	mTrack = audio::Output::addTrack( mAudioSource, false );
 	mTrack->enablePcmBuffering( true );
@@ -51,7 +57,7 @@ void Audio::update()
 
 void Audio::draw()
 {
-/*	if ( mFft ) {
+	if ( mFft ) {
         
 		float dataSizef = (float)dataSize;
         
@@ -76,10 +82,20 @@ void Audio::draw()
             
 		}
         
-        gl::color( 1.0, 0.0, 0.8, 0.5);
-		gl::draw( freqLine );
+        for (int i = 0; i < 5; i++) {
+            gl::color( 0.8, 0.0, 0.3, 0.5 * (i * 1.0 / 6) );
+            gl::draw(prevLines[i]);
+        }
+
+        for (int i = 1; i < 5; i++) {
+            prevLines[i-1] = prevLines[i];
+        }
+        prevLines[4] = timeLine;
+
+        gl::color( 1.0, 0.4, 0.8, 0.6);
+		//gl::draw( freqLine );
 		gl::draw( timeLine );
-	}    */
+    }
 }
 
 void Audio::shutdown()

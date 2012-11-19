@@ -28,4 +28,6 @@ public:
     int32_t dataSize;
 private:
     Configuration *mConfig;
+    
+    PolyLine<Vec2f> prevLines[5];
 };
