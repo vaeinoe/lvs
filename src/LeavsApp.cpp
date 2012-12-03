@@ -74,9 +74,7 @@ void LeavsApp::draw()
 }
 
 void LeavsApp::keyDown( KeyEvent event ) {
-    if( event.getCode() == KeyEvent::KEY_ESCAPE ) {
-        exit(0);
-    }
+    engine->keyDown(event);
 }
 
 void LeavsApp::mouseDown( MouseEvent event ) {

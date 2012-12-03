@@ -15,17 +15,17 @@ void Mainmenu::setup(Configuration *config)
     int windowWidth = getWindowWidth();
     int windowHeight = getWindowHeight();
     
-    int x = windowWidth / 2 - 150;
-    int y = windowHeight / 2 - 150;
+    int x = windowWidth * 0.75;
+    int y = windowHeight * 0.5;
     int width = 300;
     int height = 300;
     
     gui = new ciUICanvas(x, y, width, height);
     gui->setFont("nevis.ttf");
     
-    gui->setFontSize(CI_UI_FONT_LARGE, 42);
-    gui->setFontSize(CI_UI_FONT_MEDIUM, 36);
-    gui->setFontSize(CI_UI_FONT_SMALL, 12);
+    gui->setFontSize(CI_UI_FONT_LARGE, 64);
+    gui->setFontSize(CI_UI_FONT_MEDIUM, 24);
+    gui->setFontSize(CI_UI_FONT_SMALL, 16);
     
     // Modified "Berlin"
     ColorA cb = ColorA( 0.1, 0.1, 0.1, 0.0 );
@@ -36,10 +36,10 @@ void Mainmenu::setup(Configuration *config)
     ColorA cp = ColorA( 0.105882, 0.12549, 0.14902, 0.392157 );
     ColorA cpo = ColorA( 0.294118, 0.34902, 0.419608, 0.784314 );
     gui-> setUIColors( cb, co, coh, cf, cfh, cp, cpo );
-    
-    
-    gui->addWidgetDown(new ciUILabel("My name is LVS.",CI_UI_FONT_LARGE));
-    gui->addWidgetDown(new ciUILabel("Play with me.",CI_UI_FONT_MEDIUM));
+
+    gui->addWidgetDown(new ciUILabel("lvs",CI_UI_FONT_LARGE));
+    gui->addWidgetDown(new ciUILabelToggle(false, "Play.",CI_UI_FONT_MEDIUM));
+    gui->addWidgetDown(new ciUILabelToggle(false, "Quit.",CI_UI_FONT_MEDIUM));
     
     gui->autoSizeToFitWidgets();
     gui->registerUIEvents(this, &Mainmenu::guiEvent);
@@ -72,5 +72,11 @@ void Mainmenu::mouseDown ( const MouseEvent event )
 
 void Mainmenu::guiEvent(ciUIEvent *event)
 {
-    // XXX
+    string name = event->widget->getName();
+    if(name == "Play.") {
+        mConfig->engine->startGame();
+    }
+    else if (name == "Quit.") {
+        mConfig->engine->quitGame();
+    }
 }
