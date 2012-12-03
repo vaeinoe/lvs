@@ -18,10 +18,20 @@ public:
 	void shutdown();
 
 	ci::audio::SourceRef		mAudioSource;
-	ci::audio::PcmBuffer32fRef	mBuffer;
-	ci::audio::TrackRef			mTrack;
+	ci::audio::SourceRef		mAudioSource2;
+	ci::audio::SourceRef		mAudioSource3;
+	ci::audio::SourceRef		mAudioSource4;
+	ci::audio::SourceRef		mAudioSource5;
+
     
-	KissRef						mFft;    
+	ci::audio::TrackRef			mTrack;
+	ci::audio::TrackRef			mTrack2;
+	ci::audio::TrackRef			mTrack3;
+	ci::audio::TrackRef			mTrack4;
+	ci::audio::TrackRef			mTrack5;
+    
+	ci::audio::PcmBuffer32fRef	mBuffer;
+	KissRef						mFft;
 
     float *freqData;
     float *timeData;

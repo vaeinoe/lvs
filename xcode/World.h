@@ -18,6 +18,7 @@ class World {
 public:
 	void setup( Configuration *config, const Vec2i newSize );
 	void update( const Vec2i *mouseLoc, const float *freqData, const int dataSize );
+    void reset();
 	void draw();
 	void shutdown();
     void selectTile( const Vec2i mouseLoc );
@@ -29,8 +30,8 @@ private:
 
     bool areNeighbours ( Tile *tile1, Tile *tile2 );
     void swapTiles( Tile *tile1, Tile *tile2 );
-    void resolveTiles();
-    void resolveTile(int x, int y);
+    bool resolveTiles(const bool act);
+    bool resolveTile(int x, int y, bool act);
     int tileIndex(int x, int y);
 
     int solverTimer;

@@ -15,10 +15,17 @@ void World::setup( Configuration *config, const Vec2i newSize )
 {
     mConfig = config;
     size = new Vec2i( newSize.x, newSize.y );
+    solverTimer = mConfig->solverDelayFrames;
+    selectedTile = NULL;
     
+    reset();
+}
+
+void World::reset() {
+    tiles.clear();
     tiles.reserve( size->x * size->y );
     
-    Rand rnd = Rand();
+    Rand rnd = Rand(time(0));
     
     for (int x = 0; x < size->x; x++) {
         for (int y = 0; y < size->y; y++) {
@@ -29,8 +36,9 @@ void World::setup( Configuration *config, const Vec2i newSize )
         }
     }
     
-    solverTimer = mConfig->solverDelayFrames;
-    selectedTile = NULL;
+    //if (resolveTiles(false) == true) {
+    //    reset();
+    //}
 }
 
 void World::update( const Vec2i *mouseLoc, const float *freqData, const int dataSize )
@@ -59,7 +67,7 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
     
     solverTimer--;
     if (solverTimer == 0) {
-        resolveTiles();
+        resolveTiles(true);
         solverTimer = mConfig->solverDelayFrames;
     }
 }
@@ -68,15 +76,20 @@ inline int World::tileIndex(int x, int y) {
     return ((x * size->y) + y);
 }
 
-void World::resolveTiles() {
+bool World::resolveTiles(const bool act) {
+    bool hits = false;
     for (int x = 0; x < size->x; x++) {
         for (int y = 1; y < size->y; y++) {
-            resolveTile(x,y);
+            bool result = resolveTile(x,y,act);
+            if (result == true) {
+                hits = true;
+            }
         }
     }
+    return hits;
 }
 
-void World::resolveTile(int x, int y) {
+bool World::resolveTile(int x, int y, bool act) {
     int idx = tileIndex(x, y);
     int idx2 = tileIndex(x, y - 1);
     int idx3 = tileIndex(x, y + 1);
@@ -84,12 +97,19 @@ void World::resolveTile(int x, int y) {
     if (tiles[idx]->type != -1 &&
         tiles[idx2]->type == tiles[idx]->type &&
         tiles[idx3]->type == tiles[idx]->type) {
-        int score = 0;
-        score += tiles[idx]->kill();
-        score += tiles[idx2]->kill();
-        score += tiles[idx3]->kill();
-        mConfig->player->addScore(score);
+        
+        if (act) {
+            int score = 0;
+            score += tiles[idx]->kill();
+            score += tiles[idx2]->kill();
+            score += tiles[idx3]->kill();
+            mConfig->player->addScore(score);
+        }
+        
+        return true;
     }
+    
+    return false;
 }
 
 void World::draw()
@@ -183,6 +203,7 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
 
 void World::shutdown()
 {
+    tiles.clear();
 //    for( vector<Tile>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
 //        tiles.pop_back();
 //    }

@@ -30,8 +30,20 @@ public:
 	void shutdown();
     void mouseMove ( const MouseEvent event );
     void mouseDown ( const MouseEvent event );
+    void keyDown ( const KeyEvent event );
+
+    void loadAll();
+    void quitGame();
+    void startGame();
 private:
-    bool gameRunning;
+    int gameState;
+    
+    Font loadFont;
+    gl::TextureFontRef texFont;
+    
+    int loadState;
+    string loadStr;
+    
     Mainmenu *mMenu;
     Toolbar *mToolbar;
     World *mWorld;

@@ -18,10 +18,38 @@ void Audio::setup(Configuration *config)
         prevLines[i] = line;
     }
     
-    mAudioSource = audio::load( loadResource( "gametest1.mp3" ) );
+    mAudioSource = audio::load( loadResource( "plink1.wav" ) );
+    mAudioSource2 = audio::load( loadResource( "plink2.wav" ) );
+    mAudioSource3 = audio::load( loadResource( "plink3.wav" ) );
+    mAudioSource4 = audio::load( loadResource( "plink4.wav" ) );
+    mAudioSource5 = audio::load( loadResource( "plink5.wav" ) );
+
 	mTrack = audio::Output::addTrack( mAudioSource, false );
+	mTrack2 = audio::Output::addTrack( mAudioSource2, false );
+	mTrack3 = audio::Output::addTrack( mAudioSource3, false );
+	mTrack4 = audio::Output::addTrack( mAudioSource4, false );
+	mTrack5 = audio::Output::addTrack( mAudioSource5, false );
+
 	mTrack->enablePcmBuffering( true );
-	mTrack->play();
+    mTrack->setLooping( true );
+    mTrack->play();
+
+	mTrack2->enablePcmBuffering( true );
+    mTrack2->setLooping( true );
+	mTrack2->play();
+
+	mTrack3->enablePcmBuffering( true );
+    mTrack3->setLooping( true );
+	mTrack3->play();
+
+	mTrack4->enablePcmBuffering( true );
+    mTrack4->setLooping( true );
+	mTrack4->play();
+    
+	mTrack5->enablePcmBuffering( true );
+    mTrack5->setLooping( true );
+	mTrack5->play();
+
 }
 
 void Audio::update()

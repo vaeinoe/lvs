@@ -26,7 +26,11 @@
 		058D9FF0163C268D006F86BC /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FEF163C268D006F86BC /* LVSEngine.cpp */; };
 		058DA0F8163C3666006F86BC /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058DA0F7163C3666006F86BC /* Player.cpp */; };
 		058DA165163C468E006F86BC /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058DA164163C468E006F86BC /* Tile.cpp */; };
-		05EC300E164D7AFC00EAD929 /* gametest1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 05EC300D164D7AFC00EAD929 /* gametest1.mp3 */; };
+		05E37072166CFE7000702CE1 /* plink1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E3706D166CFE7000702CE1 /* plink1.wav */; };
+		05E37073166CFE7000702CE1 /* plink2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E3706E166CFE7000702CE1 /* plink2.wav */; };
+		05E37074166CFE7000702CE1 /* plink3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E3706F166CFE7000702CE1 /* plink3.wav */; };
+		05E37075166CFE7000702CE1 /* plink4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E37070166CFE7000702CE1 /* plink4.wav */; };
+		05E37076166CFE7000702CE1 /* plink5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E37071166CFE7000702CE1 /* plink5.wav */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
@@ -102,7 +106,11 @@
 		058DA163163C468E006F86BC /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		058DA164163C468E006F86BC /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		058DA19D163C4DB5006F86BC /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		05EC300D164D7AFC00EAD929 /* gametest1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gametest1.mp3; sourceTree = "<group>"; };
+		05E3706D166CFE7000702CE1 /* plink1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plink1.wav; sourceTree = "<group>"; };
+		05E3706E166CFE7000702CE1 /* plink2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plink2.wav; sourceTree = "<group>"; };
+		05E3706F166CFE7000702CE1 /* plink3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plink3.wav; sourceTree = "<group>"; };
+		05E37070166CFE7000702CE1 /* plink4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plink4.wav; sourceTree = "<group>"; };
+		05E37071166CFE7000702CE1 /* plink5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plink5.wav; sourceTree = "<group>"; };
 		05EC3010164D7DDC00EAD929 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -297,7 +305,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				05EC300D164D7AFC00EAD929 /* gametest1.mp3 */,
+				05E3706D166CFE7000702CE1 /* plink1.wav */,
+				05E3706E166CFE7000702CE1 /* plink2.wav */,
+				05E3706F166CFE7000702CE1 /* plink3.wav */,
+				05E37070166CFE7000702CE1 /* plink4.wav */,
+				05E37071166CFE7000702CE1 /* plink5.wav */,
 				058D9F90163C0BDD006F86BC /* nevis.ttf */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				00CCAF14116A9FEE008396D5 /* CinderApp.icns */,
@@ -370,7 +382,11 @@
 			files = (
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
 				058D9F91163C0BDD006F86BC /* nevis.ttf in Resources */,
-				05EC300E164D7AFC00EAD929 /* gametest1.mp3 in Resources */,
+				05E37072166CFE7000702CE1 /* plink1.wav in Resources */,
+				05E37073166CFE7000702CE1 /* plink2.wav in Resources */,
+				05E37074166CFE7000702CE1 /* plink3.wav in Resources */,
+				05E37075166CFE7000702CE1 /* plink4.wav in Resources */,
+				05E37076166CFE7000702CE1 /* plink5.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
