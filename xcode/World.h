@@ -27,6 +27,7 @@ private:
     Vec2i *size;
     std::vector<Tile*> tiles;
     Tile *selectedTile;
+    Rand rnd = Rand(time(0));
 
     bool areNeighbours ( Tile *tile1, Tile *tile2 );
     void swapTiles( Tile *tile1, Tile *tile2 );

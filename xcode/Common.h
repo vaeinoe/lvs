@@ -14,7 +14,7 @@
 #include "cinder/audio/Output.h"
 #include "cinder/CinderMath.h"
 #include "cinder/Rand.h"
-#include "cinder/Thread.h"
+#include "cinder/Timer.h"
 #include "cinder/gl/TextureFont.h"
 #include "ciUI.h"
 #include "KissFFT.h"

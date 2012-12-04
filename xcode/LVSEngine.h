@@ -35,6 +35,7 @@ public:
     void loadAll();
     void quitGame();
     void startGame();
+    void backToMain();
 private:
     int gameState;
     
