@@ -25,8 +25,6 @@ void World::reset() {
     tiles.clear();
     tiles.reserve( size->x * size->y );
     
-    Rand rnd = Rand(time(0));
-    
     for (int x = 0; x < size->x; x++) {
         for (int y = 0; y < size->y; y++) {
             int type = rnd.nextInt(mConfig->numTileTypes);
@@ -36,9 +34,9 @@ void World::reset() {
         }
     }
     
-    //if (resolveTiles(false) == true) {
-    //    reset();
-    //}
+    if (resolveTiles(false) == true) {
+        reset();
+    }
 }
 
 void World::update( const Vec2i *mouseLoc, const float *freqData, const int dataSize )
@@ -68,7 +66,7 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
     solverTimer--;
     if (solverTimer == 0) {
         resolveTiles(true);
-        solverTimer = mConfig->solverDelayFrames;
+        solverTimer = mConfig->solverDelayFrames;        
     }
 }
 
@@ -79,7 +77,7 @@ inline int World::tileIndex(int x, int y) {
 bool World::resolveTiles(const bool act) {
     bool hits = false;
     for (int x = 0; x < size->x; x++) {
-        for (int y = 1; y < size->y; y++) {
+        for (int y = 1; y < size->y - 1; y++) {
             bool result = resolveTile(x,y,act);
             if (result == true) {
                 hits = true;
@@ -204,7 +202,4 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
 void World::shutdown()
 {
     tiles.clear();
-//    for( vector<Tile>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
-//        tiles.pop_back();
-//    }
 }

@@ -83,8 +83,8 @@ void LVSEngine::update()
             break;
         case S_INGAME_1:
             mAudio->update();
-            mToolbar->update(mAudio->dataSize);
-            mWorld->update(mMouseLoc, mAudio->freqData, mAudio->dataSize);
+            mToolbar->update(mAudio->getDataSize());
+            mWorld->update(mMouseLoc, mAudio->getFreqData(), mAudio->getDataSize());
             mPlayer->update();
             break;
     }    
@@ -137,7 +137,8 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 quitGame();
                 break;
             case S_INGAME_1:
-                quitGame();
+                // TODO: reset player data add a return button to main?
+                backToMain();
                 break;
         }
     }
@@ -150,8 +151,14 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
 
 void LVSEngine::startGame()
 {
-    // TODO: fade in
     gameState = S_INGAME_1;
+    mAudio->fadeToPreset(1, 5.0);
+}
+
+void LVSEngine::backToMain()
+{
+    gameState = S_MAINMENU;
+    mAudio->fadeToPreset(0, 5.0);
 }
 
 void LVSEngine::quitGame()

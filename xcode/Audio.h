@@ -9,6 +9,11 @@
 #pragma once
 #include "Common.h"
 #include "Configuration.h"
+#include "AudioTrack.h"
+
+#define NUMTRACKS 5
+
+class AudioTrack;
 
 class Audio {
 public:
@@ -17,27 +22,17 @@ public:
 	void draw();
 	void shutdown();
 
-	ci::audio::SourceRef		mAudioSource;
-	ci::audio::SourceRef		mAudioSource2;
-	ci::audio::SourceRef		mAudioSource3;
-	ci::audio::SourceRef		mAudioSource4;
-	ci::audio::SourceRef		mAudioSource5;
-
+    void fadeToPreset(int presetId, double fadeSec);
     
-	ci::audio::TrackRef			mTrack;
-	ci::audio::TrackRef			mTrack2;
-	ci::audio::TrackRef			mTrack3;
-	ci::audio::TrackRef			mTrack4;
-	ci::audio::TrackRef			mTrack5;
+    float* getFreqData();
+    int32_t getDataSize();
     
-	ci::audio::PcmBuffer32fRef	mBuffer;
-	KissRef						mFft;
-
-    float *freqData;
-    float *timeData;
-    int32_t dataSize;
+    AudioTrack *mTracks[32];
 private:
     Configuration *mConfig;
     
-    PolyLine<Vec2f> prevLines[5];
+    double presets[2][NUMTRACKS] = {
+        { 1.0, 0.0, 0.0, 0.0, 0.0 },
+        { 0.0, 1.0, 1.0, 1.0, 1.0 },
+    };
 };

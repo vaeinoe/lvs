@@ -21,6 +21,7 @@
 		053BA84B163D7AB20095EBEF /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA84A163D7AB20095EBEF /* Audio.cpp */; };
 		05429AEE164ED4D900C9923D /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05429AEC164ED37C00C9923D /* World.cpp */; };
 		054D456C165A9763007B7BC0 /* Mainmenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 054D456A165A9763007B7BC0 /* Mainmenu.cpp */; };
+		05737E5D166E6D580081B4D0 /* AudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05737E5B166E6D580081B4D0 /* AudioTrack.cpp */; };
 		058D9F91163C0BDD006F86BC /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 058D9F90163C0BDD006F86BC /* nevis.ttf */; };
 		058D9FDE163C2356006F86BC /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FDD163C2356006F86BC /* Toolbar.cpp */; };
 		058D9FF0163C268D006F86BC /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 058D9FEF163C268D006F86BC /* LVSEngine.cpp */; };
@@ -59,6 +60,8 @@
 		05429AED164ED37D00C9923D /* World.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		054D456A165A9763007B7BC0 /* Mainmenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mainmenu.cpp; sourceTree = "<group>"; };
 		054D456B165A9763007B7BC0 /* Mainmenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mainmenu.h; sourceTree = "<group>"; };
+		05737E5B166E6D580081B4D0 /* AudioTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTrack.cpp; sourceTree = "<group>"; };
+		05737E5C166E6D580081B4D0 /* AudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTrack.h; sourceTree = "<group>"; };
 		058D9F18163BFE83006F86BC /* ciUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI.h; sourceTree = "<group>"; };
 		058D9F19163BFE83006F86BC /* ciUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI2DPad.h; sourceTree = "<group>"; };
 		058D9F1A163BFE83006F86BC /* ciUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIBiLabelSlider.h; sourceTree = "<group>"; };
@@ -227,11 +230,13 @@
 				05429AEC164ED37C00C9923D /* World.cpp */,
 				05429AED164ED37D00C9923D /* World.h */,
 				058DA19D163C4DB5006F86BC /* Common.h */,
-				053BA849163D7AB20095EBEF /* Audio.h */,
-				053BA84A163D7AB20095EBEF /* Audio.cpp */,
 				05EC3010164D7DDC00EAD929 /* Configuration.h */,
 				054D456A165A9763007B7BC0 /* Mainmenu.cpp */,
 				054D456B165A9763007B7BC0 /* Mainmenu.h */,
+				053BA849163D7AB20095EBEF /* Audio.h */,
+				053BA84A163D7AB20095EBEF /* Audio.cpp */,
+				05737E5B166E6D580081B4D0 /* AudioTrack.cpp */,
+				05737E5C166E6D580081B4D0 /* AudioTrack.h */,
 			);
 			name = engine;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */,
 				053BA84B163D7AB20095EBEF /* Audio.cpp in Sources */,
 				054D456C165A9763007B7BC0 /* Mainmenu.cpp in Sources */,
+				05737E5D166E6D580081B4D0 /* AudioTrack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
