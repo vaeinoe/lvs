@@ -106,18 +106,28 @@ void Tile::draw()
          gl::drawStrokedCircle( draw_pos, tileSize + (3 * i) + 2, 6 );
          a = a * 0.5;
          } */
-        
+
+#ifndef DEBUG
         if (type == 0) drawHex(draw_pos, val);
         else if (type == 1) drawStar(draw_pos, val);
         else if (type == 2) drawGram(draw_pos, val);
         
         if (active) drawActive(draw_pos, val);    
         if (selected) drawSelected(draw_pos, val);
+#endif
     }
     else {
         gl::color(0.8, 0.1, lightness * 0.8, 0.4);
         gl::drawStrokedCircle( draw_pos, mConfig->tileSize, 6 );
     }
+    
+#ifdef DEBUG
+    drawLabel(draw_pos);
+#endif
+}
+
+inline void Tile::drawLabel(Vec2f draw_pos) {
+    gl::drawStringCentered ("x:" + toString(pos->x) + " y:" + toString(pos->y), draw_pos);
 }
 
 

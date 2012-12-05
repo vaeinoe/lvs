@@ -29,6 +29,7 @@ private:
     Tile *selectedTile;
     Rand rnd = Rand(time(0));
 
+    Vec2i neighbourCoord ( Vec2i pos, Vec2i dir );
     bool areNeighbours ( Tile *tile1, Tile *tile2 );
     void swapTiles( Tile *tile1, Tile *tile2 );
     bool resolveTiles(const bool act);
