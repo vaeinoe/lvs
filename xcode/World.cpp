@@ -74,10 +74,48 @@ inline int World::tileIndex(int x, int y) {
     return ((x * size->y) + y);
 }
 
+inline Vec2i World::neighbourCoord(Vec2i pos, Vec2i dir)
+{
+    // N + S same for both alignments
+    if (dir.x == 0) {
+        if      (dir.y < 0) { return Vec2i(pos.x, pos.y - 2); }
+        else if (dir.y > 0) { return Vec2i(pos.x, pos.y + 2); }
+        else                 { return Vec2i(pos.x, pos.y);     }
+    }
+
+    Vec2i ret = Vec2i(0,0);
+    
+    if      (dir.y < 0) { ret.y = pos.y - 1; }
+    else if (dir.y > 0) { ret.y = pos.y + 1; }
+    else                 { return Vec2i(pos.x, pos.y);  } // No neighbouring tiles left & right
+    
+    if      (dir.x > 0) { ret.x = pos.x;     }
+    else                 { ret.x = pos.x - 1; }
+    
+    // Even & odd rows handle this differently
+    if (pos.y % 2 == 1) { ret.x += 1; }
+
+    return ret;
+    
+        /* EVEN
+           x   y
+           NE: +0  -1
+           NW: -1, -1
+           SE: +0, +1
+           SW: -1, +1 */
+
+        /* ODD
+           x   y
+           NE: +1  -1
+           NW: +0  -1
+           SE: +1  +1
+           SW: +0  +1 */
+}
+
 bool World::resolveTiles(const bool act) {
     bool hits = false;
     for (int x = 0; x < size->x; x++) {
-        for (int y = 1; y < size->y - 1; y++) {
+        for (int y = 2; y < size->y - 2; y++) {
             bool result = resolveTile(x,y,act);
             if (result == true) {
                 hits = true;
@@ -88,9 +126,13 @@ bool World::resolveTiles(const bool act) {
 }
 
 bool World::resolveTile(int x, int y, bool act) {
-    int idx = tileIndex(x, y);
-    int idx2 = tileIndex(x, y - 1);
-    int idx3 = tileIndex(x, y + 1);
+    Vec2i pos = Vec2i(x, y);
+    Vec2i pup = neighbourCoord(pos, Vec2i(0,  1));
+    Vec2i pdo = neighbourCoord(pos, Vec2i(0, -1));
+
+    int idx = tileIndex(pos.x, pos.y);
+    int idx2 = tileIndex(pup.x, pup.y);
+    int idx3 = tileIndex(pdo.x, pdo.y);
     
     if (tiles[idx]->type != -1 &&
         tiles[idx2]->type == tiles[idx]->type &&

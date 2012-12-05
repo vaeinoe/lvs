@@ -15,6 +15,7 @@
 #include "cinder/CinderMath.h"
 #include "cinder/Rand.h"
 #include "cinder/Timer.h"
+#include "cinder/Utilities.h"
 #include "cinder/gl/TextureFont.h"
 #include "ciUI.h"
 #include "KissFFT.h"
