@@ -201,6 +201,7 @@ void World::selectTile( const Vec2i mouseLoc ) {
     }
 }
 
+// XXX fix
 bool World::areNeighbours ( Tile *tile1, Tile *tile2 ) {
     // Tiles are neighbours if x value is the same and difference in y < 3
     if (tile1->pos->x == tile2->pos->x) return true;
