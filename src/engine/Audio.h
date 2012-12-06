@@ -30,7 +30,7 @@ public:
     AudioTrack *mTracks[32];
 private:
     Configuration *mConfig;
-	static const double presets[][NUMTRACKS];
+	static double presets[][NUMTRACKS];
 };
 
 
