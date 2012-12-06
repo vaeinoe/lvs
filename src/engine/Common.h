@@ -20,14 +20,6 @@
 #include "ciUI.h"
 #include "KissFFT.h"
 
-inline float fast_sin(float x)
-{
-    const float B = 4 / pi;
-    const float C = -4 / (pi * pi);
-    
-    return -(B * x + C * x * ((x < 0) ? -x : x));
-}
-
 inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int numLines )
 {
 	glEnableClientState( GL_VERTEX_ARRAY );

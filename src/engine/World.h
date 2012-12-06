@@ -27,7 +27,8 @@ private:
     Vec2i *size;
     std::vector<Tile*> tiles;
     Tile *selectedTile;
-    Rand rnd = Rand(time(0));
+
+    Rand rnd;
 
     Vec2i neighbourCoord ( Vec2i pos, Vec2i dir );
     bool areNeighbours ( Tile *tile1, Tile *tile2 );

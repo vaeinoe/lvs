@@ -11,8 +11,6 @@
 #define S_MAINMENU  1
 #define S_INGAME_1  2
 
-#define RES_FONT "nevis.ttf"
-
 #include "LVSEngine.h"
 
 void LVSEngine::setup(Configuration *config)

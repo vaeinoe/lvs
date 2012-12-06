@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "Audio.h"
 #include "Mainmenu.h"
+#include "Resources.h"
 
 class Toolbar;
 class World;
