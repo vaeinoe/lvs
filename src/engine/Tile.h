@@ -29,6 +29,8 @@ public:
 private:
     Configuration *mConfig;
     
+    const static int LINE_COUNT = 32;
+    
     const static int FILTER_SIZE = 16;
     float prevTileSize[FILTER_SIZE];
     

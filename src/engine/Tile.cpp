@@ -17,9 +17,8 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType)
     pos = new Vec2i( newPos.x, newPos.y );
     tileSize = mConfig->tileSize;
     
-    for (int i = 0; i < FILTER_SIZE; i++) {
-        prevTileSize[i] = tileSize;
-    }
+    for (int i = 0; i < FILTER_SIZE; i++) { prevTileSize[i] = tileSize; }
+    
     active = false;
     selected = false;
     type = newType;
@@ -58,9 +57,7 @@ void Tile::update( const float dist, const float modifier )
         active = (dist < (0.9 * mConfig->tileSize)) ? true : false;
         
         // Shift averages
-        for (int i = 1; i < FILTER_SIZE; i++) {
-            prevTileSize[i - 1] = prevTileSize[i];
-        }
+        for (int i = 1; i < FILTER_SIZE; i++) { prevTileSize[i - 1] = prevTileSize[i]; }
         
         // Init the new tile size
         prevTileSize[FILTER_SIZE - 1] = math<float>::clamp(mConfig->tileUpperLimit * (modifier * 16), (mConfig->tileSize / 4), mConfig->tileUpperLimit);
@@ -159,11 +156,10 @@ inline void Tile::drawHex(Vec2f draw_pos, float val)
 // Create and draw a star tile
 inline void Tile::drawStar(Vec2f draw_pos, float val)
 {
-    int lineCount = 32;
-    GLfloat lines[lineCount * 4];
-    GLfloat colors[lineCount * 8];
+    GLfloat lines[LINE_COUNT * 4];
+    GLfloat colors[LINE_COUNT * 8];
 
-    for (int i = 0; i < lineCount; i++) {
+    for (int i = 0; i < LINE_COUNT; i++) {
         int lineIdx = i * 4;
 
         // Gradient color lines
@@ -173,7 +169,7 @@ inline void Tile::drawStar(Vec2f draw_pos, float val)
         colors[2 * lineIdx + 4] = 1.0; colors[2 * lineIdx + 5] = 0.6;
         colors[2 * lineIdx + 6] = 1.0; colors[2 * lineIdx + 7] = a;
         
-        float angle = (i / (1.0 * lineCount)) * (2 * pi);
+        float angle = (i / (1.0 * LINE_COUNT)) * (2 * pi);
         float x = draw_pos.x + tileSize * cos(angle);
         float y = draw_pos.y + tileSize * sin(angle);
 
@@ -181,7 +177,7 @@ inline void Tile::drawStar(Vec2f draw_pos, float val)
         lines[lineIdx + 2] = draw_pos.x; lines[lineIdx + 3] = draw_pos.y;        
     }
     
-    drawLines(lines, colors, lineCount);
+    drawLines(lines, colors, LINE_COUNT);
 }
 
 // Draw active tile highlight
