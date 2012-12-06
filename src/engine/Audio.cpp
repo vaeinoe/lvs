@@ -9,6 +9,8 @@
 
 #include "Audio.h"
 
+static const double presets[][NUMTRACKS] = {{1.0, 0.0, 0.0, 0.0, 0.0},{0.0, 1.0, 1.0, 1.0, 1.0}};
+
 void Audio::setup(Configuration *config)
 {
     mConfig = config;

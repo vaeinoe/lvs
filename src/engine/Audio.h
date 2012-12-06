@@ -30,6 +30,7 @@ public:
     AudioTrack *mTracks[32];
 private:
     Configuration *mConfig;
-    
-    const double presets[2][5] = {{ 1.0, 0.0, 0.0, 0.0, 0.0 }, { 0.0, 1.0, 1.0, 1.0, 1.0 }};
+	static const double presets[][NUMTRACKS];
 };
+
+
