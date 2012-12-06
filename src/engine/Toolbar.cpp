@@ -42,8 +42,8 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
 }
 
 void Toolbar::updateScore( int score ) {
-    char buf[20];
-    snprintf(buf, 20, "Score: %d", score);
+    char buf[100];
+    sprintf(buf, "Score: %d", score);
     scoreLabel->setLabel(buf);
 }
 

@@ -169,7 +169,7 @@ inline void Tile::drawStar(Vec2f draw_pos, float val)
         colors[2 * lineIdx + 4] = 1.0; colors[2 * lineIdx + 5] = 0.6;
         colors[2 * lineIdx + 6] = 1.0; colors[2 * lineIdx + 7] = a;
         
-        float angle = (i / (1.0 * LINE_COUNT)) * (2 * pi);
+        float angle = (i / (1.0 * LINE_COUNT)) * (2 * M_PI);
         float x = draw_pos.x + tileSize * cos(angle);
         float y = draw_pos.y + tileSize * sin(angle);
 

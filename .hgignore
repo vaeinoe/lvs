@@ -53,3 +53,5 @@ Thumbs.db
 thumbs.db 
 _ReSharper.*
 *.resharper
+*.sdf
+*.opensdf
