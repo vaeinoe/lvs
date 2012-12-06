@@ -1,5 +1,9 @@
-#include "cinder/CinderResources.h"
+#include "../include/Resources.h"
+//ID ICON "cinder_app_icon.ico"
+RES_FONT
+RES_TRK0
+RES_TRK1
+RES_TRK2
+RES_TRK3
+RES_TRK4
 
-ID ICON "cinder_app_icon.ico"
-
-//RES_MY_RESOURCE
