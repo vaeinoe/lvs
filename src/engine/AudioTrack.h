@@ -12,7 +12,7 @@
 
 class AudioTrack {
 public:
-	void setup(const string audioFile, bool looping);
+	void setup(int trackNo, bool looping);
     
 	void update();
 	void draw(float scale, float offset);
@@ -38,12 +38,14 @@ public:
     float *timeData;
     int32_t dataSize;
 private:
+    DataSourceRef loadTrack(int trackNo);
+    
     bool fftRunning;
     PolyLine<Vec2f> prevLines[5];
     
-    Timer *fadeTimer   = new Timer();
-    bool   fading        = false;
-    float  fadeSrcVol   = 0.0;
-    float  fadeDestVol  = 0.0;
-    double fadeTimeSec   = 0;
+    Timer *fadeTimer;
+    bool   fading;
+    float  fadeSrcVol;
+    float  fadeDestVol;
+    double fadeTimeSec;
 };

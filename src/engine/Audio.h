@@ -31,8 +31,5 @@ public:
 private:
     Configuration *mConfig;
     
-    double presets[2][NUMTRACKS] = {
-        { 1.0, 0.0, 0.0, 0.0, 0.0 },
-        { 0.0, 1.0, 1.0, 1.0, 1.0 },
-    };
+    const double presets[2][5] = {{ 1.0, 0.0, 0.0, 0.0, 0.0 }, { 0.0, 1.0, 1.0, 1.0, 1.0 }};
 };

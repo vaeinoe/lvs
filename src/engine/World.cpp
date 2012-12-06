@@ -13,6 +13,8 @@ using namespace ci;
 
 void World::setup( Configuration *config, const Vec2i newSize )
 {
+    rnd.seed(time(0));
+    
     mConfig = config;
     size = new Vec2i( newSize.x, newSize.y );
     solverTimer = mConfig->solverDelayFrames;

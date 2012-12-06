@@ -8,14 +8,20 @@
 
 #include "AudioTrack.h"
 
-void AudioTrack::setup(const string audioFile, bool looping)
+void AudioTrack::setup(int trackNo, bool looping)
 {
+    fadeTimer   = new Timer();
+    fading      = false;
+    fadeSrcVol  = 0.0;
+    fadeDestVol = 0.0;
+    fadeTimeSec = 0;
+    
     for (int i = 0; i < 5; i++) {
         PolyLine<Vec2f> line;
         prevLines[i] = line;
     }
         
-    mAudioSource = audio::load( loadResource( audioFile ) );
+    mAudioSource = audio::load( loadTrack( trackNo ) );
     mTrack       = audio::Output::addTrack( mAudioSource, false );
     mTrack->enablePcmBuffering(true);
     mTrack->setLooping(looping);
@@ -150,4 +156,22 @@ void AudioTrack::shutdown()
 	if ( mFft ) {
 		mFft->stop();
 	}
+}
+
+// Ugly hack due to the way Cinder handles resources
+DataSourceRef AudioTrack::loadTrack(int trackNo) {
+    switch(trackNo) {
+        case 0:
+            return loadResource( RES_TRK0 );
+        case 1:
+            return loadResource( RES_TRK1 );
+        case 2:
+            return loadResource( RES_TRK2 );
+        case 3:
+            return loadResource( RES_TRK3 );
+        case 4:
+            return loadResource( RES_TRK4 );
+        default:
+            return loadResource( RES_TRK0 );
+    }
 }
