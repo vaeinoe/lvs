@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -47,7 +47,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_mac\include;..\..\cinder_0.8.4_mac\boost</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\ciUI\src;..\..\Cinder-KissFft\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -74,7 +74,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_mac\include;..\..\cinder_0.8.4_mac\boost</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\ciUI\src;..\..\Cinder-KissFft\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -104,14 +104,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\engine\Audio.cpp" />
+    <ClCompile Include="..\src\engine\AudioTrack.cpp" />
+    <ClCompile Include="..\src\engine\LVSEngine.cpp" />
+    <ClCompile Include="..\src\engine\Mainmenu.cpp" />
+    <ClCompile Include="..\src\engine\Player.cpp" />
+    <ClCompile Include="..\src\engine\Tile.cpp" />
+    <ClCompile Include="..\src\engine\Toolbar.cpp" />
+    <ClCompile Include="..\src\engine\World.cpp" />
     <ClCompile Include="..\src\LeavsApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\src\engine\Audio.h" />
+    <ClInclude Include="..\src\engine\AudioTrack.h" />
+    <ClInclude Include="..\src\engine\Common.h" />
+    <ClInclude Include="..\src\engine\Configuration.h" />
+    <ClInclude Include="..\src\engine\LVSEngine.h" />
+    <ClInclude Include="..\src\engine\Mainmenu.h" />
+    <ClInclude Include="..\src\engine\Player.h" />
+    <ClInclude Include="..\src\engine\Tile.h" />
+    <ClInclude Include="..\src\engine\Toolbar.h" />
+    <ClInclude Include="..\src\engine\World.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc" />
-  </ItemGroup>  
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
