@@ -17,7 +17,7 @@
 #include "cinder/Timer.h"
 #include "cinder/Utilities.h"
 #include "cinder/gl/TextureFont.h"
-#include "ciUI.h"
+#include "../ciUI/ciUI.h"
 #include "KissFFT.h"
 
 inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int numLines )

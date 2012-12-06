@@ -53,6 +53,9 @@ using namespace std;
 #define CI_UI_TEXTINPUT_ON_FOCUS 1
 #define CI_UI_TEXTINPUT_ON_UNFOCUS 2
 
+#include "cinder/CinderResources.h"
+#define RES_FONT CINDER_RESOURCE( ../resources/, nevis.ttf, 128, FONT )
+
 enum ciUIWidgetType
 {
 	CI_UI_WIDGET_LABEL = 0,
@@ -235,9 +238,9 @@ enum ciUIThemeType
 #include "ciUIImageSampler.h"
 #include "ciUIImageButton.h"
 #include "ciUIImageToggle.h"
-#include "ciUIImageSlider.h"
-#include "ciUIMultiImageButton.h"
-#include "ciUIMultiImageToggle.h"
+// #include "ciUIImageSlider.h"
+// #include "ciUIMultiImageButton.h"
+// #include "ciUIMultiImageToggle.h"
 #include "ciUICanvas.h"
 #include "ciUIScrollableCanvas.h"
 
