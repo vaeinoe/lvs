@@ -78,43 +78,43 @@
 		05782EE31670A04B00FD39B7 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		05782EE41670A04B00FD39B7 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		05782EED1670A05E00FD39B7 /* nevis.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = nevis.ttf; path = ../resources/nevis.ttf; sourceTree = "<group>"; };
-		058D9F18163BFE83006F86BC /* ciUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI.h; sourceTree = "<group>"; };
-		058D9F19163BFE83006F86BC /* ciUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI2DPad.h; sourceTree = "<group>"; };
-		058D9F1A163BFE83006F86BC /* ciUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIBiLabelSlider.h; sourceTree = "<group>"; };
-		058D9F1B163BFE83006F86BC /* ciUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIButton.h; sourceTree = "<group>"; };
-		058D9F1C163BFE83006F86BC /* ciUICanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUICanvas.h; sourceTree = "<group>"; };
-		058D9F1D163BFE83006F86BC /* ciUICircleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUICircleSlider.h; sourceTree = "<group>"; };
-		058D9F1E163BFE83006F86BC /* ciUIDropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIDropDownList.h; sourceTree = "<group>"; };
-		058D9F1F163BFE83006F86BC /* ciUIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIEvent.h; sourceTree = "<group>"; };
-		058D9F20163BFE83006F86BC /* ciUIFPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIFPS.h; sourceTree = "<group>"; };
-		058D9F21163BFE83006F86BC /* ciUIFPSSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIFPSSlider.h; sourceTree = "<group>"; };
-		058D9F22163BFE83006F86BC /* ciUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImage.h; sourceTree = "<group>"; };
-		058D9F23163BFE83006F86BC /* ciUIImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageButton.h; sourceTree = "<group>"; };
-		058D9F24163BFE83006F86BC /* ciUIImageSampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageSampler.h; sourceTree = "<group>"; };
-		058D9F25163BFE83006F86BC /* ciUIImageSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageSlider.h; sourceTree = "<group>"; };
-		058D9F26163BFE83006F86BC /* ciUIImageToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageToggle.h; sourceTree = "<group>"; };
-		058D9F27163BFE83006F86BC /* ciUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabel.h; sourceTree = "<group>"; };
-		058D9F28163BFE83006F86BC /* ciUILabelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabelButton.h; sourceTree = "<group>"; };
-		058D9F29163BFE83006F86BC /* ciUILabelToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabelToggle.h; sourceTree = "<group>"; };
-		058D9F2A163BFE83006F86BC /* ciUIMinimalSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMinimalSlider.h; sourceTree = "<group>"; };
-		058D9F2B163BFE83006F86BC /* ciUIMovingGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMovingGraph.h; sourceTree = "<group>"; };
-		058D9F2C163BFE83006F86BC /* ciUIMultiImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMultiImageButton.h; sourceTree = "<group>"; };
-		058D9F2D163BFE83006F86BC /* ciUIMultiImageToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMultiImageToggle.h; sourceTree = "<group>"; };
-		058D9F2E163BFE83006F86BC /* ciUINumberDialer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUINumberDialer.h; sourceTree = "<group>"; };
-		058D9F2F163BFE83006F86BC /* ciUIRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRadio.h; sourceTree = "<group>"; };
-		058D9F30163BFE83006F86BC /* ciUIRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRangeSlider.h; sourceTree = "<group>"; };
-		058D9F31163BFE83006F86BC /* ciUIRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRectangle.h; sourceTree = "<group>"; };
-		058D9F32163BFE83006F86BC /* ciUIRotarySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRotarySlider.h; sourceTree = "<group>"; };
-		058D9F33163BFE83006F86BC /* ciUIScrollableCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIScrollableCanvas.h; sourceTree = "<group>"; };
-		058D9F34163BFE83006F86BC /* ciUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISlider.h; sourceTree = "<group>"; };
-		058D9F35163BFE83006F86BC /* ciUISpacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISpacer.h; sourceTree = "<group>"; };
-		058D9F36163BFE83006F86BC /* ciUISpectrum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISpectrum.h; sourceTree = "<group>"; };
-		058D9F37163BFE83006F86BC /* ciUITextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUITextInput.h; sourceTree = "<group>"; };
-		058D9F38163BFE83006F86BC /* ciUIToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIToggle.h; sourceTree = "<group>"; };
-		058D9F39163BFE83006F86BC /* ciUIToggleMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIToggleMatrix.h; sourceTree = "<group>"; };
-		058D9F3A163BFE83006F86BC /* ciUIWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWaveform.h; sourceTree = "<group>"; };
-		058D9F3B163BFE83006F86BC /* ciUIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidget.h; sourceTree = "<group>"; };
-		058D9F3C163BFE83006F86BC /* ciUIWidgetWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidgetWithLabel.h; sourceTree = "<group>"; };
+		0590C9851670EA9700D568A1 /* ciUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI.h; sourceTree = "<group>"; };
+		0590C9861670EA9700D568A1 /* ciUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI2DPad.h; sourceTree = "<group>"; };
+		0590C9871670EA9700D568A1 /* ciUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIBiLabelSlider.h; sourceTree = "<group>"; };
+		0590C9881670EA9700D568A1 /* ciUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIButton.h; sourceTree = "<group>"; };
+		0590C9891670EA9700D568A1 /* ciUICanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUICanvas.h; sourceTree = "<group>"; };
+		0590C98A1670EA9700D568A1 /* ciUICircleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUICircleSlider.h; sourceTree = "<group>"; };
+		0590C98B1670EA9700D568A1 /* ciUIDropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIDropDownList.h; sourceTree = "<group>"; };
+		0590C98C1670EA9700D568A1 /* ciUIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIEvent.h; sourceTree = "<group>"; };
+		0590C98D1670EA9700D568A1 /* ciUIFPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIFPS.h; sourceTree = "<group>"; };
+		0590C98E1670EA9700D568A1 /* ciUIFPSSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIFPSSlider.h; sourceTree = "<group>"; };
+		0590C98F1670EA9700D568A1 /* ciUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImage.h; sourceTree = "<group>"; };
+		0590C9901670EA9700D568A1 /* ciUIImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageButton.h; sourceTree = "<group>"; };
+		0590C9911670EA9700D568A1 /* ciUIImageSampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageSampler.h; sourceTree = "<group>"; };
+		0590C9921670EA9700D568A1 /* ciUIImageSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageSlider.h; sourceTree = "<group>"; };
+		0590C9931670EA9700D568A1 /* ciUIImageToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageToggle.h; sourceTree = "<group>"; };
+		0590C9941670EA9700D568A1 /* ciUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabel.h; sourceTree = "<group>"; };
+		0590C9951670EA9700D568A1 /* ciUILabelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabelButton.h; sourceTree = "<group>"; };
+		0590C9961670EA9700D568A1 /* ciUILabelToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabelToggle.h; sourceTree = "<group>"; };
+		0590C9971670EA9700D568A1 /* ciUIMinimalSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMinimalSlider.h; sourceTree = "<group>"; };
+		0590C9981670EA9700D568A1 /* ciUIMovingGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMovingGraph.h; sourceTree = "<group>"; };
+		0590C9991670EA9700D568A1 /* ciUIMultiImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMultiImageButton.h; sourceTree = "<group>"; };
+		0590C99A1670EA9700D568A1 /* ciUIMultiImageToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMultiImageToggle.h; sourceTree = "<group>"; };
+		0590C99B1670EA9700D568A1 /* ciUINumberDialer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUINumberDialer.h; sourceTree = "<group>"; };
+		0590C99C1670EA9700D568A1 /* ciUIRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRadio.h; sourceTree = "<group>"; };
+		0590C99D1670EA9700D568A1 /* ciUIRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRangeSlider.h; sourceTree = "<group>"; };
+		0590C99E1670EA9700D568A1 /* ciUIRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRectangle.h; sourceTree = "<group>"; };
+		0590C99F1670EA9700D568A1 /* ciUIRotarySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRotarySlider.h; sourceTree = "<group>"; };
+		0590C9A01670EA9700D568A1 /* ciUIScrollableCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIScrollableCanvas.h; sourceTree = "<group>"; };
+		0590C9A11670EA9700D568A1 /* ciUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISlider.h; sourceTree = "<group>"; };
+		0590C9A21670EA9700D568A1 /* ciUISpacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISpacer.h; sourceTree = "<group>"; };
+		0590C9A31670EA9700D568A1 /* ciUISpectrum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISpectrum.h; sourceTree = "<group>"; };
+		0590C9A41670EA9700D568A1 /* ciUITextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUITextInput.h; sourceTree = "<group>"; };
+		0590C9A51670EA9700D568A1 /* ciUIToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIToggle.h; sourceTree = "<group>"; };
+		0590C9A61670EA9700D568A1 /* ciUIToggleMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIToggleMatrix.h; sourceTree = "<group>"; };
+		0590C9A71670EA9700D568A1 /* ciUIWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWaveform.h; sourceTree = "<group>"; };
+		0590C9A81670EA9700D568A1 /* ciUIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidget.h; sourceTree = "<group>"; };
+		0590C9A91670EA9700D568A1 /* ciUIWidgetWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidgetWithLabel.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -197,58 +197,58 @@
 			path = ../src/engine;
 			sourceTree = "<group>";
 		};
-		058D9F17163BFE83006F86BC /* ciUI */ = {
+		0590C9841670EA9700D568A1 /* ciUI */ = {
 			isa = PBXGroup;
 			children = (
-				058D9F18163BFE83006F86BC /* ciUI.h */,
-				058D9F19163BFE83006F86BC /* ciUI2DPad.h */,
-				058D9F1A163BFE83006F86BC /* ciUIBiLabelSlider.h */,
-				058D9F1B163BFE83006F86BC /* ciUIButton.h */,
-				058D9F1C163BFE83006F86BC /* ciUICanvas.h */,
-				058D9F1D163BFE83006F86BC /* ciUICircleSlider.h */,
-				058D9F1E163BFE83006F86BC /* ciUIDropDownList.h */,
-				058D9F1F163BFE83006F86BC /* ciUIEvent.h */,
-				058D9F20163BFE83006F86BC /* ciUIFPS.h */,
-				058D9F21163BFE83006F86BC /* ciUIFPSSlider.h */,
-				058D9F22163BFE83006F86BC /* ciUIImage.h */,
-				058D9F23163BFE83006F86BC /* ciUIImageButton.h */,
-				058D9F24163BFE83006F86BC /* ciUIImageSampler.h */,
-				058D9F25163BFE83006F86BC /* ciUIImageSlider.h */,
-				058D9F26163BFE83006F86BC /* ciUIImageToggle.h */,
-				058D9F27163BFE83006F86BC /* ciUILabel.h */,
-				058D9F28163BFE83006F86BC /* ciUILabelButton.h */,
-				058D9F29163BFE83006F86BC /* ciUILabelToggle.h */,
-				058D9F2A163BFE83006F86BC /* ciUIMinimalSlider.h */,
-				058D9F2B163BFE83006F86BC /* ciUIMovingGraph.h */,
-				058D9F2C163BFE83006F86BC /* ciUIMultiImageButton.h */,
-				058D9F2D163BFE83006F86BC /* ciUIMultiImageToggle.h */,
-				058D9F2E163BFE83006F86BC /* ciUINumberDialer.h */,
-				058D9F2F163BFE83006F86BC /* ciUIRadio.h */,
-				058D9F30163BFE83006F86BC /* ciUIRangeSlider.h */,
-				058D9F31163BFE83006F86BC /* ciUIRectangle.h */,
-				058D9F32163BFE83006F86BC /* ciUIRotarySlider.h */,
-				058D9F33163BFE83006F86BC /* ciUIScrollableCanvas.h */,
-				058D9F34163BFE83006F86BC /* ciUISlider.h */,
-				058D9F35163BFE83006F86BC /* ciUISpacer.h */,
-				058D9F36163BFE83006F86BC /* ciUISpectrum.h */,
-				058D9F37163BFE83006F86BC /* ciUITextInput.h */,
-				058D9F38163BFE83006F86BC /* ciUIToggle.h */,
-				058D9F39163BFE83006F86BC /* ciUIToggleMatrix.h */,
-				058D9F3A163BFE83006F86BC /* ciUIWaveform.h */,
-				058D9F3B163BFE83006F86BC /* ciUIWidget.h */,
-				058D9F3C163BFE83006F86BC /* ciUIWidgetWithLabel.h */,
+				0590C9851670EA9700D568A1 /* ciUI.h */,
+				0590C9861670EA9700D568A1 /* ciUI2DPad.h */,
+				0590C9871670EA9700D568A1 /* ciUIBiLabelSlider.h */,
+				0590C9881670EA9700D568A1 /* ciUIButton.h */,
+				0590C9891670EA9700D568A1 /* ciUICanvas.h */,
+				0590C98A1670EA9700D568A1 /* ciUICircleSlider.h */,
+				0590C98B1670EA9700D568A1 /* ciUIDropDownList.h */,
+				0590C98C1670EA9700D568A1 /* ciUIEvent.h */,
+				0590C98D1670EA9700D568A1 /* ciUIFPS.h */,
+				0590C98E1670EA9700D568A1 /* ciUIFPSSlider.h */,
+				0590C98F1670EA9700D568A1 /* ciUIImage.h */,
+				0590C9901670EA9700D568A1 /* ciUIImageButton.h */,
+				0590C9911670EA9700D568A1 /* ciUIImageSampler.h */,
+				0590C9921670EA9700D568A1 /* ciUIImageSlider.h */,
+				0590C9931670EA9700D568A1 /* ciUIImageToggle.h */,
+				0590C9941670EA9700D568A1 /* ciUILabel.h */,
+				0590C9951670EA9700D568A1 /* ciUILabelButton.h */,
+				0590C9961670EA9700D568A1 /* ciUILabelToggle.h */,
+				0590C9971670EA9700D568A1 /* ciUIMinimalSlider.h */,
+				0590C9981670EA9700D568A1 /* ciUIMovingGraph.h */,
+				0590C9991670EA9700D568A1 /* ciUIMultiImageButton.h */,
+				0590C99A1670EA9700D568A1 /* ciUIMultiImageToggle.h */,
+				0590C99B1670EA9700D568A1 /* ciUINumberDialer.h */,
+				0590C99C1670EA9700D568A1 /* ciUIRadio.h */,
+				0590C99D1670EA9700D568A1 /* ciUIRangeSlider.h */,
+				0590C99E1670EA9700D568A1 /* ciUIRectangle.h */,
+				0590C99F1670EA9700D568A1 /* ciUIRotarySlider.h */,
+				0590C9A01670EA9700D568A1 /* ciUIScrollableCanvas.h */,
+				0590C9A11670EA9700D568A1 /* ciUISlider.h */,
+				0590C9A21670EA9700D568A1 /* ciUISpacer.h */,
+				0590C9A31670EA9700D568A1 /* ciUISpectrum.h */,
+				0590C9A41670EA9700D568A1 /* ciUITextInput.h */,
+				0590C9A51670EA9700D568A1 /* ciUIToggle.h */,
+				0590C9A61670EA9700D568A1 /* ciUIToggleMatrix.h */,
+				0590C9A71670EA9700D568A1 /* ciUIWaveform.h */,
+				0590C9A81670EA9700D568A1 /* ciUIWidget.h */,
+				0590C9A91670EA9700D568A1 /* ciUIWidgetWithLabel.h */,
 			);
 			name = ciUI;
-			path = ../../cinder_0.8.4_mac/blocks/ciUI/src;
-			sourceTree = SOURCE_ROOT;
+			path = ../src/ciUI;
+			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				0590C9841670EA9700D568A1 /* ciUI */,
 				05734F141670C9AA00205DAD /* Resources.h */,
 				05782ED21670A04B00FD39B7 /* engine */,
 				053BA838163D79B30095EBEF /* kissfft */,
-				058D9F17163BFE83006F86BC /* ciUI */,
 				00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */,
 			);
 			name = Source;
