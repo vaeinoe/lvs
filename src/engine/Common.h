@@ -36,3 +36,31 @@ inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int 
 	glDisableClientState( GL_VERTEX_ARRAY );
 }
 
+// inline void addStrokedCircle( vector<GLfloat> verts );
+
+inline void startDraw() {
+    glEnableClientState( GL_VERTEX_ARRAY );
+}
+
+inline void endDraw() {
+    glDisableClientState( GL_VERTEX_ARRAY );
+}
+
+inline void drawStrokedCircle( const Vec2f &center, float radius, int numSegments )
+{
+	// automatically determine the number of segments from the circumference
+	if( numSegments <= 0 ) {
+		numSegments = (int)math<double>::floor( radius * M_PI * 2 );
+	}
+	if( numSegments < 2 ) numSegments = 2;
+    
+	GLfloat *verts = new float[numSegments*2];
+	for( int s = 0; s < numSegments; s++ ) {
+		float t = s / (float)numSegments * 2.0f * 3.14159f;
+		verts[s*2+0] = center.x + math<float>::cos( t ) * radius;
+		verts[s*2+1] = center.y + math<float>::sin( t ) * radius;
+	}
+	glVertexPointer( 2, GL_FLOAT, 0, verts );
+	glDrawArrays( GL_LINE_LOOP, 0, numSegments );
+	delete [] verts;
+}
