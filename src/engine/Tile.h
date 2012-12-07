@@ -23,11 +23,13 @@ public:
 
     void moveTo( const Vec2i newPos );
     int kill();
-
-    bool dead;
+    bool selectable();
+    
     int type;
 private:
     Configuration *mConfig;
+    bool dead;
+    Vec2f getScreenPositionVector(Vec2i loc);
     
     const static int LINE_COUNT = 32;
     
@@ -38,6 +40,9 @@ private:
     bool active;
     bool selected;
     
+    void drawAlive(float lightness);
+    void drawDead(float lightness);
+    
     void drawHex(Vec2f pos, float val);
     void drawStar(Vec2f pos, float val);
     void drawGram(Vec2f draw_pos, float val);
@@ -46,5 +51,17 @@ private:
     void drawSelected(Vec2f pos, float val);
     void drawActive(Vec2f pos, float val);
     
+    Vec2f drawPos;
+
+    Timer *fadeTimer;
+    bool fading;
+    float baseAlpha;
+
+    Timer *moveTimer;
     bool moving;
+    Vec2i  moveSrcPos;
+    Vec2f  moveSrcLoc;
+    Vec2i  moveDestPos;
+    Vec2f  moveDestLoc;
+    double moveTimeSec;
 };

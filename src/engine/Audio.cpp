@@ -9,7 +9,11 @@
 
 #include "Audio.h"
 
-double Audio::presets[][NUMTRACKS] = {{1.0, 0.0, 0.0, 0.0, 0.0},{0.0, 1.0, 1.0, 1.0, 1.0}};
+double Audio::presets[][NUMTRACKS] = {
+    {0.0, 0.0, 0.0, 0.0, 0.0},
+    {1.0, 0.0, 0.0, 0.0, 0.0},
+    {0.0, 1.0, 1.0, 1.0, 1.0}
+};
 
 void Audio::setup(Configuration *config)
 {
@@ -26,7 +30,7 @@ void Audio::setup(Configuration *config)
         mTracks[i]->play(0);
     }
     
-    fadeToPreset(0, 5.0);
+    fadeToPreset(1, 5.0);
 }
 
 void Audio::fadeToPreset(int presetId, double fadeSec) {

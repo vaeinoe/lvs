@@ -18,7 +18,7 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     
     gui->setFontSize(CI_UI_FONT_LARGE, 36);
     gui->setFontSize(CI_UI_FONT_MEDIUM, 24);
-    gui->setFontSize(CI_UI_FONT_SMALL, 12);
+    gui->setFontSize(CI_UI_FONT_SMALL, 13);
     
     // Modified "Berlin"
     ColorA cb = ColorA( 0.1, 0.1, 0.1, 0.9 );
@@ -31,10 +31,12 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     gui-> setUIColors( cb, co, coh, cf, cfh, cp, cpo );             
     
 
-    gui->addWidgetRight(new ciUILabel("LVS",CI_UI_FONT_SMALL));
+    gui->addWidgetRight(new ciUILabel("match 3 vertical. r reload. esc quit.",CI_UI_FONT_SMALL));
+#ifdef DEBUG
     gui->addWidgetRight(new ciUIFPS(CI_UI_FONT_SMALL));
+#endif
 
-    scoreLabel = new ciUILabel("Score: 0", CI_UI_FONT_SMALL);
+    scoreLabel = new ciUILabel("score 0.", CI_UI_FONT_SMALL);
     gui->addWidgetRight(scoreLabel);
                         
     gui->autoSizeToFitWidgets();
@@ -43,7 +45,7 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
 
 void Toolbar::updateScore( int score ) {
     char buf[100];
-    sprintf(buf, "Score: %d", score);
+    sprintf(buf, "score %d.", score);
     scoreLabel->setLabel(buf);
 }
 

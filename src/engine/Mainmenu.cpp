@@ -43,40 +43,29 @@ void Mainmenu::setup(Configuration *config)
     
     gui->autoSizeToFitWidgets();
     gui->registerUIEvents(this, &Mainmenu::guiEvent);
-}
-
-void Mainmenu::update()
-{
-	gui->update();
-}
-
-void Mainmenu::draw()
-{
-	gui->draw();
-}
-
-void Mainmenu::shutdown()
-{
-    delete gui;
-}
-
-void Mainmenu::mouseMove ( const MouseEvent event )
-{
     
+    active = true;
 }
 
-void Mainmenu::mouseDown ( const MouseEvent event )
-{
-    
-}
+void Mainmenu::update()   { gui->update(); }
+void Mainmenu::draw()     { gui->draw(); }
+void Mainmenu::shutdown() { delete gui; }
+
+void Mainmenu::mouseMove ( const MouseEvent event ) { }
+void Mainmenu::mouseDown ( const MouseEvent event ) { }
+
+void Mainmenu::activate() { active = true; }
+void Mainmenu::deactivate() { active = false; }
 
 void Mainmenu::guiEvent(ciUIEvent *event)
 {
-    string name = event->widget->getName();
-    if(name == "Play.") {
-        mConfig->engine->startGame();
-    }
-    else if (name == "Quit.") {
-        mConfig->engine->quitGame();
+    if (active) {
+        string name = event->widget->getName();
+        if(name == "Play.") {
+            mConfig->engine->startGame();
+        }
+        else if (name == "Quit.") {
+            mConfig->engine->quitGame();
+        }
     }
 }
