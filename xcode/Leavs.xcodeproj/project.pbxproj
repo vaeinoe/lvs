@@ -31,6 +31,7 @@
 		05782EEA1670A04B00FD39B7 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDF1670A04B00FD39B7 /* Tile.cpp */; };
 		05782EEB1670A04B00FD39B7 /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE11670A04B00FD39B7 /* Toolbar.cpp */; };
 		05782EEC1670A04B00FD39B7 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE31670A04B00FD39B7 /* World.cpp */; };
+		05A44AF5167278F8000089A3 /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05782EED1670A05E00FD39B7 /* nevis.ttf */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
@@ -387,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A44AF5167278F8000089A3 /* nevis.ttf in Resources */,
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
 				05734F1A1670D77C00205DAD /* trk1.wav in Resources */,
 				05734F1B1670D77C00205DAD /* trk2.wav in Resources */,

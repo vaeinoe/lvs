@@ -145,6 +145,7 @@ void Tile::drawAlive(float lightness) {
     if (type == 0) drawHex(drawPos, val);
     else if (type == 1) drawStar(drawPos, val);
     else if (type == 2) drawGram(drawPos, val);
+    else if (type == 3) drawPlant(drawPos, val);
     
     if (active) drawActive(drawPos, val);
     if (selected) drawSelected(drawPos, val);
@@ -179,6 +180,16 @@ inline void Tile::drawLabel(Vec2f draw_pos) {
     gl::drawStringCentered ("x:" + toString(pos->x) + " y:" + toString(pos->y), draw_pos);
 }
 
+
+inline void Tile::drawPlant(Vec2f draw_pos, float val) {
+    int segments = 4;
+    
+    for (int i = 0; i < FILTER_SIZE; i++) {
+        float a = i * 1.0 / FILTER_SIZE;
+        gl::color(0.2 * (i / FILTER_SIZE) * val, 0.2 * (i / FILTER_SIZE) * val, 1.0 - val * 0.20 * i, a * baseAlpha);
+        gl::drawStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2), segments );
+    }
+}
 
 inline void Tile::drawGram(Vec2f draw_pos, float val) {
     int segments = 6;
