@@ -59,26 +59,10 @@ void LeavsApp::shutdown()
     delete engine;
 }
 
-void LeavsApp::mouseMove( MouseEvent event ) {
-    engine->mouseMove ( event );
-}
-
-void LeavsApp::update()
-{
-	engine->update();
-}
-
-void LeavsApp::draw()
-{
-    engine->draw();
-}
-
-void LeavsApp::keyDown( KeyEvent event ) {
-    engine->keyDown(event);
-}
-
-void LeavsApp::mouseDown( MouseEvent event ) {
-    engine->mouseDown(event);
-}
+void LeavsApp::mouseMove( MouseEvent event ) { engine->mouseMove ( event ); }
+void LeavsApp::update() { engine->update(); }
+void LeavsApp::draw() { engine->draw(); }
+void LeavsApp::keyDown( KeyEvent event ) { engine->keyDown(event); }
+void LeavsApp::mouseDown( MouseEvent event ) { engine->mouseDown(event); }
 
 CINDER_APP_BASIC( LeavsApp, RendererGl )

@@ -20,6 +20,9 @@
 #include "../ciUI/ciUI.h"
 #include "KissFFT.h"
 
+#define MOVE_TIME_SEC 1.0
+#define FADE_TIME_SEC 2.0
+
 inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int numLines )
 {
 	glEnableClientState( GL_VERTEX_ARRAY );

@@ -36,9 +36,8 @@ void World::reset() {
         }
     }
     
-    if (resolveTiles(false) == true) {
-        reset();
-    }
+    // If there's at least one match already, try another tile combination
+    if (resolveTiles(false) == true) { reset(); }
 }
 
 void World::update( const Vec2i *mouseLoc, const float *freqData, const int dataSize )
@@ -55,12 +54,10 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
         float modifier = 0;
         for (int i = 0; i < binsPerTile; i++) {
             int bin = n * binsPerTile + i;
+            // How does this I don't even
             float mod = math<float>::clamp( freqData[ bin ] * ( bin / dataSizef ) * ( math<float>::log( ( dataSizef - (float)bin ) ) ), 0.0f, 2.0f );
             modifier += mod;
         }
-//        if (n < dataSize) {
-//            modifier = freqData[n];
-//        }
         (*t)->update(dir.length(), modifier);
         n++;
     }
@@ -72,10 +69,10 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
     }
 }
 
-inline int World::tileIndex(int x, int y) {
-    return ((x * size->y) + y);
-}
+// Mimic 2d array indexing
+inline int World::tileIndex(int x, int y) { return ((x * size->y) + y); }
 
+// Returns the coordinate of tile's immediate neighbour to direction dir (lengths ignored)
 inline Vec2i World::neighbourCoord(Vec2i pos, Vec2i dir)
 {
     // N + S same for both alignments
@@ -114,19 +111,20 @@ inline Vec2i World::neighbourCoord(Vec2i pos, Vec2i dir)
            SW: +0  +1 */
 }
 
+// Run resolver on all tiles
 bool World::resolveTiles(const bool act) {
     bool hits = false;
     for (int x = 0; x < size->x; x++) {
         for (int y = 2; y < size->y - 2; y++) {
-            bool result = resolveTile(x,y,act);
-            if (result == true) {
-                hits = true;
-            }
+            bool result = resolveTile(x, y, act);
+            if (result == true) hits = true;
         }
     }
     return hits;
 }
 
+// Resolve the area around tile x, y - if act false,
+// doesn't kill tiles or update score
 bool World::resolveTile(int x, int y, bool act) {
     Vec2i pos = Vec2i(x, y);
     Vec2i pup = neighbourCoord(pos, Vec2i(0,  1));
@@ -136,7 +134,9 @@ bool World::resolveTile(int x, int y, bool act) {
     int idx2 = tileIndex(pup.x, pup.y);
     int idx3 = tileIndex(pdo.x, pdo.y);
     
-    if (tiles[idx]->type != -1 &&
+    if (tiles[idx]->selectable() &&
+        tiles[idx2]->selectable() &&
+        tiles[idx3]->selectable() &&
         tiles[idx2]->type == tiles[idx]->type &&
         tiles[idx3]->type == tiles[idx]->type) {
         
@@ -166,15 +166,14 @@ void World::selectTile( const Vec2i mouseLoc ) {
         Vec2f pos = (*t)->getScreenPositionVector();
         Vec2i dir = pos - mouseLoc;
         
+        // Harrison-Stetson approximation of hit area
         bool hit = dir.length() < (0.9 * mConfig->tileSize);
-        if (hit) {
+        if (hit && (*t)->selectable() ) {
             
             if ( selectedTile ) {
                 if ( selectedTile != &**t ) {
                     selectedTile->toggleSelected();
-                    if (areNeighbours(&**t, selectedTile) &&
-                        selectedTile->dead == false &&
-                        (*t)->dead == false) {
+                    if (areNeighbours(&**t, selectedTile) && selectedTile->selectable() && (*t)->selectable()) {
                         swapTiles(&**t, selectedTile);
                         selectedTile = NULL;
                     }
@@ -197,33 +196,41 @@ void World::selectTile( const Vec2i mouseLoc ) {
         }
     }
     
+    // Still a tile selected but it wasn't this one? Deselect!
     if (selectedTile) {
         selectedTile->toggleSelected();
         selectedTile = NULL;
     }
 }
 
-// XXX fix
+// Returns true if tile1 != tile2 and tiles are neighbours on the grid
 bool World::areNeighbours ( Tile *tile1, Tile *tile2 ) {
-    // Tiles are neighbours if x value is the same and difference in y < 3
-    if (tile1->pos->x == tile2->pos->x) return true;
+    int x1 = tile1->pos->x;
+    int x2 = tile2->pos->x;
+    int y1 = tile1->pos->y;
+    int y2 = tile2->pos->y;
+
+    // A tile is not its own neighbour
+    if (x1 == x2 && y1 == y2) return false;
     
-    // Otherwise with right tile r and left tile l: the tiles are neighbours if l.x = r.x - 1 and l.y = r.y - 1 or l.y = r.y + 1
-    Tile *l;
-    Tile *r;
-    if (tile1->pos->x < tile2->pos->x) {
-        l = tile1;
-        r = tile2;
+    int y_dist = abs(y1 - y2);
+    int x_dist = abs(x1 - x2);
+
+    // Tiles are not neighbours if they have same y (interleaved y axis)
+    // or are too far from each other in either axis
+    if (y_dist == 0 || y_dist > 2 || x_dist > 1)  return false;
+
+    // Tiles are always neighbours if x value is the same and difference in y < 3
+    if (x1 == x2) return true;
+
+    // Rules for even / odd tiles
+    if (y_dist == 1) {
+        bool even_y = y1 % 2 == 1;
+        if (even_y && x1 - x2 == -1) return true;
+        if (!even_y && x1 - x2 == 1) return true;
     }
-    else {
-        l = tile2;
-        r = tile1;
-    }
     
-    if ((l->pos->x == r->pos->x - 1) &&
-       ((l->pos->y == r->pos->y - 1) ||
-        (l->pos->y == r->pos->y + 1))) return true;
-    
+    // No match
     return false;
 }
 
@@ -242,6 +249,8 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
     
     tile1->moveTo(pos2);
     tile2->moveTo(pos1);
+    
+    mConfig->player->addScore(-1);
 }
 
 void World::shutdown()

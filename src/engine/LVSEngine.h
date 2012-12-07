@@ -38,13 +38,22 @@ public:
     void startGame();
     void backToMain();
 private:
+    void fade(int dir, double seconds, bool quitAfter);
+    inline void performFade();
+    
     int gameState;
+    bool fullScreen;
     
     Font loadFont;
     gl::TextureFontRef texFont;
     
     int loadState;
     string loadStr;
+
+    Timer *fadeTimer;
+    int   fadeDir;
+    double fadeTimeSec;
+    bool quitAfterFade;
     
     Mainmenu *mMenu;
     Toolbar *mToolbar;
