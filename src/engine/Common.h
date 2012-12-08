@@ -36,31 +36,50 @@ inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int 
 	glDisableClientState( GL_VERTEX_ARRAY );
 }
 
-// inline void addStrokedCircle( vector<GLfloat> verts );
-
-inline void startDraw() {
-    glEnableClientState( GL_VERTEX_ARRAY );
-}
-
-inline void endDraw() {
-    glDisableClientState( GL_VERTEX_ARRAY );
-}
-
-inline void drawStrokedCircle( const Vec2f &center, float radius, int numSegments )
+/*
+inline void addCirclePoly( const Vec2f &center, float r, int numSegments)
 {
-	// automatically determine the number of segments from the circumference
-	if( numSegments <= 0 ) {
-		numSegments = (int)math<double>::floor( radius * M_PI * 2 );
+    if( numSegments <= 0 ) {
+		numSegments = (int)math<double>::floor( r * M_PI * 2 );
 	}
 	if( numSegments < 2 ) numSegments = 2;
+
+	float theta = 2 * M_PI / float(numSegments);
+	float c = cosf(theta); //precalculate the sine and cosine
+	float s = sinf(theta);
+	float t;
     
-	GLfloat *verts = new float[numSegments*2];
-	for( int s = 0; s < numSegments; s++ ) {
-		float t = s / (float)numSegments * 2.0f * 3.14159f;
-		verts[s*2+0] = center.x + math<float>::cos( t ) * radius;
-		verts[s*2+1] = center.y + math<float>::sin( t ) * radius;
+	float x = r; //we start at angle = 0
+	float y = 0;
+
+    vector< GLfloat > verts;
+    
+    float sX = x + center.x;
+    float sY = y + center.y;
+
+	for(int i = 0; i < numSegments; i++)
+	{
+		verts.push_back(x + center.x);
+        verts.push_back(y + center.y);
+        
+		//apply the rotation matrix
+		t = x;
+		x = c * x - s * y;
+		y = s * t + c * y;
+        
+        if (i > 0) {
+            verts.push_back(x + center.x);
+            verts.push_back(y + center.y);
+        }
 	}
-	glVertexPointer( 2, GL_FLOAT, 0, verts );
-	glDrawArrays( GL_LINE_LOOP, 0, numSegments );
-	delete [] verts;
+    
+    verts.push_back(sX);
+    verts.push_back(sY);
+
+    glEnableClientState( GL_VERTEX_ARRAY );
+	glVertexPointer( 2, GL_FLOAT, 0, &verts[0] );
+	glDrawArrays( GL_LINES, 0, verts.size() );
+	glDisableClientState( GL_VERTEX_ARRAY );
 }
+*/
+

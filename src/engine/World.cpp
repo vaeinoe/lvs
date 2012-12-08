@@ -20,6 +20,7 @@ void World::setup( Configuration *config, const Vec2i newSize )
     solverTimer = mConfig->solverDelayFrames;
     selectedTile = NULL;
     
+    precalc();
     reset();
 }
 
@@ -159,6 +160,19 @@ void World::draw()
     for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
         (*t)->draw();
     }
+
+	glEnableClientState( GL_VERTEX_ARRAY );
+	glEnableClientState( GL_COLOR_ARRAY );
+    
+	glColorPointer( 4, GL_FLOAT, 0, &tileColors[0] );
+	glVertexPointer( 2, GL_FLOAT, 0, &tileVerts[0] );
+	glDrawArrays( GL_LINES, 0, tileVerts.size() / 2 );
+    
+	glDisableClientState( GL_COLOR_ARRAY );
+	glDisableClientState( GL_VERTEX_ARRAY );
+    
+    tileColors.clear();
+    tileVerts.clear();
 }
 
 void World::selectTile( const Vec2i mouseLoc ) {
@@ -232,6 +246,48 @@ bool World::areNeighbours ( Tile *tile1, Tile *tile2 ) {
     
     // No match
     return false;
+}
+
+// Precalculate angle arrays for polygon drawing
+void World::precalc() {
+    for (int i = 2; i < NUM_ANGLES; i++) {
+        for( int s = 0; s < i; s++ ) {
+            float t = s / (float)i * 2.0f * 3.14159f;
+            precalcAngles[i].push_back( Vec2f(math<float>::cos( t ), math<float>::sin( t )) );
+        }
+    }
+}
+
+// Adds a polygon to rendering queue
+void World::addCirclePoly( const Vec2f &center, const float radius, int numSegments, const ColorA &color )
+{
+	// automatically determine the number of segments from the circumference
+	if( numSegments <= 0 ) {
+		numSegments = (int)math<double>::floor( radius * M_PI * 2 );
+	}
+	if( numSegments < 2 ) numSegments = 2;
+
+    // first vertex
+    tileVerts.push_back(center.x + precalcAngles[numSegments][0].x * radius);
+    tileVerts.push_back(center.y + precalcAngles[numSegments][0].y * radius);
+    tileColors.push_back(color.r); tileColors.push_back(color.g);
+    tileColors.push_back(color.b); tileColors.push_back(color.a);
+    
+    // middle vertices
+	for( int s = 1; s < numSegments; s++ ) {
+        for (int i = 0; i < 2; i++) {
+            tileVerts.push_back(center.x + precalcAngles[numSegments][s].x * radius);
+            tileVerts.push_back(center.y + precalcAngles[numSegments][s].y * radius);
+            tileColors.push_back(color.r); tileColors.push_back(color.g);
+            tileColors.push_back(color.b); tileColors.push_back(color.a);
+        }        
+	}
+    
+    // drawing line loops = back to first vertex in the end
+    tileVerts.push_back(center.x + precalcAngles[numSegments][0].x * radius);
+    tileVerts.push_back(center.y + precalcAngles[numSegments][0].y * radius);
+    tileColors.push_back(color.r); tileColors.push_back(color.g);
+    tileColors.push_back(color.b); tileColors.push_back(color.a);
 }
 
 // Swaps two tiles

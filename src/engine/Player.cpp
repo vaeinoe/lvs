@@ -21,17 +21,8 @@ void Player::addScore(int score)
     mConfig->toolbar->updateScore(mScore);
 }
 
-void Player::update()
-{
-    
-}
+void Player::update() { }
 
-void Player::draw()
-{
-    
-}
+void Player::draw() { }
 
-void Player::shutdown()
-{
-    
-}
+void Player::shutdown() { }
