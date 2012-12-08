@@ -24,15 +24,19 @@ void World::setup( Configuration *config, const Vec2i newSize )
     reset();
 }
 
+int World::rndTileType() {
+    return rnd.nextInt(mConfig->numTileTypes);
+}
+
 void World::reset() {
     tiles.clear();
     tiles.reserve( size->x * size->y );
     
     for (int x = 0; x < size->x; x++) {
         for (int y = 0; y < size->y; y++) {
-            int type = rnd.nextInt(mConfig->numTileTypes);
+            int type = rndTileType();
             Tile *tile = new Tile();
-            tile->setup(mConfig, Vec2i( x, y ), type);
+            tile->setup(mConfig, Vec2i( x, y ), type, false);
             tiles.push_back(tile);
         }
     }
@@ -49,7 +53,7 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
     int n = 0;
     float dataSizef = (float)dataSize;
     
-    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){        
         Vec2f pos = (*t)->getScreenPositionVector();
         Vec2i dir = pos - (*mouseLoc);
         float modifier = 0;
@@ -142,11 +146,9 @@ bool World::resolveTile(int x, int y, bool act) {
         tiles[idx3]->type == tiles[idx]->type) {
         
         if (act) {
-            int score = 0;
-            score += tiles[idx]->kill();
-            score += tiles[idx2]->kill();
-            score += tiles[idx3]->kill();
-            mConfig->player->addScore(score);
+            tiles[idx]->kill();
+            tiles[idx2]->kill();
+            tiles[idx3]->kill();
         }
         
         return true;
@@ -268,8 +270,9 @@ void World::addCirclePoly( const Vec2f &center, const float radius, int numSegme
 	if( numSegments < 2 ) numSegments = 2;
 
     // first vertex
-    tileVerts.push_back(center.x + precalcAngles[numSegments][0].x * radius);
-    tileVerts.push_back(center.y + precalcAngles[numSegments][0].y * radius);
+    GLfloat firstX = center.x + precalcAngles[numSegments][0].x * radius;
+    GLfloat firstY = center.y + precalcAngles[numSegments][0].y * radius;
+    tileVerts.push_back(firstX); tileVerts.push_back(firstY);
     tileColors.push_back(color.r); tileColors.push_back(color.g);
     tileColors.push_back(color.b); tileColors.push_back(color.a);
     
@@ -284,8 +287,7 @@ void World::addCirclePoly( const Vec2f &center, const float radius, int numSegme
 	}
     
     // drawing line loops = back to first vertex in the end
-    tileVerts.push_back(center.x + precalcAngles[numSegments][0].x * radius);
-    tileVerts.push_back(center.y + precalcAngles[numSegments][0].y * radius);
+    tileVerts.push_back(firstX); tileVerts.push_back(firstY);
     tileColors.push_back(color.r); tileColors.push_back(color.g);
     tileColors.push_back(color.b); tileColors.push_back(color.a);
 }
@@ -305,8 +307,9 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
     
     tile1->moveTo(pos2);
     tile2->moveTo(pos1);
-    
-    mConfig->player->addScore(-1);
+
+    mConfig->player->addScore(-1, tile1->type);
+    mConfig->player->addScore(-1, tile2->type);
 }
 
 void World::shutdown()

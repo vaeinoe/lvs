@@ -14,7 +14,7 @@ class Configuration;
 
 class Tile {
 public:
-    void setup( Configuration *config, const Vec2i pos, int type);
+    void setup( Configuration *config, const Vec2i pos, int type, bool grow );
     void update( const float dist, const float modifier );
     void draw();
     void toggleSelected();
@@ -37,11 +37,16 @@ private:
     float prevTileSize[FILTER_SIZE];
     
     float tileSize;
+    float baseTileSize;
+    
     bool active;
     bool selected;
     
+    void regrow();
+    
     void drawAlive(float lightness);
     void drawDead(float lightness);
+    void drawGrow(float lightness);
     
     void drawHex(Vec2f pos, float val);
     void drawStar(Vec2f pos, float val);
@@ -57,6 +62,9 @@ private:
     Timer *fadeTimer;
     bool fading;
     float baseAlpha;
+    
+    Timer *growTimer;
+    bool growing;
 
     Timer *moveTimer;
     bool moving;
