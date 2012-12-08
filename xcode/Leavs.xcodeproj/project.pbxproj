@@ -15,14 +15,19 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00BAE65A0E7ED9C10018A608 /* LeavsApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
+		0512834C1673CBD700A4AAB1 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0512834B1673CBD700A4AAB1 /* libirrklang.dylib */; };
+		0512834F1673CD5200A4AAB1 /* libirrklang.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0512834B1673CBD700A4AAB1 /* libirrklang.dylib */; };
+		051283581673E1FB00A4AAB1 /* drs001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283501673E1FB00A4AAB1 /* drs001.wav */; };
+		051283591673E1FB00A4AAB1 /* pad001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283511673E1FB00A4AAB1 /* pad001.wav */; };
+		0512835A1673E1FB00A4AAB1 /* prc001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283521673E1FB00A4AAB1 /* prc001.wav */; };
+		0512835B1673E1FB00A4AAB1 /* prc002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283531673E1FB00A4AAB1 /* prc002.wav */; };
+		0512835C1673E1FB00A4AAB1 /* prc003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283541673E1FB00A4AAB1 /* prc003.wav */; };
+		0512835D1673E1FB00A4AAB1 /* seq001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283551673E1FB00A4AAB1 /* seq001.wav */; };
+		0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283561673E1FB00A4AAB1 /* seq002.wav */; };
+		0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283571673E1FB00A4AAB1 /* seq003.wav */; };
 		053BA841163D79B40095EBEF /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83B163D79B30095EBEF /* kiss_fft.c */; };
 		053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83D163D79B30095EBEF /* kiss_fftr.c */; };
 		053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83F163D79B30095EBEF /* KissFFT.cpp */; };
-		05734F1A1670D77C00205DAD /* trk1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05734F151670D77C00205DAD /* trk1.wav */; };
-		05734F1B1670D77C00205DAD /* trk2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05734F161670D77C00205DAD /* trk2.wav */; };
-		05734F1C1670D77C00205DAD /* trk3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05734F171670D77C00205DAD /* trk3.wav */; };
-		05734F1D1670D77C00205DAD /* trk4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05734F181670D77C00205DAD /* trk4.wav */; };
-		05734F1E1670D77C00205DAD /* trk5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05734F191670D77C00205DAD /* trk5.wav */; };
 		05782EE51670A04B00FD39B7 /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED31670A04B00FD39B7 /* Audio.cpp */; };
 		05782EE61670A04B00FD39B7 /* AudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED51670A04B00FD39B7 /* AudioTrack.cpp */; };
 		05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED91670A04B00FD39B7 /* LVSEngine.cpp */; };
@@ -38,6 +43,19 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0512834E1673CD4300A4AAB1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0512834F1673CD5200A4AAB1 /* libirrklang.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0091D8F80E81B9330029341E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		0097E3E40F3E9819005A4392 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
@@ -47,6 +65,15 @@
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LeavsApp.cpp; path = ../src/LeavsApp.cpp; sourceTree = SOURCE_ROOT; };
 		00CCAF14116A9FEE008396D5 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CinderApp.icns; sourceTree = SOURCE_ROOT; };
+		0512834B1673CBD700A4AAB1 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = "../../irrKlang-1.4.0/bin/macosx-gcc/libirrklang.dylib"; sourceTree = "<group>"; };
+		051283501673E1FB00A4AAB1 /* drs001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drs001.wav; path = ../resources/drs001.wav; sourceTree = "<group>"; };
+		051283511673E1FB00A4AAB1 /* pad001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pad001.wav; path = ../resources/pad001.wav; sourceTree = "<group>"; };
+		051283521673E1FB00A4AAB1 /* prc001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = prc001.wav; path = ../resources/prc001.wav; sourceTree = "<group>"; };
+		051283531673E1FB00A4AAB1 /* prc002.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = prc002.wav; path = ../resources/prc002.wav; sourceTree = "<group>"; };
+		051283541673E1FB00A4AAB1 /* prc003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = prc003.wav; path = ../resources/prc003.wav; sourceTree = "<group>"; };
+		051283551673E1FB00A4AAB1 /* seq001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq001.wav; path = ../resources/seq001.wav; sourceTree = "<group>"; };
+		051283561673E1FB00A4AAB1 /* seq002.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq002.wav; path = ../resources/seq002.wav; sourceTree = "<group>"; };
+		051283571673E1FB00A4AAB1 /* seq003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq003.wav; path = ../resources/seq003.wav; sourceTree = "<group>"; };
 		053BA83A163D79B30095EBEF /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
 		053BA83B163D79B30095EBEF /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
 		053BA83C163D79B30095EBEF /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
@@ -55,11 +82,6 @@
 		053BA83F163D79B30095EBEF /* KissFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KissFFT.cpp; sourceTree = "<group>"; };
 		053BA840163D79B30095EBEF /* KissFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissFFT.h; sourceTree = "<group>"; };
 		05734F141670C9AA00205DAD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
-		05734F151670D77C00205DAD /* trk1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = trk1.wav; path = ../resources/trk1.wav; sourceTree = "<group>"; };
-		05734F161670D77C00205DAD /* trk2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = trk2.wav; path = ../resources/trk2.wav; sourceTree = "<group>"; };
-		05734F171670D77C00205DAD /* trk3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = trk3.wav; path = ../resources/trk3.wav; sourceTree = "<group>"; };
-		05734F181670D77C00205DAD /* trk4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = trk4.wav; path = ../resources/trk4.wav; sourceTree = "<group>"; };
-		05734F191670D77C00205DAD /* trk5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = trk5.wav; path = ../resources/trk5.wav; sourceTree = "<group>"; };
 		05782ED31670A04B00FD39B7 /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		05782ED41670A04B00FD39B7 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		05782ED51670A04B00FD39B7 /* AudioTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTrack.cpp; sourceTree = "<group>"; };
@@ -143,6 +165,7 @@
 				00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */,
 				00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */,
 				00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */,
+				0512834C1673CBD700A4AAB1 /* libirrklang.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +281,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0512834B1673CBD700A4AAB1 /* libirrklang.dylib */,
 				00B784AF0FF439BC000DE1D7 /* Accelerate.framework */,
 				00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */,
 				00B784B10FF439BC000DE1D7 /* AudioUnit.framework */,
@@ -313,11 +337,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				05734F151670D77C00205DAD /* trk1.wav */,
-				05734F161670D77C00205DAD /* trk2.wav */,
-				05734F171670D77C00205DAD /* trk3.wav */,
-				05734F181670D77C00205DAD /* trk4.wav */,
-				05734F191670D77C00205DAD /* trk5.wav */,
+				051283501673E1FB00A4AAB1 /* drs001.wav */,
+				051283511673E1FB00A4AAB1 /* pad001.wav */,
+				051283521673E1FB00A4AAB1 /* prc001.wav */,
+				051283531673E1FB00A4AAB1 /* prc002.wav */,
+				051283541673E1FB00A4AAB1 /* prc003.wav */,
+				051283551673E1FB00A4AAB1 /* seq001.wav */,
+				051283561673E1FB00A4AAB1 /* seq002.wav */,
+				051283571673E1FB00A4AAB1 /* seq003.wav */,
 				05782EED1670A05E00FD39B7 /* nevis.ttf */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				00CCAF14116A9FEE008396D5 /* CinderApp.icns */,
@@ -341,9 +368,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Leavs" */;
 			buildPhases = (
+				0512834E1673CD4300A4AAB1 /* CopyFiles */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				0512834D1673CC5700A4AAB1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -390,15 +419,35 @@
 			files = (
 				05A44AF5167278F8000089A3 /* nevis.ttf in Resources */,
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
-				05734F1A1670D77C00205DAD /* trk1.wav in Resources */,
-				05734F1B1670D77C00205DAD /* trk2.wav in Resources */,
-				05734F1C1670D77C00205DAD /* trk3.wav in Resources */,
-				05734F1D1670D77C00205DAD /* trk4.wav in Resources */,
-				05734F1E1670D77C00205DAD /* trk5.wav in Resources */,
+				051283581673E1FB00A4AAB1 /* drs001.wav in Resources */,
+				051283591673E1FB00A4AAB1 /* pad001.wav in Resources */,
+				0512835A1673E1FB00A4AAB1 /* prc001.wav in Resources */,
+				0512835B1673E1FB00A4AAB1 /* prc002.wav in Resources */,
+				0512835C1673E1FB00A4AAB1 /* prc003.wav in Resources */,
+				0512835D1673E1FB00A4AAB1 /* seq001.wav in Resources */,
+				0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */,
+				0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0512834D1673CC5700A4AAB1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(PRODUCT_NAME)",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change /usr/local/lib/libirrklang.dylib @executable_path/../Frameworks/libirrklang.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\"\ninstall_name_tool -id @executable_path/../Frameworks/libirrklang.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Frameworks/libirrklang.dylib\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -438,6 +487,10 @@
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../irrKlang-1.4.0/bin/macosx-gcc\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
@@ -445,6 +498,7 @@
 				);
 				PRODUCT_NAME = LVS;
 				SYMROOT = ./build;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../irrKlang-1.4.0/include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -466,6 +520,10 @@
 				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../irrKlang-1.4.0/bin/macosx-gcc\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
@@ -474,6 +532,7 @@
 				PRODUCT_NAME = LVS;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../irrKlang-1.4.0/include";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

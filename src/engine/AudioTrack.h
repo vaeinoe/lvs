@@ -9,10 +9,14 @@
 #pragma once
 #include "Common.h"
 #include "Configuration.h"
+#include "irrKlang.h"
+using namespace irrklang;
+
+class Audio;
 
 class AudioTrack {
 public:
-	void setup(int trackNo, bool looping);
+	void setup(Audio *audio, int trackNo, bool looping);
     
 	void update();
 	void draw(float scale, float offset);
@@ -28,9 +32,6 @@ public:
     void stopFft();
     bool isFftRunning();
     
-    ci::audio::SourceRef mAudioSource;
-	ci::audio::TrackRef	 mTrack;
-    
 	ci::audio::PcmBuffer32fRef	mBuffer;
 	KissRef						mFft;
     
@@ -38,6 +39,12 @@ public:
     float *timeData;
     int32_t dataSize;
 private:
+    char name[100];
+    
+    Audio *mAudio;
+    ISoundSource *mSoundSource;
+    ISound *mTrack;
+    
     DataSourceRef loadTrack(int trackNo);
     
     bool fftRunning;

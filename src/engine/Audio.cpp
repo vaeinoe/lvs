@@ -10,19 +10,20 @@
 #include "Audio.h"
 
 double Audio::presets[][NUMTRACKS] = {
-    {0.0, 0.0, 0.0, 0.0, 0.0},
-    {1.0, 0.0, 0.0, 0.0, 0.0},
-    {0.0, 1.0, 1.0, 1.0, 1.0}
+    {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},
+    {0.0, 1.0, 1.0, 0.0, 0.0, 0.0},
+    {1.0, 0.0, 1.0, 1.0, 1.0, 1.0}
 };
 
 void Audio::setup(Configuration *config)
 {
+    audioEngine = createIrrKlangDevice();
 
     mConfig = config;
 
     for (int i = 0; i < NUMTRACKS; i++) {
         mTracks[i] = new AudioTrack();
-        mTracks[i]->setup(i, true);
+        mTracks[i]->setup(this, i, true);
     }
     
     for (int i = 0; i < NUMTRACKS; i++) {
@@ -58,4 +59,5 @@ void Audio::draw()
 void Audio::shutdown()
 {
     for (int i = 0; i < NUMTRACKS; i++) { mTracks[i]->shutdown(); }
+    engine->drop();
 }
