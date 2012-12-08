@@ -15,7 +15,7 @@
 #include "LVSEngine.h"
 
 void LVSEngine::setup(Configuration *config)
-{    
+{        
     fadeTimer   = new Timer();
     fadeDir     = 0;
     fadeTimeSec = 0;
