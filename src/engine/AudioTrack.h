@@ -9,6 +9,7 @@
 #pragma once
 #include "Common.h"
 #include "Configuration.h"
+#include "AudioAnalyzer.h"
 #include "irrKlang.h"
 using namespace irrklang;
 
@@ -32,9 +33,6 @@ public:
     void stopFft();
     bool isFftRunning();
     
-	ci::audio::PcmBuffer32fRef	mBuffer;
-	KissRef						mFft;
-    
     float *freqData;
     float *timeData;
     int32_t dataSize;
@@ -45,10 +43,11 @@ private:
     ISoundSource *mSoundSource;
     ISound *mTrack;
     
+    bool mFft;
+    
     DataSourceRef loadTrack(int trackNo);
     
     bool fftRunning;
-    PolyLine<Vec2f> prevLines[5];
     
     Timer *fadeTimer;
     bool   fading;

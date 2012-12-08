@@ -18,6 +18,8 @@ double Audio::presets[][NUMTRACKS] = {
 void Audio::setup(Configuration *config)
 {
     audioEngine = createIrrKlangDevice();
+    analyzer = new AudioAnalyzer();
+    audioEngine->setMixedDataOutputReceiver(analyzer);
 
     mConfig = config;
 
@@ -43,21 +45,19 @@ void Audio::fadeToPreset(int presetId, double fadeSec) {
 void Audio::update()
 {
     for (int i = 0; i < NUMTRACKS; i++) { mTracks[i]->update(); }
+    analyzer->update();
 }
 
-// TODO: swap analysis channel on demand
-float* Audio::getFreqData() { return mTracks[0]->freqData; }
-int32_t Audio::getDataSize() { return mTracks[0]->dataSize; }
+float* Audio::getFreqData() { return analyzer->freqData; }
+int32_t Audio::getDataSize() { return analyzer->dataSize; }
 
 void Audio::draw()
 {
-    for (int i = 0; i < NUMTRACKS; i++) {
-        mTracks[i]->draw(1, -100 * i - 100);
-    }
+    analyzer->draw(1, -200);
 }
 
 void Audio::shutdown()
 {
     for (int i = 0; i < NUMTRACKS; i++) { mTracks[i]->shutdown(); }
-    engine->drop();
+    audioEngine->drop();
 }
