@@ -19,9 +19,9 @@ public:
 	void draw();
 	void shutdown();
 	void guiEvent( ciUIEvent *event );
-    void updateScore( int score );
+    void updateScore( int score, int maxScore, int type );
 private:
     Configuration *mConfig;
 	ciUICanvas *gui;
-    ciUILabel *scoreLabel;
+    ciUILabel *scoreLabels[32];
 };

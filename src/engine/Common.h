@@ -20,8 +20,11 @@
 #include "../ciUI/ciUI.h"
 #include "KissFFT.h"
 
+#define TILE_TYPES 4
+
 #define MOVE_TIME_SEC 1.0
 #define FADE_TIME_SEC 2.0
+#define GROW_TIME_SEC 6.0
 
 inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int numLines )
 {
@@ -35,51 +38,3 @@ inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int 
 	glDisableClientState( GL_COLOR_ARRAY );
 	glDisableClientState( GL_VERTEX_ARRAY );
 }
-
-/*
-inline void addCirclePoly( const Vec2f &center, float r, int numSegments)
-{
-    if( numSegments <= 0 ) {
-		numSegments = (int)math<double>::floor( r * M_PI * 2 );
-	}
-	if( numSegments < 2 ) numSegments = 2;
-
-	float theta = 2 * M_PI / float(numSegments);
-	float c = cosf(theta); //precalculate the sine and cosine
-	float s = sinf(theta);
-	float t;
-    
-	float x = r; //we start at angle = 0
-	float y = 0;
-
-    vector< GLfloat > verts;
-    
-    float sX = x + center.x;
-    float sY = y + center.y;
-
-	for(int i = 0; i < numSegments; i++)
-	{
-		verts.push_back(x + center.x);
-        verts.push_back(y + center.y);
-        
-		//apply the rotation matrix
-		t = x;
-		x = c * x - s * y;
-		y = s * t + c * y;
-        
-        if (i > 0) {
-            verts.push_back(x + center.x);
-            verts.push_back(y + center.y);
-        }
-	}
-    
-    verts.push_back(sX);
-    verts.push_back(sY);
-
-    glEnableClientState( GL_VERTEX_ARRAY );
-	glVertexPointer( 2, GL_FLOAT, 0, &verts[0] );
-	glDrawArrays( GL_LINES, 0, verts.size() );
-	glDisableClientState( GL_VERTEX_ARRAY );
-}
-*/
-

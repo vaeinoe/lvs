@@ -25,6 +25,7 @@ public:
 	void shutdown();
     void selectTile( const Vec2i mouseLoc );
     void addCirclePoly( const Vec2f &center, const float radius, const int numSegments, const ColorA &color );
+    int rndTileType();
 private:
     Configuration *mConfig;
     Vec2i *size;

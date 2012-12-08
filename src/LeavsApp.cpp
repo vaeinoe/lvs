@@ -46,7 +46,7 @@ void LeavsApp::setup()
     config->worldWidth = 5;
     config->worldHeight = 11;
     config->padding = 10.0f;
-    config->numTileTypes = 4;
+    config->numTileTypes = TILE_TYPES;
     config->solverDelayFrames = 2;
 
     engine = new LVSEngine();

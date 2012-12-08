@@ -18,8 +18,9 @@ public:
 	void update();
 	void draw();
 	void shutdown();
-    void addScore(int score);
+    void addScore(int score, int type);
+    int getMaxScore( int type );
 private:
-    int mScore;
+    int mScores[64];
     Configuration *mConfig;
 };

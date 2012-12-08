@@ -31,28 +31,30 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     gui-> setUIColors( cb, co, coh, cf, cfh, cp, cpo );             
     
 
-    gui->addWidgetRight(new ciUILabel("match 3 vertical. r reload. esc quit.",CI_UI_FONT_SMALL));
+    gui->addWidgetRight(new ciUILabel("lvs",CI_UI_FONT_SMALL));
 #ifdef DEBUG
     gui->addWidgetRight(new ciUIFPS(CI_UI_FONT_SMALL));
 #endif
 
-    scoreLabel = new ciUILabel("score 0.", CI_UI_FONT_SMALL);
-    gui->addWidgetRight(scoreLabel);
-                        
+    for (int i = 0; i < mConfig->numTileTypes; i++) {
+        char buf[100];
+        sprintf(buf, "000/%03d", mConfig->player->getMaxScore(i));
+        scoreLabels[i] = new ciUILabel(buf, CI_UI_FONT_SMALL);
+        gui->addWidgetRight(scoreLabels[i]);
+    }
+    
     gui->autoSizeToFitWidgets();
     gui->registerUIEvents(this, &Toolbar::guiEvent);
 }
 
-void Toolbar::updateScore( int score ) {
+void Toolbar::updateScore( int score, int maxScore, int type ) {
     char buf[100];
-    sprintf(buf, "score %d.", score);
-    scoreLabel->setLabel(buf);
+    sprintf(buf, "%03d/%03d", score, maxScore);
+    scoreLabels[type]->setLabel(buf);
 }
 
-void Toolbar::shutdown()
-{
-	delete gui;
-}
+void Toolbar::shutdown() { delete gui; }
+void Toolbar::draw() { gui->draw(); }
 
 void Toolbar::update( int fftDataBins )
 {
@@ -60,11 +62,6 @@ void Toolbar::update( int fftDataBins )
 //    snprintf(buf, 9, "%d", fftDataBins);
 //    freqLabel->setLabel(buf);
 	gui->update();
-}
-
-void Toolbar::draw()
-{
-    gui->draw();
 }
 
 void Toolbar::guiEvent(ciUIEvent *event)
