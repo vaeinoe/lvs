@@ -10,8 +10,10 @@
 #include "Common.h"
 #include "Configuration.h"
 #include "AudioTrack.h"
+#include "irrKlang.h"
+using namespace irrklang;
 
-#define NUMTRACKS 5
+#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
 class AudioTrack;
 
@@ -28,9 +30,13 @@ public:
     int32_t getDataSize();
     
     AudioTrack *mTracks[32];
+    
+    friend class AudioTrack;
 private:
     Configuration *mConfig;
 	static double presets[][NUMTRACKS];
+    
+    ISoundEngine* audioEngine;
 };
 
 

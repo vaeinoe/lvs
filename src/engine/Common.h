@@ -21,6 +21,7 @@
 #include "KissFFT.h"
 
 #define TILE_TYPES 4
+#define NUMTRACKS 6
 
 #define MOVE_TIME_SEC 1.0
 #define FADE_TIME_SEC 2.0
