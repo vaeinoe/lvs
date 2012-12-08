@@ -23,7 +23,7 @@ void Mainmenu::setup(Configuration *config)
     gui = new ciUICanvas(x, y, width, height);
     gui->setFont("nevis.ttf");
     
-    gui->setFontSize(CI_UI_FONT_LARGE, 64);
+    gui->setFontSize(CI_UI_FONT_LARGE, 72);
     gui->setFontSize(CI_UI_FONT_MEDIUM, 24);
     gui->setFontSize(CI_UI_FONT_SMALL, 16);
     
@@ -38,8 +38,8 @@ void Mainmenu::setup(Configuration *config)
     gui-> setUIColors( cb, co, coh, cf, cfh, cp, cpo );
 
     gui->addWidgetDown(new ciUILabel("lvs",CI_UI_FONT_LARGE));
-    gui->addWidgetDown(new ciUILabelToggle(false, "Play.",CI_UI_FONT_MEDIUM));
-    gui->addWidgetDown(new ciUILabelToggle(false, "Quit.",CI_UI_FONT_MEDIUM));
+    gui->addWidgetDown(new ciUILabelToggle(false, "play",CI_UI_FONT_MEDIUM));
+    gui->addWidgetDown(new ciUILabelToggle(false, "quit",CI_UI_FONT_MEDIUM));
     
     gui->autoSizeToFitWidgets();
     gui->registerUIEvents(this, &Mainmenu::guiEvent);
@@ -61,10 +61,10 @@ void Mainmenu::guiEvent(ciUIEvent *event)
 {
     if (active) {
         string name = event->widget->getName();
-        if(name == "Play.") {
+        if(name == "play") {
             mConfig->engine->startGame();
         }
-        else if (name == "Quit.") {
+        else if (name == "quit") {
             mConfig->engine->quitGame();
         }
     }
