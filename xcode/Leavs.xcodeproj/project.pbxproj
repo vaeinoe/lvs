@@ -125,7 +125,7 @@
 		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		53E3CDFB0E86099300238D2B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Leavs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leavs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* LVS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LVS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,7 +285,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* Leavs.app */,
+				8D1107320486CEB800E47090 /* LVS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 			name = Leavs;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Leavs;
-			productReference = 8D1107320486CEB800E47090 /* Leavs.app */;
+			productReference = 8D1107320486CEB800E47090 /* LVS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -435,6 +435,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Leavs_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -442,7 +443,7 @@
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					"-lcurl",
 				);
-				PRODUCT_NAME = Leavs;
+				PRODUCT_NAME = LVS;
 				SYMROOT = ./build;
 				WRAPPER_EXTENSION = app;
 			};
@@ -462,6 +463,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Leavs_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -469,7 +471,7 @@
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
 					"-lcurl",
 				);
-				PRODUCT_NAME = Leavs;
+				PRODUCT_NAME = LVS;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
 				WRAPPER_EXTENSION = app;
