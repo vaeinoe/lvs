@@ -136,8 +136,7 @@ void Tile::drawAlive(float lightness) {
     gl::color(0, 0, lightness * 0.4, 0.75 * baseAlpha);
     gl::drawSolidCircle( drawPos, mConfig->tileSize, 6 );
     
-    gl::color (0.8, 0.5, 1.0, 0.25 * baseAlpha);
-    gl::drawStrokedCircle( drawPos, mConfig->tileSize, 6 );
+    mConfig->world->addCirclePoly( drawPos, mConfig->tileSize, 6, ColorA(0.8, 0.5, 1.0, 0.25 * baseAlpha) );
     
     gl::color (1.0, 1.0, 1.0, val * baseAlpha);
     
@@ -153,12 +152,9 @@ void Tile::drawAlive(float lightness) {
 }
 
 void Tile::drawDead(float lightness) {
-    gl::color(0.8, 0.1, lightness * 0.8, 0.6 * baseAlpha);
-    gl::drawStrokedCircle( drawPos, mConfig->tileSize * 0.8, 6 );
-    gl::color(0.7, 0.1, lightness * 0.7, 0.5 * baseAlpha);
-    gl::drawStrokedCircle( drawPos, mConfig->tileSize * 0.6, 6 );
-    gl::color(0.6, 0.1, lightness * 0.6, 0.4 * baseAlpha);
-    gl::drawStrokedCircle( drawPos, mConfig->tileSize * 0.4,6  );
+    mConfig->world->addCirclePoly( drawPos, mConfig->tileSize * 0.8, 6, ColorA(0.8, 0.1, lightness * 0.8, 0.6 * baseAlpha) );
+    mConfig->world->addCirclePoly( drawPos, mConfig->tileSize * 0.6, 6, ColorA(0.7, 0.1, lightness * 0.7, 0.5 * baseAlpha) );
+    mConfig->world->addCirclePoly( drawPos, mConfig->tileSize * 0.4, 6, ColorA(0.6, 0.1, lightness * 0.6, 0.4 * baseAlpha) );
 }
 
 // Draws the tile
@@ -186,8 +182,8 @@ inline void Tile::drawPlant(Vec2f draw_pos, float val) {
     
     for (int i = 0; i < FILTER_SIZE; i++) {
         float a = i * 1.0 / FILTER_SIZE;
-        gl::color(0.2 * (i / FILTER_SIZE) * val, 0.2 * (i / FILTER_SIZE) * val, 1.0 - val * 0.20 * i, a * baseAlpha);
-        gl::drawStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2), segments );
+        ColorA color = ColorA(0.2 * (i / FILTER_SIZE) * val, 0.2 * (i / FILTER_SIZE) * val, 1.0 - val * 0.20 * i, a * baseAlpha);
+        mConfig->world->addCirclePoly( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2), segments, color );
     }
 }
 
@@ -196,8 +192,8 @@ inline void Tile::drawGram(Vec2f draw_pos, float val) {
     
     for (int i = 0; i < FILTER_SIZE; i++) {
         float a = i * 1.0 / FILTER_SIZE;
-        gl::color(0.4, 0.1 * (i / FILTER_SIZE) * val, 1.0 - val * 0.25 * i, a * baseAlpha);
-        gl::drawStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2), segments );
+        ColorA color = ColorA(0.4, 0.1 * (i / FILTER_SIZE) * val, 1.0 - val * 0.25 * i, a * baseAlpha);
+        mConfig->world->addCirclePoly( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2), segments, color );
     }
 }
 
@@ -210,8 +206,8 @@ inline void Tile::drawHex(Vec2f draw_pos, float val)
     for (int i = 0; i < FILTER_SIZE; i++) {
         float a = i * 1.0 / FILTER_SIZE;
         for (int j = 0; j < hexCount; j++) {
-            gl::color((i / FILTER_SIZE) * 0.25, 0.1 * j * val, 1.0 - val * 0.25 * j, a * baseAlpha);
-            gl::drawStrokedCircle( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments );
+            ColorA color = ColorA((i / FILTER_SIZE) * 0.25, 0.1 * j * val, 1.0 - val * 0.25 * j, a * baseAlpha);
+            mConfig->world->addCirclePoly( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments, color );
         }
     }
 }
@@ -245,8 +241,7 @@ inline void Tile::drawStar(Vec2f draw_pos, float val)
 
 // Draw active tile highlight
 inline void Tile::drawActive(Vec2f draw_pos, float val) {
-	gl::color(1, 1, 1, 0.5 * baseAlpha);
-    gl::drawStrokedCircle( draw_pos, mConfig->tileSize, 6 );
+    mConfig->world->addCirclePoly( draw_pos, mConfig->tileSize, 6, ColorA(1, 1, 1, 0.5 * baseAlpha) );
     
     gl::color (0.6, val, 0.8, 0.4 * baseAlpha);
     gl::drawSolidCircle( draw_pos, mConfig->tileSize, 6 );    
