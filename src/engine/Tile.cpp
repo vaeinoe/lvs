@@ -153,7 +153,7 @@ void Tile::update( const float dist, const float modifier )
     }
 }
 
-Vec2f Tile::getScreenPositionVector(Vec2i loc) {
+inline Vec2f Tile::getScreenPositionVector(Vec2i loc) {
     float x = mConfig->padding + (mConfig->tileGrid / 2) + loc.x * (1.5 * mConfig->tileGrid);
     float y = mConfig->padding + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid);
     if (loc.y % 2 != 0) { x += (0.74 * mConfig->tileGrid); }
@@ -162,7 +162,7 @@ Vec2f Tile::getScreenPositionVector(Vec2i loc) {
 }
 
 // Returns the screen position of this hex
-inline Vec2f Tile::getScreenPositionVector() { return getScreenPositionVector(Vec2i(pos->x, pos->y)); }
+Vec2f Tile::getScreenPositionVector() { return getScreenPositionVector(Vec2i(pos->x, pos->y)); }
 
 // Draw alive hex
 inline void Tile::drawAlive(float lightness) {
