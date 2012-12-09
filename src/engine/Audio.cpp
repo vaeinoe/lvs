@@ -17,7 +17,11 @@ double Audio::presets[][NUMTRACKS] = {
 
 void Audio::setup(Configuration *config)
 {
+#ifdef CINDER_MSW
+    audioEngine = createIrrKlangDevice(ESOD_WIN_MM);
+#else
     audioEngine = createIrrKlangDevice();
+#endif
     audioEngine->setSoundVolume(0.0);
 
     fadeTimer   = new Timer();
@@ -27,6 +31,8 @@ void Audio::setup(Configuration *config)
     fadeTimeSec = 0.0;
     
     analyzer = new AudioAnalyzer();
+	analyzer->setup();
+
     audioEngine->setMixedDataOutputReceiver(analyzer);
 
     mConfig = config;

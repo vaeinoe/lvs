@@ -48,6 +48,9 @@
     <ClCompile Include="..\src\engine\World.cpp">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\engine\AudioAnalyzer.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
@@ -192,6 +195,9 @@
       <Filter>Source Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\Toolbar.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\AudioAnalyzer.h">
       <Filter>Source Files\engine</Filter>
     </ClInclude>
   </ItemGroup>

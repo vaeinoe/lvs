@@ -47,7 +47,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss;..\..\irrKlang-1.4.0\include;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -61,8 +61,8 @@
       <AdditionalIncludeDirectories>..\..\cinder_0.8.4_vc2010\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder_d.lib;KissFFT_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_vc2010\lib;..\..\cinder_0.8.4_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cinder_d.lib;KissFFT_d.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_vc2010\lib;..\..\cinder_0.8.4_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;..\..\irrKlang-1.4.0\lib\Win32-visualStudio;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -74,7 +74,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss;..\..\irrKlang-1.4.0\include;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -86,11 +86,11 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>..\..\cinder_0.8.4_mac\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\cinder_0.8.4_vc2010\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_mac\lib;..\..\cinder_0.8.4_mac\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cinder.lib;KissFFT.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_vc2010\lib;..\..\cinder_0.8.4_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;..\..\irrKlang-1.4.0\lib\Win32-visualStudio;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -105,6 +105,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\engine\Audio.cpp" />
+    <ClCompile Include="..\src\engine\AudioAnalyzer.cpp" />
     <ClCompile Include="..\src\engine\AudioTrack.cpp" />
     <ClCompile Include="..\src\engine\LVSEngine.cpp" />
     <ClCompile Include="..\src\engine\Mainmenu.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="..\src\ciUI\ciUIWidget.h" />
     <ClInclude Include="..\src\ciUI\ciUIWidgetWithLabel.h" />
     <ClInclude Include="..\src\engine\Audio.h" />
+    <ClInclude Include="..\src\engine\AudioAnalyzer.h" />
     <ClInclude Include="..\src\engine\AudioTrack.h" />
     <ClInclude Include="..\src\engine\Common.h" />
     <ClInclude Include="..\src\engine\Configuration.h" />

@@ -10,7 +10,7 @@
 #define RES_PRC002  CINDER_RESOURCE( ../resources/, prc002.wav, 136, AUDIO )
 #define RES_PRC003  CINDER_RESOURCE( ../resources/, prc003.wav, 137, AUDIO )
 
-#define RES_PAD001  CINDER_RESOURCE( ../resources/, pad001.mp3, 138, AUDIO )
+#define RES_PAD001  CINDER_RESOURCE( ../resources/, pad001.wav, 138, AUDIO )
 
-#define RES_DRS001  CINDER_RESOURCE( ../resources/, drs001.mp3, 139, AUDIO )
+#define RES_DRS001  CINDER_RESOURCE( ../resources/, drs001.wav, 139, AUDIO )
 
