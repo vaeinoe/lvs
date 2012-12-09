@@ -22,14 +22,12 @@ void Audio::setup(Configuration *config)
 #else
     audioEngine = createIrrKlangDevice();
 #endif
-    audioEngine->setSoundVolume(0.0);
+    mainVol = 0.0;
+    audioEngine->setSoundVolume(mainVol);
 
-    fadeTimer   = new Timer();
-    fading      = false;
-    fadeSrcVol  = 0.0;
-    fadeDestVol = 0.0;
-    fadeTimeSec = 0.0;
-    
+    mainVolFader = config->faders->createFader();
+    mainVolFader->bindParam(&mainVol);
+        
     analyzer = new AudioAnalyzer();
 	analyzer->setup();
 
@@ -47,18 +45,8 @@ void Audio::setup(Configuration *config)
         mTracks[i]->play(0);
     }
     
-    fadeMainTo(MAIN_VOLUME, 0.5);
+    mainVolFader->fade(MAIN_VOLUME, 0.5);
     fadeToPreset(1, 5.0);
-}
-
-void Audio::fadeMainTo(float destVol, double fadeSec)
-{
-    fading = true;
-    fadeSrcVol = audioEngine->getSoundVolume();
-    fadeDestVol = destVol;
-    fadeTimeSec = fadeSec;
-    
-    fadeTimer->start();
 }
 
 void Audio::fadeToPreset(int presetId, double fadeSec) {
@@ -69,23 +57,7 @@ void Audio::fadeToPreset(int presetId, double fadeSec) {
 
 void Audio::update()
 {
-    if (fading && !fadeTimer->isStopped()) {
-        double time = fadeTimer->getSeconds();
-        if (time > fadeTimeSec) {
-            audioEngine->setSoundVolume(fadeDestVol);
-            fading = false;
-            fadeTimer->stop();
-        }
-        else {
-            double fadePoint = time / fadeTimeSec;
-            if (fadeSrcVol < fadeDestVol) {
-                audioEngine->setSoundVolume(fadeSrcVol + (fadePoint * (fadeDestVol - fadeSrcVol)));
-            }
-            else if (fadeSrcVol > fadeDestVol) {
-                audioEngine->setSoundVolume(fadeSrcVol - (fadePoint * (fadeSrcVol - fadeDestVol)));
-            }
-        }
-    }
+    audioEngine->setSoundVolume(mainVol);
 
     for (int i = 0; i < NUMTRACKS; i++) { mTracks[i]->update(); }
     analyzer->update();

@@ -12,6 +12,8 @@
 #include "AudioTrack.h"
 #include "AudioAnalyzer.h"
 #include "irrKlang.h"
+#include "FaderPack.h"
+#include "Fader.h"
 using namespace irrklang;
 
 #pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
@@ -43,11 +45,8 @@ private:
     ISoundEngine* audioEngine;
     AudioAnalyzer* analyzer;
     
-    Timer *fadeTimer;
-    bool   fading;
-    float  fadeSrcVol;
-    float  fadeDestVol;
-    double fadeTimeSec;    
+    Fader *mainVolFader;
+    double mainVol;
 };
 
 

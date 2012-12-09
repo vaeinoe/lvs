@@ -16,10 +16,8 @@
 
 void LVSEngine::setup(Configuration *config)
 {
-    fadeTimer   = new Timer();
-    fadeDir     = 0;
-    fadeTimeSec = 0;
     quitAfterFade = false;
+    fadeVal = 1.0;
 
     mConfig = config;
     mAudio = new Audio();
@@ -46,12 +44,15 @@ void LVSEngine::setup(Configuration *config)
     texFont = gl::TextureFont::create(loadFont);
     
     fullScreen = false;
+
+    mFaders->setup(mConfig, true);
+    screenFader = mFaders->createFader();
+    screenFader->bindParam(&fadeVal);
 }
 
 void LVSEngine::loadAll() {
     switch (loadState) {
         case 0:
-            mFaders->setup(mConfig, true);
             mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
             loadStr = "init: world";
             break;
@@ -74,7 +75,8 @@ void LVSEngine::loadAll() {
         case 5:
             cout << "Running." << endl;
             gameState = S_MAINMENU;
-            fade(1, 2.5, false);
+            
+            screenFader->fade(0.0, 2.5);
             break;
     }
 
@@ -102,7 +104,7 @@ void LVSEngine::update()
         case S_QUITTING:
             mAudio->update();
             break;
-    }    
+    }
 }
 
 void LVSEngine::draw()
@@ -118,7 +120,6 @@ void LVSEngine::draw()
             gl::clear( Color( lightness * 0.4, 0, 0.2 ) );
             mAudio->draw();
             mMenu->draw();
-            
             break;
         case S_INGAME_1:
             gl::clear( Color( 0, 0, lightness * 0.4 ) );
@@ -131,37 +132,16 @@ void LVSEngine::draw()
             mMenu->draw();
             break;
     }
-    if (fadeDir != 0) { performFade(); }
-}
-
-// Fades out and eventually quits game
-inline void LVSEngine::performFade() {
-    if (fadeDir != 0 && !fadeTimer->isStopped()) {
-        double time = fadeTimer->getSeconds();
-        if (time > fadeTimeSec) {
-            fadeDir = 0;
-            fadeTimer->stop();
-            if (quitAfterFade) {
-                gl::clear( Color( 0, 0, 0 ) );
-                shutdown();
-                exit(0);
-            }
-        }
-        else {
-            double fadePoint = time / fadeTimeSec;
-            if (fadeDir < 0) { gl::color(0, 0, 0, fadePoint); }
-            else { gl::color(0, 0, 0, 1 - fadePoint); }
-            gl::drawSolidRect (Rectf(0,0,getWindowWidth(),getWindowHeight()));
-        }
-    }    
-}
-
-// Fades in or out
-void LVSEngine::fade(int dir, double seconds, bool quitAfter) {
-    fadeDir = dir;
-    fadeTimeSec = seconds;
-    quitAfterFade = quitAfter;
-    fadeTimer->start();
+    // XXX observer
+    if (screenFader->isActive()) {
+        gl::color(0, 0, 0, fadeVal);
+        gl::drawSolidRect (Rectf(0,0,getWindowWidth(),getWindowHeight()));
+    }
+    else if (quitAfterFade) {
+        gl::clear( Color( 0, 0, 0 ) );
+        shutdown();
+        exit(0);        
+    }
 }
 
 void LVSEngine::mouseMove ( const MouseEvent event ) {
@@ -222,7 +202,9 @@ void LVSEngine::quitGame()
     gameState = S_QUITTING;
     mMenu->deactivate();
     mAudio->fadeToPreset(0, 2.5);
-    fade(-1, 3.0, true);
+    
+    screenFader->fade(1.0, 3.0);
+    quitAfterFade = true;
 }
 
 void LVSEngine::shutdown()

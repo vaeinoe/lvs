@@ -55,10 +55,7 @@ private:
     string loadStr;
     
     Fader *screenFader;
-
-    Timer *fadeTimer;
-    int   fadeDir;
-    double fadeTimeSec;
+    double fadeVal;
     bool quitAfterFade;
     
     Mainmenu *mMenu;

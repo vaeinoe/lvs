@@ -41,7 +41,7 @@ void Fader::bindParam(double *newParam) { param = newParam; }
 
 void Fader::fade(double dest, double dur)
 {
-    if (mMaster->isActive() && param) {
+    if (mMaster->isActive() && param != NULL) {
         startVal = *param;
         destVal = dest;
         
@@ -55,7 +55,7 @@ void Fader::fade(double dest, double dur)
 void Fader::update()
 {
     if (active && mMaster->isActive()) {
-        double diffTime = startTime - mMaster->getSeconds();
+        double diffTime = mMaster->getSeconds() - startTime;
         if (diffTime > durTime) {
             *param = destVal;
             active = false;
@@ -72,7 +72,11 @@ void Fader::update()
     }
 }
 
-bool Fader::isActive() { return active; }
+bool Fader::isActive() {
+    if (active) return active;
+    return false;
+}
+
 void Fader::stop() { active = false; }
 
 void Fader::shutdown() { } // ...
