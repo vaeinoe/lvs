@@ -17,6 +17,7 @@ class Player;
 class World;
 class LVSEngine;
 class Toolbar;
+class FaderPack;
 
 class Configuration {
 public:
@@ -37,4 +38,5 @@ public:
     World *world;
     LVSEngine *engine;
     Toolbar *toolbar;
+    FaderPack *faders;
 };

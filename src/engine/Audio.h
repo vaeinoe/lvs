@@ -27,6 +27,7 @@ public:
 	void shutdown();
 
     void fadeToPreset(int presetId, double fadeSec);
+    void fadeMainTo(float destVol, double fadeSec);
     
     float* getFreqData();
     int32_t getDataSize();
@@ -41,6 +42,12 @@ private:
     
     ISoundEngine* audioEngine;
     AudioAnalyzer* analyzer;
+    
+    Timer *fadeTimer;
+    bool   fading;
+    float  fadeSrcVol;
+    float  fadeDestVol;
+    double fadeTimeSec;    
 };
 
 

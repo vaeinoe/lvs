@@ -27,11 +27,13 @@ void LVSEngine::setup(Configuration *config)
     mWorld = new World();
     mPlayer = new Player();
     mMenu = new Mainmenu();
+    mFaders = new FaderPack();
 
     mConfig->engine = this;
     mConfig->toolbar = mToolbar;
     mConfig->world = mWorld;
     mConfig->player = mPlayer;
+    mConfig->faders = mFaders;
 
     mMouseLoc = new Vec2i(0, 0);
 
@@ -49,6 +51,7 @@ void LVSEngine::setup(Configuration *config)
 void LVSEngine::loadAll() {
     switch (loadState) {
         case 0:
+            mFaders->setup(mConfig, true);
             mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
             loadStr = "init: world";
             break;
@@ -80,6 +83,8 @@ void LVSEngine::loadAll() {
 
 void LVSEngine::update()
 {
+    mFaders->update();
+    
     switch (gameState) {
         case S_LOADING:
             loadAll();
@@ -227,10 +232,12 @@ void LVSEngine::shutdown()
     mAudio->shutdown();
     mPlayer->shutdown();
     mMenu->shutdown();
+    mFaders->shutdown();
     
     delete mToolbar;
     delete mWorld;
     delete mPlayer;
     delete mAudio;
     delete mMenu;
+    delete mFaders;
 }

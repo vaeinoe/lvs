@@ -26,6 +26,8 @@
 		0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283561673E1FB00A4AAB1 /* seq002.wav */; };
 		0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283571673E1FB00A4AAB1 /* seq003.wav */; };
 		051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */; };
+		052FED161674E4C20001E076 /* Fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED141674E4C20001E076 /* Fader.cpp */; };
+		052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED181674E4D20001E076 /* FaderPack.cpp */; };
 		053BA841163D79B40095EBEF /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83B163D79B30095EBEF /* kiss_fft.c */; };
 		053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83D163D79B30095EBEF /* kiss_fftr.c */; };
 		053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83F163D79B30095EBEF /* KissFFT.cpp */; };
@@ -77,6 +79,10 @@
 		051283571673E1FB00A4AAB1 /* seq003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq003.wav; path = ../resources/seq003.wav; sourceTree = "<group>"; };
 		051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioAnalyzer.cpp; sourceTree = "<group>"; };
 		051283611673EDC400A4AAB1 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
+		052FED141674E4C20001E076 /* Fader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fader.cpp; sourceTree = "<group>"; };
+		052FED151674E4C20001E076 /* Fader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fader.h; sourceTree = "<group>"; };
+		052FED181674E4D20001E076 /* FaderPack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaderPack.cpp; sourceTree = "<group>"; };
+		052FED191674E4D20001E076 /* FaderPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaderPack.h; sourceTree = "<group>"; };
 		053BA83A163D79B30095EBEF /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
 		053BA83B163D79B30095EBEF /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
 		053BA83C163D79B30095EBEF /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
@@ -221,6 +227,10 @@
 				05782EE41670A04B00FD39B7 /* World.h */,
 				051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */,
 				051283611673EDC400A4AAB1 /* AudioAnalyzer.h */,
+				052FED141674E4C20001E076 /* Fader.cpp */,
+				052FED151674E4C20001E076 /* Fader.h */,
+				052FED181674E4D20001E076 /* FaderPack.cpp */,
+				052FED191674E4D20001E076 /* FaderPack.h */,
 			);
 			name = engine;
 			path = ../src/engine;
@@ -472,6 +482,8 @@
 				05782EEB1670A04B00FD39B7 /* Toolbar.cpp in Sources */,
 				05782EEC1670A04B00FD39B7 /* World.cpp in Sources */,
 				051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */,
+				052FED161674E4C20001E076 /* Fader.cpp in Sources */,
+				052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

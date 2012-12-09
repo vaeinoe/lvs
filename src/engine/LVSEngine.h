@@ -15,6 +15,8 @@
 #include "Audio.h"
 #include "Mainmenu.h"
 #include "Resources.h"
+#include "FaderPack.h"
+#include "Fader.h"
 
 class Toolbar;
 class World;
@@ -22,6 +24,8 @@ class Player;
 class Audio;
 class Configuration;
 class Mainmenu;
+class FaderPack;
+class Fader;
 
 class LVSEngine {
 public:
@@ -49,6 +53,8 @@ private:
     
     int loadState;
     string loadStr;
+    
+    Fader *screenFader;
 
     Timer *fadeTimer;
     int   fadeDir;
@@ -61,5 +67,7 @@ private:
     Player *mPlayer;
     Vec2i *mMouseLoc;
     Audio *mAudio;
+    FaderPack *mFaders;
+
     Configuration *mConfig;
 };
