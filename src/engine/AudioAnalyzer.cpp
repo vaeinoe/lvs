@@ -24,9 +24,10 @@ void AudioAnalyzer::update()
         if ( !mFft ) { mFft = Kiss::create( audioSize ); }
 
         audioFloat = new float[audioSize];
+        
         int16_t * srcBuffer = reinterpret_cast<int16_t *>( audioData );
         for( uint32_t i = 0; i < ( audioSize ); i++ ) {
-            audioFloat[i] = ( ( srcBuffer[i] / 32767.0f ) + 1.0f ) * 0.5f;
+            audioFloat[i] = ( ( srcBuffer[i] / 32767.0f * ANALYSIS_GAIN) + 1.0f ) * 0.5f;
         }
         
         mFft->setData( audioFloat );

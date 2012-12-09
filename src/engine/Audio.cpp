@@ -18,6 +18,8 @@ double Audio::presets[][NUMTRACKS] = {
 void Audio::setup(Configuration *config)
 {
     audioEngine = createIrrKlangDevice();
+    audioEngine->setSoundVolume(MAIN_VOLUME);
+    
     analyzer = new AudioAnalyzer();
     audioEngine->setMixedDataOutputReceiver(analyzer);
 
