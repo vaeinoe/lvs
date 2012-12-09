@@ -8,7 +8,7 @@
 
 #include "Fader.h"
 
-void Fader::setup(FaderPack *faderPack)
+void Fader::setup(FaderPack *faderPack, int newType)
 {
     mMaster = faderPack;
     active = false;
@@ -18,6 +18,8 @@ void Fader::setup(FaderPack *faderPack)
     
     startTime = 0.0;
     durTime = 0.0;
+    
+    typeId = newType;
 }
 
 void Fader::pause() {
@@ -65,7 +67,7 @@ void Fader::update()
             *param = destVal;
             active = false;
             for( vector<FadeObserver*>::iterator t = mObs.begin(); t != mObs.end(); ++t ){
-                (*t)->onFadeEnd();
+                (*t)->onFadeEnd(typeId);
             }
 
         }

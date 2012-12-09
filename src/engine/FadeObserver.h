@@ -10,5 +10,5 @@
 class FadeObserver
 {
 public:
-    virtual void onFadeEnd() {};
+    virtual void onFadeEnd(int type) {};
 };

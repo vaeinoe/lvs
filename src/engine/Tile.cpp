@@ -9,6 +9,10 @@
 
 #include "Tile.h"
 
+#define FADEFADER 0
+#define GROWFADER 1
+#define MOVEFADER 2
+
 // Init defaults
 void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool grow )
 {
@@ -16,15 +20,15 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
     
     pos = new Vec2i( newPos.x, newPos.y );
 
-    fadeFader = config->faders->createFader();
+    fadeFader = config->faders->createFader(FADEFADER);
     fadeFader->bindParam(&baseAlpha);
     fadeFader->addObserver(this);
     
-    growFader = config->faders->createFader();
+    growFader = config->faders->createFader(GROWFADER);
     growFader->bindParam(&growPos);
     growFader->addObserver(this);
     
-    moveFader = config->faders->createFader();
+    moveFader = config->faders->createFader(MOVEFADER);
     moveFader->bindParam(&movePos);
     moveFader->addObserver(this);
     
@@ -321,7 +325,7 @@ inline void Tile::drawSelected(Vec2f draw_pos, float val) {
     gl::drawSolidCircle( draw_pos, baseTileSize, 6 );
 }
 
-void Tile::onFadeEnd()
+void Tile::onFadeEnd(int typeId)
 {
-    cout << "Fade end" << endl;
+    cout << "Fade end: " << typeId << endl;
 }
