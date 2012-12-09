@@ -69,10 +69,10 @@ void FaderPack::shutdown()
     mFaders.clear();
 }
 
-Fader* FaderPack::createFader()
+Fader* FaderPack::createFader(int type)
 {
     Fader *fader = new Fader();
-    fader->setup(this);
+    fader->setup(this, type);
     mFaders.push_back(fader);
     
     return fader;

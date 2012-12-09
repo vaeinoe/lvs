@@ -29,7 +29,7 @@ public:
     bool isActive();
     double getSeconds();
     
-    Fader* createFader();
+    Fader* createFader(int type = 0);
     
 private:
     bool active;

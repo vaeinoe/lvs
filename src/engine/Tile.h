@@ -28,7 +28,7 @@ public:
     int kill(int mult = 1);
     bool selectable();
     
-    void onFadeEnd();
+    void onFadeEnd(int typeId);
     
     int type;
 private:

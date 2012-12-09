@@ -17,7 +17,7 @@ class Configuration;
 
 class Fader {
 public:
-	void setup(FaderPack *faderPack);
+	void setup(FaderPack *faderPack, int newType = 0);
 	void update();
 	void shutdown();
 
@@ -38,6 +38,7 @@ public:
 private:
     vector<FadeObserver*> mObs;
     FaderPack *mMaster;
+    int typeId;
     
     bool active;
     
