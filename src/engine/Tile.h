@@ -62,26 +62,17 @@ private:
     Vec2f drawPos;
     
     Fader *fadeFader;
-    double fadePos;
+    double baseAlpha;
     
     Fader *moveFader;
     double movePos;
-
-    Fader *growFader;
-    double growPos;
-
-    Timer *fadeTimer;
-    bool fading;
-    float baseAlpha;
-    
-    Timer *growTimer;
-    bool growing;
-
-    Timer *moveTimer;
     bool moving;
     Vec2i  moveSrcPos;
     Vec2f  moveSrcLoc;
     Vec2i  moveDestPos;
     Vec2f  moveDestLoc;
-    double moveTimeSec;
+
+    Fader *growFader;
+    double growPos;
+    bool growing;
 };
