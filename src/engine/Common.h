@@ -17,8 +17,8 @@
 #include "cinder/Timer.h"
 #include "cinder/Utilities.h"
 #include "cinder/gl/TextureFont.h"
-#include "../ciUI/ciUI.h"
 #include "KissFFT.h"
+#include "../ciUI/ciUI.h"
 
 #define MAIN_VOLUME 0.8
 #define ANALYSIS_GAIN 1.0

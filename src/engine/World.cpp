@@ -174,8 +174,8 @@ bool World::resolveTile(int x, int y, bool act) {
     if (act) {
         tiles[tileIdx]->kill();
         
-        int mult = 1;
-        if (extraHit) mult = 2;
+        int mult = 2;
+        if (extraHit) mult = 3;
         
         if (reqHit) {
             for (int i = 0; i < 2; i++) {
