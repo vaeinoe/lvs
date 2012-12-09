@@ -22,8 +22,14 @@ void AudioAnalyzer::update()
 {
     if (audioSize > 0) {
         if ( !mFft ) { mFft = Kiss::create( audioSize ); }
-    
-        mFft->setData( audioData );
+
+        audioFloat = new float[audioSize];
+        int16_t * srcBuffer = reinterpret_cast<int16_t *>( audioData );
+        for( uint32_t i = 0; i < ( audioSize ); i++ ) {
+            audioFloat[i] = ( ( srcBuffer[i] / 32767.0f ) + 1.0f ) * 0.5f;
+        }
+        
+        mFft->setData( audioFloat );
 
         freqData = mFft->getAmplitude();
         timeData = mFft->getData();
@@ -79,8 +85,11 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
 
 void AudioAnalyzer::OnAudioDataReady ( const void * data, int byteCount, int playbackrate )
 {
-    audioSize = byteCount;
+    audioSize = byteCount / 2;
     sampleRate = playbackrate;
-    audioData = (unsigned short *)data;
-    cout << "Received " << byteCount << "/" << playbackrate << endl;
+    
+    audioData = (int16_t *)data;
+    //audioData = new int16_t[ byteCount ];
+    //memcpy( audioData, data, mDataSize );
+    // cout << "Received " << byteCount << "/" << playbackrate << endl;
 }

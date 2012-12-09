@@ -26,8 +26,9 @@ private:
 
     PolyLine<Vec2f> prevLines[5];
 
-    unsigned short *audioData;
+    int16_t *audioData;
     int32_t audioSize;
+    float *audioFloat;
     
     float *freqData;
     float *timeData;
