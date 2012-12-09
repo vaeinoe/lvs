@@ -37,6 +37,11 @@ void Fader::resume() {
     }
 }
 
+void Fader::addObserver(FadeObserver *obs)
+{
+    mObs.push_back(obs);
+}
+
 void Fader::bindParam(double *newParam) { param = newParam; }
 
 void Fader::fade(double dest, double dur)
@@ -59,6 +64,10 @@ void Fader::update()
         if (diffTime > durTime) {
             *param = destVal;
             active = false;
+            for( vector<FadeObserver*>::iterator t = mObs.begin(); t != mObs.end(); ++t ){
+                (*t)->onFadeEnd();
+            }
+
         }
         else {
             double fadePoint = diffTime / durTime;

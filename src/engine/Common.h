@@ -20,6 +20,9 @@
 #include "KissFFT.h"
 #include "../ciUI/ciUI.h"
 
+#define PLAYFIELD_W 950
+#define PLAYFIELD_H 650
+
 #define MAIN_VOLUME 0.8
 #define ANALYSIS_GAIN 1.0
 

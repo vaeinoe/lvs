@@ -10,6 +10,7 @@
 #include "Configuration.h"
 #include "Common.h"
 #include "FaderPack.h"
+#include "FadeObserver.h"
 
 class FaderPack;
 class Configuration;
@@ -30,10 +31,12 @@ public:
     // XXX: void setCurve(int curveType);
     // XXX: void bindFinishedCallback();
     void bindParam(double *param);
+    void addObserver(FadeObserver *obs);
     
     void fade(double dest, double dur);
 
 private:
+    vector<FadeObserver*> mObs;
     FaderPack *mMaster;
     
     bool active;
