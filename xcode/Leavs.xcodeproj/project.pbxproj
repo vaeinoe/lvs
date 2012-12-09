@@ -90,6 +90,7 @@
 		053BA83E163D79B30095EBEF /* kiss_fftr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fftr.h; sourceTree = "<group>"; };
 		053BA83F163D79B30095EBEF /* KissFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KissFFT.cpp; sourceTree = "<group>"; };
 		053BA840163D79B30095EBEF /* KissFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissFFT.h; sourceTree = "<group>"; };
+		054B263716751DA60088AD3A /* FadeObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeObserver.h; sourceTree = "<group>"; };
 		05734F141670C9AA00205DAD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 		05782ED31670A04B00FD39B7 /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		05782ED41670A04B00FD39B7 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
@@ -231,6 +232,7 @@
 				05782EE21670A04B00FD39B7 /* Toolbar.h */,
 				05782EE31670A04B00FD39B7 /* World.cpp */,
 				05782EE41670A04B00FD39B7 /* World.h */,
+				054B263716751DA60088AD3A /* FadeObserver.h */,
 			);
 			name = engine;
 			path = ../src/engine;

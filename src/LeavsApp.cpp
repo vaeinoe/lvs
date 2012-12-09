@@ -22,7 +22,7 @@ private:
 
 void LeavsApp::prepareSettings( Settings *settings )
 {
-    settings->setWindowSize( 950 , 650 );
+    settings->setWindowSize( PLAYFIELD_W , PLAYFIELD_H );
     settings->setFrameRate( 30.0f );
 }
 

@@ -18,10 +18,15 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
 
     fadeFader = config->faders->createFader();
     fadeFader->bindParam(&baseAlpha);
+    fadeFader->addObserver(this);
+    
     growFader = config->faders->createFader();
     growFader->bindParam(&growPos);
+    growFader->addObserver(this);
+    
     moveFader = config->faders->createFader();
     moveFader->bindParam(&movePos);
+    moveFader->addObserver(this);
     
     active = false;
     selected = false;
@@ -314,4 +319,9 @@ inline void Tile::drawActive(Vec2f draw_pos, float val) {
 inline void Tile::drawSelected(Vec2f draw_pos, float val) {
     gl::color (1.0, 0.2, 0.8, 0.40 * baseAlpha);
     gl::drawSolidCircle( draw_pos, baseTileSize, 6 );
+}
+
+void Tile::onFadeEnd()
+{
+    cout << "Fade end" << endl;
 }

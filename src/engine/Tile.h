@@ -11,10 +11,11 @@
 #include "Configuration.h"
 #include "Fader.h"
 #include "FaderPack.h"
+#include "FadeObserver.h"
 
 class Configuration;
 
-class Tile {
+class Tile : public FadeObserver {
 public:
     void setup( Configuration *config, const Vec2i pos, int type, bool grow );
     void update( const float dist, const float modifier );
@@ -26,6 +27,8 @@ public:
     void moveTo( const Vec2i newPos );
     int kill(int mult = 1);
     bool selectable();
+    
+    void onFadeEnd();
     
     int type;
 private:
