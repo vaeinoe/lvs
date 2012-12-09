@@ -22,7 +22,7 @@ public:
     Vec2i *pos;
 
     void moveTo( const Vec2i newPos );
-    int kill();
+    int kill(int mult = 1);
     bool selectable();
     
     int type;

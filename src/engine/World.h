@@ -42,8 +42,10 @@ private:
     void swapTiles( Tile *tile1, Tile *tile2 );
     bool resolveTiles(const bool act);
     bool resolveTile(int x, int y, bool act);
-    int tileIndex(int x, int y);
 
+    int tileIndex(int x, int y);
+    int tileIndex(Vec2i pos);
+    
     vector< GLfloat > tileVerts;
     vector< GLfloat > tileColors;
     
