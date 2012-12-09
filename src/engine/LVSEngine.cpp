@@ -15,7 +15,7 @@
 #include "LVSEngine.h"
 
 void LVSEngine::setup(Configuration *config)
-{        
+{
     fadeTimer   = new Timer();
     fadeDir     = 0;
     fadeTimeSec = 0;
@@ -38,7 +38,7 @@ void LVSEngine::setup(Configuration *config)
     gameState = S_LOADING;
     
     loadState = 0;
-    loadStr = "wait 5";
+    loadStr = "init: toolbar";
 
     loadFont = Font( loadResource( RES_FONT ), 32);
     texFont = gl::TextureFont::create(loadFont);
@@ -50,23 +50,23 @@ void LVSEngine::loadAll() {
     switch (loadState) {
         case 0:
             mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
-            loadStr = "wait 4";
+            loadStr = "init: world";
             break;
         case 1:
             mWorld->setup(mConfig, Vec2i(mConfig->worldWidth, mConfig->worldHeight));
-            loadStr = "wait 3";
+            loadStr = "init: player";
             break;
         case 2:
             mPlayer->setup(mConfig);
-            loadStr = "wait 2";
+            loadStr = "init: menu";
             break;
         case 3:
             mMenu->setup(mConfig);
-            loadStr = "wait 1";
+            loadStr = "init: audio";
             break;
         case 4:
             mAudio->setup(mConfig);
-            loadStr = "wait 0";
+            loadStr = "init: done";
             break;
         case 5:
             cout << "Running." << endl;

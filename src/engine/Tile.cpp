@@ -176,10 +176,10 @@ inline void Tile::drawAlive(float lightness) {
     gl::color (1.0, 1.0, 1.0, val * baseAlpha);
     
 #ifndef DEBUG
-    if (type == 0) drawHex(drawPos, val);
-    else if (type == 1) drawStar(drawPos, val);
-    else if (type == 2) drawGram(drawPos, val);
-    else if (type == 3) drawPlant(drawPos, val);
+    if (type == 0) drawHex(drawPos, val, mConfig->tileLevels[0]);
+    else if (type == 1) drawStar(drawPos, val, mConfig->tileLevels[1]);
+    else if (type == 2) drawGram(drawPos, val, mConfig->tileLevels[2]);
+    else if (type == 3) drawPlant(drawPos, val, mConfig->tileLevels[3]);
     
     if (active) drawActive(drawPos, val);
     if (selected) drawSelected(drawPos, val);
@@ -187,9 +187,9 @@ inline void Tile::drawAlive(float lightness) {
 }
 
 inline void Tile::drawDead(float lightness) {
-    mConfig->world->addCirclePoly( drawPos, baseTileSize * 0.8, 6, ColorA(0.8, 0.1, lightness * 0.8, 0.6 * baseAlpha) );
-    mConfig->world->addCirclePoly( drawPos, baseTileSize * 0.6, 6, ColorA(0.7, 0.1, lightness * 0.7, 0.5 * baseAlpha) );
-    mConfig->world->addCirclePoly( drawPos, baseTileSize * 0.4, 6, ColorA(0.6, 0.1, lightness * 0.6, 0.4 * baseAlpha) );
+    mConfig->world->addCirclePoly( drawPos, baseTileSize * 0.8, 6, ColorA(0.4, 0.25, lightness * 0.8, 0.6 * baseAlpha) );
+    mConfig->world->addCirclePoly( drawPos, baseTileSize * 0.6, 6, ColorA(0.3, 0.2, lightness * 0.7, 0.5 * baseAlpha) );
+    mConfig->world->addCirclePoly( drawPos, baseTileSize * 0.4, 6, ColorA(0.2, 0.1, lightness * 0.6, 0.4 * baseAlpha) );
 }
 
 inline void Tile::drawGrow(float lightness) {
@@ -219,29 +219,42 @@ inline void Tile::drawLabel(Vec2f draw_pos) {
 }
 
 // Draw the green plant tile (render world when ready)
-inline void Tile::drawPlant(Vec2f draw_pos, float val) {
+inline void Tile::drawPlant(Vec2f draw_pos, float val, int level) {
     int segments = 8;
     
     for (int i = 0; i < FILTER_SIZE; i++) {
         float a = i * 1.0 / FILTER_SIZE;
-        ColorA color = ColorA(0.5, 0.25 * val * i, 0.5, a * baseAlpha * 0.25);
+        ColorA color;
+        if (growing) {
+            color = ColorA(0.5 * val * i, 0.5 * val * i, 0.5 * val * i, a * baseAlpha * 0.25);
+        }
+        else {
+            color = ColorA(0.5, 0.25 * val * i, 0.5, a * baseAlpha * 0.25);
+        }
+        
         mConfig->world->addCirclePoly( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2) * 0.75, segments, color );
     }
 }
 
 // Draw the red tile (render world when ready)
-inline void Tile::drawGram(Vec2f draw_pos, float val) {
+inline void Tile::drawGram(Vec2f draw_pos, float val, int level) {
     int segments = 6;
     
     for (int i = 0; i < FILTER_SIZE; i++) {
         float a = i * 1.0 / FILTER_SIZE;
-        ColorA color = ColorA(0.4, 0.1 * (i / FILTER_SIZE) * val, 1.0 - val * 0.25 * i, a * baseAlpha);
+        ColorA color;
+        if (growing) {
+            color = ColorA(0.1 * (i / FILTER_SIZE) * val, 0.1 * (i / FILTER_SIZE) * val, 0.1 * (i / FILTER_SIZE) * val, a * baseAlpha);            
+        }
+        else {
+            color = ColorA(0.4, 0.1 * (i / FILTER_SIZE) * val, 1.0 - val * 0.25 * i, a * baseAlpha);            
+        }
         mConfig->world->addCirclePoly( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2), segments, color );
     }
 }
 
 // Draw the blue hex tile (render world when ready)
-inline void Tile::drawHex(Vec2f draw_pos, float val)
+inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
 {
     int hexCount = 4;
     int segments = 6;
@@ -249,27 +262,50 @@ inline void Tile::drawHex(Vec2f draw_pos, float val)
     for (int i = 0; i < FILTER_SIZE; i++) {
         float a = i * 1.0 / FILTER_SIZE;
         for (int j = 0; j < hexCount; j++) {
-            ColorA color = ColorA((i / FILTER_SIZE) * 0.25, 0.1 * j * val, 1.0 - val * 0.25 * j, 0.5 * a * baseAlpha);
+            ColorA color;
+            if (growing) {
+                color = ColorA(0.1 * j * val, 0.1 * j * val, 0.1 * j * val, 0.25 * a * baseAlpha);
+            }
+            else {
+                color = ColorA((i / FILTER_SIZE) * 0.25, 0.1 * j * val, 1.0 - val * 0.25 * j, 0.5 * a * baseAlpha);
+            }
+
             mConfig->world->addCirclePoly( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments, color );
         }
     }
 }
 
 // Draw a star tile
-inline void Tile::drawStar(Vec2f draw_pos, float val)
+inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
 {
     GLfloat lines[LINE_COUNT * 4];
     GLfloat colors[LINE_COUNT * 8];
 
     for (int i = 0; i < LINE_COUNT; i++) {
         int lineIdx = i * 4;
-
+        
         // Gradient color lines
         float a = (i % 2 == 0) ? 0.5 : 0.25;
-        colors[2 * lineIdx + 0] = 0.0; colors[2 * lineIdx + 1] = 0.6;
-        colors[2 * lineIdx + 2] = 1.0; colors[2 *lineIdx + 3] = a * baseAlpha;
-        colors[2 * lineIdx + 4] = 1.0; colors[2 * lineIdx + 5] = 0.6;
-        colors[2 * lineIdx + 6] = 1.0; colors[2 * lineIdx + 7] = a * baseAlpha;
+        if (growing) {
+            colors[2 * lineIdx + 0] = 0.2; colors[2 * lineIdx + 1] = 0.2;
+            colors[2 * lineIdx + 2] = 0.2; colors[2 *lineIdx + 3] = a * baseAlpha * 0.33;
+            colors[2 * lineIdx + 4] = 1.0; colors[2 * lineIdx + 5] = 1.0;
+            colors[2 * lineIdx + 6] = 1.0; colors[2 * lineIdx + 7] = a * baseAlpha * 0.33;
+        }
+        else {
+            if (level == 0) {
+                colors[2 * lineIdx + 0] = 0.2; colors[2 * lineIdx + 1] = 0.2;
+                colors[2 * lineIdx + 2] = 0.2; colors[2 *lineIdx + 3] = a * baseAlpha;
+                colors[2 * lineIdx + 4] = 1.0; colors[2 * lineIdx + 5] = 1.0;
+                colors[2 * lineIdx + 6] = 1.0; colors[2 * lineIdx + 7] = a * baseAlpha;                
+            }
+            else if (level == 1) {
+                colors[2 * lineIdx + 0] = 0.0; colors[2 * lineIdx + 1] = 0.6;
+                colors[2 * lineIdx + 2] = 1.0; colors[2 *lineIdx + 3] = a * baseAlpha;
+                colors[2 * lineIdx + 4] = 1.0; colors[2 * lineIdx + 5] = 0.6;
+                colors[2 * lineIdx + 6] = 1.0; colors[2 * lineIdx + 7] = a * baseAlpha;                
+            }
+        }
         
         float angle = (i / (1.0 * LINE_COUNT)) * (2 * M_PI);
         float x = draw_pos.x + tileSize * 1.5 * cos(angle);
