@@ -48,6 +48,10 @@ void LeavsApp::setup()
     config->padding = 10.0f;
     config->numTileTypes = TILE_TYPES;
     config->solverDelayFrames = 2;
+    
+    for (int i = 0; i < config->numTileTypes; i++) {
+        config->tileLevels[i] = 0;
+    }
 
     engine = new LVSEngine();
     engine->setup(config);

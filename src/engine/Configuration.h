@@ -31,6 +31,8 @@ public:
     float padding;
     int solverDelayFrames;
     
+    int tileLevels[TILE_TYPES];
+    
     Player *player;
     World *world;
     LVSEngine *engine;
