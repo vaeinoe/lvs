@@ -15,25 +15,28 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
     mConfig = config;
     
     pos = new Vec2i( newPos.x, newPos.y );
-        
+
+    fadeFader = config->faders->createFader();
+    fadeFader->bindParam(&baseAlpha);
+    growFader = config->faders->createFader();
+    growFader->bindParam(&growPos);
+    moveFader = config->faders->createFader();
+    moveFader->bindParam(&movePos);
+    
     active = false;
     selected = false;
     type = newType;
 
-    moveTimer = new Timer();
     moving = false;
     dead = false;
 
-    fadeTimer = new Timer();
-    fading = false;
-    
-    growTimer = new Timer();
     if (grow) {
         baseTileSize = 0;
+        baseAlpha = 0.0;
         tileSize = 0;
         growing = true;
-        growTimer->start();
-        baseAlpha = 0.0;
+        growPos = 0.0;
+        growFader->fade(1.0, GROW_TIME_SEC);
     }
     else {
         baseTileSize = mConfig->tileSize;
@@ -63,9 +66,7 @@ int Tile::kill(int mult) {
     mConfig->player->addScore(mult, type);
     type = -1;
     
-    fadeTimer->start();
-    fading = true;
-    
+    fadeFader->fade(0.0, FADE_TIME_SEC);    
     return mult;
 }
 
@@ -73,7 +74,6 @@ int Tile::kill(int mult) {
 void Tile::moveTo( Vec2i newPos ) {
     if (!dead && !moving && !growing) {
         moving = true;
-        moveTimeSec = MOVE_TIME_SEC;
 
         moveSrcPos = Vec2i(pos->x, pos->y);
         moveDestPos = Vec2i(newPos.x, newPos.y);
@@ -82,46 +82,33 @@ void Tile::moveTo( Vec2i newPos ) {
         moveDestLoc = getScreenPositionVector(moveDestPos);
 
         baseAlpha = 0.5;
-        moveTimer->start();
+        
+        movePos = 0.0;
+        moveFader->fade(1.0, MOVE_TIME_SEC);
     }
 }
 
 void Tile::update( const float dist, const float modifier )
 {
-    if (growing && !growTimer->isStopped()) {
-        double time = growTimer->getSeconds();
-        if (time >= GROW_TIME_SEC) {
+    if (dead && !fadeFader->isActive()) { regrow(); }
+
+    if (growing) {
+        if (!growFader->isActive()) {
             growing = false;
             baseAlpha = 1;
-            growTimer->stop();
             baseTileSize = mConfig->tileSize;
-            tileSize = mConfig->tileSize;
+            tileSize = mConfig->tileSize;            
         }
         else {
-            baseAlpha = time / GROW_TIME_SEC;
-            baseTileSize = time / GROW_TIME_SEC * mConfig->tileSize;
-            tileSize = time / GROW_TIME_SEC * mConfig->tileSize;
+            baseAlpha = growPos;
+            baseTileSize = growPos * mConfig->tileSize;
+            tileSize = growPos * mConfig->tileSize;
         }
     }
-    if (fading && !fadeTimer->isStopped()) {
-        double time = fadeTimer->getSeconds();
-        if (time >= FADE_TIME_SEC) {
-            fading = false;
-            baseAlpha = 0;
-            fadeTimer->stop();
-            regrow();
-        }
-        else {
-            baseAlpha = 1 - (time / FADE_TIME_SEC);
-        }
-    }
-    if (moving && !moveTimer->isStopped()) {
-        double time = moveTimer->getSeconds();
-        if (time >= moveTimeSec) {
-            // Correct final draw pos
+    
+    else if (moving) {
+        if (!moveFader->isActive()) {
             moving = false;
-            moveTimer->stop();
-            
             pos->x = moveDestPos.x;
             pos->y = moveDestPos.y;
             drawPos = getScreenPositionVector();
@@ -129,10 +116,7 @@ void Tile::update( const float dist, const float modifier )
             baseAlpha = 1.0;
         }
         else {
-            double movePoint = time / moveTimeSec;
-            drawPos = moveSrcLoc - ((moveSrcLoc - moveDestLoc) * movePoint);
-            // Check move vector directions
-            // Update screen position
+            drawPos = moveSrcLoc - ((moveSrcLoc - moveDestLoc) * movePos);
         }
     }
 

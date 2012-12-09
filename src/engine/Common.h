@@ -26,7 +26,7 @@
 #define TILE_TYPES 4
 #define NUMTRACKS 6
 
-#define MOVE_TIME_SEC 1.0
+#define MOVE_TIME_SEC 0.75
 #define FADE_TIME_SEC 2.0
 #define GROW_TIME_SEC 6.0
 
