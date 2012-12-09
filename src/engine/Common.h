@@ -20,6 +20,9 @@
 #include "../ciUI/ciUI.h"
 #include "KissFFT.h"
 
+#define MAIN_VOLUME 0.8
+#define ANALYSIS_GAIN 1.0
+
 #define TILE_TYPES 4
 #define NUMTRACKS 6
 
