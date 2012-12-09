@@ -56,17 +56,17 @@ bool Tile::selectable() { return (!dead && !moving && !growing); }
 
 void Tile::regrow() { setup(mConfig, *pos, mConfig->world->rndTileType(), true); }
 
-int Tile::kill() {
-    if (moving || dead || growing) {
-        return 0;
-    }
+int Tile::kill(int mult) {
+    if (moving || dead || growing) { return 0; }
+    
     dead = true;
-    mConfig->player->addScore(1, type);
+    mConfig->player->addScore(mult, type);
     type = -1;
+    
     fadeTimer->start();
     fading = true;
     
-    return 1;
+    return mult;
 }
 
 // Starts moving the tile to another position

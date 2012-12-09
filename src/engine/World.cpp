@@ -76,6 +76,7 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
 
 // Mimic 2d array indexing
 inline int World::tileIndex(int x, int y) { return ((x * size->y) + y); }
+inline int World::tileIndex(Vec2i pos) { return ((pos.x * size->y) + pos.y); }
 
 // Returns the coordinate of tile's immediate neighbour to direction dir (lengths ignored)
 inline Vec2i World::neighbourCoord(Vec2i pos, Vec2i dir)
@@ -132,29 +133,63 @@ bool World::resolveTiles(const bool act) {
 // doesn't kill tiles or update score
 bool World::resolveTile(int x, int y, bool act) {
     Vec2i pos = Vec2i(x, y);
-    Vec2i pup = neighbourCoord(pos, Vec2i(0,  1));
-    Vec2i pdo = neighbourCoord(pos, Vec2i(0, -1));
+    int tileIdx = tileIndex(pos);
 
-    int idx = tileIndex(pos.x, pos.y);
-    int idx2 = tileIndex(pup.x, pup.y);
-    int idx3 = tileIndex(pdo.x, pdo.y);
+    if (!tiles[tileIdx]->selectable()) { return false; }
+
+    // These are enough for hit
+    int reqTiles[] = {
+        tileIndex(neighbourCoord(pos, Vec2i(0,  1))),
+        tileIndex(neighbourCoord(pos, Vec2i(0, -1)))
+    };
     
-    if (tiles[idx]->selectable() &&
-        tiles[idx2]->selectable() &&
-        tiles[idx3]->selectable() &&
-        tiles[idx2]->type == tiles[idx]->type &&
-        tiles[idx3]->type == tiles[idx]->type) {
-        
-        if (act) {
-            tiles[idx]->kill();
-            tiles[idx2]->kill();
-            tiles[idx3]->kill();
+    // These give extra points
+    int extraTiles[] = {
+        tileIndex(neighbourCoord(pos, Vec2i(1,  1))),
+        tileIndex(neighbourCoord(pos, Vec2i(1, -1))),
+        tileIndex(neighbourCoord(pos, Vec2i(-1,  1))),
+        tileIndex(neighbourCoord(pos, Vec2i(-1, -1)))
+    };
+    
+    int type = tiles[tileIdx]->type;
+    
+    int reqHit = true;
+    for (int i = 0; i < 2; i++) {
+        if (reqTiles[i] >= tiles.size() || !tiles[reqTiles[i]]->selectable() || tiles[reqTiles[i]]->type != type) {
+            reqHit = false;
+            break;
         }
-        
-        return true;
     }
-    
-    return false;
+
+    if (!reqHit) return false;
+
+    int extraHit = true;
+    for (int i = 0; i < 4; i++) {
+        if (extraTiles[i] >= tiles.size() || !tiles[extraTiles[i]]->selectable() || tiles[extraTiles[i]]->type != type) {
+            extraHit = false;
+            break;
+        }
+    }
+
+    if (act) {
+        tiles[tileIdx]->kill();
+        
+        int mult = 1;
+        if (extraHit) mult = 2;
+        
+        if (reqHit) {
+            for (int i = 0; i < 2; i++) {
+                tiles[reqTiles[i]]->kill(mult);
+            }
+        }
+        if (extraHit) {
+            for (int i = 0; i < 4; i++) {
+                tiles[extraTiles[i]]->kill(mult);
+            }
+        }
+    }
+
+    return true;
 }
 
 void World::draw()
