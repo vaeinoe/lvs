@@ -9,6 +9,8 @@
 #pragma once
 #include "Common.h"
 #include "Configuration.h"
+#include "Fader.h"
+#include "FaderPack.h"
 
 class Configuration;
 
@@ -58,6 +60,15 @@ private:
     void drawActive(Vec2f pos, float val);
     
     Vec2f drawPos;
+    
+    Fader *fadeFader;
+    double fadePos;
+    
+    Fader *moveFader;
+    double movePos;
+
+    Fader *growFader;
+    double growPos;
 
     Timer *fadeTimer;
     bool fading;

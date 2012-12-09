@@ -19,12 +19,9 @@ void AudioTrack::setup(Audio *audio, int trackNo, bool looping)
     
     mAudio = audio;
     
-    fadeTimer   = new Timer();
-    fading      = false;
-    fadeSrcVol  = 0.0;
-    fadeDestVol = 0.0;
-    fadeTimeSec = 0;
-        
+    volFader = mAudio->mConfig->faders->createFader();
+    volFader->bindParam(&volume);
+    
     DataSourceRef trackRef = loadTrack( trackNo );
     Buffer trackBuf = trackRef->getBuffer();
     mSoundSource = audio->audioEngine->addSoundSourceFromMemory(trackBuf.getData(), trackBuf.getDataSize(), name);
@@ -36,33 +33,12 @@ void AudioTrack::setup(Audio *audio, int trackNo, bool looping)
 
 void AudioTrack::fadeTo(float destVol, double fadeSec)
 {
-    fading = true;
-    fadeSrcVol = mTrack->getVolume();
-    fadeDestVol = destVol;
-    fadeTimeSec = fadeSec;
-    
-    fadeTimer->start();
+    volFader->fade(destVol, fadeSec);
 }
 
 void AudioTrack::update()
 {
-    if (fading && !fadeTimer->isStopped()) {
-        double time = fadeTimer->getSeconds();
-        if (time > fadeTimeSec) {
-            mTrack->setVolume(fadeDestVol);
-            fading = false;
-            fadeTimer->stop();
-        }
-        else {
-            double fadePoint = time / fadeTimeSec;
-            if (fadeSrcVol < fadeDestVol) {
-                mTrack->setVolume(fadeSrcVol + (fadePoint * (fadeDestVol - fadeSrcVol)));
-            }
-            else if (fadeSrcVol > fadeDestVol) {
-                mTrack->setVolume(fadeSrcVol - (fadePoint * (fadeSrcVol - fadeDestVol)));
-            }
-        }
-    }
+    mTrack->setVolume(volume);    
 }
 
 void AudioTrack::draw(float scaleIn, float offsetIn)

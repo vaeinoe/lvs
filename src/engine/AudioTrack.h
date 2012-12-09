@@ -11,6 +11,8 @@
 #include "Configuration.h"
 #include "AudioAnalyzer.h"
 #include "irrKlang.h"
+#include "FaderPack.h"
+#include "Fader.h"
 using namespace irrklang;
 
 class Audio;
@@ -49,9 +51,6 @@ private:
     
     bool fftRunning;
     
-    Timer *fadeTimer;
-    bool   fading;
-    float  fadeSrcVol;
-    float  fadeDestVol;
-    double fadeTimeSec;
+    Fader *volFader;
+    double volume;
 };

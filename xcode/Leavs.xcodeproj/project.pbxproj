@@ -209,10 +209,16 @@
 			children = (
 				05782ED31670A04B00FD39B7 /* Audio.cpp */,
 				05782ED41670A04B00FD39B7 /* Audio.h */,
+				051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */,
+				051283611673EDC400A4AAB1 /* AudioAnalyzer.h */,
 				05782ED51670A04B00FD39B7 /* AudioTrack.cpp */,
 				05782ED61670A04B00FD39B7 /* AudioTrack.h */,
 				05782ED71670A04B00FD39B7 /* Common.h */,
 				05782ED81670A04B00FD39B7 /* Configuration.h */,
+				052FED141674E4C20001E076 /* Fader.cpp */,
+				052FED151674E4C20001E076 /* Fader.h */,
+				052FED181674E4D20001E076 /* FaderPack.cpp */,
+				052FED191674E4D20001E076 /* FaderPack.h */,
 				05782ED91670A04B00FD39B7 /* LVSEngine.cpp */,
 				05782EDA1670A04B00FD39B7 /* LVSEngine.h */,
 				05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */,
@@ -225,12 +231,6 @@
 				05782EE21670A04B00FD39B7 /* Toolbar.h */,
 				05782EE31670A04B00FD39B7 /* World.cpp */,
 				05782EE41670A04B00FD39B7 /* World.h */,
-				051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */,
-				051283611673EDC400A4AAB1 /* AudioAnalyzer.h */,
-				052FED141674E4C20001E076 /* Fader.cpp */,
-				052FED151674E4C20001E076 /* Fader.h */,
-				052FED181674E4D20001E076 /* FaderPack.cpp */,
-				052FED191674E4D20001E076 /* FaderPack.h */,
 			);
 			name = engine;
 			path = ../src/engine;
