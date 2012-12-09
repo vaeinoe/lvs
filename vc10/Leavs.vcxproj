@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{74202EDD-91D2-4D2A-B0B6-355CEB16E6BE}</ProjectGuid>
+    <RootNamespace>LeavsApp</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\cinder_0.8.4_vc2010\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder_d.lib;KissFFT_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_vc2010\lib;..\..\cinder_0.8.4_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\..\cinder_0.8.4_mac\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_mac\lib;..\..\cinder_0.8.4_mac\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\engine\Audio.cpp" />
+    <ClCompile Include="..\src\engine\AudioTrack.cpp" />
+    <ClCompile Include="..\src\engine\LVSEngine.cpp" />
+    <ClCompile Include="..\src\engine\Mainmenu.cpp" />
+    <ClCompile Include="..\src\engine\Player.cpp" />
+    <ClCompile Include="..\src\engine\Tile.cpp" />
+    <ClCompile Include="..\src\engine\Toolbar.cpp" />
+    <ClCompile Include="..\src\engine\World.cpp" />
+    <ClCompile Include="..\src\LeavsApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\src\ciUI\ciUI.h" />
+    <ClInclude Include="..\src\ciUI\ciUI2DPad.h" />
+    <ClInclude Include="..\src\ciUI\ciUIBiLabelSlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUIButton.h" />
+    <ClInclude Include="..\src\ciUI\ciUICanvas.h" />
+    <ClInclude Include="..\src\ciUI\ciUICircleSlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUIDropDownList.h" />
+    <ClInclude Include="..\src\ciUI\ciUIEvent.h" />
+    <ClInclude Include="..\src\ciUI\ciUIFPS.h" />
+    <ClInclude Include="..\src\ciUI\ciUIFPSSlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUIImage.h" />
+    <ClInclude Include="..\src\ciUI\ciUIImageButton.h" />
+    <ClInclude Include="..\src\ciUI\ciUIImageSampler.h" />
+    <ClInclude Include="..\src\ciUI\ciUIImageSlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUIImageToggle.h" />
+    <ClInclude Include="..\src\ciUI\ciUILabel.h" />
+    <ClInclude Include="..\src\ciUI\ciUILabelButton.h" />
+    <ClInclude Include="..\src\ciUI\ciUILabelToggle.h" />
+    <ClInclude Include="..\src\ciUI\ciUIMinimalSlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUIMovingGraph.h" />
+    <ClInclude Include="..\src\ciUI\ciUIMultiImageButton.h" />
+    <ClInclude Include="..\src\ciUI\ciUIMultiImageToggle.h" />
+    <ClInclude Include="..\src\ciUI\ciUINumberDialer.h" />
+    <ClInclude Include="..\src\ciUI\ciUIRadio.h" />
+    <ClInclude Include="..\src\ciUI\ciUIRangeSlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUIRectangle.h" />
+    <ClInclude Include="..\src\ciUI\ciUIRotarySlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUIScrollableCanvas.h" />
+    <ClInclude Include="..\src\ciUI\ciUISlider.h" />
+    <ClInclude Include="..\src\ciUI\ciUISpacer.h" />
+    <ClInclude Include="..\src\ciUI\ciUISpectrum.h" />
+    <ClInclude Include="..\src\ciUI\ciUITextInput.h" />
+    <ClInclude Include="..\src\ciUI\ciUIToggle.h" />
+    <ClInclude Include="..\src\ciUI\ciUIToggleMatrix.h" />
+    <ClInclude Include="..\src\ciUI\ciUIWaveform.h" />
+    <ClInclude Include="..\src\ciUI\ciUIWidget.h" />
+    <ClInclude Include="..\src\ciUI\ciUIWidgetWithLabel.h" />
+    <ClInclude Include="..\src\engine\Audio.h" />
+    <ClInclude Include="..\src\engine\AudioTrack.h" />
+    <ClInclude Include="..\src\engine\Common.h" />
+    <ClInclude Include="..\src\engine\Configuration.h" />
+    <ClInclude Include="..\src\engine\LVSEngine.h" />
+    <ClInclude Include="..\src\engine\Mainmenu.h" />
+    <ClInclude Include="..\src\engine\Player.h" />
+    <ClInclude Include="..\src\engine\Tile.h" />
+    <ClInclude Include="..\src\engine\Toolbar.h" />
+    <ClInclude Include="..\src\engine\World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

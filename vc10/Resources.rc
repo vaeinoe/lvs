@@ -1,0 +1,11 @@
+#include "../include/Resources.h"
+//ID ICON "cinder_app_icon.ico"
+RES_FONT
+RES_SEQ001
+RES_SEQ002
+RES_SEQ003
+RES_PRC001
+RES_PRC002
+RES_PRC003
+RES_PAD001
+RES_DRS001

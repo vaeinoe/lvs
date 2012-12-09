@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source Files\ciUI">
+      <UniqueIdentifier>{a0c56eeb-6047-40ea-8039-066dd082b937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{0654d22e-ab65-4345-a2a7-009a7d85ecdc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\LeavsApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Audio.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\AudioTrack.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\LVSEngine.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Mainmenu.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Player.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Tile.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Toolbar.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\World.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUI.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIWidgetWithLabel.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUI2DPad.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIBiLabelSlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIButton.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUICanvas.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUICircleSlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIDropDownList.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIEvent.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIFPS.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIFPSSlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIImage.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIImageButton.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIImageSampler.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIImageSlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIImageToggle.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUILabel.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUILabelButton.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUILabelToggle.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIMinimalSlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIMovingGraph.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIMultiImageButton.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIMultiImageToggle.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUINumberDialer.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIRadio.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIRangeSlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIRectangle.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIRotarySlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIScrollableCanvas.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUISlider.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUISpacer.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUISpectrum.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUITextInput.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIToggle.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIToggleMatrix.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIWaveform.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ciUI\ciUIWidget.h">
+      <Filter>Source Files\ciUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\World.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Audio.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\AudioTrack.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Common.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Configuration.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\LVSEngine.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Mainmenu.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Player.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Tile.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Toolbar.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
