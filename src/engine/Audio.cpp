@@ -29,6 +29,9 @@ void Audio::setup(Configuration *config)
     
     analyzer = new AudioAnalyzer();
 	analyzer->setup();
+    
+    audioFx = new AudioFx();
+	audioFx->setup(this);
 
     audioEngine->setMixedDataOutputReceiver(analyzer);
 
@@ -54,6 +57,10 @@ void Audio::fadeToPreset(int presetId, double fadeSec) {
     if (presets[presetId]) {
         for (int i = 0; i < NUMTRACKS; i++) { mTracks[i]->fadeTo(presets[presetId][i], fadeSec); }
     }
+}
+
+void Audio::playTileFx(int tileType, int count) {
+    audioFx->playTileFx(tileType, count);
 }
 
 void Audio::update()

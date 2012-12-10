@@ -32,6 +32,7 @@ void LVSEngine::setup(Configuration *config)
     mConfig->world = mWorld;
     mConfig->player = mPlayer;
     mConfig->faders = mFaders;
+    mConfig->audio = mAudio;
 
     mMouseLoc = new Vec2i(0, 0);
 

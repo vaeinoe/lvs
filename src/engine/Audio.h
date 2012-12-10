@@ -15,12 +15,14 @@
 #include "FaderPack.h"
 #include "Fader.h"
 #include "FadeObserver.h"
+#include "AudioFx.h"
 using namespace irrklang;
 
 #pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
 class AudioTrack;
 class AudioAnalyzer;
+class AudioFx;
 
 class Audio : public FadeObserver {
 public:
@@ -31,6 +33,7 @@ public:
 
     void fadeToPreset(int presetId, double fadeSec);
     void fadeMainTo(float destVol, double fadeSec);
+    void playTileFx(int tileType, int count);
     
     float* getFreqData();
     int32_t getDataSize();
@@ -38,8 +41,9 @@ public:
     AudioTrack *mTracks[32];
 
     void onFadeEnd(int typeId);
-
+    
     friend class AudioTrack;
+    friend class AudioFx;
     
 private:
     Configuration *mConfig;
@@ -47,6 +51,7 @@ private:
     
     ISoundEngine* audioEngine;
     AudioAnalyzer* analyzer;
+    AudioFx* audioFx;
     
     Fader *mainVolFader;
     double mainVol;

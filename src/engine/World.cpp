@@ -172,6 +172,7 @@ bool World::resolveTile(int x, int y, bool act) {
     }
 
     if (act) {
+        mConfig->audio->playTileFx(0, 1);
         tiles[tileIdx]->kill();
         
         int mult = 2;
