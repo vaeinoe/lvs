@@ -66,10 +66,12 @@ private:
     
     Fader *fadeFader;
     double baseAlpha;
+    double fading;
     
     Fader *moveFader;
     double movePos;
     bool moving;
+
     Vec2i  moveSrcPos;
     Vec2f  moveSrcLoc;
     Vec2i  moveDestPos;

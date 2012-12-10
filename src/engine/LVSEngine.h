@@ -17,6 +17,7 @@
 #include "Resources.h"
 #include "FaderPack.h"
 #include "Fader.h"
+#include "FadeObserver.h"
 
 class Toolbar;
 class World;
@@ -27,7 +28,7 @@ class Mainmenu;
 class FaderPack;
 class Fader;
 
-class LVSEngine {
+class LVSEngine : public FadeObserver {
 public:
 	void setup(Configuration *config);
 	void update();
@@ -41,6 +42,8 @@ public:
     void quitGame();
     void startGame();
     void backToMain();
+    
+    void onFadeEnd(int typeId);
 private:
     void fade(int dir, double seconds, bool quitAfter);
     inline void performFade();
@@ -56,6 +59,7 @@ private:
     
     Fader *screenFader;
     double fadeVal;
+    bool fading;
     bool quitAfterFade;
     
     Mainmenu *mMenu;

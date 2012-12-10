@@ -25,9 +25,8 @@ void Audio::setup(Configuration *config)
     mainVol = 0.0;
     audioEngine->setSoundVolume(mainVol);
 
-    mainVolFader = config->faders->createFader();
-    mainVolFader->bindParam(&mainVol);
-        
+    mainVolFader = config->faders->createFader(0, &mainVol, this);
+    
     analyzer = new AudioAnalyzer();
 	analyzer->setup();
 
@@ -46,6 +45,8 @@ void Audio::setup(Configuration *config)
     }
     
     mainVolFader->fade(MAIN_VOLUME, 0.5);
+    fading = true;
+
     fadeToPreset(1, 5.0);
 }
 
@@ -57,7 +58,7 @@ void Audio::fadeToPreset(int presetId, double fadeSec) {
 
 void Audio::update()
 {
-    audioEngine->setSoundVolume(mainVol);
+    if (fading) { audioEngine->setSoundVolume(mainVol); }
 
     for (int i = 0; i < NUMTRACKS; i++) { mTracks[i]->update(); }
     analyzer->update();
@@ -67,6 +68,12 @@ float* Audio::getFreqData() { return analyzer->freqData; }
 int32_t Audio::getDataSize() { return analyzer->dataSize; }
 
 void Audio::draw() { analyzer->draw(1, -300); }
+
+void Audio::onFadeEnd(int typeId)
+{
+    audioEngine->setSoundVolume(mainVol);
+    fading = false;
+}
 
 void Audio::shutdown()
 {

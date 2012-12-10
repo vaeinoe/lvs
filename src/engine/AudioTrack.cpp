@@ -19,8 +19,7 @@ void AudioTrack::setup(Audio *audio, int trackNo, bool looping)
     
     mAudio = audio;
     
-    volFader = mAudio->mConfig->faders->createFader();
-    volFader->bindParam(&volume);
+    volFader = mAudio->mConfig->faders->createFader(0, &volume, this);
     
     DataSourceRef trackRef = loadTrack( trackNo );
     Buffer trackBuf = trackRef->getBuffer();
@@ -33,12 +32,13 @@ void AudioTrack::setup(Audio *audio, int trackNo, bool looping)
 
 void AudioTrack::fadeTo(float destVol, double fadeSec)
 {
+    fading = true;
     volFader->fade(destVol, fadeSec);
 }
 
 void AudioTrack::update()
 {
-    mTrack->setVolume(volume);    
+    if (fading) { mTrack->setVolume(volume); }
 }
 
 void AudioTrack::draw(float scaleIn, float offsetIn)
@@ -64,9 +64,12 @@ void AudioTrack::startFft()     { fftRunning = false; }
 void AudioTrack::stopFft()      { fftRunning = false; }
 bool AudioTrack::isFftRunning() { return fftRunning; }
 
-void AudioTrack::shutdown()
+void AudioTrack::shutdown() { mTrack->stop(); }
+
+void AudioTrack::onFadeEnd(int typeId)
 {
-    mTrack->stop();
+    mTrack->setVolume(volume);
+    fading = false;
 }
 
 // Ugly hack due to the way Cinder handles resources
@@ -88,7 +91,7 @@ DataSourceRef AudioTrack::loadTrack(int trackNo) {
         case 2:
             return loadResource( RES_PRC003 );
         case 3:
-            return loadResource( RES_PRC002 );
+            return loadResource( RES_DRS001 );
         case 4:
             return loadResource( RES_PRC001 );
         case 5:
