@@ -27,6 +27,9 @@ public:
 
     bool isActive();
     
+    void addTime(double seconds);
+    double timeLeft();
+    
     // XXX: temporary faders
     // XXX: void setCurve(int curveType);
     // XXX: void bindFinishedCallback();
@@ -43,6 +46,8 @@ private:
     bool active;
     
     double *param;
+    bool paramSet;
+    
     double startVal;
     double destVal;
 

@@ -43,6 +43,8 @@ public:
     void startGame();
     void backToMain();
     
+    double getGameTime();
+    
     void onFadeEnd(int typeId);
 private:
     void fade(int dir, double seconds, bool quitAfter);
@@ -56,6 +58,10 @@ private:
     
     int loadState;
     string loadStr;
+    
+    Fader *gameFader;
+    bool gameOver;
+    bool paused;
     
     Fader *screenFader;
     double fadeVal;

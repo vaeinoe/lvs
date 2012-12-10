@@ -10,6 +10,8 @@
 
 void Fader::setup(FaderPack *faderPack, int newType)
 {
+    paramSet = false;
+    
     mMaster = faderPack;
     active = false;
     
@@ -25,9 +27,10 @@ void Fader::setup(FaderPack *faderPack, int newType)
 void Fader::pause() {
     if (active) {
         active = false;
-        double diffTime = startTime - mMaster->getSeconds();
+        double diffTime = mMaster->getSeconds() - startTime;
         if (diffTime <= durTime) {
             durTime -= diffTime;
+//            cout << durTime << endl;
         }
     }
 }
@@ -35,6 +38,7 @@ void Fader::pause() {
 void Fader::resume() {
     if (!active) {
         startTime = mMaster->getSeconds();
+//        cout << startTime << " STARTED" << endl;
         active = true;
     }
 }
@@ -44,13 +48,22 @@ void Fader::addObserver(FadeObserver *obs)
     mObs.push_back(obs);
 }
 
-void Fader::bindParam(double *newParam) { param = newParam; }
+void Fader::addTime(double seconds) { durTime += seconds; }
+double Fader::timeLeft() { return durTime - (mMaster->getSeconds() - startTime); }
+
+void Fader::bindParam(double *newParam)
+{
+    param = newParam;
+    paramSet = true;
+}
 
 void Fader::fade(double dest, double dur)
 {
-    if (mMaster->isActive() && param != NULL) {
-        startVal = *param;
-        destVal = dest;
+    if (mMaster->isActive()) {
+        if (paramSet) {
+            startVal = *param;
+            destVal = dest;
+        }
         
         startTime = mMaster->getSeconds();
         durTime = dur;
@@ -64,14 +77,14 @@ void Fader::update()
     if (active && mMaster->isActive()) {
         double diffTime = mMaster->getSeconds() - startTime;
         if (diffTime > durTime) {
-            *param = destVal;
+            if (paramSet) { *param = destVal; }
             active = false;
             for( vector<FadeObserver*>::iterator t = mObs.begin(); t != mObs.end(); ++t ){
                 (*t)->onFadeEnd(typeId);
             }
 
         }
-        else {
+        else if (paramSet) {
             double fadePoint = diffTime / durTime;
             if (startVal < destVal) {
                 *param = startVal + (fadePoint * (destVal - startVal));

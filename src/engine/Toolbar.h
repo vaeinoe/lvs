@@ -24,4 +24,5 @@ private:
     Configuration *mConfig;
 	ciUICanvas *gui;
     ciUILabel *scoreLabels[32];
+    ciUILabel *timerLabel;
 };

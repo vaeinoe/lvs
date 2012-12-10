@@ -36,6 +36,9 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     gui->addWidgetRight(new ciUIFPS(CI_UI_FONT_SMALL));
 #endif
 
+    timerLabel = new ciUILabel("000", CI_UI_FONT_SMALL);
+    gui->addWidgetRight(timerLabel);
+    
     for (int i = 0; i < mConfig->numTileTypes; i++) {
         char buf[100];
         sprintf(buf, "000/%03d", mConfig->player->getMaxScore(i));
@@ -61,6 +64,10 @@ void Toolbar::update( int fftDataBins )
 //    char buf[10];
 //    snprintf(buf, 9, "%d", fftDataBins);
 //    freqLabel->setLabel(buf);
+    char buf[100];
+    sprintf(buf, "%3.0f", mConfig->engine->getGameTime());
+    timerLabel->setLabel(buf);
+    
 	gui->update();
 }
 
