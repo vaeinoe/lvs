@@ -12,6 +12,9 @@
 #define S_INGAME_1  2
 #define S_QUITTING  3
 
+#define FADEFADER 0
+#define GAMEFADER 1
+
 #include "LVSEngine.h"
 
 void LVSEngine::setup(Configuration *config)
@@ -37,6 +40,8 @@ void LVSEngine::setup(Configuration *config)
     mMouseLoc = new Vec2i(0, 0);
 
     gameState = S_LOADING;
+    gameOver = false;
+    paused = false;
     
     loadState = 0;
     loadStr = "init: toolbar";
@@ -47,7 +52,10 @@ void LVSEngine::setup(Configuration *config)
     fullScreen = false;
 
     mFaders->setup(mConfig, true);
-    screenFader = mFaders->createFader(0, &fadeVal, this);
+    screenFader = mFaders->createFader(FADEFADER, &fadeVal, this);
+
+    gameFader = mFaders->createFader(GAMEFADER);
+    gameFader->addObserver(this);
 }
 
 void LVSEngine::loadAll() {
@@ -184,6 +192,15 @@ void LVSEngine::startGame()
     gameState = S_INGAME_1;
     mMenu->deactivate();
     mAudio->fadeToPreset(2, 5.0);
+    
+    if (paused) {
+        cout << "Resuming" << endl;
+        gameFader->resume();
+    }
+    else {
+        gameFader->fade(0.0, 300);
+    }
+    paused = false;
 }
 
 void LVSEngine::backToMain()
@@ -191,6 +208,9 @@ void LVSEngine::backToMain()
     gameState = S_MAINMENU;
     mMenu->activate();
     mAudio->fadeToPreset(1, 5.0);
+    
+    gameFader->pause();
+    paused = true;
 }
 
 void LVSEngine::quitGame()
@@ -204,13 +224,24 @@ void LVSEngine::quitGame()
     quitAfterFade = true;
 }
 
+double LVSEngine::getGameTime()
+{
+    return gameFader->timeLeft();
+}
+
 void LVSEngine::onFadeEnd(int typeId)
 {
-    fading = false;
-    if (quitAfterFade) {
-        gl::clear( Color( 0, 0, 0 ) );
-        shutdown();
-        exit(0);
+    if (typeId == FADEFADER) {
+                fading = false;
+        if (quitAfterFade) {
+            gl::clear( Color( 0, 0, 0 ) );
+            shutdown();
+            exit(0);
+        }
+    }
+    else if (typeId == GAMEFADER) {
+        gameOver = true;
+        // change state?
     }
 }
 
