@@ -17,7 +17,7 @@ using namespace irrklang;
 
 class Audio;
 
-class AudioTrack {
+class AudioTrack : public FadeObserver {
 public:
 	void setup(Audio *audio, int trackNo, bool looping);
     
@@ -30,6 +30,7 @@ public:
     bool isPlaying();
     
     void fadeTo(float destVol, double fadeSec);
+    void onFadeEnd(int typeId);
     
     void startFft();
     void stopFft();
@@ -53,4 +54,5 @@ private:
     
     Fader *volFader;
     double volume;
+    bool fading;
 };

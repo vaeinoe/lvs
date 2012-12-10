@@ -46,8 +46,7 @@ void LVSEngine::setup(Configuration *config)
     fullScreen = false;
 
     mFaders->setup(mConfig, true);
-    screenFader = mFaders->createFader();
-    screenFader->bindParam(&fadeVal);
+    screenFader = mFaders->createFader(0, &fadeVal, this);
 }
 
 void LVSEngine::loadAll() {
@@ -77,6 +76,7 @@ void LVSEngine::loadAll() {
             gameState = S_MAINMENU;
             
             screenFader->fade(0.0, 2.5);
+            fading = true;
             break;
     }
 
@@ -136,11 +136,6 @@ void LVSEngine::draw()
     if (screenFader->isActive()) {
         gl::color(0, 0, 0, fadeVal);
         gl::drawSolidRect (Rectf(0,0,getWindowWidth(),getWindowHeight()));
-    }
-    else if (quitAfterFade) {
-        gl::clear( Color( 0, 0, 0 ) );
-        shutdown();
-        exit(0);        
     }
 }
 
@@ -204,7 +199,18 @@ void LVSEngine::quitGame()
     mAudio->fadeToPreset(0, 2.5);
     
     screenFader->fade(1.0, 3.0);
+    fading = true;
     quitAfterFade = true;
+}
+
+void LVSEngine::onFadeEnd(int typeId)
+{
+    fading = false;
+    if (quitAfterFade) {
+        gl::clear( Color( 0, 0, 0 ) );
+        shutdown();
+        exit(0);
+    }
 }
 
 void LVSEngine::shutdown()

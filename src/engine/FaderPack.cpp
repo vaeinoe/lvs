@@ -78,6 +78,20 @@ Fader* FaderPack::createFader(int type)
     return fader;
 }
 
+Fader* FaderPack::createFader(int type, double *bindPar, FadeObserver *obs)
+{
+    Fader *fader = new Fader();
+    
+    fader->setup(this, type);
+    fader->bindParam(bindPar);
+    fader->addObserver(obs);
+    
+    mFaders.push_back(fader);
+    
+    return fader;
+}
+
+
 bool FaderPack::isActive() { return active; }
 double FaderPack::getSeconds() { return time; }
 

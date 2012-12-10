@@ -10,6 +10,7 @@
 #include "Configuration.h"
 #include "Common.h"
 #include "Fader.h"
+#include "FadeObserver.h"
 
 class Fader;
 class Configuration;
@@ -30,6 +31,7 @@ public:
     double getSeconds();
     
     Fader* createFader(int type = 0);
+    Fader* createFader(int type, double *bindPar, FadeObserver *obs);
     
 private:
     bool active;

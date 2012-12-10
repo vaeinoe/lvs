@@ -14,6 +14,7 @@
 #include "irrKlang.h"
 #include "FaderPack.h"
 #include "Fader.h"
+#include "FadeObserver.h"
 using namespace irrklang;
 
 #pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
@@ -21,7 +22,7 @@ using namespace irrklang;
 class AudioTrack;
 class AudioAnalyzer;
 
-class Audio {
+class Audio : public FadeObserver {
 public:
 	void setup(Configuration *config);
 	void update();
@@ -35,7 +36,9 @@ public:
     int32_t getDataSize();
     
     AudioTrack *mTracks[32];
-    
+
+    void onFadeEnd(int typeId);
+
     friend class AudioTrack;
     
 private:
@@ -47,6 +50,7 @@ private:
     
     Fader *mainVolFader;
     double mainVol;
+    bool fading;
 };
 
 
