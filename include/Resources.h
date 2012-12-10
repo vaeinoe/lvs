@@ -14,3 +14,4 @@
 
 #define RES_DRS001  CINDER_RESOURCE( ../resources/, drs001.wav, 139, AUDIO )
 
+#define RES_TFX001  CINDER_RESOURCE( ../resources/, tfx001.wav, 140, AUDIO )

@@ -57,7 +57,7 @@ void FaderPack::update()
     if (active) {
         time = mTimer->getSeconds();
         for( vector<Fader*>::iterator t = mFaders.begin(); t != mFaders.end(); ++t ){
-            (*t)->update();
+            if ((*t)->isActive()) { (*t)->update(); }
         }
     }
 }

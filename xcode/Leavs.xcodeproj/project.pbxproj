@@ -15,6 +15,8 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00BAE65A0E7ED9C10018A608 /* LeavsApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
+		050BC5AE16764BB500E83B71 /* AudioFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 050BC5AC16764BB300E83B71 /* AudioFx.cpp */; };
+		050BC5B11676510B00E83B71 /* tfx001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 050BC5B01676510B00E83B71 /* tfx001.wav */; };
 		0512834C1673CBD700A4AAB1 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0512834B1673CBD700A4AAB1 /* libirrklang.dylib */; };
 		0512834F1673CD5200A4AAB1 /* libirrklang.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0512834B1673CBD700A4AAB1 /* libirrklang.dylib */; };
 		051283581673E1FB00A4AAB1 /* drs001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283501673E1FB00A4AAB1 /* drs001.wav */; };
@@ -68,6 +70,9 @@
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LeavsApp.cpp; path = ../src/LeavsApp.cpp; sourceTree = SOURCE_ROOT; };
 		00CCAF14116A9FEE008396D5 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CinderApp.icns; sourceTree = SOURCE_ROOT; };
+		050BC5AC16764BB300E83B71 /* AudioFx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFx.cpp; sourceTree = "<group>"; };
+		050BC5AD16764BB400E83B71 /* AudioFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFx.h; sourceTree = "<group>"; };
+		050BC5B01676510B00E83B71 /* tfx001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tfx001.wav; path = ../resources/tfx001.wav; sourceTree = "<group>"; };
 		0512834B1673CBD700A4AAB1 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = "../../irrKlang-1.4.0/bin/macosx-gcc/libirrklang.dylib"; sourceTree = "<group>"; };
 		051283501673E1FB00A4AAB1 /* drs001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drs001.wav; path = ../resources/drs001.wav; sourceTree = "<group>"; };
 		051283511673E1FB00A4AAB1 /* pad001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pad001.wav; path = ../resources/pad001.wav; sourceTree = "<group>"; };
@@ -212,10 +217,13 @@
 				05782ED41670A04B00FD39B7 /* Audio.h */,
 				051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */,
 				051283611673EDC400A4AAB1 /* AudioAnalyzer.h */,
+				050BC5AC16764BB300E83B71 /* AudioFx.cpp */,
+				050BC5AD16764BB400E83B71 /* AudioFx.h */,
 				05782ED51670A04B00FD39B7 /* AudioTrack.cpp */,
 				05782ED61670A04B00FD39B7 /* AudioTrack.h */,
 				05782ED71670A04B00FD39B7 /* Common.h */,
 				05782ED81670A04B00FD39B7 /* Configuration.h */,
+				054B263716751DA60088AD3A /* FadeObserver.h */,
 				052FED141674E4C20001E076 /* Fader.cpp */,
 				052FED151674E4C20001E076 /* Fader.h */,
 				052FED181674E4D20001E076 /* FaderPack.cpp */,
@@ -232,7 +240,6 @@
 				05782EE21670A04B00FD39B7 /* Toolbar.h */,
 				05782EE31670A04B00FD39B7 /* World.cpp */,
 				05782EE41670A04B00FD39B7 /* World.h */,
-				054B263716751DA60088AD3A /* FadeObserver.h */,
 			);
 			name = engine;
 			path = ../src/engine;
@@ -362,6 +369,7 @@
 				051283551673E1FB00A4AAB1 /* seq001.wav */,
 				051283561673E1FB00A4AAB1 /* seq002.wav */,
 				051283571673E1FB00A4AAB1 /* seq003.wav */,
+				050BC5B01676510B00E83B71 /* tfx001.wav */,
 				05782EED1670A05E00FD39B7 /* nevis.ttf */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				00CCAF14116A9FEE008396D5 /* CinderApp.icns */,
@@ -444,6 +452,7 @@
 				0512835D1673E1FB00A4AAB1 /* seq001.wav in Resources */,
 				0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */,
 				0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */,
+				050BC5B11676510B00E83B71 /* tfx001.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +495,7 @@
 				051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */,
 				052FED161674E4C20001E076 /* Fader.cpp in Sources */,
 				052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */,
+				050BC5AE16764BB500E83B71 /* AudioFx.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

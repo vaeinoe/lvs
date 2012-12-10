@@ -24,8 +24,7 @@ void AudioAnalyzer::update()
 {
     if (audioSize > 0) {
         if ( !mFft ) { mFft = Kiss::create( audioSize ); }
-
-        audioFloat = new float[audioSize];
+        if (!audioFloat) audioFloat = new float[audioSize];
         
         int16_t * srcBuffer = reinterpret_cast<int16_t *>( audioData );
         for( uint32_t i = 0; i < ( audioSize ); i++ ) {

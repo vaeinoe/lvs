@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "World.h"
 #include "Toolbar.h"
+#include "Audio.h"
 #include "LVSEngine.h"
 
 class Player;
@@ -18,6 +19,7 @@ class World;
 class LVSEngine;
 class Toolbar;
 class FaderPack;
+class Audio;
 
 class Configuration {
 public:
@@ -39,4 +41,5 @@ public:
     LVSEngine *engine;
     Toolbar *toolbar;
     FaderPack *faders;
+    Audio *audio;
 };
