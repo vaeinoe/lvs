@@ -32,6 +32,9 @@ void Fader::pause() {
             durTime -= diffTime;
 //            cout << durTime << endl;
         }
+        else {
+            durTime = 0;
+        }
     }
 }
 
@@ -49,7 +52,15 @@ void Fader::addObserver(FadeObserver *obs)
 }
 
 void Fader::addTime(double seconds) { durTime += seconds; }
-double Fader::timeLeft() { return durTime - (mMaster->getSeconds() - startTime); }
+double Fader::timeLeft() {
+    double diff = durTime - (mMaster->getSeconds() - startTime);
+    if (diff < 0) {
+        return 0;
+    }
+    else {
+        return diff;
+    }
+}
 
 void Fader::bindParam(double *newParam)
 {

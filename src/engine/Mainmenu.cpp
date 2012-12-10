@@ -24,7 +24,7 @@ void Mainmenu::setup(Configuration *config)
     gui->setFont("nevis.ttf");
     
     gui->setFontSize(CI_UI_FONT_LARGE, 72);
-    gui->setFontSize(CI_UI_FONT_MEDIUM, 24);
+    gui->setFontSize(CI_UI_FONT_MEDIUM, 32);
     gui->setFontSize(CI_UI_FONT_SMALL, 16);
     
     // Modified "Berlin"
