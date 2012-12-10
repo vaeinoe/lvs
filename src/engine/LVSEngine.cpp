@@ -158,9 +158,7 @@ void LVSEngine::mouseDown ( const MouseEvent event ) {
     Vec2i pos = event.getPos();
     switch (gameState) {
             case S_INGAME_1:
-            if ( event.isLeft() ) {
-                mWorld->selectTile(pos);
-            }
+            if ( event.isLeft() ) { mWorld->selectTile(pos); }
             break;
     }
 }
@@ -172,15 +170,13 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 quitGame();
                 break;
             case S_INGAME_1:
-                // TODO: reset player data add a return button to main?
+                // TODO: add a return button to main?
                 backToMain();
                 break;
         }
     }
-    if( event.getCode() == KeyEvent::KEY_r ) {
-        if (gameState == S_INGAME_1) { mWorld->reset(); }
-    }
-    
+
+    // XXX implement proper support or remove
     if ( event.getCode() == KeyEvent::KEY_f ) {
         fullScreen = !fullScreen;
         setFullScreen(fullScreen);
