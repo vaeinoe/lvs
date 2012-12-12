@@ -7,6 +7,7 @@
 //
 
 #include "Mainmenu.h"
+#include "../ciUI/ciUI.h"
 
 void Mainmenu::setup(Configuration *config)
 {

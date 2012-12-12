@@ -17,8 +17,10 @@
 #include "cinder/Timer.h"
 #include "cinder/Utilities.h"
 #include "cinder/gl/TextureFont.h"
-#include "KissFFT.h"
-#include "../ciUI/ciUI.h"
+
+using namespace ci;
+using namespace ci::app;
+using namespace std;
 
 #define NUM_ANGLES 32
 

@@ -11,6 +11,7 @@
 #include "Configuration.h"
 #include "AudioTrack.h"
 #include "irrKlang.h"
+#include "KissFFT.h"
 using namespace irrklang;
 
 class AudioAnalyzer: public ISoundMixedOutputReceiver {

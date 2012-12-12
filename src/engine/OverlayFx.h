@@ -9,14 +9,18 @@
 #pragma once
 #include "Configuration.h"
 #include "Common.h"
+#include "OverlayFxManager.h"
+
+class OverlayFxManager;
 
 class OverlayFx {
 public:
-	void setup( Configuration *config );
+	void setup( Configuration *config, OverlayFxManager *master );
 	void update();
 	void draw();
 	void shutdown();
 private:
     Configuration *mConfig;
+    OverlayFxManager *mMaster;
     bool finished;
 };

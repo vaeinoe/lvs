@@ -16,6 +16,7 @@ public:
     void mouseDown ( MouseEvent event );
     void mouseMove ( MouseEvent event );
     void keyDown( KeyEvent event );
+    void resize	( ResizeEvent event ) { };
 private:
     LVSEngine *engine;
 };
@@ -24,6 +25,8 @@ void LeavsApp::prepareSettings( Settings *settings )
 {
     settings->setWindowSize( PLAYFIELD_W , PLAYFIELD_H );
     settings->setFrameRate( 30.0f );
+    settings->setResizable(false);
+    settings->setTitle("ASDF");
 }
 
 void LeavsApp::setup()
@@ -35,6 +38,7 @@ void LeavsApp::setup()
     // setFullScreen(true);
 
     gl::enable( GL_LINE_SMOOTH );
+    gl::enable(GL_BLEND);
 	glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
     
     Configuration *config = new Configuration();
