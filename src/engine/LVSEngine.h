@@ -18,6 +18,7 @@
 #include "FaderPack.h"
 #include "Fader.h"
 #include "FadeObserver.h"
+#include "OverlayFxManager.h"
 
 class Toolbar;
 class World;
@@ -27,6 +28,7 @@ class Configuration;
 class Mainmenu;
 class FaderPack;
 class Fader;
+class OverlayFxManager;
 
 class LVSEngine : public FadeObserver {
 public:
@@ -46,7 +48,12 @@ public:
     double getGameTime();
     
     void onFadeEnd(int typeId);
+    
+    void addCirclePoly( const Vec2f &center, const float radius,
+                        const int numSegments, const ColorA &color );
 private:
+    inline void drawGame();
+    
     void fade(int dir, double seconds, bool quitAfter);
     inline void performFade();
     
@@ -75,6 +82,13 @@ private:
     Vec2i *mMouseLoc;
     Audio *mAudio;
     FaderPack *mFaders;
+    OverlayFxManager *overlayFx;
 
     Configuration *mConfig;
+
+    vector< GLfloat > tileVerts;
+    vector< GLfloat > tileColors;
+    
+    void precalc();
+    vector< Vec2f > precalcAngles[NUM_ANGLES];
 };

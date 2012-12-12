@@ -20,6 +20,8 @@
 #include "KissFFT.h"
 #include "../ciUI/ciUI.h"
 
+#define NUM_ANGLES 32
+
 #define PLAYFIELD_W 950
 #define PLAYFIELD_H 650
 

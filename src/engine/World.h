@@ -11,8 +11,6 @@
 #include "Common.h"
 #include "Tile.h"
 
-#define NUM_ANGLES 32
-
 class Configuration;
 class Tile;
 
@@ -24,7 +22,6 @@ public:
 	void draw();
 	void shutdown();
     void selectTile( const Vec2i mouseLoc );
-    void addCirclePoly( const Vec2f &center, const float radius, const int numSegments, const ColorA &color );
     int rndTileType();
 private:
     Configuration *mConfig;
@@ -32,9 +29,6 @@ private:
     std::vector<Tile*> tiles;
     Tile *selectedTile;
     
-    void precalc();
-    vector< Vec2f > precalcAngles[NUM_ANGLES];
-
     Rand rnd;
 
     Vec2i neighbourCoord ( Vec2i pos, Vec2i dir );
@@ -45,9 +39,6 @@ private:
 
     int tileIndex(int x, int y);
     int tileIndex(Vec2i pos);
-    
-    vector< GLfloat > tileVerts;
-    vector< GLfloat > tileColors;
-    
+        
     int solverTimer;
 };
