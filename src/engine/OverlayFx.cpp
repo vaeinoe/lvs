@@ -7,3 +7,23 @@
 //
 
 #include "OverlayFx.h"
+
+void OverlayFx::setup( Configuration *config, OverlayFxManager *master )
+{
+    mConfig = config;
+}
+
+void OverlayFx::update()
+{
+    
+}
+
+void OverlayFx::draw()
+{
+    
+}
+
+void OverlayFx::shutdown()
+{
+    
+}

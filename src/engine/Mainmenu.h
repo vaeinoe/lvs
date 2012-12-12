@@ -10,6 +10,9 @@
 #include "Common.h"
 #include "Configuration.h"
 
+class ciUICanvas;
+class ciUIEvent;
+
 class Mainmenu {
 public:
 	void setup(Configuration *config);
