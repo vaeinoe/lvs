@@ -65,6 +65,7 @@ void LVSEngine::loadAll() {
             loadStr = "init: world";
             break;
         case 1:
+            precalc();
             mWorld->setup(mConfig, Vec2i(mConfig->worldWidth, mConfig->worldHeight));
             loadStr = "init: player";
             break;
@@ -133,6 +134,7 @@ void LVSEngine::draw()
         case S_INGAME_1:
             gl::clear( Color( 0, 0, lightness * 0.4 ) );
             mWorld->draw();
+            drawGame();
             mToolbar->draw();
             mPlayer->draw();
             break;
@@ -256,4 +258,62 @@ void LVSEngine::shutdown()
     delete mAudio;
     delete mMenu;
     delete mFaders;
+}
+
+// Adds a polygon to rendering queue
+void LVSEngine::addCirclePoly( const Vec2f &center, const float radius, int numSegments, const ColorA &color )
+{
+	// automatically determine the number of segments from the circumference
+	if( numSegments <= 0 ) {
+		numSegments = (int)math<double>::floor( radius * M_PI * 2 );
+	}
+	if( numSegments < 2 ) numSegments = 2;
+    
+    // first vertex
+    GLfloat firstX = center.x + precalcAngles[numSegments][0].x * radius;
+    GLfloat firstY = center.y + precalcAngles[numSegments][0].y * radius;
+    tileVerts.push_back(firstX); tileVerts.push_back(firstY);
+    tileColors.push_back(color.r); tileColors.push_back(color.g);
+    tileColors.push_back(color.b); tileColors.push_back(color.a);
+    
+    // middle vertices
+	for( int s = 1; s < numSegments; s++ ) {
+        for (int i = 0; i < 2; i++) {
+            tileVerts.push_back(center.x + precalcAngles[numSegments][s].x * radius);
+            tileVerts.push_back(center.y + precalcAngles[numSegments][s].y * radius);
+            tileColors.push_back(color.r); tileColors.push_back(color.g);
+            tileColors.push_back(color.b); tileColors.push_back(color.a);
+        }
+	}
+    
+    // drawing line loops = back to first vertex in the end
+    tileVerts.push_back(firstX); tileVerts.push_back(firstY);
+    tileColors.push_back(color.r); tileColors.push_back(color.g);
+    tileColors.push_back(color.b); tileColors.push_back(color.a);
+}
+
+inline void LVSEngine::drawGame()
+{
+    glEnableClientState( GL_VERTEX_ARRAY );
+	glEnableClientState( GL_COLOR_ARRAY );
+    
+	glColorPointer( 4, GL_FLOAT, 0, &tileColors[0] );
+	glVertexPointer( 2, GL_FLOAT, 0, &tileVerts[0] );
+	glDrawArrays( GL_LINES, 0, tileVerts.size() / 2 );
+    
+	glDisableClientState( GL_COLOR_ARRAY );
+	glDisableClientState( GL_VERTEX_ARRAY );
+    
+    tileColors.clear();
+    tileVerts.clear();
+}
+
+// Precalculate angle arrays for polygon drawing
+inline void LVSEngine::precalc() {
+    for (int i = 2; i < NUM_ANGLES; i++) {
+        for( int s = 0; s < i; s++ ) {
+            float t = s / (float)i * 2.0f * 3.14159f;
+            precalcAngles[i].push_back( Vec2f(math<float>::cos( t ), math<float>::sin( t )) );
+        }
+    }
 }

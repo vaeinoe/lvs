@@ -42,6 +42,8 @@
 		05782EEB1670A04B00FD39B7 /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE11670A04B00FD39B7 /* Toolbar.cpp */; };
 		05782EEC1670A04B00FD39B7 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE31670A04B00FD39B7 /* World.cpp */; };
 		05A44AF5167278F8000089A3 /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05782EED1670A05E00FD39B7 /* nevis.ttf */; };
+		05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */; };
+		05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A7701678DEDF00777C55 /* OverlayFx.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
@@ -153,6 +155,10 @@
 		0590C9A71670EA9700D568A1 /* ciUIWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWaveform.h; sourceTree = "<group>"; };
 		0590C9A81670EA9700D568A1 /* ciUIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidget.h; sourceTree = "<group>"; };
 		0590C9A91670EA9700D568A1 /* ciUIWidgetWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidgetWithLabel.h; sourceTree = "<group>"; };
+		05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFxManager.cpp; sourceTree = "<group>"; };
+		05C4A76D1678DE0600777C55 /* OverlayFxManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayFxManager.h; sourceTree = "<group>"; };
+		05C4A7701678DEDF00777C55 /* OverlayFx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFx.cpp; sourceTree = "<group>"; };
+		05C4A7711678DEDF00777C55 /* OverlayFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayFx.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -232,6 +238,10 @@
 				05782EDA1670A04B00FD39B7 /* LVSEngine.h */,
 				05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */,
 				05782EDC1670A04B00FD39B7 /* Mainmenu.h */,
+				05C4A7701678DEDF00777C55 /* OverlayFx.cpp */,
+				05C4A7711678DEDF00777C55 /* OverlayFx.h */,
+				05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */,
+				05C4A76D1678DE0600777C55 /* OverlayFxManager.h */,
 				05782EDD1670A04B00FD39B7 /* Player.cpp */,
 				05782EDE1670A04B00FD39B7 /* Player.h */,
 				05782EDF1670A04B00FD39B7 /* Tile.cpp */,
@@ -496,6 +506,8 @@
 				052FED161674E4C20001E076 /* Fader.cpp in Sources */,
 				052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */,
 				050BC5AE16764BB500E83B71 /* AudioFx.cpp in Sources */,
+				05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */,
+				05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
