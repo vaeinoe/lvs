@@ -8,7 +8,6 @@
  */
 #pragma once
 #include "Configuration.h"
-#include "Common.h"
 
 class Configuration;
 

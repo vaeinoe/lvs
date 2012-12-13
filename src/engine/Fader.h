@@ -8,8 +8,6 @@
 
 #pragma once
 #include "Configuration.h"
-#include "Common.h"
-#include "FaderPack.h"
 #include "FadeObserver.h"
 
 class FaderPack;

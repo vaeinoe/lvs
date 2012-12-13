@@ -8,6 +8,12 @@
  */
 
 #include "Tile.h"
+#include "LVSEngine.h"
+#include "Player.h"
+#include "Fader.h"
+#include "FaderPack.h"
+#include "World.h"
+#include "OverlayFxManager.h"
 
 #define FADEFADER 0
 #define GROWFADER 1

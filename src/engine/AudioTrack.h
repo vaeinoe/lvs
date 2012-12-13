@@ -7,15 +7,13 @@
 //
 
 #pragma once
-#include "Common.h"
 #include "Configuration.h"
-#include "AudioAnalyzer.h"
+#include "FadeObserver.h"
 #include "irrKlang.h"
-#include "FaderPack.h"
-#include "Fader.h"
 using namespace irrklang;
 
 class Audio;
+class Fader;
 
 class AudioTrack : public FadeObserver {
 public:

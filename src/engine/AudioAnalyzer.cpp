@@ -7,6 +7,7 @@
 //
 
 #include "AudioAnalyzer.h"
+#include "AudioTrack.h"
 
 void AudioAnalyzer::setup()
 {

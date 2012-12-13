@@ -7,18 +7,12 @@
 //
 
 #pragma once
-#include "Common.h"
 #include "Configuration.h"
 #include "irrKlang.h"
-#include "FaderPack.h"
-#include "Fader.h"
-#include "FadeObserver.h"
-#include "Audio.h"
+
 using namespace irrklang;
 
 class Audio;
-
-#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
 class AudioFx {
 public:

@@ -7,6 +7,12 @@
 //
 
 #include "AudioFx.h"
+#include "FaderPack.h"
+#include "Fader.h"
+#include "FadeObserver.h"
+#include "Audio.h"
+
+#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
 void AudioFx::setup(Audio *master)
 {

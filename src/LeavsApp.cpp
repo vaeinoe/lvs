@@ -11,7 +11,7 @@ public:
 	void update();
 	void draw();
 	void shutdown();
-	void guiEvent( ciUIEvent *event );
+//	void guiEvent( ciUIEvent *event );
 	void prepareSettings( Settings *settings );
     void mouseDown ( MouseEvent event );
     void mouseMove ( MouseEvent event );

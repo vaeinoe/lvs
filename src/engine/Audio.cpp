@@ -8,6 +8,14 @@
  */
 
 #include "Audio.h"
+#include "Configuration.h"
+#include "AudioTrack.h"
+#include "AudioAnalyzer.h"
+#include "FaderPack.h"
+#include "Fader.h"
+#include "AudioFx.h"
+
+#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
 
 double Audio::presets[][NUMTRACKS] = {
     {0.0, 0.0, 0.0, 0.0, 0.0, 0.0},

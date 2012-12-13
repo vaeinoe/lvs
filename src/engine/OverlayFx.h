@@ -8,8 +8,6 @@
 
 #pragma once
 #include "Configuration.h"
-#include "Common.h"
-#include "OverlayFxManager.h"
 
 #define VFX_EXPLOSION 0
 

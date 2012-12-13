@@ -16,6 +16,14 @@
 #define GAMEFADER 1
 
 #include "LVSEngine.h"
+#include "World.h"
+#include "Toolbar.h"
+#include "Player.h"
+#include "Audio.h"
+#include "Mainmenu.h"
+#include "FaderPack.h"
+#include "Fader.h"
+#include "OverlayFxManager.h"
 
 void LVSEngine::setup(Configuration *config)
 {

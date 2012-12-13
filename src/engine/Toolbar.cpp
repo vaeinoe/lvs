@@ -8,6 +8,9 @@
  */
 
 #include "Toolbar.h"
+#include "LVSEngine.h"
+#include "Player.h"
+#include "../ciUI/ciUI.h"
 #include <string>
 
 void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
