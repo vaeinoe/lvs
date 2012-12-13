@@ -315,7 +315,7 @@ inline void LVSEngine::drawGame()
 
 // Precalculate angle arrays for polygon drawing
 inline void LVSEngine::precalc() {
-    for (int i = 2; i < NUM_ANGLES; i++) {
+    for (int i = 2; i < NUM_ANGLES + 1; i++) {
         for( int s = 0; s < i; s++ ) {
             float t = s / (float)i * 2.0f * 3.14159f;
             precalcAngles[i].push_back( Vec2f(math<float>::cos( t ), math<float>::sin( t )) );
