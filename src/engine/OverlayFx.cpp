@@ -38,9 +38,12 @@ void OverlayFx::draw()
 
 inline void OverlayFx::drawExplosion()
 {
-    mConfig->engine->addCirclePoly( pos, size, 6, color );
-    color.a = color.a * 0.9;
-    size  = size * 1.5;
+    for (int i = 1; i < 6; i++) {
+        double factor = 1 / (i * 1.0);
+        mConfig->engine->addCirclePoly( pos, size * factor, 32, ColorA(color.r, color.g, color.b, color.a * factor) );
+    }
+    color.a = color.a * 0.968;
+    size  = size * 1.075;
 }
 
 void OverlayFx::shutdown()

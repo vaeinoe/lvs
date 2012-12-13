@@ -90,5 +90,5 @@ private:
     vector< GLfloat > tileColors;
     
     void precalc();
-    vector< Vec2f > precalcAngles[NUM_ANGLES];
+    vector< Vec2f > precalcAngles[NUM_ANGLES + 1];
 };
