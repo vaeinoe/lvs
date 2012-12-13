@@ -9,7 +9,6 @@
 
 #include "Toolbar.h"
 #include <string>
-#include "../ciUI/ciUI.h"
 
 void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
 {
