@@ -8,8 +8,6 @@
  */
 #pragma once
 #include "Configuration.h"
-#include "Common.h"
-#include "../ciUI/ciUI.h"
 
 class ciUICanvas;
 class ciUILabel;

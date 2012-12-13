@@ -7,11 +7,12 @@
 //
 
 #pragma once
-#include "Common.h"
 #include "Configuration.h"
-#include "AudioTrack.h"
-#include "irrKlang.h"
 #include "KissFFT.h"
+#include "irrKlang.h"
+
+class AudioTrack;
+
 using namespace irrklang;
 
 class AudioAnalyzer: public ISoundMixedOutputReceiver {

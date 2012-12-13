@@ -7,6 +7,8 @@
 //
 
 #include "OverlayFx.h"
+#include "LVSEngine.h"
+#include "OverlayFxManager.h"
 
 #define ALPHA_TRESHOLD 0.1
 

@@ -7,6 +7,7 @@
 //
 
 #include "OverlayFxManager.h"
+#include "OverlayFx.h"
 
 
 void OverlayFxManager::setup( Configuration *config )

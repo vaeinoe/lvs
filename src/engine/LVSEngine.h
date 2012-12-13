@@ -8,17 +8,8 @@
  */
 #pragma once
 #include "Configuration.h"
-#include "Common.h"
-#include "World.h"
-#include "Toolbar.h"
-#include "Player.h"
-#include "Audio.h"
-#include "Mainmenu.h"
-#include "Resources.h"
-#include "FaderPack.h"
-#include "Fader.h"
 #include "FadeObserver.h"
-#include "OverlayFxManager.h"
+#include "Resources.h"
 
 class Toolbar;
 class World;

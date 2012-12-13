@@ -12,6 +12,10 @@
 #define TYPE_DRS
 
 #include "AudioTrack.h"
+#include "Audio.h"
+#include "AudioAnalyzer.h"
+#include "FaderPack.h"
+#include "Fader.h"
 
 void AudioTrack::setup(Audio *audio, int trackNo, bool looping)
 {

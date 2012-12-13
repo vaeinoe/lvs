@@ -8,12 +8,6 @@
 
 #pragma once
 #include "Common.h"
-#include "Player.h"
-#include "World.h"
-#include "Toolbar.h"
-#include "Audio.h"
-#include "LVSEngine.h"
-#include "OverlayFxManager.h"
 
 class Player;
 class World;
@@ -21,6 +15,7 @@ class LVSEngine;
 class Toolbar;
 class FaderPack;
 class Audio;
+class OverlayFxManager;
 
 class Configuration {
 public:

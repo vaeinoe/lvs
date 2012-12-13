@@ -7,7 +7,6 @@
 //
 
 #pragma once
-#include "Common.h"
 #include "Configuration.h"
 
 class ciUICanvas;

@@ -7,6 +7,7 @@
 //
 
 #include "FaderPack.h"
+#include "Fader.h"
 
 void FaderPack::setup(Configuration *config, bool startNow)
 {

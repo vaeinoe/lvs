@@ -7,22 +7,18 @@
  *
  */
 #pragma once
-#include "Common.h"
 #include "Configuration.h"
-#include "AudioTrack.h"
-#include "AudioAnalyzer.h"
-#include "irrKlang.h"
-#include "FaderPack.h"
-#include "Fader.h"
 #include "FadeObserver.h"
-#include "AudioFx.h"
-using namespace irrklang;
+#include "Resources.h"
+#include "irrKlang.h"
 
-#pragma comment(lib, "irrKlang.lib") // link with irrKlang.dll
+using namespace irrklang;
 
 class AudioTrack;
 class AudioAnalyzer;
 class AudioFx;
+class Configuration;
+class Fader;
 
 class Audio : public FadeObserver {
 public:
@@ -49,9 +45,9 @@ private:
     Configuration *mConfig;
 	static double presets[][NUMTRACKS];
     
-    ISoundEngine* audioEngine;
     AudioAnalyzer* analyzer;
     AudioFx* audioFx;
+    ISoundEngine* audioEngine;
     
     Fader *mainVolFader;
     double mainVol;

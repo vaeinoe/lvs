@@ -8,6 +8,7 @@
  */
 
 #include "Player.h"
+#include "Toolbar.h"
 
 void Player::setup(Configuration *config)
 {

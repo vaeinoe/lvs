@@ -8,6 +8,9 @@
  */
 
 #include "World.h"
+#include "Audio.h"
+#include "Player.h"
+#include "Tile.h"
 
 using namespace ci;
 
