@@ -38,9 +38,11 @@ void OverlayFxManager::shutdown()
     fxList.clear();
 }
 
-void OverlayFxManager::createExplosion(int type, Vec2f pos, ColorA color, int fadeTime)
+void OverlayFxManager::createExplosion(Vec2f pos, ColorA color)
 {
-    
+    OverlayFx *fx = new OverlayFx();
+    fx->setup(mConfig, this, color, pos, VFX_EXPLOSION);
+    fxList.push_back(fx);
 }
 
 void OverlayFxManager::createText(int type, Vec2f pos, ColorA color, int fadeTime)

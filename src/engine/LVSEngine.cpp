@@ -29,6 +29,7 @@ void LVSEngine::setup(Configuration *config)
     mPlayer = new Player();
     mMenu = new Mainmenu();
     mFaders = new FaderPack();
+    overlayFx = new OverlayFxManager();
 
     mConfig->engine = this;
     mConfig->toolbar = mToolbar;
@@ -36,6 +37,7 @@ void LVSEngine::setup(Configuration *config)
     mConfig->player = mPlayer;
     mConfig->faders = mFaders;
     mConfig->audio = mAudio;
+    mConfig->overlayFx = overlayFx;
 
     mMouseLoc = new Vec2i(0, 0);
 
@@ -66,6 +68,7 @@ void LVSEngine::loadAll() {
             break;
         case 1:
             precalc();
+            overlayFx->setup(mConfig);
             mWorld->setup(mConfig, Vec2i(mConfig->worldWidth, mConfig->worldHeight));
             loadStr = "init: player";
             break;
@@ -107,6 +110,7 @@ void LVSEngine::update()
             break;
         case S_INGAME_1:
             mAudio->update();
+            overlayFx->update();
             mToolbar->update(mAudio->getDataSize());
             mWorld->update(mMouseLoc, mAudio->getFreqData(), mAudio->getDataSize());
             mPlayer->update();
@@ -134,6 +138,7 @@ void LVSEngine::draw()
         case S_INGAME_1:
             gl::clear( Color( 0, 0, lightness * 0.4 ) );
             mWorld->draw();
+            overlayFx->draw();
             drawGame();
             mToolbar->draw();
             mPlayer->draw();

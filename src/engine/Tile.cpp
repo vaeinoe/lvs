@@ -65,6 +65,7 @@ int Tile::kill(int mult) {
     
     dead = true;
     mConfig->player->addScore(mult, type);
+    mConfig->overlayFx->createExplosion(Vec2f(drawPos.x, drawPos.y), ColorA(1.0, 1.0, 1.0, 1.0));
     type = -1;
     
     fadeFader->fade(0.0, FADE_TIME_SEC);

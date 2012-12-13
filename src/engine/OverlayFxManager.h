@@ -20,7 +20,7 @@ public:
 	void draw();
 	void shutdown();
     
-    void createExplosion(int type, Vec2f pos, ColorA color, int fadeTime);
+    void createExplosion(Vec2f pos, ColorA color);
     void createText(int type, Vec2f pos, ColorA color, int fadeTime);
 private:
     Configuration *mConfig;

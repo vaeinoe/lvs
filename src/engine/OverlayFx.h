@@ -11,16 +11,29 @@
 #include "Common.h"
 #include "OverlayFxManager.h"
 
+#define VFX_EXPLOSION 0
+
 class OverlayFxManager;
 
 class OverlayFx {
 public:
-	void setup( Configuration *config, OverlayFxManager *master );
+	void setup( Configuration *config, OverlayFxManager *master, ColorA newcolor,
+               Vec2f newpos, int newtype );
 	void update();
 	void draw();
 	void shutdown();
 private:
+    inline void drawExplosion();
+    
     Configuration *mConfig;
     OverlayFxManager *mMaster;
+
     bool finished;
+
+    ColorA color;
+    double size;
+    
+    Vec2f pos;
+    
+    int type;
 };

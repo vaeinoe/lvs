@@ -13,6 +13,7 @@
 #include "Toolbar.h"
 #include "Audio.h"
 #include "LVSEngine.h"
+#include "OverlayFxManager.h"
 
 class Player;
 class World;
@@ -42,4 +43,5 @@ public:
     Toolbar *toolbar;
     FaderPack *faders;
     Audio *audio;
+    OverlayFxManager *overlayFx;
 };
