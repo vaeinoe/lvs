@@ -17,9 +17,10 @@ class FaderPack;
 class Tile : public FadeObserver {
 public:
     void setup( Configuration *config, const Vec2i pos, int type, bool grow );
-    void update( const float dist, const float modifier );
+    void update( const bool floating, const float dist, const float modifier );
     void draw();
     void toggleSelected();
+    void setSurrounding(bool value);
     Vec2f getScreenPositionVector();
     Vec2i *pos;
 
@@ -45,6 +46,7 @@ private:
     
     bool active;
     bool selected;
+    bool surrounding;
     
     void regrow();
     
@@ -60,6 +62,7 @@ private:
 
     void drawSelected(Vec2f pos, float val);
     void drawActive(Vec2f pos, float val);
+    void drawSurrounding(Vec2f pos, float val);
     
     Vec2f drawPos;
     

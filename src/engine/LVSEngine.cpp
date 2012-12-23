@@ -46,6 +46,8 @@ void LVSEngine::setup(Configuration *config)
     mConfig->faders = mFaders;
     mConfig->audio = mAudio;
     mConfig->overlayFx = overlayFx;
+    
+    dragging = false;
 
     mMouseLoc = new Vec2i(0, 0);
 
@@ -163,6 +165,22 @@ void LVSEngine::draw()
     }
 }
 
+void LVSEngine::mouseUp ( const MouseEvent event ) {
+    Vec2i pos = event.getPos();
+    switch (gameState) {
+        case S_INGAME_1:
+            if ( event.isLeft() ) { mWorld->deselectTile(pos); }
+            break;
+    }    
+    dragging = false;
+}
+
+void LVSEngine::mouseDrag ( const MouseEvent event ) {
+    Vec2i pos = event.getPos();
+    mMouseLoc->x = pos.x;
+    mMouseLoc->y = pos.y;    
+}
+
 void LVSEngine::mouseMove ( const MouseEvent event ) {
     Vec2i pos = event.getPos();
     mMouseLoc->x = pos.x;
@@ -170,6 +188,7 @@ void LVSEngine::mouseMove ( const MouseEvent event ) {
 }
 
 void LVSEngine::mouseDown ( const MouseEvent event ) {
+    dragging = true;
     Vec2i pos = event.getPos();
     switch (gameState) {
             case S_INGAME_1:

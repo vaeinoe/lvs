@@ -15,6 +15,8 @@ public:
 	void prepareSettings( Settings *settings );
     void mouseDown ( MouseEvent event );
     void mouseMove ( MouseEvent event );
+    void mouseUp ( MouseEvent event );
+    void mouseDrag ( MouseEvent event );
     void keyDown( KeyEvent event );
     void resize	( ResizeEvent event ) { };
 private:
@@ -67,10 +69,14 @@ void LeavsApp::shutdown()
     delete engine;
 }
 
+void LeavsApp::mouseDown( MouseEvent event ) { engine->mouseDown ( event ); }
 void LeavsApp::mouseMove( MouseEvent event ) { engine->mouseMove ( event ); }
+void LeavsApp::mouseUp  ( MouseEvent event ) { engine->mouseUp   ( event ); }
+void LeavsApp::mouseDrag( MouseEvent event ) { engine->mouseDrag ( event ); }
+
+
 void LeavsApp::update() { engine->update(); }
 void LeavsApp::draw() { engine->draw(); }
 void LeavsApp::keyDown( KeyEvent event ) { engine->keyDown(event); }
-void LeavsApp::mouseDown( MouseEvent event ) { engine->mouseDown(event); }
 
 CINDER_APP_BASIC( LeavsApp, RendererGl )
