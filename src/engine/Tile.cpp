@@ -27,6 +27,7 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
     pos = new Vec2i( newPos.x, newPos.y );
     active = false;
     selected = false;
+    surrounding = false;
     type = newType;
 
     moving = false;
@@ -60,6 +61,10 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
 // Activates / deactivates selected hex
 void Tile::toggleSelected() {
     if (!dead && !moving && !growing ) { selected = !selected; }
+}
+
+void Tile::setSurrounding(bool value) {
+    surrounding = value;
 }
 
 bool Tile::selectable() { return (!dead && !moving && !growing); }
@@ -96,7 +101,7 @@ void Tile::moveTo( Vec2i newPos ) {
     }
 }
 
-void Tile::update( const float dist, const float modifier )
+void Tile::update( bool hovering, const float dist, const float modifier )
 {
     if (dead && !fading) { regrow(); }
 
@@ -111,7 +116,7 @@ void Tile::update( const float dist, const float modifier )
 
     if (!dead) {
         // Activate if cursor is over the hex and hex is not moving
-        active = (dist < (0.9 * baseTileSize) && !moving && !growing) ? true : false;
+        active = (dist < (0.9 * baseTileSize) && !moving && !growing && (hovering || surrounding)) ? true : false;
         
         // Shift averages
         for (int i = 1; i < FILTER_SIZE; i++) { prevTileSize[i - 1] = prevTileSize[i]; }
@@ -156,6 +161,7 @@ inline void Tile::drawAlive(float lightness) {
     
     if (active) drawActive(drawPos, val);
     if (selected) drawSelected(drawPos, val);
+    if (surrounding && !growing) drawSurrounding(drawPos, val);
 #endif
 }
 
@@ -303,6 +309,12 @@ inline void Tile::drawActive(Vec2f draw_pos, float val) {
 inline void Tile::drawSelected(Vec2f draw_pos, float val) {
     gl::color (1.0, 0.2, 0.8, 0.40 * baseAlpha);
     gl::drawSolidCircle( draw_pos, baseTileSize, 6 );
+    mConfig->engine->addCirclePoly( draw_pos, baseTileSize, 6, ColorA(0.75, 0.66, 0.75, 0.75) );
+}
+
+// Draw surrounding tile highlight
+inline void Tile::drawSurrounding(Vec2f draw_pos, float val) {
+    mConfig->engine->addCirclePoly( draw_pos, baseTileSize, 6, ColorA(0.75, 0.66, 0.75, 0.75) );
 }
 
 void Tile::onFadeEnd(int typeId)

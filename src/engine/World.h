@@ -19,7 +19,10 @@ public:
     void reset();
 	void draw();
 	void shutdown();
+
     void selectTile( const Vec2i mouseLoc );
+    void deselectTile( const Vec2i mouseLoc );
+
     int rndTileType();
 private:
     Configuration *mConfig;
@@ -34,7 +37,10 @@ private:
     void swapTiles( Tile *tile1, Tile *tile2 );
     bool resolveTiles(const bool act);
     bool resolveTile(int x, int y, bool act);
+    Tile* getTileAt( Vec2i mouseLoc );
 
+    void setSurrounding( Tile *tile, bool value );
+    
     int tileIndex(int x, int y);
     int tileIndex(Vec2i pos);
         

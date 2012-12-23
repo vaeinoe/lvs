@@ -29,6 +29,9 @@ public:
 	void shutdown();
     void mouseMove ( const MouseEvent event );
     void mouseDown ( const MouseEvent event );
+    void mouseUp   ( const MouseEvent event );
+    void mouseDrag ( const MouseEvent event );
+    
     void keyDown ( const KeyEvent event );
 
     void loadAll();
@@ -42,6 +45,8 @@ public:
     
     void addCirclePoly( const Vec2f &center, const float radius,
                         const int numSegments, const ColorA &color );
+    bool dragging;
+
 private:
     inline void drawGame();
     
@@ -70,12 +75,13 @@ private:
     Toolbar *mToolbar;
     World *mWorld;
     Player *mPlayer;
-    Vec2i *mMouseLoc;
     Audio *mAudio;
     FaderPack *mFaders;
     OverlayFxManager *overlayFx;
 
     Configuration *mConfig;
+
+    Vec2i *mMouseLoc;
 
     vector< GLfloat > tileVerts;
     vector< GLfloat > tileColors;

@@ -11,6 +11,7 @@
 #include "Audio.h"
 #include "Player.h"
 #include "Tile.h"
+#include "LVSEngine.h"
 
 using namespace ci;
 
@@ -26,9 +27,6 @@ void World::setup( Configuration *config, const Vec2i newSize )
     reset();
 }
 
-int World::rndTileType() {
-    return rnd.nextInt(mConfig->numTileTypes);
-}
 
 void World::reset() {
     tiles.clear();
@@ -49,7 +47,6 @@ void World::reset() {
 
 void World::update( const Vec2i *mouseLoc, const float *freqData, const int dataSize )
 {
-    
     int size = tiles.size();
     int binsPerTile = dataSize / size;
     int n = 0;
@@ -65,7 +62,7 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
             float mod = math<float>::clamp( freqData[ bin ] * ( bin / dataSizef ) * ( math<float>::log( ( dataSizef - (float)bin ) ) ), 0.0f, 2.0f );
             modifier += mod;
         }
-        (*t)->update(dir.length(), modifier);
+        (*t)->update(!mConfig->engine->dragging, dir.length(), modifier);
         n++;
     }
     
@@ -75,10 +72,6 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
         solverTimer = mConfig->solverDelayFrames;        
     }
 }
-
-// Mimic 2d array indexing
-inline int World::tileIndex(int x, int y) { return ((x * size->y) + y); }
-inline int World::tileIndex(Vec2i pos) { return ((pos.x * size->y) + pos.y); }
 
 // Returns the coordinate of tile's immediate neighbour to direction dir (lengths ignored)
 inline Vec2i World::neighbourCoord(Vec2i pos, Vec2i dir)
@@ -157,9 +150,10 @@ bool World::resolveTile(int x, int y, bool act) {
     
     int reqHit = true;
     for (int i = 0; i < 2; i++) {
-        if (reqTiles[i] >= tiles.size() || !tiles[reqTiles[i]]->selectable() || tiles[reqTiles[i]]->type != type) {
-            reqHit = false;
-            break;
+        if (reqTiles[i] >= tiles.size() || reqTiles[i] < 0 ||
+            !tiles[reqTiles[i]]->selectable() || tiles[reqTiles[i]]->type != type) {
+                reqHit = false;
+                break;
         }
     }
 
@@ -167,9 +161,10 @@ bool World::resolveTile(int x, int y, bool act) {
 
     int extraHit = true;
     for (int i = 0; i < 4; i++) {
-        if (extraTiles[i] >= tiles.size() || !tiles[extraTiles[i]]->selectable() || tiles[extraTiles[i]]->type != type) {
-            extraHit = false;
-            break;
+        if (extraTiles[i] >= tiles.size() || extraTiles[i] < 0 ||
+            !tiles[extraTiles[i]]->selectable() || tiles[extraTiles[i]]->type != type) {
+                extraHit = false;
+                break;
         }
     }
 
@@ -202,47 +197,68 @@ void World::draw()
     }
 }
 
-void World::selectTile( const Vec2i mouseLoc ) {
+inline Tile* World::getTileAt( Vec2i mouseLoc ) {
     for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
         Vec2f pos = (*t)->getScreenPositionVector();
         Vec2i dir = pos - mouseLoc;
-        
-        // Harrison-Stetson approximation of hit area
-        bool hit = dir.length() < (0.9 * mConfig->tileSize);
-        if (hit && (*t)->selectable() ) {
-            
-            if ( selectedTile ) {
-                if ( selectedTile != &**t ) {
-                    selectedTile->toggleSelected();
-                    if (areNeighbours(&**t, selectedTile) && selectedTile->selectable() && (*t)->selectable()) {
-                        swapTiles(&**t, selectedTile);
-                        selectedTile = NULL;
-                    }
-                    else {
-                        (*t)->toggleSelected();
-                        selectedTile = &**t;
-                    }
-                }
-                else {
-                    (*t)->toggleSelected();
-                    selectedTile = NULL;
-                }
-            }
-            else {
-                (*t)->toggleSelected();
-                selectedTile = &**t;
-            }
-            
-            return;
-        }
+        if (dir.length() < (0.9 * mConfig->tileSize)) return (*t);
     }
     
-    // Still a tile selected but it wasn't this one? Deselect!
+    return NULL;
+}
+
+// Toggles "surround" highlight for all the neigbouring tiles of tile
+inline void World::setSurrounding( Tile *tile, bool value ) {
+    Vec2i pos;
+    pos.x = tile->pos->x;
+    pos.y = tile->pos->y;
+    
+    int neighbours[] = {
+        tileIndex(neighbourCoord(pos, Vec2i(0,  1))),
+        tileIndex(neighbourCoord(pos, Vec2i(0, -1))),
+        tileIndex(neighbourCoord(pos, Vec2i(1,  1))),
+        tileIndex(neighbourCoord(pos, Vec2i(1, -1))),
+        tileIndex(neighbourCoord(pos, Vec2i(-1,  1))),
+        tileIndex(neighbourCoord(pos, Vec2i(-1, -1)))
+    };
+
+    for (int i = 0; i < 6; i++) {
+        if (neighbours[i] < tiles.size() && neighbours[i] > 0) {
+            tiles[neighbours[i]]->setSurrounding(value);
+        }
+    }
+}
+
+void World::deselectTile( const Vec2i mouseLoc ) {
+    if (selectedTile) {
+        selectedTile->toggleSelected();
+        setSurrounding(selectedTile, false);
+        
+        Tile *hover = getTileAt( mouseLoc );
+        if (hover && areNeighbours(selectedTile, hover) &&
+            selectedTile->selectable() && hover->selectable()) {
+                swapTiles(hover, selectedTile);
+        }
+        
+        selectedTile = NULL;
+    }    
+}
+
+void World::selectTile( const Vec2i mouseLoc ) {
     if (selectedTile) {
         selectedTile->toggleSelected();
         selectedTile = NULL;
     }
+    Tile *hover = getTileAt( mouseLoc );
+    
+    if (hover && hover->selectable()) {
+        hover->toggleSelected();
+        selectedTile = hover;
+        setSurrounding(hover, true);
+    }
 }
+
+
 
 // Returns true if tile1 != tile2 and tiles are neighbours on the grid
 bool World::areNeighbours ( Tile *tile1, Tile *tile2 ) {
@@ -293,6 +309,16 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
 
     mConfig->player->addScore(-1, tile1->type);
     mConfig->player->addScore(-1, tile2->type);
+}
+
+int World::rndTileType() { return rnd.nextInt(mConfig->numTileTypes); }
+inline int World::tileIndex(int x, int y) {
+    if (x < 0 || y < 0) return -1;
+    return ((x * size->y) + y);
+}
+inline int World::tileIndex(Vec2i pos) {
+    if (pos.x < 0 || pos.y < 0) return -1;
+    return ((pos.x * size->y) + pos.y);
 }
 
 void World::shutdown()
