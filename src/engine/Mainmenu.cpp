@@ -17,8 +17,8 @@ void Mainmenu::setup(Configuration *config)
     int windowWidth = getWindowWidth();
     int windowHeight = getWindowHeight();
     
-    int x = windowWidth * 0.75;
-    int y = windowHeight * 0.5;
+    int x = windowWidth * 0.5;
+    int y = 0;
     int width = 300;
     int height = 300;
     
@@ -39,7 +39,6 @@ void Mainmenu::setup(Configuration *config)
     ColorA cpo = ColorA( 0.294118, 0.34902, 0.419608, 0.784314 );
     gui-> setUIColors( cb, co, coh, cf, cfh, cp, cpo );
 
-    gui->addWidgetDown(new ciUILabel("lvs",CI_UI_FONT_LARGE));
     gui->addWidgetDown(new ciUILabelToggle(false, "play",CI_UI_FONT_MEDIUM));
     gui->addWidgetDown(new ciUILabelToggle(false, "quit",CI_UI_FONT_MEDIUM));
     
@@ -47,10 +46,16 @@ void Mainmenu::setup(Configuration *config)
     gui->registerUIEvents(this, &Mainmenu::guiEvent);
     
     active = true;
+    
+    DataSourceRef logoRef = loadResource( RES_LOGO );
+    logo = new svg::Doc(logoRef);
 }
 
 void Mainmenu::update()   { gui->update(); }
-void Mainmenu::draw()     { gui->draw(); }
+void Mainmenu::draw()     {
+    gui->draw();
+    gl::draw(*logo);
+}
 void Mainmenu::shutdown() { delete gui; }
 
 void Mainmenu::mouseMove ( const MouseEvent event ) { }

@@ -1,6 +1,7 @@
 #pragma once
 #include "cinder/CinderResources.h"
 #define RES_FONT    CINDER_RESOURCE( ../resources/, nevis.ttf, 131, TTFONT )
+#define RES_LOGO    CINDER_RESOURCE( ../resources/, logo.svg, 130, SVG )
 
 #define RES_SEQ001  CINDER_RESOURCE( ../resources/, seq001.wav, 132, AUDIO )
 #define RES_SEQ002  CINDER_RESOURCE( ../resources/, seq002.wav, 133, AUDIO )

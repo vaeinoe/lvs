@@ -15,6 +15,7 @@
 #include "cinder/Timer.h"
 #include "cinder/Utilities.h"
 #include "cinder/gl/TextureFont.h"
+#include "cinder/svg/SvgGl.h"
 
 using namespace ci;
 using namespace ci::app;
