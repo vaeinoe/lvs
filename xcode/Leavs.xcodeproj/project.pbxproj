@@ -42,6 +42,7 @@
 		05782EEB1670A04B00FD39B7 /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE11670A04B00FD39B7 /* Toolbar.cpp */; };
 		05782EEC1670A04B00FD39B7 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE31670A04B00FD39B7 /* World.cpp */; };
 		05A44AF5167278F8000089A3 /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05782EED1670A05E00FD39B7 /* nevis.ttf */; };
+		05A9643A1687A19E003669E0 /* logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 05A964391687A19E003669E0 /* logo.svg */; };
 		05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */; };
 		05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */; };
 		05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A7701678DEDF00777C55 /* OverlayFx.cpp */; };
@@ -156,6 +157,7 @@
 		0590C9A71670EA9700D568A1 /* ciUIWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWaveform.h; sourceTree = "<group>"; };
 		0590C9A81670EA9700D568A1 /* ciUIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidget.h; sourceTree = "<group>"; };
 		0590C9A91670EA9700D568A1 /* ciUIWidgetWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidgetWithLabel.h; sourceTree = "<group>"; };
+		05A964391687A19E003669E0 /* logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = logo.svg; path = ../resources/logo.svg; sourceTree = "<group>"; };
 		05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WProgressBar.cpp; sourceTree = "<group>"; };
 		05BA87E7167CBFD400FC9B6F /* WProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WProgressBar.h; sourceTree = "<group>"; };
 		05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFxManager.cpp; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05A964391687A19E003669E0 /* logo.svg */,
 				051283501673E1FB00A4AAB1 /* drs001.wav */,
 				051283511673E1FB00A4AAB1 /* pad001.wav */,
 				051283521673E1FB00A4AAB1 /* prc001.wav */,
@@ -468,6 +471,7 @@
 				0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */,
 				0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */,
 				050BC5B11676510B00E83B71 /* tfx001.wav in Resources */,
+				05A9643A1687A19E003669E0 /* logo.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
