@@ -65,6 +65,10 @@ double Fader::timeLeft() {
     }
 }
 
+double Fader::timeTotal() {
+    return durTime;
+}
+
 void Fader::bindParam(double *newParam)
 {
     param = newParam;

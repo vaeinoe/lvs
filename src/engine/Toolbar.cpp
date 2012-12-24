@@ -3,15 +3,23 @@
  *  Leavs
  *
  *  Created by Väinö Ala-Härkönen on 10/27/12.
- *  Copyright 2012 __MyCompanyName__. All rights reserved.
+ *  Copyright 2012 Lumeet. All rights reserved.
  *
  */
 
 #include "Toolbar.h"
 #include "LVSEngine.h"
 #include "Player.h"
+#include "WProgressBar.h"
 #include "../ciUI/ciUI.h"
 #include <string>
+
+double Toolbar::barColors[][4] = {
+    {0.0, 0.0, 1.0, 0.5},
+    {1.0, 1.0, 1.0, 0.5},
+    {1.0, 0.0, 0.0, 0.5},
+    {0.1, 1.0, 0.1, 0.5}
+};
 
 void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
 {
@@ -49,18 +57,41 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
         gui->addWidgetRight(scoreLabels[i]);
     }
     
+    int windowWidth = getWindowWidth();
+    Vec2f firstPos = Vec2f(5, 5);
+    Vec2f offset   = Vec2f(105, 0);
+    Vec2f barSize  = Vec2f(100, 15);
+
+    timerBar = new WProgressBar();
+    timerBar->setup(Vec2f(windowWidth - 5, 20) - barSize, barSize, ColorA(0.5, 0.5, 0.0, 0.5), 100, 100);
+    
+    for (int i = 0; i < mConfig->numTileTypes; i++) {
+        scoreBars[i] = new WProgressBar();
+        ColorA barColor = ColorA(barColors[i][0], barColors[i][1],
+                                 barColors[i][2], barColors[i][3]);
+        scoreBars[i]->setup(firstPos + (i * offset), barSize, barColor, 100, 0);
+    }
+    
     gui->autoSizeToFitWidgets();
     gui->registerUIEvents(this, &Toolbar::guiEvent);
 }
 
 void Toolbar::updateScore( int score, int maxScore, int type ) {
-    char buf[100];
-    sprintf(buf, "%03d/%03d", score, maxScore);
-    scoreLabels[type]->setLabel(buf);
+    scoreBars[type]->setValue(score, maxScore);
+    
+//    char buf[100];
+//    sprintf(buf, "%03d/%03d", score, maxScore);
+//    scoreLabels[type]->setLabel(buf);
 }
 
 void Toolbar::shutdown() { delete gui; }
-void Toolbar::draw() { gui->draw(); }
+void Toolbar::draw() {
+//    gui->draw();
+    timerBar->draw();
+    for (int i = 0; i < mConfig->numTileTypes; i++) {
+        scoreBars[i]->draw();
+    }
+}
 
 void Toolbar::update( int fftDataBins )
 {
@@ -71,7 +102,9 @@ void Toolbar::update( int fftDataBins )
     sprintf(buf, "%3.0f", mConfig->engine->getGameTime());
     timerLabel->setLabel(buf);
     
-	gui->update();
+	//gui->update();
+    
+    timerBar->setValue(mConfig->engine->getGameTime(), mConfig->engine->getMaxTime());
 }
 
 void Toolbar::guiEvent(ciUIEvent *event)
