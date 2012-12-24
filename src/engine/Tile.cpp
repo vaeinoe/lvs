@@ -270,7 +270,7 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
 {
     int hexCount = 4;
     
-    if (level == 0) {
+    if (level == 1) {
         int segments = 4;
         for (int i = 0; i < FILTER_SIZE; i++) {
             float a = i * 1.0 / FILTER_SIZE;
@@ -287,7 +287,8 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
             }
         }        
     }
-    else if (level == 1) {
+    
+    else if (level == 0) {
         int segments = 6;
         for (int i = 0; i < FILTER_SIZE; i++) {
             float a = i * 1.0 / FILTER_SIZE;
