@@ -40,6 +40,7 @@ public:
     void backToMain();
     
     double getGameTime();
+    double getMaxTime();
     
     void onFadeEnd(int typeId);
     

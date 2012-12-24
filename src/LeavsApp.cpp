@@ -60,7 +60,7 @@ void LeavsApp::setup()
     }
 
     engine = new LVSEngine();
-    engine->setup(config);
+    engine->setup(config);    
 }
 
 void LeavsApp::shutdown()

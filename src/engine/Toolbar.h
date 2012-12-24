@@ -3,7 +3,7 @@
  *  Leavs
  *
  *  Created by Väinö Ala-Härkönen on 10/27/12.
- *  Copyright 2012 __MyCompanyName__. All rights reserved.
+ *  Copyright 2012 Lumeet. All rights reserved.
  *
  */
 #pragma once
@@ -14,6 +14,7 @@ class ciUILabel;
 class ciUIEvent;
 
 class Configuration;
+class WProgressBar;
 
 class Toolbar {
 public:
@@ -24,8 +25,13 @@ public:
 	void guiEvent( ciUIEvent *event );
     void updateScore( int score, int maxScore, int type );
 private:
+    static double barColors[][4];
+    
     Configuration *mConfig;
 	ciUICanvas *gui;
     ciUILabel *scoreLabels[32];
     ciUILabel *timerLabel;
+    
+    WProgressBar *scoreBars[TILE_TYPES];
+    WProgressBar *timerBar;
 };

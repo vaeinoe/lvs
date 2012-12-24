@@ -3,7 +3,7 @@
  *  Leavs
  *
  *  Created by Väinö Ala-Härkönen on 10/27/12.
- *  Copyright 2012 __MyCompanyName__. All rights reserved.
+ *  Copyright 2012 Lumeet. All rights reserved.
  *
  */
 
@@ -28,6 +28,7 @@ void World::setup( Configuration *config, const Vec2i newSize )
 }
 
 
+// Clears and reinits all tiles
 void World::reset() {
     tiles.clear();
     tiles.reserve( size->x * size->y );
@@ -45,6 +46,8 @@ void World::reset() {
     if (resolveTiles(false) == true) { reset(); }
 }
 
+
+// Update all tiles' size modifiers and active status
 void World::update( const Vec2i *mouseLoc, const float *freqData, const int dataSize )
 {
     int size = tiles.size();
@@ -72,6 +75,7 @@ void World::update( const Vec2i *mouseLoc, const float *freqData, const int data
         solverTimer = mConfig->solverDelayFrames;        
     }
 }
+
 
 // Returns the coordinate of tile's immediate neighbour to direction dir (lengths ignored)
 inline Vec2i World::neighbourCoord(Vec2i pos, Vec2i dir)
@@ -197,11 +201,12 @@ void World::draw()
     }
 }
 
+// Returns a tile hit under the cursor
 inline Tile* World::getTileAt( Vec2i mouseLoc ) {
     for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
         Vec2f pos = (*t)->getScreenPositionVector();
         Vec2i dir = pos - mouseLoc;
-        if (dir.length() < (0.9 * mConfig->tileSize)) return (*t);
+        if (dir.length() < (0.95 * mConfig->tileSize)) return (*t);
     }
     
     return NULL;
@@ -229,6 +234,7 @@ inline void World::setSurrounding( Tile *tile, bool value ) {
     }
 }
 
+// Deselect + swap if required
 void World::deselectTile( const Vec2i mouseLoc ) {
     if (selectedTile) {
         selectedTile->toggleSelected();
@@ -244,6 +250,7 @@ void World::deselectTile( const Vec2i mouseLoc ) {
     }    
 }
 
+// Selects a new tile and marks the surrounding tiles as highlighted
 void World::selectTile( const Vec2i mouseLoc ) {
     if (selectedTile) {
         selectedTile->toggleSelected();
@@ -291,6 +298,7 @@ bool World::areNeighbours ( Tile *tile1, Tile *tile2 ) {
     return false;
 }
 
+
 // Swaps two tiles
 void World::swapTiles( Tile *tile1, Tile *tile2 ) {
     Vec2i pos1, pos2;
@@ -312,16 +320,17 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
 }
 
 int World::rndTileType() { return rnd.nextInt(mConfig->numTileTypes); }
+
 inline int World::tileIndex(int x, int y) {
     if (x < 0 || y < 0) return -1;
+    if (x >= size->x || y >= size->y) return -1;
     return ((x * size->y) + y);
 }
+
 inline int World::tileIndex(Vec2i pos) {
     if (pos.x < 0 || pos.y < 0) return -1;
+    if (pos.x >= size->x || pos.y >= size->y) return -1;
     return ((pos.x * size->y) + pos.y);
 }
 
-void World::shutdown()
-{
-    tiles.clear();
-}
+void World::shutdown() { tiles.clear(); }

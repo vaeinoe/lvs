@@ -259,6 +259,11 @@ double LVSEngine::getGameTime()
     return gameFader->timeLeft();
 }
 
+double LVSEngine::getMaxTime()
+{
+    return gameFader->timeTotal();
+}
+
 void LVSEngine::onFadeEnd(int typeId)
 {
     if (typeId == FADEFADER) {
@@ -326,6 +331,8 @@ void LVSEngine::addCirclePoly( const Vec2f &center, const float radius, int numS
 
 inline void LVSEngine::drawGame()
 {
+//    gl::rotate(Vec3f(1,0,0));
+
     glEnableClientState( GL_VERTEX_ARRAY );
 	glEnableClientState( GL_COLOR_ARRAY );
     
