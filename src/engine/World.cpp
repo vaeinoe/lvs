@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Tile.h"
 #include "LVSEngine.h"
+#include "TileLevel.h"
 
 using namespace ci;
 
@@ -315,8 +316,8 @@ void World::swapTiles( Tile *tile1, Tile *tile2 ) {
     tile1->moveTo(pos2);
     tile2->moveTo(pos1);
 
-    mConfig->player->addScore(-1, tile1->type);
-    mConfig->player->addScore(-1, tile2->type);
+    mConfig->levels[tile1->type]->addScore(-1);
+    mConfig->levels[tile2->type]->addScore(-1);
 }
 
 int World::rndTileType() { return rnd.nextInt(mConfig->numTileTypes); }

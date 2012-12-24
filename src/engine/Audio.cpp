@@ -30,6 +30,7 @@ void Audio::setup(Configuration *config)
 #else
     audioEngine = createIrrKlangDevice();
 #endif
+    
     mainVol = 0.0;
     audioEngine->setSoundVolume(mainVol);
 

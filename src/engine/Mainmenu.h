@@ -26,7 +26,6 @@ public:
     void deactivate();
 private:
     bool active;
-    ci::CallbackId callback;
     ciUICanvas *gui;
     svg::Doc *logo;
     Vec2i *mMouseLoc;

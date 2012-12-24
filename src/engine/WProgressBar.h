@@ -13,8 +13,6 @@ class WProgressBar {
 public:
 	void setup(Vec2f initpos, Vec2f initsize, ColorA color,
                int newMaxval, int initval);
-	void update();
-    void reset();
 	void draw();
 	void shutdown();
     void setValue(int newVal, int newMax = -1);
