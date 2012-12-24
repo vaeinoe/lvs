@@ -65,7 +65,7 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     Vec2f barSize  = Vec2f(100, 15);
 
     timerBar = new WProgressBar();
-    timerBar->setup(Vec2f(windowWidth - 5, 20) - barSize, barSize, ColorA(0.5, 0.5, 0.0, 0.5), 100, 100);
+    timerBar->setup(Vec2f(windowWidth - 5, 20) - barSize, barSize, ColorA(0.5, 0.0, 0.5, 0.5), 100, 100);
     
     for (int i = 0; i < mConfig->numTileTypes; i++) {
         scoreBars[i] = new WProgressBar();
@@ -91,6 +91,10 @@ void Toolbar::updateScore( int score, int maxScore, int type ) {
 void Toolbar::shutdown() { delete gui; }
 void Toolbar::draw() {
 //    gui->draw();
+    
+    // gl::color( 1.0, 1.0, 1.0, 0.25 );
+    // gl::drawSolidRect( Rectf(start, end) );
+    
     timerBar->draw();
     for (int i = 0; i < mConfig->numTileTypes; i++) {
         scoreBars[i]->draw();
