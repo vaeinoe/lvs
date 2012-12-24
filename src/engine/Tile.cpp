@@ -134,7 +134,7 @@ void Tile::update( bool hovering, const float dist, const float modifier )
 
 inline Vec2f Tile::getScreenPositionVector(Vec2i loc) {
     float x = mConfig->padding + (mConfig->tileGrid / 2) + loc.x * (1.5 * mConfig->tileGrid);
-    float y = mConfig->padding + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid);
+    float y = mConfig->padding + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid) + 7;
     if (loc.y % 2 != 0) { x += (0.74 * mConfig->tileGrid); }
     
     return Vec2f(x, y);
