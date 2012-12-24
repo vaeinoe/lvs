@@ -16,6 +16,7 @@ class Toolbar;
 class FaderPack;
 class Audio;
 class OverlayFxManager;
+class TileLevel;
 
 class Configuration {
 public:
@@ -30,7 +31,8 @@ public:
     float padding;
     int solverDelayFrames;
     
-    int tileLevels[TILE_TYPES];
+    TileLevel *levels[TILE_TYPES];
+//    int tileLevels[TILE_TYPES];
     
     Player *player;
     World *world;

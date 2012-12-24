@@ -57,12 +57,8 @@ void Fader::addTime(double seconds) { durTime += seconds; }
 // TODO: not the best way to do this...
 double Fader::timeLeft() {
     double diff = durTime - (mMaster->getSeconds() - startTime);
-    if (diff < 0) {
-        return 0;
-    }
-    else {
-        return diff;
-    }
+    if (diff < 0) { return 0; }
+    else          { return diff; }
 }
 
 double Fader::timeTotal() {

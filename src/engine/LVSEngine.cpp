@@ -24,6 +24,7 @@
 #include "FaderPack.h"
 #include "Fader.h"
 #include "OverlayFxManager.h"
+#include "TileLevel.h"
 
 void LVSEngine::setup(Configuration *config)
 {
@@ -46,7 +47,12 @@ void LVSEngine::setup(Configuration *config)
     mConfig->faders = mFaders;
     mConfig->audio = mAudio;
     mConfig->overlayFx = overlayFx;
-    
+
+    for (int i = 0; i < config->numTileTypes; i++) {
+        mConfig->levels[i] = new TileLevel();
+        mConfig->levels[i]->setup(mConfig, i);
+    }
+
     dragging = false;
 
     mMouseLoc = new Vec2i(0, 0);
