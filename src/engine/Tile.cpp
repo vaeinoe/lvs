@@ -59,6 +59,12 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
     drawPos = getScreenPositionVector();
 }
 
+void Tile::shutdown() {
+    mConfig->faders->deleteFader(fadeFader);
+    mConfig->faders->deleteFader(growFader);
+    mConfig->faders->deleteFader(moveFader);
+}
+
 // Activates / deactivates selected hex
 void Tile::toggleSelected() {
     if (!dead && !moving && !growing ) { selected = !selected; }

@@ -32,7 +32,6 @@ public:
     int solverDelayFrames;
     
     TileLevel *levels[TILE_TYPES];
-//    int tileLevels[TILE_TYPES];
     
     Player *player;
     World *world;

@@ -28,7 +28,6 @@ void LeavsApp::prepareSettings( Settings *settings )
     settings->setWindowSize( PLAYFIELD_W , PLAYFIELD_H );
     settings->setFrameRate( 30.0f );
     settings->setResizable(false);
-    settings->setTitle("ASDF");
 }
 
 void LeavsApp::setup()
@@ -56,7 +55,7 @@ void LeavsApp::setup()
     config->solverDelayFrames = 2;
     
     engine = new LVSEngine();
-    engine->setup(config);    
+    engine->setup(config);
 }
 
 void LeavsApp::shutdown()

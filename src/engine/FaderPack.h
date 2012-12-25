@@ -31,6 +31,7 @@ public:
     Fader* createFader(int type = 0);
     Fader* createFader(int type, double *bindPar, FadeObserver *obs);
     
+    void deleteFader( Fader* fdr );
 private:
     bool active;
     

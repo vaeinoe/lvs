@@ -39,6 +39,7 @@ public:
     void startGame();
     void backToMain();
     
+    void addGameTime(int seconds);
     double getGameTime();
     double getMaxTime();
     
@@ -49,7 +50,10 @@ public:
     bool dragging;
 
 private:
+    inline bool checkVictory();
     inline void drawGame();
+    inline void gameOver();
+    inline void resetGame();
     
     void fade(int dir, double seconds, bool quitAfter);
     inline void performFade();
@@ -59,18 +63,17 @@ private:
 
     Font loadFont;
     gl::TextureFontRef texFont;
+    gl::TextureFontRef texFontLarge;
     
     int loadState;
     string loadStr;
     
     Fader *gameFader;
-    bool gameOver;
     bool paused;
     
     Fader *screenFader;
     double fadeVal;
     bool fading;
-    bool quitAfterFade;
     
     Mainmenu *mMenu;
     Toolbar *mToolbar;

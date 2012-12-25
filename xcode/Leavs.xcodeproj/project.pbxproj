@@ -47,6 +47,7 @@
 		05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */; };
 		05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */; };
 		05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A7701678DEDF00777C55 /* OverlayFx.cpp */; };
+		05E57D0A168A19EC00E0E337 /* drs004.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E57D09168A19EC00E0E337 /* drs004.wav */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
@@ -168,6 +169,7 @@
 		05C4A76D1678DE0600777C55 /* OverlayFxManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayFxManager.h; sourceTree = "<group>"; };
 		05C4A7701678DEDF00777C55 /* OverlayFx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFx.cpp; sourceTree = "<group>"; };
 		05C4A7711678DEDF00777C55 /* OverlayFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayFx.h; sourceTree = "<group>"; };
+		05E57D09168A19EC00E0E337 /* drs004.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drs004.wav; path = ../resources/drs004.wav; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -243,6 +245,7 @@
 				052FED151674E4C20001E076 /* Fader.h */,
 				052FED181674E4D20001E076 /* FaderPack.cpp */,
 				052FED191674E4D20001E076 /* FaderPack.h */,
+				059425E6168888CE00057DFE /* LevelData.h */,
 				05782ED91670A04B00FD39B7 /* LVSEngine.cpp */,
 				05782EDA1670A04B00FD39B7 /* LVSEngine.h */,
 				05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */,
@@ -255,15 +258,14 @@
 				05782EDE1670A04B00FD39B7 /* Player.h */,
 				05782EDF1670A04B00FD39B7 /* Tile.cpp */,
 				05782EE01670A04B00FD39B7 /* Tile.h */,
+				059425E3168886E200057DFE /* TileLevel.cpp */,
+				059425E4168886E300057DFE /* TileLevel.h */,
 				05782EE11670A04B00FD39B7 /* Toolbar.cpp */,
 				05782EE21670A04B00FD39B7 /* Toolbar.h */,
 				05782EE31670A04B00FD39B7 /* World.cpp */,
 				05782EE41670A04B00FD39B7 /* World.h */,
 				05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */,
 				05BA87E7167CBFD400FC9B6F /* WProgressBar.h */,
-				059425E3168886E200057DFE /* TileLevel.cpp */,
-				059425E4168886E300057DFE /* TileLevel.h */,
-				059425E6168888CE00057DFE /* LevelData.h */,
 			);
 			name = engine;
 			path = ../src/engine;
@@ -392,6 +394,7 @@
 				051283531673E1FB00A4AAB1 /* prc002.wav */,
 				051283541673E1FB00A4AAB1 /* prc003.wav */,
 				051283551673E1FB00A4AAB1 /* seq001.wav */,
+				05E57D09168A19EC00E0E337 /* drs004.wav */,
 				051283561673E1FB00A4AAB1 /* seq002.wav */,
 				051283571673E1FB00A4AAB1 /* seq003.wav */,
 				050BC5B01676510B00E83B71 /* tfx001.wav */,
@@ -479,6 +482,7 @@
 				0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */,
 				050BC5B11676510B00E83B71 /* tfx001.wav in Resources */,
 				05A9643A1687A19E003669E0 /* logo.svg in Resources */,
+				05E57D0A168A19EC00E0E337 /* drs004.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
