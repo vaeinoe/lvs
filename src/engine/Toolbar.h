@@ -9,10 +9,6 @@
 #pragma once
 #include "Configuration.h"
 
-class ciUICanvas;
-class ciUILabel;
-class ciUIEvent;
-
 class Configuration;
 class WProgressBar;
 
@@ -22,16 +18,11 @@ public:
 	void update( int fftDataBins );
 	void draw();
 	void shutdown();
-	void guiEvent( ciUIEvent *event );
-    void updateScore( int score, int maxScore, int type );
+    void updateScore( int score, int maxScore, int type, bool finished = false );
 private:
     static double barColors[][4];
     
-    Configuration *mConfig;
-	ciUICanvas *gui;
-    ciUILabel *scoreLabels[32];
-    ciUILabel *timerLabel;
-    
+    Configuration *mConfig;    
     WProgressBar *scoreBars[TILE_TYPES];
     WProgressBar *timerBar;
 };

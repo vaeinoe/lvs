@@ -92,6 +92,15 @@ Fader* FaderPack::createFader(int type, double *bindPar, FadeObserver *obs)
     return fader;
 }
 
+void FaderPack::deleteFader( Fader* fdr ) {
+    for( vector<Fader*>::iterator t = mFaders.begin(); t != mFaders.end(); ++t ){
+        if ((*t) == fdr) {
+            mFaders.erase(t);
+            delete fdr;
+            return;
+        }
+    }
+}
 
 bool FaderPack::isActive() { return active; }
 double FaderPack::getSeconds() { return time; }

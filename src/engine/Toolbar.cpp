@@ -26,8 +26,8 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     mConfig = config;
 
     int windowWidth = getWindowWidth();
-    Vec2f firstPos = Vec2f(5, 5);
-    Vec2f offset   = Vec2f(105, 0);
+    Vec2f firstPos = Vec2f(10, 5);
+    Vec2f offset   = Vec2f(110, 0);
     Vec2f barSize  = Vec2f(100, 15);
 
     timerBar = new WProgressBar();
@@ -41,16 +41,21 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     }
 }
 
-void Toolbar::updateScore( int score, int maxScore, int type ) {
-    scoreBars[type]->setValue(score, maxScore);
+void Toolbar::updateScore( int score, int maxScore, int type, bool finished ) {
+    if (finished) { // Bar grayed out
+        scoreBars[type]->setColor(ColorA(1.0, 1.0, 1.0, 0.2));
+        scoreBars[type]->setValue(maxScore, maxScore);
+    }
+    else {        
+        scoreBars[type]->setValue(score, maxScore);
+    }
 }
 
-void Toolbar::shutdown() { delete gui; }
 void Toolbar::draw() {
     Vec2f start = Vec2f(0,0);
     Vec2f end   = Vec2f(getWindowWidth(), 25);
                         
-    gl::color( 0.0, 0.0, 0.0, 0.5 );
+    gl::color( 0.2, 0.0, 0.2, 0.33 );
     gl::drawSolidRect( Rectf(start, end) );
     
     timerBar->draw();
@@ -64,7 +69,4 @@ void Toolbar::update( int fftDataBins )
     timerBar->setValue(mConfig->engine->getGameTime(), mConfig->engine->getMaxTime());
 }
 
-void Toolbar::guiEvent(ciUIEvent *event)
-{
-    // XXX
-}
+void Toolbar::shutdown() { }

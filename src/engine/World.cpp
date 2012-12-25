@@ -31,6 +31,10 @@ void World::setup( Configuration *config, const Vec2i newSize )
 
 // Clears and reinits all tiles
 void World::reset() {
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+        (*t)->shutdown();
+    }
+    
     tiles.clear();
     tiles.reserve( size->x * size->y );
     

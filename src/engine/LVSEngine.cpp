@@ -10,7 +10,9 @@
 #define S_LOADING   0
 #define S_MAINMENU  1
 #define S_INGAME_1  2
-#define S_QUITTING  3
+#define S_GAMEOVER  3
+#define S_VICTORY   4
+#define S_QUITTING  5
 
 #define FADEFADER 0
 #define GAMEFADER 1
@@ -28,7 +30,6 @@
 
 void LVSEngine::setup(Configuration *config)
 {
-    quitAfterFade = false;
     fadeVal = 1.0;
 
     mConfig = config;
@@ -58,14 +59,15 @@ void LVSEngine::setup(Configuration *config)
     mMouseLoc = new Vec2i(0, 0);
 
     gameState = S_LOADING;
-    gameOver = false;
     paused = false;
-    
+
+    loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_SMALL);
+    texFont = gl::TextureFont::create(loadFont);
+    loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_LARGE);
+    texFontLarge = gl::TextureFont::create(loadFont);
+
     loadState = 0;
     loadStr = "init: toolbar";
-
-    loadFont = Font( loadResource( RES_FONT ), 32);
-    texFont = gl::TextureFont::create(loadFont);
     
     fullScreen = false;
 
@@ -105,7 +107,6 @@ void LVSEngine::loadAll() {
             gameState = S_MAINMENU;
             
             screenFader->fade(0.0, 2.5);
-            fading = true;
             break;
     }
 
@@ -114,6 +115,7 @@ void LVSEngine::loadAll() {
 
 void LVSEngine::update()
 {
+    checkVictory();
     mFaders->update();
     
     switch (gameState) {
@@ -134,6 +136,9 @@ void LVSEngine::update()
         case S_QUITTING:
             mAudio->update();
             break;
+        default:
+            mAudio->update();
+            break;
     }
 }
 
@@ -142,9 +147,11 @@ void LVSEngine::draw()
     float lightness = sin(getElapsedSeconds() / 10);
     switch (gameState) {
         case S_LOADING:
-            gl::clear( Color( 0, 0, 0 ) );
-            texFont->drawString(loadStr,Vec2f(50,50));
-//            gl::drawString(loadStr, Vec2f(50,50), Color(1,1,1), loadFont);
+            gl::clear( Color( 0, 0, 0.0 ) );
+            gl::color(0, 0, 0.0, 1.0);
+            gl::drawSolidRect (Rectf(0,0,getWindowWidth(),getWindowHeight()));
+            gl::color(0.9, 0.9, 0.9, 0.5);
+            texFontLarge->drawString(loadStr,getWindowCenter());
             break;
         case S_MAINMENU:
             gl::clear( Color( lightness * 0.4, 0, 0.2 ) );
@@ -169,7 +176,14 @@ void LVSEngine::draw()
         gl::color(0, 0, 0, fadeVal);
         gl::drawSolidRect (Rectf(0,0,getWindowWidth(),getWindowHeight()));
     }
+    if (gameState == S_GAMEOVER) {
+        gl::color(1, 1, 1, fadeVal);
+        texFontLarge->drawString("game over", getWindowCenter());
+    }
 }
+
+double LVSEngine::getGameTime() { return gameFader->timeLeft(); }
+double LVSEngine::getMaxTime() { return gameFader->timeTotal(); }
 
 void LVSEngine::mouseUp ( const MouseEvent event ) {
     Vec2i pos = event.getPos();
@@ -223,6 +237,18 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
     }
 }
 
+inline bool LVSEngine::checkVictory()
+{
+    for (int i = 0; i < mConfig->numTileTypes; i++) {
+        if (!mConfig->levels[i]->isFinished()) {
+            return false;
+        }
+    }
+    // OK, victory
+    gameState = S_VICTORY;
+    return true;
+}
+
 void LVSEngine::startGame()
 {
     gameState = S_INGAME_1;
@@ -230,11 +256,11 @@ void LVSEngine::startGame()
     mAudio->fadeToPreset(2, 5.0);
     
     if (paused) {
-        cout << "Resuming" << endl;
+        // cout << "Resuming" << endl;
         gameFader->resume();
     }
     else {
-        gameFader->fade(0.0, 300);
+        gameFader->fade(0.0, INIT_GAME_TIME);
     }
     paused = false;
 }
@@ -256,33 +282,47 @@ void LVSEngine::quitGame()
     mAudio->fadeToPreset(0, 2.5);
     
     screenFader->fade(1.0, 3.0);
-    fading = true;
-    quitAfterFade = true;
 }
 
-double LVSEngine::getGameTime()
+void LVSEngine::gameOver()
 {
-    return gameFader->timeLeft();
+    // XXX reset level & scores
+    // XXX print gameover
+    mAudio->fadeToPreset(1, 5.0);
+    screenFader->fade(1.0, 3.0);
 }
 
-double LVSEngine::getMaxTime()
+inline void LVSEngine::resetGame()
 {
-    return gameFader->timeTotal();
+    mWorld->reset();
+    for (int i = 0; i < mConfig->numTileTypes; i++) {
+        mConfig->levels[i]->reset();
+    }
+}
+
+void LVSEngine::addGameTime(int seconds)
+{
+    gameFader->addTime(seconds);
 }
 
 void LVSEngine::onFadeEnd(int typeId)
 {
     if (typeId == FADEFADER) {
-                fading = false;
-        if (quitAfterFade) {
+        if (gameState == S_GAMEOVER) {
+            resetGame();
+            screenFader->fade(0.0, 2.0);
+            gameState = S_MAINMENU;
+            mMenu->activate();            
+        }
+        else if (gameState == S_QUITTING) {
             gl::clear( Color( 0, 0, 0 ) );
             shutdown();
             exit(0);
         }
     }
     else if (typeId == GAMEFADER) {
-        gameOver = true;
-        // change state?
+        gameState = S_GAMEOVER;
+        gameOver();
     }
 }
 
@@ -337,8 +377,6 @@ void LVSEngine::addCirclePoly( const Vec2f &center, const float radius, int numS
 
 inline void LVSEngine::drawGame()
 {
-//    gl::rotate(Vec3f(1,0,0));
-
     glEnableClientState( GL_VERTEX_ARRAY );
 	glEnableClientState( GL_COLOR_ARRAY );
     

@@ -95,7 +95,7 @@ DataSourceRef AudioTrack::loadTrack(int trackNo) {
         case 2:
             return loadResource( RES_PRC003 );
         case 3:
-            return loadResource( RES_DRS001 );
+            return loadResource( RES_DRS004 );
         case 4:
             return loadResource( RES_PRC001 );
         case 5:

@@ -21,6 +21,9 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
+#define FONT_SIZE_SMALL 32
+#define FONT_SIZE_LARGE 64
+
 #define NUM_ANGLES 32
 
 #define PLAYFIELD_W 950
@@ -36,4 +39,4 @@ using namespace std;
 #define FADE_TIME_SEC 2.0
 #define GROW_TIME_SEC 6.0
 
-#define INIT_GAME_TIME 150
+#define INIT_GAME_TIME 120

@@ -51,11 +51,12 @@ void Mainmenu::setup(Configuration *config)
     logo = new svg::Doc(logoRef);
 }
 
-void Mainmenu::update()   { gui->update(); }
 void Mainmenu::draw()     {
     gui->draw();
     gl::draw(*logo);
 }
+
+void Mainmenu::update()   { gui->update(); }
 void Mainmenu::shutdown() { delete gui; }
 
 void Mainmenu::mouseMove ( const MouseEvent event ) { }

@@ -8,6 +8,9 @@
 
 #include "TileLevel.h"
 #include "Toolbar.h"
+#include "LVSEngine.h"
+
+int TileLevel::numLevels[TILE_TYPES] = { 2, 2, 2, 2 };
 
 void TileLevel::setup(Configuration *config, int newType)
 {
@@ -16,8 +19,11 @@ void TileLevel::setup(Configuration *config, int newType)
     type  = newType;
     level = 0;
     
-    score    = 0;
-    maxScore = (level + 1) * 50;
+    cumulScore = 0;
+    score      = 0;
+    maxScore   = (level + 1) * 50;
+    
+    finished = false;
 }
 
 void TileLevel::reset()
@@ -25,21 +31,38 @@ void TileLevel::reset()
     level    = 0;
     score    = 0;
     maxScore = (level + 1) * 50;
+    cumulScore = 0;
+    
+    mConfig->toolbar->updateScore(score, maxScore, type, finished);
 }
 
 void TileLevel::addScore(int newScore)
 {
-    score += newScore;
-    if (score < 0) score = 0;
-    if (score >= maxScore) {
-        level += 1;
-        score  = 0;
-        maxScore = (level + 1) * 50;
-        // XXX levelwise max scores
+    if (!finished) {
+        score += newScore;
+        if (score < 0) score = 0;
+        if (score >= maxScore) levelUp();
+        mConfig->toolbar->updateScore(score, maxScore, type, finished);
     }
-    mConfig->toolbar->updateScore(score, maxScore, type);
 }
 
+inline void TileLevel::levelUp()
+{
+    mConfig->engine->addGameTime(score);
+    cumulScore += score;
+
+    level += 1;
+    score  = 0;
+    maxScore = (level + 1) * 50;
+    
+    if (level == numLevels[type]) {
+        finished = true;
+    }
+    
+    mConfig->toolbar->updateScore(score, maxScore, type, finished);
+}
+
+bool TileLevel::isFinished() { return finished; }
 int TileLevel::getScore() { return score; }
 int TileLevel::getLevel() { return level; }
 

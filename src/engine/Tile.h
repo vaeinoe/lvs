@@ -21,6 +21,8 @@ public:
     void draw();
     void toggleSelected();
     void setSurrounding(bool value);
+    void shutdown();
+    
     Vec2f getScreenPositionVector();
     Vec2i *pos;
 

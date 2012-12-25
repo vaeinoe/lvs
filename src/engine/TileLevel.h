@@ -9,9 +9,6 @@
 #pragma once
 #include "Configuration.h"
 
-// Update score
-// Get score
-
 class Configuration;
 
 class TileLevel {
@@ -22,11 +19,20 @@ public:
 
     int getScore();
     int getLevel();
+    
+    bool isFinished();
 private:
+    static int numLevels[TILE_TYPES];
+    void levelUp();
+
     Configuration *mConfig;
 
     int type;
     int level;
     int score;
     int maxScore;
+    
+    int cumulScore;
+    
+    bool finished;
 };
