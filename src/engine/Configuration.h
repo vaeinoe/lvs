@@ -31,6 +31,10 @@ public:
     float padding;
     int solverDelayFrames;
     
+    Vec2f fieldOrigin;
+    Vec2i fieldSize;
+    Rectf fieldRect;
+    
     TileLevel *levels[TILE_TYPES];
     
     Player *player;

@@ -48,12 +48,12 @@ void TileLevel::addScore(int newScore)
 
 inline void TileLevel::levelUp()
 {
-    mConfig->engine->addGameTime(score);
     cumulScore += score;
 
     level += 1;
     score  = 0;
     maxScore = (level + 1) * 50;
+    mConfig->engine->addGameTime(maxScore);
     
     if (level == numLevels[type]) {
         finished = true;

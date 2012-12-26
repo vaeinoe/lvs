@@ -110,6 +110,8 @@ void Tile::moveTo( Vec2i newPos ) {
 
 void Tile::update( bool hovering, const float dist, const float modifier )
 {
+    drawPos = getScreenPositionVector();
+
     if (dead && !fading) { regrow(); }
 
     if (growing) {
@@ -142,6 +144,9 @@ inline Vec2f Tile::getScreenPositionVector(Vec2i loc) {
     float x = mConfig->padding + (mConfig->tileGrid / 2) + loc.x * (1.5 * mConfig->tileGrid);
     float y = mConfig->padding + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid) + 7;
     if (loc.y % 2 != 0) { x += (0.74 * mConfig->tileGrid); }
+    
+    x += mConfig->fieldOrigin.x;
+    y += mConfig->fieldOrigin.y;
     
     return Vec2f(x, y);
 }
@@ -184,7 +189,7 @@ inline void Tile::drawGrow(float lightness) {
 
 // Draws the tile
 void Tile::draw()
-{
+{    
     if (baseAlpha > 0) {
         float lightness = sin(getElapsedSeconds() / 10);
 

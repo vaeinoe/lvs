@@ -25,19 +25,19 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
 {
     mConfig = config;
 
-    int windowWidth = getWindowWidth();
+    int windowWidth = mConfig->fieldSize.x;
     Vec2f firstPos = Vec2f(10, 5);
     Vec2f offset   = Vec2f(110, 0);
     Vec2f barSize  = Vec2f(100, 15);
 
     timerBar = new WProgressBar();
-    timerBar->setup(Vec2f(windowWidth - 5, 20) - barSize, barSize, ColorA(0.5, 0.0, 0.5, 0.5), 100, 100);
+    timerBar->setup(mConfig, Vec2f(windowWidth - 5, 20) - barSize, barSize, ColorA(0.5, 0.0, 0.5, 0.5), 100, 100);
     
     for (int i = 0; i < mConfig->numTileTypes; i++) {
         scoreBars[i] = new WProgressBar();
         ColorA barColor = ColorA(barColors[i][0], barColors[i][1],
                                  barColors[i][2], barColors[i][3]);
-        scoreBars[i]->setup(firstPos + (i * offset), barSize, barColor, 100, 0);
+        scoreBars[i]->setup(mConfig, firstPos + (i * offset), barSize, barColor, 100, 0);
     }
 }
 
@@ -52,8 +52,8 @@ void Toolbar::updateScore( int score, int maxScore, int type, bool finished ) {
 }
 
 void Toolbar::draw() {
-    Vec2f start = Vec2f(0,0);
-    Vec2f end   = Vec2f(getWindowWidth(), 25);
+    Vec2f start = mConfig->fieldOrigin + Vec2f(0,0);
+    Vec2f end   = mConfig->fieldOrigin + Vec2f(mConfig->fieldSize.x, 25);
                         
     gl::color( 0.2, 0.0, 0.2, 0.33 );
     gl::drawSolidRect( Rectf(start, end) );
