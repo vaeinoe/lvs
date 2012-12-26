@@ -9,8 +9,9 @@
 #include "AudioAnalyzer.h"
 #include "AudioTrack.h"
 
-void AudioAnalyzer::setup()
+void AudioAnalyzer::setup(Configuration *config)
 {
+    mConfig = config;
     audioSize = 0;
 
     for (int i = 0; i < 5; i++) {
@@ -49,8 +50,8 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
 		float dataSizef = (float)dataSize;
         
 		// Get dimensions
-		float scale = (( (float)getWindowWidth() - 20.0f ) / dataSizef) * scaleIn;
-		float windowHeight = (float)getWindowHeight() + offsetIn;
+		float scale = (( (float)mConfig->fieldSize.x - 20.0f ) / dataSizef) * scaleIn;
+		float windowHeight = (float)mConfig->fieldSize.y + offsetIn;
         
 		// Use polylines to depict time and frequency domains
 		PolyLine<Vec2f> freqLine;
@@ -62,10 +63,12 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
 			// Do logarithmic plotting for frequency domain
 			float logSize = math<float>::log( dataSizef );
 			float x = (float)( ( math<float>::log( (float)i ) / logSize ) * dataSizef );
-			float y = math<float>::clamp( freqData[ i ] * ( x / dataSizef ) * ( math<float>::log( ( dataSizef - (float)i ) ) ), 0.0f, 2.0f );
+			float y =  + math<float>::clamp( freqData[ i ] * ( x / dataSizef ) * ( math<float>::log( ( dataSizef - (float)i ) ) ), 0.0f, 2.0f );
             
-			freqLine.push_back( Vec2f(        x * scale + 10.0f,            -y * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight - 10.0f ) ) );
-			timeLine.push_back( Vec2f( (float)i * scale + 10.0f, timeData[ i ] * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight * 0.5f ) ) );
+			freqLine.push_back( Vec2f( mConfig->fieldOrigin.x + x * scale + 10.0f,
+                                       mConfig->fieldOrigin.y + -y * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight - 10.0f ) ) );
+			timeLine.push_back( Vec2f( mConfig->fieldOrigin.x + (float)i * scale + 10.0f,
+                                       mConfig->fieldOrigin.y + timeData[ i ] * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight * 0.5f ) ) );
             
 		}
         

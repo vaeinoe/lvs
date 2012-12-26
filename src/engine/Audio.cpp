@@ -37,7 +37,7 @@ void Audio::setup(Configuration *config)
     mainVolFader = config->faders->createFader(0, &mainVol, this);
     
     analyzer = new AudioAnalyzer();
-	analyzer->setup();
+	analyzer->setup(config);
     
     audioFx = new AudioFx();
 	audioFx->setup(this);

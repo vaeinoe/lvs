@@ -49,6 +49,8 @@ void LVSEngine::setup(Configuration *config)
     mConfig->audio = mAudio;
     mConfig->overlayFx = overlayFx;
 
+    setPlayfield();
+    
     for (int i = 0; i < config->numTileTypes; i++) {
         mConfig->levels[i] = new TileLevel();
         mConfig->levels[i]->setup(mConfig, i);
@@ -144,22 +146,24 @@ void LVSEngine::update()
 
 void LVSEngine::draw()
 {
+    gl::clear( Color( 0.0, 0.0, 0.0 ) );
     float lightness = sin(getElapsedSeconds() / 10);
     switch (gameState) {
         case S_LOADING:
-            gl::clear( Color( 0, 0, 0.0 ) );
             gl::color(0, 0, 0.0, 1.0);
-            gl::drawSolidRect (Rectf(0,0,getWindowWidth(),getWindowHeight()));
+            gl::drawSolidRect(mConfig->fieldRect);
             gl::color(0.9, 0.9, 0.9, 0.5);
             texFontLarge->drawString(loadStr,getWindowCenter());
             break;
         case S_MAINMENU:
-            gl::clear( Color( lightness * 0.4, 0, 0.2 ) );
+            gl::color( lightness * 0.4, 0, 0.2 );
+            gl::drawSolidRect(mConfig->fieldRect);
             mAudio->draw();
             mMenu->draw();
             break;
         case S_INGAME_1:
-            gl::clear( Color( 0, 0, lightness * 0.4 ) );
+            gl::color( 0, 0, lightness * 0.4 );
+            gl::drawSolidRect(mConfig->fieldRect);
             mWorld->draw();
             overlayFx->draw();
             drawGame();
@@ -174,12 +178,17 @@ void LVSEngine::draw()
     // XXX observer
     if (screenFader->isActive()) {
         gl::color(0, 0, 0, fadeVal);
-        gl::drawSolidRect (Rectf(0,0,getWindowWidth(),getWindowHeight()));
+        gl::drawSolidRect (mConfig->fieldRect);
     }
     if (gameState == S_GAMEOVER) {
         gl::color(1, 1, 1, fadeVal);
         texFontLarge->drawString("game over", getWindowCenter());
     }
+    
+    Vec2f origin = mConfig->fieldOrigin;
+    Vec2i size   = mConfig->fieldSize;
+    gl::color(1.0, 1.0, 1.0, 1.0);
+    gl::drawStrokedRect (mConfig->fieldRect);
 }
 
 double LVSEngine::getGameTime() { return gameFader->timeLeft(); }
@@ -234,6 +243,7 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
     if ( event.getCode() == KeyEvent::KEY_f ) {
         fullScreen = !fullScreen;
         setFullScreen(fullScreen);
+        setPlayfield();
     }
 }
 
@@ -399,4 +409,16 @@ inline void LVSEngine::precalc() {
             precalcAngles[i].push_back( Vec2f(math<float>::cos( t ), math<float>::sin( t )) );
         }
     }
+}
+
+void LVSEngine::setPlayfield()
+{
+    mConfig->fieldSize = Vec2i(PLAYFIELD_W, PLAYFIELD_H);
+    mConfig->fieldOrigin = getWindowCenter() - (Vec2f(PLAYFIELD_W, PLAYFIELD_H) / 2);
+    mConfig->fieldRect = Rectf(mConfig->fieldOrigin.x, mConfig->fieldOrigin.y,
+                               mConfig->fieldOrigin.x + mConfig->fieldSize.x,
+                               mConfig->fieldOrigin.y + mConfig->fieldSize.y);
+    cout << "Playfield size: "   << mConfig->fieldSize   << endl;
+    cout << "Playfield origin: " << mConfig->fieldOrigin << endl;
+    cout << "Playfield rect: "   << mConfig->fieldRect   << endl;
 }

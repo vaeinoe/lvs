@@ -8,10 +8,11 @@
 
 #include "WProgressBar.h"
 
-void WProgressBar::setup(Vec2f initpos, Vec2f initsize, ColorA color,
+void WProgressBar::setup(Configuration *config, Vec2f initpos, Vec2f initsize, ColorA color,
                          int newMaxval, int initval)
 {
-    pos  = initpos;
+    mConfig = config;
+    pos  = mConfig->fieldOrigin + initpos;
     size = initsize;
     
     barColor = color;
@@ -21,18 +22,20 @@ void WProgressBar::setup(Vec2f initpos, Vec2f initsize, ColorA color,
 
 void WProgressBar::draw()
 {
+    Vec2f drawPos = mConfig->fieldOrigin + pos;
+
     double progress = value * 1.0 / maxval;
     Vec2f padding = Vec2f(3,3);
     
-    Vec2f start = pos + padding;
-    Vec2f end = pos + Vec2f((size.x - padding.x) * progress, (size.y - padding.y));
+    Vec2f start = drawPos + padding;
+    Vec2f end = drawPos + Vec2f((size.x - padding.x) * progress, (size.y - padding.y));
     if (end.x > start.x) {
         gl::color(barColor);
         gl::drawSolidRect( Rectf(start, end) );
     }
     
     gl::color( 1.0, 1.0, 1.0, 0.25 );
-    gl::drawStrokedRect( Rectf(pos, pos + size) );
+    gl::drawStrokedRect( Rectf(drawPos, drawPos + size) );
 }
 
 

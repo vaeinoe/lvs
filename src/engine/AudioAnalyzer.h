@@ -17,13 +17,14 @@ using namespace irrklang;
 
 class AudioAnalyzer: public ISoundMixedOutputReceiver {
 public:
-    void setup();
+    void setup(Configuration *config);
     void update();
     void draw(float scaleIn, float offsetIn);
     void OnAudioDataReady ( const void * data, int byteCount, int playbackrate );
 
     friend class Audio;
 private:
+    Configuration *mConfig;
     KissRef	mFft;
 
     PolyLine<Vec2f> prevLines[5];

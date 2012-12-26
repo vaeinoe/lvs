@@ -14,11 +14,8 @@ void Mainmenu::setup(Configuration *config)
 {
     mConfig = config;
 
-    int windowWidth = getWindowWidth();
-//    int windowHeight = getWindowHeight();
-    
-    int x = windowWidth * 0.5;
-    int y = 0;
+    int x = mConfig->fieldOrigin.x + mConfig->fieldSize.x * 0.5;
+    int y = mConfig->fieldOrigin.y;
     int width = 300;
     int height = 300;
     

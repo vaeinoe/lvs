@@ -39,6 +39,8 @@ public:
     void startGame();
     void backToMain();
     
+    void setPlayfield();
+    
     void addGameTime(int seconds);
     double getGameTime();
     double getMaxTime();
