@@ -53,7 +53,8 @@ public:
 
 private:
     inline bool checkVictory();
-    inline void drawGame();
+    inline void drawGame(float lightness);
+    inline void drawQueue();
     inline void gameOver();
     inline void resetGame();
     
