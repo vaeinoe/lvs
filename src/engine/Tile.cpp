@@ -241,6 +241,12 @@ inline void Tile::drawPlant(Vec2f draw_pos, float val, int level) {
             mConfig->engine->addCirclePoly( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2) * 0.75, segments, color );
         }       
     }
+    
+    else {
+        int segments = 6;
+        ColorA color = ColorA(0.25, 0.75, 0.25, 0.33);
+        mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );
+    }
 }
 
 // Draw the red tile (render world when ready)
@@ -273,6 +279,12 @@ inline void Tile::drawGram(Vec2f draw_pos, float val, int level) {
             }
             mConfig->engine->addCirclePoly( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2) * 0.75, segments, color );
         }        
+    }
+    
+    else {
+        int segments = 6;
+        ColorA color = ColorA(0.5, 0.1, 0.1, 0.33);
+        mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );
     }
 }
 
@@ -315,6 +327,12 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
                 mConfig->engine->addCirclePoly( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments, color );
             }
         }        
+    }
+    
+    else {
+        int segments = 6;
+        ColorA color = ColorA(0.1, 0.1, 0.8, 0.33);
+        mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );
     }
 }
 
