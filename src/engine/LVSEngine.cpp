@@ -146,9 +146,30 @@ void LVSEngine::update()
     }
 }
 
+inline void LVSEngine::drawGame(float lightness)
+{
+    gl::color( 0, 0, lightness * 0.4 );
+    gl::drawSolidRect(mConfig->fieldRect);
+
+    double gameTime = getGameTime();
+    if (gameTime < WARN_GAME_TIME && gameTime > 0.0) {
+        double bri = fmod(gameTime, 1);
+        double a   = (1 - (gameTime / WARN_GAME_TIME)) * 0.3;
+        gl::color(bri, bri / 2, bri, a);
+        gl::drawSolidRect(mConfig->fieldRect);
+    }
+    
+    mWorld->draw();
+    overlayFx->draw();
+    drawQueue();
+    mToolbar->draw();
+    mPlayer->draw();
+}
+
 void LVSEngine::draw()
 {
     gl::clear( Color( 0.0, 0.0, 0.0 ) );
+    
     float lightness = sin(getElapsedSeconds() / 10);
     switch (gameState) {
         case S_LOADING:
@@ -164,13 +185,7 @@ void LVSEngine::draw()
             mMenu->draw();
             break;
         case S_INGAME_1:
-            gl::color( 0, 0, lightness * 0.4 );
-            gl::drawSolidRect(mConfig->fieldRect);
-            mWorld->draw();
-            overlayFx->draw();
-            drawGame();
-            mToolbar->draw();
-            mPlayer->draw();
+            drawGame(lightness);
             break;
         case S_QUITTING:
             gl::color( lightness * 0.4, 0, 0.2 );
@@ -188,7 +203,7 @@ void LVSEngine::draw()
     }
     if (gameState == S_GAMEOVER) {
         gl::color(1, 1, 1, fadeVal);
-        mConfig->fontLarge->drawString("fin", getWindowCenter());
+        mConfig->fontLarge->drawString("fin.",getWindowCenter() - (mConfig->fontMedium->measureString("fin.") / 2));
     }
     
 }
@@ -398,7 +413,7 @@ void LVSEngine::addCirclePoly( const Vec2f &center, const float radius, int numS
 }
 
 // Draws the rendering line queue
-inline void LVSEngine::drawGame()
+inline void LVSEngine::drawQueue()
 {
     glEnableClientState( GL_VERTEX_ARRAY );
 	glEnableClientState( GL_COLOR_ARRAY );

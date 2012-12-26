@@ -44,4 +44,6 @@ using namespace std;
 #define FADE_TIME_SEC 2.0
 #define GROW_TIME_SEC 6.0
 
-#define INIT_GAME_TIME 120
+#define INIT_GAME_TIME 45
+#define WARN_GAME_TIME 10.0
+
