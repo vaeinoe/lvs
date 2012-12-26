@@ -36,12 +36,16 @@ void LeavsApp::setup()
     gl::disableDepthRead();
     gl::disableDepthWrite();
 
-    // setFullScreen(true);
-
     gl::enable( GL_LINE_SMOOTH );
     gl::enable(GL_BLEND);
 	glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
+
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    gl::enableAlphaBlending();
     
+    glLineWidth(1.5f);
+
     Configuration *config = new Configuration();
     config->tileSize = 50.0f;
     config->tileUpperLimit = 80.0f;

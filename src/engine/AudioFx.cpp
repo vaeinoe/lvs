@@ -29,6 +29,7 @@ void AudioFx::loadAll()
 {
     DataSourceRef trackRef = loadResource( RES_TFX001 );
     Buffer trackBuf = trackRef->getBuffer();
-    mAudio->audioEngine->addSoundSourceFromMemory(trackBuf.getData(), trackBuf.getDataSize(), "test");
+    ISoundSource *fx = mAudio->audioEngine->addSoundSourceFromMemory(trackBuf.getData(), trackBuf.getDataSize(), "test");
+    fx->setDefaultVolume(0.5);
 }
 

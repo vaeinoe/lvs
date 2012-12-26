@@ -63,10 +63,6 @@ private:
     int gameState;
     bool fullScreen;
 
-    Font loadFont;
-    gl::TextureFontRef texFont;
-    gl::TextureFontRef texFontLarge;
-    
     int loadState;
     string loadStr;
     

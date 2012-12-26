@@ -69,7 +69,6 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
                                        mConfig->fieldOrigin.y + -y * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight - 10.0f ) ) );
 			timeLine.push_back( Vec2f( mConfig->fieldOrigin.x + (float)i * scale + 10.0f,
                                        mConfig->fieldOrigin.y + timeData[ i ] * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight * 0.5f ) ) );
-            
 		}
         
         for (int i = 0; i < 5; i++) {
@@ -82,7 +81,7 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
         }
         prevLines[4] = timeLine;
         
-        gl::color( 1.0, 0.4, 0.8, 0.6);
+        gl::color( 0.7, 0.4, 0.8, 0.6);
 		//gl::draw( freqLine );
 		gl::draw( timeLine );
     }

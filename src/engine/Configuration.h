@@ -44,4 +44,8 @@ public:
     FaderPack *faders;
     Audio *audio;
     OverlayFxManager *overlayFx;
+    
+    gl::TextureFontRef fontSmall;
+    gl::TextureFontRef fontMedium;
+    gl::TextureFontRef fontLarge;
 };
