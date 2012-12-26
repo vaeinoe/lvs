@@ -12,7 +12,8 @@
 
 class WTextButton {
 public:
-	void setup(Configuration *config, Vec2f initpos, string newText, int newType, ColorA newColor);
+	void setup(Configuration *config, Vec2f initpos, string newText,
+               int newType, ColorA newColor, bool centered = false);
 	void draw();
 	void shutdown();
     void setValue(string newText);

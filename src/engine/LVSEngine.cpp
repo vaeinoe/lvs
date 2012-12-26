@@ -71,7 +71,7 @@ void LVSEngine::setup(Configuration *config)
     mConfig->fontLarge = gl::TextureFont::create(loadFont);
 
     loadState = 0;
-    loadStr = "init: toolbar";
+    loadStr = "mixing cupcake batter";
     
     fullScreen = false;
 
@@ -86,25 +86,25 @@ void LVSEngine::loadAll() {
     switch (loadState) {
         case 0:
             mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
-            loadStr = "init: world";
+            loadStr = "slicing the world into shards";
             break;
         case 1:
             precalc();
             overlayFx->setup(mConfig);
             mWorld->setup(mConfig, Vec2i(mConfig->worldWidth, mConfig->worldHeight));
-            loadStr = "init: player";
+            loadStr = "remembering your face";
             break;
         case 2:
             mPlayer->setup(mConfig);
-            loadStr = "init: menu";
+            loadStr = "filling the glass half full";
             break;
         case 3:
             mMenu->setup(mConfig);
-            loadStr = "init: audio";
+            loadStr = "preparing the picardy third";
             break;
         case 4:
             mAudio->setup(mConfig);
-            loadStr = "init: done";
+            loadStr = "ready for action";
             break;
         case 5:
             cout << "Running." << endl;
@@ -155,7 +155,7 @@ void LVSEngine::draw()
             gl::color(0, 0, 0.0, 1.0);
             gl::drawSolidRect(mConfig->fieldRect);
             gl::color(0.9, 0.9, 0.9, 0.5);
-            mConfig->fontLarge->drawString(loadStr,getWindowCenter());
+            mConfig->fontMedium->drawString(loadStr,getWindowCenter() - (mConfig->fontMedium->measureString(loadStr) / 2));
             break;
         case S_MAINMENU:
             gl::color( lightness * 0.4, 0, 0.2 );
@@ -182,7 +182,6 @@ void LVSEngine::draw()
     gl::color(1.0, 1.0, 1.0, 0.3);
     gl::drawStrokedRect (mConfig->fieldRect);
 
-    // XXX observer
     if (screenFader->isActive()) {
         gl::color(0, 0, 0, fadeVal);
         gl::drawSolidRect (mConfig->fieldRect);
