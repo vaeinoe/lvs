@@ -16,7 +16,7 @@ void Mainmenu::setup(Configuration *config)
     mConfig = config;
     
     title = new WTextLabel();
-    title->setup(mConfig, Vec2f(16,1+164), "8trak", FONT_TYPE_LARGE,
+    title->setup(mConfig, Vec2f(16,1+164), GAME_NAME, FONT_TYPE_LARGE,
                 ColorA(0.6, 0.4, 0.6, 0.75), true);
 
     buttonStart = new WTextButton();

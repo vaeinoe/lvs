@@ -92,7 +92,7 @@ void LVSEngine::loadAll() {
             precalc();
             overlayFx->setup(mConfig);
             mWorld->setup(mConfig, Vec2i(mConfig->worldWidth, mConfig->worldHeight));
-            loadStr = "remembering your face";
+            loadStr = "remembering your eyes";
             break;
         case 2:
             mPlayer->setup(mConfig);
@@ -107,7 +107,7 @@ void LVSEngine::loadAll() {
             loadStr = "ready for action";
             break;
         case 5:
-            cout << "Running." << endl;
+            // cout << "Running." << endl;
             gameState = S_MAINMENU;
             
             screenFader->fade(0.0, 2.5);
@@ -203,7 +203,7 @@ void LVSEngine::draw()
     }
     if (gameState == S_GAMEOVER) {
         gl::color(1, 1, 1, fadeVal);
-        mConfig->fontLarge->drawString("fin.",getWindowCenter() - (mConfig->fontMedium->measureString("fin.") / 2));
+        mConfig->fontLarge->drawString(ENDGAME_STR,getWindowCenter() - (mConfig->fontMedium->measureString(ENDGAME_STR) / 2));
     }
     
 }
@@ -281,6 +281,8 @@ inline bool LVSEngine::checkVictory()
     }
     // OK, victory
     gameState = S_VICTORY;
+    mAudio->fadeToPreset(1, 5.0);
+    screenFader->fade(1.0, 3.0);
     return true;
 }
 

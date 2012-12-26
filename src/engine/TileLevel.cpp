@@ -21,7 +21,7 @@ void TileLevel::setup(Configuration *config, int newType)
     
     cumulScore = 0;
     score      = 0;
-    maxScore   = (level + 1) * 50;
+    maxScore   = (level + 1) * LEVEL_SCORE_MODIFIER;
     
     finished = false;
 }
@@ -30,7 +30,7 @@ void TileLevel::reset()
 {
     level    = 0;
     score    = 0;
-    maxScore = (level + 1) * 50;
+    maxScore = (level + 1) * LEVEL_SCORE_MODIFIER;
     cumulScore = 0;
     
     mConfig->toolbar->updateScore(score, maxScore, type, finished);
@@ -52,7 +52,7 @@ inline void TileLevel::levelUp()
 
     level += 1;
     score  = 0;
-    maxScore = (level + 1) * 50;
+    maxScore = (level + 1) * LEVEL_SCORE_MODIFIER;
     mConfig->engine->addGameTime(maxScore);
     
     if (level == numLevels[type]) {
