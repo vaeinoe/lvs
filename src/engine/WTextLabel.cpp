@@ -9,7 +9,7 @@
 #include "WTextLabel.h"
 
 void WTextLabel::setup(Configuration *config, Vec2f initpos, string newText,
-                       int newType, ColorA newColor)
+                       int newType, ColorA newColor, bool centered)
 {
     mConfig = config;
     pos     = initpos;
@@ -18,6 +18,15 @@ void WTextLabel::setup(Configuration *config, Vec2f initpos, string newText,
     drawBox = false;
     
     setValue(newText);
+    
+    if (centered) { alignCenter(); }
+}
+
+inline void WTextLabel::alignCenter()
+{
+    Vec2f size = getSize();
+    pos.x = mConfig->fieldSize.x / 2 - (size.x / 2);
+    setValue(text);
 }
 
 void WTextLabel::draw()
@@ -40,25 +49,30 @@ void WTextLabel::draw()
     }
 }
 
+inline Vec2f WTextLabel::getSize()
+{
+    switch (type) {
+        case FONT_TYPE_SMALL:
+            return mConfig->fontSmall->measureString(text);
+            break;
+        case FONT_TYPE_MEDIUM:
+            return mConfig->fontMedium->measureString(text);
+            break;
+        case FONT_TYPE_LARGE:
+            return mConfig->fontLarge->measureString(text);
+            break;
+    }
+    
+    return Vec2f(0,0);
+}
+
 void WTextLabel::shutdown() { }
 
 void WTextLabel::setValue(string newText)
 {
     text = newText;
     
-    Vec2f size;
-    switch (type) {
-        case FONT_TYPE_SMALL:
-            size = mConfig->fontSmall->measureString(text);
-            break;
-        case FONT_TYPE_MEDIUM:
-            size = mConfig->fontMedium->measureString(text);
-            break;
-        case FONT_TYPE_LARGE:
-            size = mConfig->fontLarge->measureString(text);
-            break;
-    }
-    
+    Vec2f size = getSize();
     Vec2f top = Vec2f(pos.x, pos.y - (0.8 * size.y));
     
     boundingBox = Rectf(top, top + size);

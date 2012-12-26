@@ -16,13 +16,16 @@ void Mainmenu::setup(Configuration *config)
     mConfig = config;
     
     title = new WTextLabel();
-    title->setup(mConfig, Vec2f(16,64), "8trak", FONT_TYPE_LARGE, ColorA(0.6, 0.4, 0.6, 0.75));
+    title->setup(mConfig, Vec2f(16,1+164), "8trak", FONT_TYPE_LARGE,
+                ColorA(0.6, 0.4, 0.6, 0.75), true);
 
     buttonStart = new WTextButton();
-    buttonStart->setup(mConfig, Vec2f(16,110), "play", FONT_TYPE_MEDIUM, ColorA(0.8, 0.5, 0.8, 0.66));
+    buttonStart->setup(mConfig, Vec2f(16,47+164), "play", FONT_TYPE_MEDIUM,
+                       ColorA(0.8, 0.5, 0.8, 0.66), true);
 
     buttonQuit = new WTextButton();
-    buttonQuit->setup(mConfig, Vec2f(16,148), "quit", FONT_TYPE_MEDIUM, ColorA(0.8, 0.5, 0.8, 0.66));
+    buttonQuit->setup(mConfig, Vec2f(16,85+164), "quit", FONT_TYPE_MEDIUM,
+                      ColorA(0.8, 0.5, 0.8, 0.66), true);
     
     active = true;
 }

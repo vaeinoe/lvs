@@ -9,10 +9,10 @@
 #include "WTextButton.h"
 
 void WTextButton::setup(Configuration *config, Vec2f initpos, string newText,
-                        int newType, ColorA newColor)
+                        int newType, ColorA newColor, bool centered)
 {
     label = new WTextLabel();
-    label->setup(config, initpos, newText, newType, newColor);
+    label->setup(config, initpos, newText, newType, newColor, centered);
     // label->drawBox = true;
     
     colorNormal = newColor;
