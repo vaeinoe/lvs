@@ -63,10 +63,12 @@ void LVSEngine::setup(Configuration *config)
     gameState = S_LOADING;
     paused = false;
 
-    loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_SMALL);
-    texFont = gl::TextureFont::create(loadFont);
+    Font loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_SMALL);
+    mConfig->fontSmall = gl::TextureFont::create(loadFont);
+    loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_MEDIUM);
+    mConfig->fontMedium = gl::TextureFont::create(loadFont);
     loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_LARGE);
-    texFontLarge = gl::TextureFont::create(loadFont);
+    mConfig->fontLarge = gl::TextureFont::create(loadFont);
 
     loadState = 0;
     loadStr = "init: toolbar";
@@ -153,7 +155,7 @@ void LVSEngine::draw()
             gl::color(0, 0, 0.0, 1.0);
             gl::drawSolidRect(mConfig->fieldRect);
             gl::color(0.9, 0.9, 0.9, 0.5);
-            texFontLarge->drawString(loadStr,getWindowCenter());
+            mConfig->fontLarge->drawString(loadStr,getWindowCenter());
             break;
         case S_MAINMENU:
             gl::color( lightness * 0.4, 0, 0.2 );
@@ -171,10 +173,15 @@ void LVSEngine::draw()
             mPlayer->draw();
             break;
         case S_QUITTING:
+            gl::color( lightness * 0.4, 0, 0.2 );
+            gl::drawSolidRect(mConfig->fieldRect);
             mAudio->draw();
             mMenu->draw();
             break;
     }
+    gl::color(1.0, 1.0, 1.0, 0.3);
+    gl::drawStrokedRect (mConfig->fieldRect);
+
     // XXX observer
     if (screenFader->isActive()) {
         gl::color(0, 0, 0, fadeVal);
@@ -182,13 +189,9 @@ void LVSEngine::draw()
     }
     if (gameState == S_GAMEOVER) {
         gl::color(1, 1, 1, fadeVal);
-        texFontLarge->drawString("game over", getWindowCenter());
+        mConfig->fontLarge->drawString("fin", getWindowCenter());
     }
     
-    Vec2f origin = mConfig->fieldOrigin;
-    Vec2i size   = mConfig->fieldSize;
-    gl::color(1.0, 1.0, 1.0, 1.0);
-    gl::drawStrokedRect (mConfig->fieldRect);
 }
 
 double LVSEngine::getGameTime() { return gameFader->timeLeft(); }
@@ -214,14 +217,22 @@ void LVSEngine::mouseMove ( const MouseEvent event ) {
     Vec2i pos = event.getPos();
     mMouseLoc->x = pos.x;
     mMouseLoc->y = pos.y;
+    switch (gameState) {
+        case S_MAINMENU:
+            mMenu->mouseMove(event);
+            break;
+    }
 }
 
 void LVSEngine::mouseDown ( const MouseEvent event ) {
     dragging = true;
     Vec2i pos = event.getPos();
     switch (gameState) {
-            case S_INGAME_1:
+        case S_INGAME_1:
             if ( event.isLeft() ) { mWorld->selectTile(pos); }
+            break;
+        case S_MAINMENU:
+            mMenu->mouseDown(event);
             break;
     }
 }
@@ -296,8 +307,7 @@ void LVSEngine::quitGame()
 
 void LVSEngine::gameOver()
 {
-    // XXX reset level & scores
-    // XXX print gameover
+    gameState = S_GAMEOVER;
     mAudio->fadeToPreset(1, 5.0);
     screenFader->fade(1.0, 3.0);
 }
@@ -317,21 +327,24 @@ void LVSEngine::addGameTime(int seconds)
 
 void LVSEngine::onFadeEnd(int typeId)
 {
+    // Fade to black ended
     if (typeId == FADEFADER) {
+        // Game over, reset score & back to main
         if (gameState == S_GAMEOVER) {
             resetGame();
             screenFader->fade(0.0, 2.0);
             gameState = S_MAINMENU;
             mMenu->activate();            
         }
+        // Final fade, quit game
         else if (gameState == S_QUITTING) {
             gl::clear( Color( 0, 0, 0 ) );
             shutdown();
             exit(0);
         }
     }
+    // Game time ended
     else if (typeId == GAMEFADER) {
-        gameState = S_GAMEOVER;
         gameOver();
     }
 }
@@ -385,6 +398,7 @@ void LVSEngine::addCirclePoly( const Vec2f &center, const float radius, int numS
     tileColors.push_back(color.b); tileColors.push_back(color.a);
 }
 
+// Draws the rendering line queue
 inline void LVSEngine::drawGame()
 {
     glEnableClientState( GL_VERTEX_ARRAY );
@@ -411,6 +425,7 @@ inline void LVSEngine::precalc() {
     }
 }
 
+// Set playfield parameters - called when switching between fullscreen and windowed
 void LVSEngine::setPlayfield()
 {
     mConfig->fieldSize = Vec2i(PLAYFIELD_W, PLAYFIELD_H);

@@ -11,6 +11,8 @@
 
 class ciUICanvas;
 class ciUIEvent;
+class WTextLabel;
+class WTextButton;
 
 class Mainmenu {
 public:
@@ -27,7 +29,10 @@ public:
 private:
     bool active;
     ciUICanvas *gui;
-    svg::Doc *logo;
     Vec2i *mMouseLoc;
     Configuration *mConfig;
+    
+    WTextLabel *title;
+    WTextButton *buttonStart;
+    WTextButton *buttonQuit;
 };

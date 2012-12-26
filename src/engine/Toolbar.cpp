@@ -11,7 +11,6 @@
 #include "LVSEngine.h"
 #include "Player.h"
 #include "WProgressBar.h"
-#include "../ciUI/ciUI.h"
 #include <string>
 
 double Toolbar::barColors[][4] = {

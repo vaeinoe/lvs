@@ -28,6 +28,9 @@
 		0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283561673E1FB00A4AAB1 /* seq002.wav */; };
 		0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283571673E1FB00A4AAB1 /* seq003.wav */; };
 		051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */; };
+		052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1492168B36D5006CF846 /* WTextLabel.cpp */; };
+		052E1497168B5A68006CF846 /* int001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 052E1496168B5A68006CF846 /* int001.wav */; };
+		052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1498168B5FDD006CF846 /* WTextButton.cpp */; };
 		052FED161674E4C20001E076 /* Fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED141674E4C20001E076 /* Fader.cpp */; };
 		052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED181674E4D20001E076 /* FaderPack.cpp */; };
 		053BA841163D79B40095EBEF /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83B163D79B30095EBEF /* kiss_fft.c */; };
@@ -90,6 +93,11 @@
 		051283571673E1FB00A4AAB1 /* seq003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq003.wav; path = ../resources/seq003.wav; sourceTree = "<group>"; };
 		051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioAnalyzer.cpp; sourceTree = "<group>"; };
 		051283611673EDC400A4AAB1 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
+		052E1492168B36D5006CF846 /* WTextLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextLabel.cpp; sourceTree = "<group>"; };
+		052E1493168B36D6006CF846 /* WTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextLabel.h; sourceTree = "<group>"; };
+		052E1496168B5A68006CF846 /* int001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = int001.wav; path = ../resources/int001.wav; sourceTree = "<group>"; };
+		052E1498168B5FDD006CF846 /* WTextButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextButton.cpp; sourceTree = "<group>"; };
+		052E1499168B5FDD006CF846 /* WTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextButton.h; sourceTree = "<group>"; };
 		052FED141674E4C20001E076 /* Fader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fader.cpp; sourceTree = "<group>"; };
 		052FED151674E4C20001E076 /* Fader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fader.h; sourceTree = "<group>"; };
 		052FED181674E4D20001E076 /* FaderPack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaderPack.cpp; sourceTree = "<group>"; };
@@ -122,43 +130,6 @@
 		05782EE31670A04B00FD39B7 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		05782EE41670A04B00FD39B7 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		05782EED1670A05E00FD39B7 /* nevis.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = nevis.ttf; path = ../resources/nevis.ttf; sourceTree = "<group>"; };
-		0590C9851670EA9700D568A1 /* ciUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI.h; sourceTree = "<group>"; };
-		0590C9861670EA9700D568A1 /* ciUI2DPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUI2DPad.h; sourceTree = "<group>"; };
-		0590C9871670EA9700D568A1 /* ciUIBiLabelSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIBiLabelSlider.h; sourceTree = "<group>"; };
-		0590C9881670EA9700D568A1 /* ciUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIButton.h; sourceTree = "<group>"; };
-		0590C9891670EA9700D568A1 /* ciUICanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUICanvas.h; sourceTree = "<group>"; };
-		0590C98A1670EA9700D568A1 /* ciUICircleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUICircleSlider.h; sourceTree = "<group>"; };
-		0590C98B1670EA9700D568A1 /* ciUIDropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIDropDownList.h; sourceTree = "<group>"; };
-		0590C98C1670EA9700D568A1 /* ciUIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIEvent.h; sourceTree = "<group>"; };
-		0590C98D1670EA9700D568A1 /* ciUIFPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIFPS.h; sourceTree = "<group>"; };
-		0590C98E1670EA9700D568A1 /* ciUIFPSSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIFPSSlider.h; sourceTree = "<group>"; };
-		0590C98F1670EA9700D568A1 /* ciUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImage.h; sourceTree = "<group>"; };
-		0590C9901670EA9700D568A1 /* ciUIImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageButton.h; sourceTree = "<group>"; };
-		0590C9911670EA9700D568A1 /* ciUIImageSampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageSampler.h; sourceTree = "<group>"; };
-		0590C9921670EA9700D568A1 /* ciUIImageSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageSlider.h; sourceTree = "<group>"; };
-		0590C9931670EA9700D568A1 /* ciUIImageToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIImageToggle.h; sourceTree = "<group>"; };
-		0590C9941670EA9700D568A1 /* ciUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabel.h; sourceTree = "<group>"; };
-		0590C9951670EA9700D568A1 /* ciUILabelButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabelButton.h; sourceTree = "<group>"; };
-		0590C9961670EA9700D568A1 /* ciUILabelToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUILabelToggle.h; sourceTree = "<group>"; };
-		0590C9971670EA9700D568A1 /* ciUIMinimalSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMinimalSlider.h; sourceTree = "<group>"; };
-		0590C9981670EA9700D568A1 /* ciUIMovingGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMovingGraph.h; sourceTree = "<group>"; };
-		0590C9991670EA9700D568A1 /* ciUIMultiImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMultiImageButton.h; sourceTree = "<group>"; };
-		0590C99A1670EA9700D568A1 /* ciUIMultiImageToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIMultiImageToggle.h; sourceTree = "<group>"; };
-		0590C99B1670EA9700D568A1 /* ciUINumberDialer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUINumberDialer.h; sourceTree = "<group>"; };
-		0590C99C1670EA9700D568A1 /* ciUIRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRadio.h; sourceTree = "<group>"; };
-		0590C99D1670EA9700D568A1 /* ciUIRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRangeSlider.h; sourceTree = "<group>"; };
-		0590C99E1670EA9700D568A1 /* ciUIRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRectangle.h; sourceTree = "<group>"; };
-		0590C99F1670EA9700D568A1 /* ciUIRotarySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIRotarySlider.h; sourceTree = "<group>"; };
-		0590C9A01670EA9700D568A1 /* ciUIScrollableCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIScrollableCanvas.h; sourceTree = "<group>"; };
-		0590C9A11670EA9700D568A1 /* ciUISlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISlider.h; sourceTree = "<group>"; };
-		0590C9A21670EA9700D568A1 /* ciUISpacer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISpacer.h; sourceTree = "<group>"; };
-		0590C9A31670EA9700D568A1 /* ciUISpectrum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUISpectrum.h; sourceTree = "<group>"; };
-		0590C9A41670EA9700D568A1 /* ciUITextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUITextInput.h; sourceTree = "<group>"; };
-		0590C9A51670EA9700D568A1 /* ciUIToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIToggle.h; sourceTree = "<group>"; };
-		0590C9A61670EA9700D568A1 /* ciUIToggleMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIToggleMatrix.h; sourceTree = "<group>"; };
-		0590C9A71670EA9700D568A1 /* ciUIWaveform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWaveform.h; sourceTree = "<group>"; };
-		0590C9A81670EA9700D568A1 /* ciUIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidget.h; sourceTree = "<group>"; };
-		0590C9A91670EA9700D568A1 /* ciUIWidgetWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ciUIWidgetWithLabel.h; sourceTree = "<group>"; };
 		059425E3168886E200057DFE /* TileLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileLevel.cpp; sourceTree = "<group>"; };
 		059425E4168886E300057DFE /* TileLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileLevel.h; sourceTree = "<group>"; };
 		059425E6168888CE00057DFE /* LevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelData.h; sourceTree = "<group>"; };
@@ -266,60 +237,18 @@
 				05782EE41670A04B00FD39B7 /* World.h */,
 				05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */,
 				05BA87E7167CBFD400FC9B6F /* WProgressBar.h */,
+				052E1498168B5FDD006CF846 /* WTextButton.cpp */,
+				052E1499168B5FDD006CF846 /* WTextButton.h */,
+				052E1492168B36D5006CF846 /* WTextLabel.cpp */,
+				052E1493168B36D6006CF846 /* WTextLabel.h */,
 			);
 			name = engine;
 			path = ../src/engine;
 			sourceTree = "<group>";
 		};
-		0590C9841670EA9700D568A1 /* ciUI */ = {
-			isa = PBXGroup;
-			children = (
-				0590C9851670EA9700D568A1 /* ciUI.h */,
-				0590C9861670EA9700D568A1 /* ciUI2DPad.h */,
-				0590C9871670EA9700D568A1 /* ciUIBiLabelSlider.h */,
-				0590C9881670EA9700D568A1 /* ciUIButton.h */,
-				0590C9891670EA9700D568A1 /* ciUICanvas.h */,
-				0590C98A1670EA9700D568A1 /* ciUICircleSlider.h */,
-				0590C98B1670EA9700D568A1 /* ciUIDropDownList.h */,
-				0590C98C1670EA9700D568A1 /* ciUIEvent.h */,
-				0590C98D1670EA9700D568A1 /* ciUIFPS.h */,
-				0590C98E1670EA9700D568A1 /* ciUIFPSSlider.h */,
-				0590C98F1670EA9700D568A1 /* ciUIImage.h */,
-				0590C9901670EA9700D568A1 /* ciUIImageButton.h */,
-				0590C9911670EA9700D568A1 /* ciUIImageSampler.h */,
-				0590C9921670EA9700D568A1 /* ciUIImageSlider.h */,
-				0590C9931670EA9700D568A1 /* ciUIImageToggle.h */,
-				0590C9941670EA9700D568A1 /* ciUILabel.h */,
-				0590C9951670EA9700D568A1 /* ciUILabelButton.h */,
-				0590C9961670EA9700D568A1 /* ciUILabelToggle.h */,
-				0590C9971670EA9700D568A1 /* ciUIMinimalSlider.h */,
-				0590C9981670EA9700D568A1 /* ciUIMovingGraph.h */,
-				0590C9991670EA9700D568A1 /* ciUIMultiImageButton.h */,
-				0590C99A1670EA9700D568A1 /* ciUIMultiImageToggle.h */,
-				0590C99B1670EA9700D568A1 /* ciUINumberDialer.h */,
-				0590C99C1670EA9700D568A1 /* ciUIRadio.h */,
-				0590C99D1670EA9700D568A1 /* ciUIRangeSlider.h */,
-				0590C99E1670EA9700D568A1 /* ciUIRectangle.h */,
-				0590C99F1670EA9700D568A1 /* ciUIRotarySlider.h */,
-				0590C9A01670EA9700D568A1 /* ciUIScrollableCanvas.h */,
-				0590C9A11670EA9700D568A1 /* ciUISlider.h */,
-				0590C9A21670EA9700D568A1 /* ciUISpacer.h */,
-				0590C9A31670EA9700D568A1 /* ciUISpectrum.h */,
-				0590C9A41670EA9700D568A1 /* ciUITextInput.h */,
-				0590C9A51670EA9700D568A1 /* ciUIToggle.h */,
-				0590C9A61670EA9700D568A1 /* ciUIToggleMatrix.h */,
-				0590C9A71670EA9700D568A1 /* ciUIWaveform.h */,
-				0590C9A81670EA9700D568A1 /* ciUIWidget.h */,
-				0590C9A91670EA9700D568A1 /* ciUIWidgetWithLabel.h */,
-			);
-			name = ciUI;
-			path = ../src/ciUI;
-			sourceTree = "<group>";
-		};
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0590C9841670EA9700D568A1 /* ciUI */,
 				05734F141670C9AA00205DAD /* Resources.h */,
 				05782ED21670A04B00FD39B7 /* engine */,
 				053BA838163D79B30095EBEF /* kissfft */,
@@ -388,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				05A964391687A19E003669E0 /* logo.svg */,
+				052E1496168B5A68006CF846 /* int001.wav */,
 				051283501673E1FB00A4AAB1 /* drs001.wav */,
 				051283511673E1FB00A4AAB1 /* pad001.wav */,
 				051283521673E1FB00A4AAB1 /* prc001.wav */,
@@ -483,6 +413,7 @@
 				050BC5B11676510B00E83B71 /* tfx001.wav in Resources */,
 				05A9643A1687A19E003669E0 /* logo.svg in Resources */,
 				05E57D0A168A19EC00E0E337 /* drs004.wav in Resources */,
+				052E1497168B5A68006CF846 /* int001.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +461,8 @@
 				05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */,
 				05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */,
 				059425E5168886E300057DFE /* TileLevel.cpp in Sources */,
+				052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */,
+				052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

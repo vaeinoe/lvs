@@ -83,7 +83,7 @@ void Audio::update()
 float* Audio::getFreqData() { return analyzer->freqData; }
 int32_t Audio::getDataSize() { return analyzer->dataSize; }
 
-void Audio::draw() { analyzer->draw(1, -300); }
+void Audio::draw() { analyzer->draw(1, 0); }
 
 void Audio::onFadeEnd(int typeId)
 {

@@ -21,8 +21,13 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-#define FONT_SIZE_SMALL 32
-#define FONT_SIZE_LARGE 64
+#define FONT_TYPE_SMALL  0
+#define FONT_TYPE_MEDIUM 1
+#define FONT_TYPE_LARGE  2
+
+#define FONT_SIZE_SMALL  16
+#define FONT_SIZE_MEDIUM 32
+#define FONT_SIZE_LARGE  64
 
 #define NUM_ANGLES 32
 

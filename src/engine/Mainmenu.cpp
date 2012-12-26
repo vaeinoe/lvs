@@ -8,69 +8,60 @@
 
 #include "Mainmenu.h"
 #include "LVSEngine.h"
-#include "../ciUI/ciUI.h"
+#include "WTextLabel.h"
+#include "WTextButton.h"
 
 void Mainmenu::setup(Configuration *config)
 {
     mConfig = config;
+    
+    title = new WTextLabel();
+    title->setup(mConfig, Vec2f(16,64), "8trak", FONT_TYPE_LARGE, ColorA(0.6, 0.4, 0.6, 0.75));
 
-    int x = mConfig->fieldOrigin.x + mConfig->fieldSize.x * 0.5;
-    int y = mConfig->fieldOrigin.y;
-    int width = 300;
-    int height = 300;
-    
-    gui = new ciUICanvas(x, y, width, height);
-    gui->setFont("nevis.ttf");
-    
-    gui->setFontSize(CI_UI_FONT_LARGE, 72);
-    gui->setFontSize(CI_UI_FONT_MEDIUM, 32);
-    gui->setFontSize(CI_UI_FONT_SMALL, 16);
-    
-    // Modified "Berlin"
-    ColorA cb = ColorA( 0.1, 0.1, 0.1, 0.0 );
-    ColorA co = ColorA( 0.294118, 0.34902, 0.419608, 0.392157 );
-    ColorA coh = ColorA( 0.6, 0.894118, 1, 0.784314 );
-    ColorA cf = ColorA( 0.968627, 0.309804, 0.309804, 0.784314 );
-    ColorA cfh = ColorA( 1, 0.231373, 0.231373, 1 );
-    ColorA cp = ColorA( 0.105882, 0.12549, 0.14902, 0.392157 );
-    ColorA cpo = ColorA( 0.294118, 0.34902, 0.419608, 0.784314 );
-    gui-> setUIColors( cb, co, coh, cf, cfh, cp, cpo );
+    buttonStart = new WTextButton();
+    buttonStart->setup(mConfig, Vec2f(16,110), "play", FONT_TYPE_MEDIUM, ColorA(0.8, 0.5, 0.8, 0.66));
 
-    gui->addWidgetDown(new ciUILabelToggle(false, "play",CI_UI_FONT_MEDIUM));
-    gui->addWidgetDown(new ciUILabelToggle(false, "quit",CI_UI_FONT_MEDIUM));
-    
-    gui->autoSizeToFitWidgets();
-    gui->registerUIEvents(this, &Mainmenu::guiEvent);
+    buttonQuit = new WTextButton();
+    buttonQuit->setup(mConfig, Vec2f(16,148), "quit", FONT_TYPE_MEDIUM, ColorA(0.8, 0.5, 0.8, 0.66));
     
     active = true;
-    
-    DataSourceRef logoRef = loadResource( RES_LOGO );
-    logo = new svg::Doc(logoRef);
 }
 
-void Mainmenu::draw()     {
-    gui->draw();
-    gl::draw(*logo);
+void Mainmenu::draw() {
+    title->draw();
+    buttonStart->draw();
+    buttonQuit->draw();
 }
 
-void Mainmenu::update()   { gui->update(); }
-void Mainmenu::shutdown() { delete gui; }
+void Mainmenu::update() { }
 
-void Mainmenu::mouseMove ( const MouseEvent event ) { }
-void Mainmenu::mouseDown ( const MouseEvent event ) { }
+void Mainmenu::shutdown() {
+    delete title;
+    delete buttonStart;
+    delete buttonQuit;
+}
 
-void Mainmenu::activate() { active = true; }
-void Mainmenu::deactivate() { active = false; }
-
-void Mainmenu::guiEvent(ciUIEvent *event)
+void Mainmenu::mouseMove ( const MouseEvent event )
 {
     if (active) {
-        string name = event->widget->getName();
-        if(name == "play") {
+        Vec2f pos = event.getPos();
+        buttonStart->mousePos(pos);
+        buttonQuit->mousePos(pos);        
+    }
+}
+
+void Mainmenu::mouseDown ( const MouseEvent event )
+{
+    if (active) {        
+        Vec2f pos = event.getPos();
+        if (buttonStart->isHit(pos)) {
             mConfig->engine->startGame();
         }
-        else if (name == "quit") {
+        else if (buttonQuit->isHit(pos)) {
             mConfig->engine->quitGame();
         }
     }
 }
+
+void Mainmenu::activate() { active = true; }
+void Mainmenu::deactivate() { active = false; }
