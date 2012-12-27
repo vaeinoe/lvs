@@ -15,12 +15,15 @@ class OverlayFxManager {
 public:
 	void setup( Configuration *config );
 	void update();
-	void draw();
+	void drawDelayed();
+    void drawImmediate();
 	void shutdown();
     
     void createExplosion(Vec2f pos, ColorA color);
-    void createText(int type, Vec2f pos, ColorA color, int fadeTime);
+    void createText(Vec2f pos, ColorA color, int size, string text);
 private:
+    static inline bool isFinished (OverlayFx *fx);
+    
     Configuration *mConfig;
     vector<OverlayFx*> fxList;
 };

@@ -23,6 +23,9 @@ public:
     bool isFinished();
 private:
     static int numLevels[TILE_TYPES];
+    static ColorA msgColors[TILE_TYPES];
+    static std::string msgText[TILE_TYPES];
+    
     void levelUp();
 
     Configuration *mConfig;

@@ -15,19 +15,33 @@ void OverlayFxManager::setup( Configuration *config )
     mConfig = config;
 }
 
+inline bool OverlayFxManager::isFinished (OverlayFx *fx) { return fx->finished; }
+
 void OverlayFxManager::update()
 {
     for( vector<OverlayFx*>::iterator t = fxList.begin(); t != fxList.end(); ++t ){
         (*t)->update();
     }
     
-    // XXX: delete all finished
+    fxList.erase(remove_if(fxList.begin(), fxList.end(), isFinished), fxList.end());
+//    cout << fxList.size() << endl;
 }
 
-void OverlayFxManager::draw()
+void OverlayFxManager::drawDelayed()
 {
     for( vector<OverlayFx*>::iterator t = fxList.begin(); t != fxList.end(); ++t ){
-        (*t)->draw();
+        if ((*t)->type == VFX_EXPLOSION) {
+            (*t)->draw();
+        }
+    }
+}
+
+void OverlayFxManager::drawImmediate()
+{
+    for( vector<OverlayFx*>::iterator t = fxList.begin(); t != fxList.end(); ++t ){
+        if ((*t)->type == VFX_TEXT) {
+            (*t)->draw();            
+        }
     }
 }
 
@@ -42,11 +56,13 @@ void OverlayFxManager::shutdown()
 void OverlayFxManager::createExplosion(Vec2f pos, ColorA color)
 {
     OverlayFx *fx = new OverlayFx();
-    fx->setup(mConfig, this, color, pos, VFX_EXPLOSION);
+    fx->setupExplosion(mConfig, this, color, pos);
     fxList.push_back(fx);
 }
 
-void OverlayFxManager::createText(int type, Vec2f pos, ColorA color, int fadeTime)
+void OverlayFxManager::createText(Vec2f pos, ColorA color, int size, string text)
 {
-    
+    OverlayFx *fx = new OverlayFx();
+    fx->setupText(mConfig, this, color, pos, size, text);
+    fxList.push_back(fx);
 }
