@@ -203,7 +203,11 @@ void LVSEngine::draw()
     }
     if (gameState == S_GAMEOVER) {
         gl::color(1, 1, 1, fadeVal);
-        mConfig->fontLarge->drawString(ENDGAME_STR,getWindowCenter() - (mConfig->fontMedium->measureString(ENDGAME_STR) / 2));
+        mConfig->fontLarge->drawString(ENDGAME_STR,getWindowCenter() - (mConfig->fontLarge->measureString(ENDGAME_STR) / 2));
+    }
+    else if (gameState == S_VICTORY) {
+        gl::color(1, 1, 1, fadeVal);
+        mConfig->fontMedium->drawString(WINGAME_STR,getWindowCenter() - (mConfig->fontMedium->measureString(WINGAME_STR) / 2));
     }
     
 }
@@ -274,16 +278,20 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
 
 inline bool LVSEngine::checkVictory()
 {
-    for (int i = 0; i < mConfig->numTileTypes; i++) {
-        if (!mConfig->levels[i]->isFinished()) {
-            return false;
+    if (gameState == S_INGAME_1) {
+        for (int i = 0; i < mConfig->numTileTypes; i++) {
+            if (!mConfig->levels[i]->isFinished()) {
+                return false;
+            }
         }
+        // OK, victory
+        gameState = S_VICTORY;
+        mAudio->fadeToPreset(1, 5.0);
+        screenFader->fade(1.0, 3.0);
+        return true;        
     }
-    // OK, victory
-    gameState = S_VICTORY;
-    mAudio->fadeToPreset(1, 5.0);
-    screenFader->fade(1.0, 3.0);
-    return true;
+    
+    return false;
 }
 
 void LVSEngine::startGame()
@@ -357,6 +365,12 @@ void LVSEngine::onFadeEnd(int typeId)
             gl::clear( Color( 0, 0, 0 ) );
             shutdown();
             exit(0);
+        }
+        else if (gameState == S_VICTORY) {
+            resetGame();
+            screenFader->fade(0.0, 2.0);
+            gameState = S_MAINMENU;
+            mMenu->activate();            
         }
     }
     // Game time ended
