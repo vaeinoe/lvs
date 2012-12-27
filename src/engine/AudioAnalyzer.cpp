@@ -13,6 +13,7 @@ void AudioAnalyzer::setup(Configuration *config)
 {
     mConfig = config;
     audioSize = 0;
+	audioFloat = NULL;
 
     for (int i = 0; i < 5; i++) {
         PolyLine<Vec2f> line;
@@ -26,7 +27,8 @@ void AudioAnalyzer::update()
 {
     if (audioSize > 0) {
         if ( !mFft ) { mFft = Kiss::create( audioSize ); }
-        if (!audioFloat) audioFloat = new float[audioSize];
+
+		if (!audioFloat) audioFloat = new float[audioSize];
         
         int16_t * srcBuffer = reinterpret_cast<int16_t *>( audioData );
         for( uint32_t i = 0; i < ( audioSize ); i++ ) {

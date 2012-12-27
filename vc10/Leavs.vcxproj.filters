@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="Source Files\ciUI">
-      <UniqueIdentifier>{a0c56eeb-6047-40ea-8039-066dd082b937}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\engine">
       <UniqueIdentifier>{0654d22e-ab65-4345-a2a7-009a7d85ecdc}</UniqueIdentifier>
     </Filter>
@@ -51,121 +48,37 @@
     <ClCompile Include="..\src\engine\AudioAnalyzer.cpp">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\engine\AudioFx.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Fader.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\FaderPack.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\OverlayFx.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\OverlayFxManager.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\WProgressBar.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\WTextButton.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\WTextLabel.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\TileLevel.cpp">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUI.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIWidgetWithLabel.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUI2DPad.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIBiLabelSlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIButton.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUICanvas.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUICircleSlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIDropDownList.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIEvent.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIFPS.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIFPSSlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIImage.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIImageButton.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIImageSampler.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIImageSlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIImageToggle.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUILabel.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUILabelButton.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUILabelToggle.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIMinimalSlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIMovingGraph.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIMultiImageButton.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIMultiImageToggle.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUINumberDialer.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIRadio.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIRangeSlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIRectangle.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIRotarySlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIScrollableCanvas.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUISlider.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUISpacer.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUISpectrum.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUITextInput.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIToggle.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIToggleMatrix.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIWaveform.h">
-      <Filter>Source Files\ciUI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ciUI\ciUIWidget.h">
-      <Filter>Source Files\ciUI</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\World.h">
       <Filter>Source Files\engine</Filter>
@@ -198,6 +111,39 @@
       <Filter>Source Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\AudioAnalyzer.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\AudioFx.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\FadeObserver.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Fader.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\FaderPack.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\LevelData.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\OverlayFx.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\OverlayFxManager.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\WProgressBar.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\WTextButton.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\WTextLabel.h">
+      <Filter>Source Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\TileLevel.h">
       <Filter>Source Files\engine</Filter>
     </ClInclude>
   </ItemGroup>
