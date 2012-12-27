@@ -10,32 +10,85 @@
 #include "LVSEngine.h"
 #include "OverlayFxManager.h"
 
-#define ALPHA_TRESHOLD 0.1
+#define ALPHA_TRESHOLD 0.03
 
-void OverlayFx::setup( Configuration *config, OverlayFxManager *master, ColorA newcolor,
-                      Vec2f newpos, int newtype )
+void OverlayFx::setupExplosion( Configuration *config, OverlayFxManager *master,
+                                ColorA newcolor, Vec2f newpos)
 {
+    mConfig = config;
+    type = VFX_EXPLOSION;
+
+    pos = newpos;
     size = 1;
     color = newcolor;
-    
-    mConfig = config;
 
     finished = false;
-    type = newtype;
-    pos = newpos;
 }
 
-void OverlayFx::update()
+void OverlayFx::setupText( Configuration *config, OverlayFxManager *master, ColorA newcolor,
+                           Vec2f newpos, int newSize, string newText, bool centered )
 {
-    finished = color.a < ALPHA_TRESHOLD;
+    mConfig = config;
+    type = VFX_TEXT;
+
+    pos = newpos;
+    textSize = newSize;
+    color = newcolor;
+    
+    text = newText;
+    
+    finished = false;
+    if (centered) centerText();
 }
+
+inline void OverlayFx::centerText()
+{
+    Vec2f boxSize;
+    
+    switch (textSize) {
+        case FONT_TYPE_SMALL:
+            boxSize = mConfig->fontSmall->measureString(text);
+            break;
+        case FONT_TYPE_MEDIUM:
+            boxSize = mConfig->fontMedium->measureString(text);
+            break;
+        case FONT_TYPE_LARGE:
+            boxSize = mConfig->fontLarge->measureString(text);
+            break;
+    }
+
+    pos.x = mConfig->fieldSize.x / 2 - (boxSize.x / 2);
+    pos.y = mConfig->fieldSize.y / 2 - (boxSize.y / 2);
+}
+
+
+void OverlayFx::update() { finished = color.a < ALPHA_TRESHOLD; }
 
 void OverlayFx::draw()
 {
     if (!finished)
     {
         if (type == VFX_EXPLOSION) { drawExplosion(); }
+        else if (type == VFX_TEXT) { drawText(); }
     }
+}
+
+inline void OverlayFx::drawText()
+{
+    gl::color(color);
+    switch (textSize) {
+        case FONT_TYPE_SMALL:
+            mConfig->fontSmall->drawString(text, mConfig->fieldOrigin + pos);
+            break;
+        case FONT_TYPE_MEDIUM:
+            mConfig->fontMedium->drawString(text, mConfig->fieldOrigin + pos);
+            break;
+        case FONT_TYPE_LARGE:
+            mConfig->fontLarge->drawString(text, mConfig->fieldOrigin + pos);
+            break;
+    }
+    
+    color.a = color.a * 0.968;
 }
 
 inline void OverlayFx::drawExplosion()

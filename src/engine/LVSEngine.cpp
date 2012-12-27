@@ -160,10 +160,11 @@ inline void LVSEngine::drawGame(float lightness)
     }
     
     mWorld->draw();
-    overlayFx->draw();
+    overlayFx->drawDelayed();
     drawQueue();
     mToolbar->draw();
     mPlayer->draw();
+    overlayFx->drawImmediate();
 }
 
 void LVSEngine::draw()

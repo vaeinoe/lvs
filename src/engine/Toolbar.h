@@ -11,6 +11,7 @@
 
 class Configuration;
 class WProgressBar;
+class WTextLabel;
 
 class Toolbar {
 public:
@@ -18,11 +19,16 @@ public:
 	void update( int fftDataBins );
 	void draw();
 	void shutdown();
-    void updateScore( int score, int maxScore, int type, bool finished = false );
+    void updateScore( int score, int maxScore, int level, int type, bool finished = false );
 private:
     static double barColors[][4];
     
-    Configuration *mConfig;    
+    Configuration *mConfig;
+    
+    WTextLabel   *levelLabel;
     WProgressBar *scoreBars[TILE_TYPES];
+    WTextLabel   *levelLabels[TILE_TYPES];
+    
+    WTextLabel   *timerLabel;
     WProgressBar *timerBar;
 };

@@ -147,8 +147,15 @@ bool World::resolveTile(int x, int y, bool act) {
         tileIndex(neighbourCoord(pos, Vec2i(0, -1)))
     };
     
+    int bonusTiles[3];
+    Vec2i curr = neighbourCoord(pos, Vec2i(0,  1));
+    for (int i = 0; i < 3; i++) {
+        curr = neighbourCoord(curr, Vec2i(0,  1));
+        bonusTiles[i] = tileIndex(curr);
+    }
+        
     // These give extra points
-    int extraTiles[] = {
+    int hextraTiles[] = {
         tileIndex(neighbourCoord(pos, Vec2i(1,  1))),
         tileIndex(neighbourCoord(pos, Vec2i(1, -1))),
         tileIndex(neighbourCoord(pos, Vec2i(-1,  1))),
@@ -168,11 +175,11 @@ bool World::resolveTile(int x, int y, bool act) {
 
     if (!reqHit) return false;
 
-    int extraHit = true;
+    int hextraHit = true;
     for (int i = 0; i < 4; i++) {
-        if (extraTiles[i] >= tiles.size() || extraTiles[i] < 0 ||
-            !tiles[extraTiles[i]]->selectable() || tiles[extraTiles[i]]->type != type) {
-                extraHit = false;
+        if (hextraTiles[i] >= tiles.size() || hextraTiles[i] < 0 ||
+            !tiles[hextraTiles[i]]->selectable() || tiles[hextraTiles[i]]->type != type) {
+                hextraHit = false;
                 break;
         }
     }
@@ -182,16 +189,28 @@ bool World::resolveTile(int x, int y, bool act) {
         tiles[tileIdx]->kill();
         
         int mult = 2;
-        if (extraHit) mult = 3;
+        if (hextraHit) mult = 4;
         
         if (reqHit) {
             for (int i = 0; i < 2; i++) {
                 tiles[reqTiles[i]]->kill(mult);
             }
         }
-        if (extraHit) {
+        
+        if (hextraHit) {
             for (int i = 0; i < 4; i++) {
-                tiles[extraTiles[i]]->kill(mult);
+                tiles[hextraTiles[i]]->kill(mult);
+            }
+        }
+        else { // Resolve bonus tiles if no hex hit
+            for (int i = 0; i < 3; i++) {
+                if (bonusTiles[i] < tiles.size() && bonusTiles[i] > 0 &&
+                    tiles[bonusTiles[i]]->selectable() && tiles[bonusTiles[i]]->type == type) {
+                    tiles[bonusTiles[i]]->kill(mult + i);
+                }
+                else {
+                    break;
+                }
             }
         }
     }

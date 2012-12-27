@@ -51,4 +51,4 @@ using namespace std;
 
 #define GAME_NAME "6track"
 #define ENDGAME_STR "Fin."
-#define WINGAME_STR "You are victorious"
+#define WINGAME_STR "You are victorious."
