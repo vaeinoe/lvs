@@ -29,6 +29,10 @@ public:
     void moveTo( const Vec2i newPos );
     void shrink();
     
+    void pause();
+    void resume();
+    bool paused;
+    
     int kill(int mult = 1);
     bool selectable();
     

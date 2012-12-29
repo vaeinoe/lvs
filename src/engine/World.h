@@ -22,6 +22,9 @@ public:
     
     void shrink();
 
+    void pause();
+    void resume();
+    
     void selectTile( const Vec2i mouseLoc );
     void deselectTile( const Vec2i mouseLoc );
 

@@ -59,28 +59,42 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
     for (int i = 0; i < FILTER_SIZE; i++) { prevTileSize[i] = tileSize; }
 
     drawPos = getScreenPositionVector();
+    
+    paused = false;
 }
 
-void Tile::shutdown() {
+bool Tile::selectable() { return (!dead && !moving && !growing); }
+void Tile::regrow() { setup(mConfig, *pos, mConfig->world->rndTileType(), true); }
+void Tile::toggleSelected() { if (!dead && !moving && !growing ) { selected = !selected; } }
+void Tile::setSurrounding(bool value) { surrounding = value; }
+
+void Tile::shutdown()
+{
     mConfig->faders->deleteFader(fadeFader);
     mConfig->faders->deleteFader(growFader);
     mConfig->faders->deleteFader(moveFader);
 }
 
-// Activates / deactivates selected hex
-void Tile::toggleSelected() {
-    if (!dead && !moving && !growing ) { selected = !selected; }
+void Tile::pause()
+{
+    fadeFader->pause();
+    growFader->pause();
+    moveFader->pause();
+    paused = true;
 }
 
-void Tile::setSurrounding(bool value) {
-    surrounding = value;
+void Tile::resume()
+{
+    fadeFader->resume();
+    growFader->resume();
+    moveFader->resume();
+    paused = false;
 }
 
-bool Tile::selectable() { return (!dead && !moving && !growing); }
-
-void Tile::regrow() { setup(mConfig, *pos, mConfig->world->rndTileType(), true); }
-
-int Tile::kill(int mult) {
+int Tile::kill(int mult)
+{
+    if (paused) return 0;
+    
     if (moving || dead || growing || shrinking) { return 0; }
     
     dead = true;
@@ -96,6 +110,8 @@ int Tile::kill(int mult) {
 // Game over, shrink the tile
 void Tile::shrink()
 {
+    if (paused) return;
+
     fadeFader->fade(0.0, SHRINK_TIME_SEC);
     fading = true;
     
@@ -116,7 +132,10 @@ void Tile::shrink()
 }
 
 // Starts moving the tile to another position
-void Tile::moveTo( Vec2i newPos ) {
+void Tile::moveTo( Vec2i newPos )
+{
+    if (paused) return;
+
     if (!dead && !moving && !growing) {
         moving = true;
 
@@ -134,6 +153,8 @@ void Tile::moveTo( Vec2i newPos ) {
 
 void Tile::update( bool hovering, const float dist, const float modifier )
 {
+    if (paused) return;
+
     if (!dead && !finished && mConfig->levels[type]->isFinished()) {
         finished = true;
         finishAlpha = baseAlpha;
@@ -170,7 +191,8 @@ void Tile::update( bool hovering, const float dist, const float modifier )
     }
 }
 
-inline Vec2f Tile::getScreenPositionVector(Vec2i loc, bool shiftOrigin) {
+inline Vec2f Tile::getScreenPositionVector(Vec2i loc, bool shiftOrigin)
+{
     float x = mConfig->padding + (mConfig->tileGrid / 2) + loc.x * (1.5 * mConfig->tileGrid);
     float y = mConfig->padding + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid) + 7;
     if (loc.y % 2 != 0) { x += (0.74 * mConfig->tileGrid); }
@@ -189,6 +211,8 @@ Vec2f Tile::getScreenPositionVector() { return getScreenPositionVector(Vec2i(pos
 // Draws the tile
 void Tile::draw()
 {
+    if (paused) return;
+
     if (baseAlpha > 0) {
         float lightness = sin(getElapsedSeconds() / 10);
         
@@ -204,7 +228,8 @@ void Tile::draw()
 }
 
 // Draw alive hex
-inline void Tile::drawAlive(float lightness) {
+inline void Tile::drawAlive(float lightness)
+{
     float val = sin((getElapsedSeconds() * 2 + sin(drawPos.x) + cos(drawPos.y))) * 0.2f + 0.5f;
     
     gl::color(0, 0, lightness * 0.4, 0.75 * baseAlpha);
@@ -230,7 +255,8 @@ inline void Tile::drawAlive(float lightness) {
     if (finished) drawFinished();
 }
 
-inline void Tile::drawDropShadow() {
+inline void Tile::drawDropShadow()
+{
     /*int segments = 6;
     ColorA color = ColorA(0.5, 0.25, 0.75, 0.10);
     for (int i = 1; i < 10; i++) {
@@ -239,13 +265,15 @@ inline void Tile::drawDropShadow() {
     }*/
 }
 
-inline void Tile::drawDead(float lightness) {
+inline void Tile::drawDead(float lightness)
+{
     mConfig->engine->addCirclePoly( drawPos, baseTileSize * 0.8, 6, ColorA(0.4, 0.25, lightness * 0.8, 0.6 * baseAlpha) );
     mConfig->engine->addCirclePoly( drawPos, baseTileSize * 0.6, 6, ColorA(0.3, 0.2, lightness * 0.7, 0.5 * baseAlpha) );
     mConfig->engine->addCirclePoly( drawPos, baseTileSize * 0.4, 6, ColorA(0.2, 0.1, lightness * 0.6, 0.4 * baseAlpha) );
 }
 
-inline void Tile::drawFinished() {
+inline void Tile::drawFinished()
+{
     if (finishAlpha > 0.03) {
         gl::color (1.0, 1.0, 1.0, finishAlpha);
         gl::drawSolidCircle( drawPos, baseTileSize, 6 );
@@ -254,12 +282,14 @@ inline void Tile::drawFinished() {
     }
 }
 
-inline void Tile::drawGrow(float lightness) {
+inline void Tile::drawGrow(float lightness)
+{
     // XXX
 }
 
 // Draw debug label
-inline void Tile::drawLabel(Vec2f draw_pos) {
+inline void Tile::drawLabel(Vec2f draw_pos)
+{
     gl::drawStringCentered ("x:" + toString(pos->x) + " y:" + toString(pos->y), draw_pos);
 }
 
@@ -304,7 +334,8 @@ inline void Tile::drawPlant(Vec2f draw_pos, float val, int level) {
 }
 
 // Draw the red tile (render world when ready)
-inline void Tile::drawGram(Vec2f draw_pos, float val, int level) {
+inline void Tile::drawGram(Vec2f draw_pos, float val, int level)
+{
     if (level == 0) {
         int segments = 6;
         for (int i = 0; i < FILTER_SIZE; i++) {
@@ -442,7 +473,8 @@ inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
 }
 
 // Draw active tile highlight
-inline void Tile::drawActive(Vec2f draw_pos, float val) {
+inline void Tile::drawActive(Vec2f draw_pos, float val)
+{
     mConfig->engine->addCirclePoly( draw_pos, baseTileSize, 6, ColorA(1, 1, 1, 0.5 * baseAlpha) );
     
     gl::color (0.6, val, 0.8, 0.4 * baseAlpha);
@@ -450,14 +482,16 @@ inline void Tile::drawActive(Vec2f draw_pos, float val) {
 }
 
 // Draw selected tile highlight
-inline void Tile::drawSelected(Vec2f draw_pos, float val) {
+inline void Tile::drawSelected(Vec2f draw_pos, float val)
+{
     gl::color (1.0, 0.2, 0.8, 0.40 * baseAlpha);
     gl::drawSolidCircle( draw_pos, baseTileSize, 6 );
     mConfig->engine->addCirclePoly( draw_pos, baseTileSize, 6, ColorA(0.75, 0.66, 0.75, 0.75) );
 }
 
 // Draw surrounding tile highlight
-inline void Tile::drawSurrounding(Vec2f draw_pos, float val) {
+inline void Tile::drawSurrounding(Vec2f draw_pos, float val)
+{
     mConfig->engine->addCirclePoly( draw_pos, baseTileSize, 6, ColorA(0.75, 0.66, 0.75, 0.75) );
 }
 
@@ -481,5 +515,7 @@ void Tile::onFadeEnd(int typeId)
             baseAlpha = 1.0;
             break;
     }
-//    cout << "Fade end: " << typeId << endl;
 }
+
+
+
