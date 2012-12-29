@@ -74,7 +74,6 @@ inline void TileLevel::levelUp()
     level += 1;
     score  = 0;
     maxScore = (level + 1) * LEVEL_SCORE_MODIFIER;
-    mConfig->engine->addGameTime(maxScore);
     
     string lup;
     if (level == numLevels[type]) {
@@ -84,6 +83,7 @@ inline void TileLevel::levelUp()
         }
     }
     else {
+        mConfig->engine->addGameTime(0.75 * maxScore);
         lup = msgText[type] + std::string(" level ") + toString(level + 1) + ".";
     }
     
