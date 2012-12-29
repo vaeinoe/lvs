@@ -51,6 +51,13 @@ void World::reset() {
     if (resolveTiles(false) == true) { reset(); }
 }
 
+void World::shrink()
+{
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+        (*t)->shrink();
+    }
+}
+
 
 // Update all tiles' size modifiers and active status
 void World::update( const Vec2i *mouseLoc, const float *freqData, const int dataSize )

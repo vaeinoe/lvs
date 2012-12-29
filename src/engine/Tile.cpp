@@ -34,6 +34,7 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
     moving = false;
     dead = false;
     fading = false;
+    shrinking = false;
 
     fadeFader = config->faders->createFader(FADEFADER, &baseAlpha, this);
     growFader = config->faders->createFader(GROWFADER, &growPos, this);
@@ -79,7 +80,7 @@ bool Tile::selectable() { return (!dead && !moving && !growing); }
 void Tile::regrow() { setup(mConfig, *pos, mConfig->world->rndTileType(), true); }
 
 int Tile::kill(int mult) {
-    if (moving || dead || growing) { return 0; }
+    if (moving || dead || growing || shrinking) { return 0; }
     
     dead = true;
     mConfig->levels[type]->addScore(mult);
@@ -89,6 +90,28 @@ int Tile::kill(int mult) {
     fadeFader->fade(0.0, FADE_TIME_SEC);
     fading = true;
     return mult;
+}
+
+// Game over, shrink the tile
+void Tile::shrink()
+{
+    fadeFader->fade(0.0, SHRINK_TIME_SEC);
+    fading = true;
+    
+    moveSrcPos = Vec2i(pos->x, pos->y);
+    moveDestPos = Vec2i(pos->x, pos->y);
+
+    moveSrcLoc = getScreenPositionVector(moveSrcPos);
+    moveDestLoc = getWindowCenter();
+    
+    growFader->fade(0.0, SHRINK_TIME_SEC);
+    growing = true;
+    
+    movePos = 0.0;
+    moveFader->fade(1.0, SHRINK_TIME_SEC);
+    moving = true;
+    
+    shrinking = true;
 }
 
 // Starts moving the tile to another position
@@ -119,13 +142,13 @@ void Tile::update( bool hovering, const float dist, const float modifier )
         baseTileSize = growPos * mConfig->tileSize;
         tileSize = growPos * mConfig->tileSize;
     }
-    else if (moving) {
+    if (moving) {
         drawPos = moveSrcLoc - ((moveSrcLoc - moveDestLoc) * movePos);
     }
 
     if (!dead) {
         // Activate if cursor is over the hex and hex is not moving
-        active = (dist < (0.9 * baseTileSize) && !moving && !growing && (hovering || surrounding)) ? true : false;
+        active = (dist < (0.9 * baseTileSize) && !shrinking && !moving && !growing && (hovering || surrounding)) ? true : false;
         
         // Shift averages
         for (int i = 1; i < FILTER_SIZE; i++) { prevTileSize[i - 1] = prevTileSize[i]; }

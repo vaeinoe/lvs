@@ -140,6 +140,9 @@ void LVSEngine::update()
         case S_QUITTING:
             mAudio->update();
             break;
+        case S_VICTORY:
+            mAudio->update();
+            mWorld->update(mMouseLoc, mAudio->getFreqData(), mAudio->getDataSize());
         default:
             mAudio->update();
             break;
@@ -194,6 +197,8 @@ void LVSEngine::draw()
             mAudio->draw();
             mMenu->draw();
             break;
+        case S_VICTORY:
+            drawGame(lightness);
     }
     gl::color(1.0, 1.0, 1.0, 0.3);
     gl::drawStrokedRect (mConfig->fieldRect);
@@ -206,11 +211,10 @@ void LVSEngine::draw()
         gl::color(1, 1, 1, fadeVal);
         mConfig->fontLarge->drawString(ENDGAME_STR,getWindowCenter() - (mConfig->fontLarge->measureString(ENDGAME_STR) / 2));
     }
-    else if (gameState == S_VICTORY) {
+    if (gameState == S_VICTORY) {
         gl::color(1, 1, 1, fadeVal);
         mConfig->fontMedium->drawString(WINGAME_STR,getWindowCenter() - (mConfig->fontMedium->measureString(WINGAME_STR) / 2));
     }
-    
 }
 
 double LVSEngine::getGameTime() { return gameFader->timeLeft(); }
@@ -294,7 +298,8 @@ inline bool LVSEngine::checkVictory()
         // OK, victory
         gameState = S_VICTORY;
         mAudio->fadeToPreset(1, 5.0);
-        screenFader->fade(1.0, 3.0);
+        mWorld->shrink();
+        screenFader->fade(1.0, SHRINK_TIME_SEC);
         return true;            
     }
     
