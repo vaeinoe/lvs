@@ -213,7 +213,7 @@ void LVSEngine::draw()
     }
     if (gameState == S_VICTORY) {
         gl::color(1, 1, 1, fadeVal);
-        string score = "Time: " + toString(round(endGameTime)) + " seconds.";
+        string score = "Time: " + toString(floor(endGameTime + 0.5)) + " seconds.";
         Vec2f winSize     = mConfig->fontMedium->measureString(WINGAME_STR) / 2;
         Vec2f scoreOffset = Vec2f(0, 16);
         Vec2f scoreSize   = mConfig->fontSmall->measureString(score) / 2;
