@@ -156,6 +156,23 @@ inline Vec2f Tile::getScreenPositionVector(Vec2i loc, bool shiftOrigin) {
 // Returns the screen position of this hex
 Vec2f Tile::getScreenPositionVector() { return getScreenPositionVector(Vec2i(pos->x, pos->y)); }
 
+// Draws the tile
+void Tile::draw()
+{
+    if (baseAlpha > 0) {
+        float lightness = sin(getElapsedSeconds() / 10);
+        
+        if (!dead) { drawAlive(lightness); }
+        else { drawDead(lightness); }
+        
+        if (growing) { drawGrow(lightness); }
+    }
+    
+#ifdef DEBUG
+    drawLabel(drawPos);
+#endif
+}
+
 // Draw alive hex
 inline void Tile::drawAlive(float lightness) {
     float val = sin((getElapsedSeconds() * 2 + sin(drawPos.x) + cos(drawPos.y))) * 0.2f + 0.5f;
@@ -177,6 +194,18 @@ inline void Tile::drawAlive(float lightness) {
     if (selected) drawSelected(drawPos, val);
     if (surrounding && !growing) drawSurrounding(drawPos, val);
 #endif
+    
+    // Drop shadow
+    drawDropShadow();
+}
+
+inline void Tile::drawDropShadow() {
+    /*int segments = 6;
+    ColorA color = ColorA(0.5, 0.25, 0.75, 0.10);
+    for (int i = 1; i < 10; i++) {
+        color.a = color.a * 0.80;
+        mConfig->engine->addCirclePoly( drawPos, mConfig->tileSize + i, segments, color );
+    }*/
 }
 
 inline void Tile::drawDead(float lightness) {
@@ -187,23 +216,6 @@ inline void Tile::drawDead(float lightness) {
 
 inline void Tile::drawGrow(float lightness) {
     // XXX
-}
-
-// Draws the tile
-void Tile::draw()
-{    
-    if (baseAlpha > 0) {
-        float lightness = sin(getElapsedSeconds() / 10);
-
-        if (!dead) { drawAlive(lightness); }
-        else { drawDead(lightness); }
-        
-        if (growing) { drawGrow(lightness); }
-    }
-    
-#ifdef DEBUG
-    drawLabel(drawPos);
-#endif
 }
 
 // Draw debug label

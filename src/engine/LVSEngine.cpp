@@ -277,19 +277,25 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
     }
 }
 
+inline bool LVSEngine::isVictory()
+{
+    for (int i = 0; i < mConfig->numTileTypes; i++) {
+        if (!mConfig->levels[i]->isFinished()) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
 inline bool LVSEngine::checkVictory()
 {
-    if (gameState == S_INGAME_1) {
-        for (int i = 0; i < mConfig->numTileTypes; i++) {
-            if (!mConfig->levels[i]->isFinished()) {
-                return false;
-            }
-        }
+    if (gameState == S_INGAME_1 && isVictory()) {
         // OK, victory
         gameState = S_VICTORY;
         mAudio->fadeToPreset(1, 5.0);
         screenFader->fade(1.0, 3.0);
-        return true;        
+        return true;            
     }
     
     return false;
