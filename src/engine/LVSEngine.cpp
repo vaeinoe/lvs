@@ -287,7 +287,7 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
     }
 }
 
-inline bool LVSEngine::isVictory()
+bool LVSEngine::isVictory()
 {
     for (int i = 0; i < mConfig->numTileTypes; i++) {
         if (!mConfig->levels[i]->isFinished()) {
