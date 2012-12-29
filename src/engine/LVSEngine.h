@@ -50,7 +50,7 @@ public:
     void addCirclePoly( const Vec2f &center, const float radius,
                         const int numSegments, const ColorA &color );
     bool dragging;
-    inline bool isVictory();
+    bool isVictory();
 
 private:
     inline bool checkVictory();
