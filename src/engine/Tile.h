@@ -66,6 +66,8 @@ private:
     void drawActive(Vec2f pos, float val);
     void drawSurrounding(Vec2f pos, float val);
     
+    void drawDropShadow();
+    
     Vec2f drawPos;
     
     Fader *fadeFader;

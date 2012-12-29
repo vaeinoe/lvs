@@ -78,7 +78,9 @@ inline void TileLevel::levelUp()
     string lup;
     if (level == numLevels[type]) {
         finished = true;
-        lup = msgText[type] + std::string(" complete.");
+        if (!mConfig->engine->isVictory()) {
+            lup = msgText[type] + std::string(" complete.");            
+        }
     }
     else {
         lup = msgText[type] + std::string(" level ") + toString(level + 1) + ".";
