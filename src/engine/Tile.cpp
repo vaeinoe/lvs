@@ -35,6 +35,7 @@ void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool g
     dead = false;
     fading = false;
     shrinking = false;
+    finished = false;
 
     fadeFader = config->faders->createFader(FADEFADER, &baseAlpha, this);
     growFader = config->faders->createFader(GROWFADER, &growPos, this);
@@ -133,6 +134,12 @@ void Tile::moveTo( Vec2i newPos ) {
 
 void Tile::update( bool hovering, const float dist, const float modifier )
 {
+    if (!dead && !finished && mConfig->levels[type]->isFinished()) {
+        finished = true;
+        finishAlpha = baseAlpha;
+        // fadeFader->fade(0.0, SHRINK_TIME_SEC);
+    }
+    
     drawPos = getScreenPositionVector();
 
     if (dead && !fading) { regrow(); }
@@ -220,6 +227,7 @@ inline void Tile::drawAlive(float lightness) {
     
     // Drop shadow
     drawDropShadow();
+    if (finished) drawFinished();
 }
 
 inline void Tile::drawDropShadow() {
@@ -235,6 +243,15 @@ inline void Tile::drawDead(float lightness) {
     mConfig->engine->addCirclePoly( drawPos, baseTileSize * 0.8, 6, ColorA(0.4, 0.25, lightness * 0.8, 0.6 * baseAlpha) );
     mConfig->engine->addCirclePoly( drawPos, baseTileSize * 0.6, 6, ColorA(0.3, 0.2, lightness * 0.7, 0.5 * baseAlpha) );
     mConfig->engine->addCirclePoly( drawPos, baseTileSize * 0.4, 6, ColorA(0.2, 0.1, lightness * 0.6, 0.4 * baseAlpha) );
+}
+
+inline void Tile::drawFinished() {
+    if (finishAlpha > 0.03) {
+        gl::color (1.0, 1.0, 1.0, finishAlpha);
+        gl::drawSolidCircle( drawPos, baseTileSize, 6 );
+        mConfig->engine->addCirclePoly( drawPos, baseTileSize + ((1 - finishAlpha) * 20), 6, ColorA(1.0, 1.0, 1.0, finishAlpha) );
+        finishAlpha *= 0.9;
+    }
 }
 
 inline void Tile::drawGrow(float lightness) {
@@ -279,7 +296,7 @@ inline void Tile::drawPlant(Vec2f draw_pos, float val, int level) {
         }       
     }
     
-    else {
+    else if (finished) {
         int segments = 6;
         ColorA color = ColorA(0.25, 0.75, 0.25, 0.33);
         mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );
@@ -318,7 +335,7 @@ inline void Tile::drawGram(Vec2f draw_pos, float val, int level) {
         }        
     }
     
-    else {
+    else if (finished) {
         int segments = 6;
         ColorA color = ColorA(0.5, 0.1, 0.1, 0.33);
         mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );
@@ -366,7 +383,7 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
         }        
     }
     
-    else {
+    else if (finished) {
         int segments = 6;
         ColorA color = ColorA(0.1, 0.1, 0.8, 0.33);
         mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );
@@ -376,7 +393,7 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
 // Draw a star tile
 inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
 {
-    if (level >= 2) {
+    if (finished) {
         int segments = 6;
         ColorA color = ColorA(0.8, 0.8, 0.8, 0.33);
         mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );

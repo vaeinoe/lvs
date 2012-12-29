@@ -54,6 +54,10 @@ void Fader::addObserver(FadeObserver *obs)
 
 void Fader::addTime(double seconds) { durTime += seconds; }
 
+double Fader::timeElapsed() {
+    return mMaster->getSeconds() - startTime;
+}
+
 // TODO: not the best way to do this...
 double Fader::timeLeft() {
     double diff = durTime - (mMaster->getSeconds() - startTime);

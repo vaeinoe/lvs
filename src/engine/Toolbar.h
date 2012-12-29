@@ -19,6 +19,7 @@ public:
 	void update( int fftDataBins );
 	void draw();
 	void shutdown();
+    void reset();
     void updateScore( int score, int maxScore, int level, int type, bool finished = false );
 private:
     static double barColors[][4];

@@ -213,7 +213,13 @@ void LVSEngine::draw()
     }
     if (gameState == S_VICTORY) {
         gl::color(1, 1, 1, fadeVal);
-        mConfig->fontMedium->drawString(WINGAME_STR,getWindowCenter() - (mConfig->fontMedium->measureString(WINGAME_STR) / 2));
+        string score = "Time: " + toString(round(endGameTime)) + " seconds.";
+        Vec2f winSize     = mConfig->fontMedium->measureString(WINGAME_STR) / 2;
+        Vec2f scoreOffset = Vec2f(0, 16);
+        Vec2f scoreSize   = mConfig->fontSmall->measureString(score) / 2;
+        Vec2f winCenter   = getWindowCenter();
+        mConfig->fontMedium->drawString(WINGAME_STR, winCenter - winSize);
+        mConfig->fontSmall->drawString(score, winCenter - scoreSize + scoreOffset);
     }
 }
 
@@ -295,12 +301,14 @@ inline bool LVSEngine::isVictory()
 inline bool LVSEngine::checkVictory()
 {
     if (gameState == S_INGAME_1 && isVictory()) {
-        // OK, victory
+        gameFader->stop();
         gameState = S_VICTORY;
         mAudio->fadeToPreset(1, 5.0);
         mWorld->shrink();
         screenFader->fade(1.0, SHRINK_TIME_SEC);
-        return true;            
+                
+        endGameTime = gameFader->timeElapsed();
+        return true;
     }
     
     return false;
@@ -317,6 +325,8 @@ void LVSEngine::startGame()
         gameFader->resume();
     }
     else {
+        mConfig->overlayFx->createText(Vec2f(0,0), ColorA(1.0, 1.0, 1.0, 0.5),
+                                       FONT_TYPE_MEDIUM, "Commence.");
         gameFader->fade(0.0, INIT_GAME_TIME);
     }
     paused = false;
@@ -354,12 +364,10 @@ inline void LVSEngine::resetGame()
     for (int i = 0; i < mConfig->numTileTypes; i++) {
         mConfig->levels[i]->reset();
     }
+    mToolbar->reset();
 }
 
-void LVSEngine::addGameTime(int seconds)
-{
-    gameFader->addTime(seconds);
-}
+void LVSEngine::addGameTime(int seconds) { gameFader->addTime(seconds); }
 
 void LVSEngine::onFadeEnd(int typeId)
 {
@@ -382,7 +390,7 @@ void LVSEngine::onFadeEnd(int typeId)
             resetGame();
             screenFader->fade(0.0, 2.0);
             gameState = S_MAINMENU;
-            mMenu->activate();            
+            mMenu->activate();
         }
     }
     // Game time ended
