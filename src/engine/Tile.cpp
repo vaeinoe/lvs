@@ -83,7 +83,7 @@ int Tile::kill(int mult) {
     
     dead = true;
     mConfig->levels[type]->addScore(mult);
-    mConfig->overlayFx->createExplosion(Vec2f(drawPos.x, drawPos.y), ColorA(1.0, 1.0, 1.0, 1.0));
+    mConfig->overlayFx->createExplosion(getScreenPositionVector(Vec2i(pos->x, pos->y), false), ColorA(1.0, 1.0, 1.0, 1.0));
     type = -1;
     
     fadeFader->fade(0.0, FADE_TIME_SEC);
@@ -140,13 +140,15 @@ void Tile::update( bool hovering, const float dist, const float modifier )
     }
 }
 
-inline Vec2f Tile::getScreenPositionVector(Vec2i loc) {
+inline Vec2f Tile::getScreenPositionVector(Vec2i loc, bool shiftOrigin) {
     float x = mConfig->padding + (mConfig->tileGrid / 2) + loc.x * (1.5 * mConfig->tileGrid);
     float y = mConfig->padding + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid) + 7;
     if (loc.y % 2 != 0) { x += (0.74 * mConfig->tileGrid); }
     
-    x += mConfig->fieldOrigin.x;
-    y += mConfig->fieldOrigin.y;
+    if (shiftOrigin) {
+        x += mConfig->fieldOrigin.x;
+        y += mConfig->fieldOrigin.y;        
+    }
     
     return Vec2f(x, y);
 }
@@ -339,6 +341,14 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
 // Draw a star tile
 inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
 {
+    if (level >= 2) {
+        int segments = 6;
+        ColorA color = ColorA(0.8, 0.8, 0.8, 0.33);
+        mConfig->engine->addCirclePoly( draw_pos, baseTileSize, segments, color );
+        
+        return;
+    }
+    
     GLfloat lines[LINE_COUNT * 4];
     GLfloat colors[LINE_COUNT * 8];
 

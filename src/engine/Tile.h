@@ -36,7 +36,7 @@ public:
 private:
     Configuration *mConfig;
     bool dead;
-    Vec2f getScreenPositionVector(Vec2i loc);
+    Vec2f getScreenPositionVector(Vec2i loc, bool shiftOrigin = true);
     
     const static int LINE_COUNT = 32;
     
