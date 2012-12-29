@@ -27,6 +27,8 @@ public:
     Vec2i *pos;
 
     void moveTo( const Vec2i newPos );
+    void shrink();
+    
     int kill(int mult = 1);
     bool selectable();
     
@@ -82,12 +84,15 @@ private:
     Vec2f  moveSrcLoc;
     Vec2i  moveDestPos;
     Vec2f  moveDestLoc;
-
+    
     Fader *growFader;
     double growPos;
     bool growing;
+    
+    bool shrinking;
 };
 
+// Draw a bunch of lines with one call
 inline void drawLines( const GLfloat verts[], const GLfloat colors[], const int numLines )
 {
 	glEnableClientState( GL_VERTEX_ARRAY );

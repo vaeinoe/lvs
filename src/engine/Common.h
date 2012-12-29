@@ -43,11 +43,12 @@ using namespace std;
 #define MOVE_TIME_SEC 0.75
 #define FADE_TIME_SEC 2.0
 #define GROW_TIME_SEC 6.0
+#define SHRINK_TIME_SEC 10.0
 
 #define INIT_GAME_TIME 120.0
 #define WARN_GAME_TIME 10.0
 
-#define LEVEL_SCORE_MODIFIER 40
+#define LEVEL_SCORE_MODIFIER 10
 
 #define GAME_NAME "6track"
 #define ENDGAME_STR "Fin."

@@ -19,6 +19,8 @@ public:
     void reset();
 	void draw();
 	void shutdown();
+    
+    void shrink();
 
     void selectTile( const Vec2i mouseLoc );
     void deselectTile( const Vec2i mouseLoc );
