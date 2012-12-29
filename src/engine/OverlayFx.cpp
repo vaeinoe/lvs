@@ -79,12 +79,18 @@ inline void OverlayFx::drawText()
     switch (textSize) {
         case FONT_TYPE_SMALL:
             mConfig->fontSmall->drawString(text, mConfig->fieldOrigin + pos);
+            gl::color(color.r, color.g, color.b, color.a * 0.25);
+            mConfig->fontSmall->drawString(text, mConfig->fieldOrigin + pos + Vec2f(2,2));
             break;
         case FONT_TYPE_MEDIUM:
             mConfig->fontMedium->drawString(text, mConfig->fieldOrigin + pos);
+            gl::color(color.r, color.g, color.b, color.a * 0.25);
+            mConfig->fontMedium->drawString(text, mConfig->fieldOrigin + pos + Vec2f(2,2));
             break;
         case FONT_TYPE_LARGE:
             mConfig->fontLarge->drawString(text, mConfig->fieldOrigin + pos);
+            gl::color(color.r, color.g, color.b, color.a * 0.25);
+            mConfig->fontLarge->drawString(text, mConfig->fieldOrigin + pos + Vec2f(2,2));
             break;
     }
     
