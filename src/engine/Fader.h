@@ -44,6 +44,7 @@ private:
     int typeId;
     
     bool active;
+    bool paused;
     
     double *param;
     bool paramSet;
@@ -53,4 +54,6 @@ private:
 
     double startTime;
     double durTime;
+    
+    double cumulTime;
 };

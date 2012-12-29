@@ -15,19 +15,21 @@ void Fader::setup(FaderPack *faderPack, int newType)
     
     mMaster = faderPack;
     active = false;
+    paused = false;
     
     startVal = 0.0;
     destVal = 0.0;
     
     startTime = 0.0;
     durTime = 0.0;
+    cumulTime = 0.0;
     
     typeId = newType;
 }
 
 void Fader::pause() {
     if (active) {
-        active = false;
+        paused = true;
         double diffTime = mMaster->getSeconds() - startTime;
         if (diffTime <= durTime) {
             durTime -= diffTime;
@@ -36,14 +38,15 @@ void Fader::pause() {
         else {
             durTime = 0;
         }
+        cumulTime += diffTime;
     }
 }
 
 void Fader::resume() {
-    if (!active) {
+    if (active && paused) {
         startTime = mMaster->getSeconds();
 //        cout << startTime << " STARTED" << endl;
-        active = true;
+        paused = false;
     }
 }
 
@@ -54,9 +57,7 @@ void Fader::addObserver(FadeObserver *obs)
 
 void Fader::addTime(double seconds) { durTime += seconds; }
 
-double Fader::timeElapsed() {
-    return mMaster->getSeconds() - startTime;
-}
+double Fader::timeElapsed() { return (mMaster->getSeconds() - startTime) + cumulTime; }
 
 // TODO: not the best way to do this...
 double Fader::timeLeft() {
@@ -85,14 +86,16 @@ void Fader::fade(double dest, double dur)
         
         startTime = mMaster->getSeconds();
         durTime = dur;
+        cumulTime = 0.0;
         
         active = true;
+        paused = false;
     }
 }
 
 void Fader::update()
 {
-    if (active && mMaster->isActive()) {
+    if (!paused && active && mMaster->isActive()) {
         double diffTime = mMaster->getSeconds() - startTime;
         if (diffTime > durTime) {
             if (paramSet) { *param = destVal; }

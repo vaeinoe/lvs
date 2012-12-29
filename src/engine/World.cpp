@@ -51,6 +51,21 @@ void World::reset() {
     if (resolveTiles(false) == true) { reset(); }
 }
 
+void World::pause()
+{
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+        (*t)->pause();
+    }
+}
+
+void World::resume()
+{
+    for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
+        (*t)->resume();
+    }
+}
+
+// Shrink and fade out all tiles in the end of the game
 void World::shrink()
 {
     for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){

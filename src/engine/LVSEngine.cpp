@@ -323,6 +323,7 @@ void LVSEngine::startGame()
     if (paused) {
         // cout << "Resuming" << endl;
         gameFader->resume();
+        mWorld->resume();
     }
     else {
         mConfig->overlayFx->createText(Vec2f(0,0), ColorA(1.0, 1.0, 1.0, 0.5),
@@ -339,6 +340,8 @@ void LVSEngine::backToMain()
     mAudio->fadeToPreset(1, 5.0);
     
     gameFader->pause();
+    mWorld->pause();
+    
     paused = true;
 }
 
