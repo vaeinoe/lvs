@@ -56,6 +56,21 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     }
 }
 
+void Toolbar::reset() {
+    Vec2f firstPos      = Vec2f(70, 5);
+    Vec2f offset        = Vec2f(140, 0);
+    Vec2f labelOffset   = Vec2f(105, 12);
+    Vec2f barSize       = Vec2f(100, 15);
+
+    for (int i = 0; i < mConfig->numTileTypes; i++) {
+        ColorA barColor = ColorA(barColors[i][0], barColors[i][1],
+                                 barColors[i][2], barColors[i][3]);
+        scoreBars[i]->setup(mConfig, firstPos + (i * offset), barSize, barColor, 100, 0);
+        
+        levelLabels[i]->setup(mConfig, firstPos + (i * offset + labelOffset), "1", FONT_TYPE_SMALL, ColorA(1.0, 1.0, 1.0, 0.4));
+    }
+}
+
 void Toolbar::updateScore( int score, int maxScore, int level, int type, bool finished ) {
     if (finished) { // Bar grayed out
         scoreBars[type]->setColor(ColorA(1.0, 1.0, 1.0, 0.2));

@@ -28,6 +28,7 @@ public:
     void addTime(double seconds);
     double timeLeft();
     double timeTotal();
+    double timeElapsed();
     
     // XXX: temporary faders
     // XXX: void setCurve(int curveType);

@@ -17,7 +17,7 @@ void Mainmenu::setup(Configuration *config)
     
     title = new WTextLabel();
     title->setup(mConfig, Vec2f(16,1+164), GAME_NAME, FONT_TYPE_LARGE,
-                ColorA(0.6, 0.4, 0.6, 0.75), true);
+                ColorA(0.7, 0.5, 0.7, 0.80), true);
 
     buttonStart = new WTextButton();
     buttonStart->setup(mConfig, Vec2f(16,47+164), "play", FONT_TYPE_MEDIUM,

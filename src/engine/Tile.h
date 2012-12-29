@@ -67,10 +67,14 @@ private:
     void drawSelected(Vec2f pos, float val);
     void drawActive(Vec2f pos, float val);
     void drawSurrounding(Vec2f pos, float val);
+    void drawFinished();
     
     void drawDropShadow();
     
     Vec2f drawPos;
+    
+    bool finished;
+    double finishAlpha;
     
     Fader *fadeFader;
     double baseAlpha;

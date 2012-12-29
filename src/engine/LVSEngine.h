@@ -63,6 +63,8 @@ private:
     void fade(int dir, double seconds, bool quitAfter);
     inline void performFade();
     
+    double endGameTime;
+    
     int gameState;
     bool fullScreen;
 

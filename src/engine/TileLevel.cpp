@@ -53,6 +53,7 @@ void TileLevel::reset()
     maxScore = (level + 1) * LEVEL_SCORE_MODIFIER;
     cumulScore = 0;
     
+    finished = false;
     mConfig->toolbar->updateScore(score, maxScore, level + 1, type, finished);
 }
 
