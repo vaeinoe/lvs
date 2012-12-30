@@ -101,9 +101,10 @@ inline void OverlayFx::drawExplosion()
 {
     for (int i = 1; i < 6; i++) {
         double factor = 1 / (i * 1.0);
-        mConfig->engine->addCirclePoly( mConfig->fieldOrigin + pos, size * factor, 32, ColorA(color.r, color.g, color.b, color.a * factor) );
+        mConfig->engine->bufferStrokedCircle( mConfig->fieldOrigin + pos, size * factor, 32,
+                                        ColorA(color.r, color.g, color.b, color.a * factor) );
     }
-    color.a = color.a * 0.968;
+    color.a = color.a * 0.964;
     size  = size * 1.075;
 }
 
