@@ -47,8 +47,13 @@ public:
     
     void onFadeEnd(int typeId);
     
-    void addCirclePoly( const Vec2f &center, const float radius,
+    void bufferStrokedCircle( const Vec2f &center, const float radius,
                         const int numSegments, const ColorA &color );
+    void bufferSolidCircle( const Vec2f &center, const float radius,
+                            int numSegments, const ColorA &color );
+    void bufferLine( const Vec2f start, const Vec2f end,
+                     const ColorA colorStart, const ColorA colorEnd );
+    
     bool dragging;
     bool isVictory();
 
@@ -56,7 +61,7 @@ private:
     inline bool checkVictory();
     
     inline void drawGame(float lightness);
-    inline void drawQueue();
+    inline void drawBuffer();
     inline void gameOver();
     inline void resetGame();
     
@@ -90,8 +95,11 @@ private:
 
     Vec2i *mMouseLoc;
 
-    vector< GLfloat > tileVerts;
-    vector< GLfloat > tileColors;
+    vector< GLfloat > lineVerts;
+    vector< GLfloat > lineColors;
+    
+    vector< GLfloat > triVerts;
+    vector< GLfloat > triColors;
     
     void precalc();
     vector< Vec2f > precalcAngles[NUM_ANGLES + 1];

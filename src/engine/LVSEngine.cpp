@@ -29,7 +29,7 @@
 #include "TileLevel.h"
 
 void LVSEngine::setup(Configuration *config)
-{
+{    
     fadeVal = 1.0;
 
     mConfig = config;
@@ -164,7 +164,7 @@ inline void LVSEngine::drawGame(float lightness)
     
     mWorld->draw();
     overlayFx->drawDelayed();
-    drawQueue();
+    drawBuffer();
     mToolbar->draw();
     mPlayer->draw();
     overlayFx->drawImmediate();
@@ -419,8 +419,46 @@ void LVSEngine::shutdown()
     delete mFaders;
 }
 
+void LVSEngine::bufferSolidCircle( const Vec2f &center, const float radius, int numSegments, const ColorA &color )
+{
+    // automatically determine the number of segments from the circumference
+	if( numSegments <= 0 ) {
+		numSegments = (int)math<double>::floor( radius * M_PI * 2 );
+	}
+	if( numSegments < 2 ) numSegments = 2;
+
+    // Triangle segments
+	for( int s = 0; s <= numSegments; s++ ) {
+        triVerts.push_back(center.x);
+        triVerts.push_back(center.y);
+        
+        triVerts.push_back(center.x + precalcAngles[numSegments][s].x * radius);
+        triVerts.push_back(center.y + precalcAngles[numSegments][s].y * radius);
+
+        triVerts.push_back(center.x + precalcAngles[numSegments][(s + 1) % numSegments].x * radius);
+        triVerts.push_back(center.y + precalcAngles[numSegments][(s + 1) % numSegments].y * radius);
+        
+        for (int i = 0; i < 3; i++) {
+            triColors.push_back(color.r); triColors.push_back(color.g);
+            triColors.push_back(color.b); triColors.push_back(color.a);            
+        }
+    }
+}
+
+// Buffers a single line for drawing
+void LVSEngine::bufferLine( const Vec2f start, const Vec2f end,
+                            const ColorA colorStart, const ColorA colorEnd )
+{
+    lineVerts.push_back(start.x); lineVerts.push_back(start.y);
+    lineVerts.push_back(end.x); lineVerts.push_back(end.y);
+    lineColors.push_back(colorStart.r); lineColors.push_back(colorStart.g);
+    lineColors.push_back(colorStart.b); lineColors.push_back(colorStart.a);
+    lineColors.push_back(colorEnd.r); lineColors.push_back(colorEnd.g);
+    lineColors.push_back(colorEnd.b); lineColors.push_back(colorEnd.a);
+}
+
 // Adds a polygon to rendering queue
-void LVSEngine::addCirclePoly( const Vec2f &center, const float radius, int numSegments, const ColorA &color )
+void LVSEngine::bufferStrokedCircle( const Vec2f &center, const float radius, int numSegments, const ColorA &color )
 {
 	// automatically determine the number of segments from the circumference
 	if( numSegments <= 0 ) {
@@ -431,41 +469,50 @@ void LVSEngine::addCirclePoly( const Vec2f &center, const float radius, int numS
     // first vertex
     GLfloat firstX = center.x + precalcAngles[numSegments][0].x * radius;
     GLfloat firstY = center.y + precalcAngles[numSegments][0].y * radius;
-    tileVerts.push_back(firstX); tileVerts.push_back(firstY);
-    tileColors.push_back(color.r); tileColors.push_back(color.g);
-    tileColors.push_back(color.b); tileColors.push_back(color.a);
+    lineVerts.push_back(firstX); lineVerts.push_back(firstY);
+    lineColors.push_back(color.r); lineColors.push_back(color.g);
+    lineColors.push_back(color.b); lineColors.push_back(color.a);
     
     // middle vertices
 	for( int s = 1; s < numSegments; s++ ) {
         for (int i = 0; i < 2; i++) {
-            tileVerts.push_back(center.x + precalcAngles[numSegments][s].x * radius);
-            tileVerts.push_back(center.y + precalcAngles[numSegments][s].y * radius);
-            tileColors.push_back(color.r); tileColors.push_back(color.g);
-            tileColors.push_back(color.b); tileColors.push_back(color.a);
+            lineVerts.push_back(center.x + precalcAngles[numSegments][s].x * radius);
+            lineVerts.push_back(center.y + precalcAngles[numSegments][s].y * radius);
+            lineColors.push_back(color.r); lineColors.push_back(color.g);
+            lineColors.push_back(color.b); lineColors.push_back(color.a);
         }
 	}
     
     // drawing line loops = back to first vertex in the end
-    tileVerts.push_back(firstX); tileVerts.push_back(firstY);
-    tileColors.push_back(color.r); tileColors.push_back(color.g);
-    tileColors.push_back(color.b); tileColors.push_back(color.a);
+    lineVerts.push_back(firstX); lineVerts.push_back(firstY);
+    lineColors.push_back(color.r); lineColors.push_back(color.g);
+    lineColors.push_back(color.b); lineColors.push_back(color.a);
 }
 
 // Draws the rendering line queue
-inline void LVSEngine::drawQueue()
+inline void LVSEngine::drawBuffer()
 {
     glEnableClientState( GL_VERTEX_ARRAY );
 	glEnableClientState( GL_COLOR_ARRAY );
     
-	glColorPointer( 4, GL_FLOAT, 0, &tileColors[0] );
-	glVertexPointer( 2, GL_FLOAT, 0, &tileVerts[0] );
-	glDrawArrays( GL_LINES, 0, tileVerts.size() / 2 );
+    // Draw triangles
+	glColorPointer( 4, GL_FLOAT, 0, &triColors[0] );
+	glVertexPointer( 2, GL_FLOAT, 0, &triVerts[0] );
+    glDrawArrays(GL_TRIANGLES, 0, triVerts.size() / 2);
+
+    // Draw lines
+	glColorPointer( 4, GL_FLOAT, 0, &lineColors[0] );
+	glVertexPointer( 2, GL_FLOAT, 0, &lineVerts[0] );
+	glDrawArrays( GL_LINES, 0, lineVerts.size() / 2 );
     
 	glDisableClientState( GL_COLOR_ARRAY );
 	glDisableClientState( GL_VERTEX_ARRAY );
     
-    tileColors.clear();
-    tileVerts.clear();
+    lineColors.clear();
+    lineVerts.clear();
+    
+    triColors.clear();
+    triVerts.clear();
 }
 
 // Precalculate angle arrays for polygon drawing
@@ -486,7 +533,7 @@ void LVSEngine::setPlayfield()
     mConfig->fieldRect = Rectf(mConfig->fieldOrigin.x, mConfig->fieldOrigin.y,
                                mConfig->fieldOrigin.x + mConfig->fieldSize.x,
                                mConfig->fieldOrigin.y + mConfig->fieldSize.y);
-    cout << "Playfield size: "   << mConfig->fieldSize   << endl;
-    cout << "Playfield origin: " << mConfig->fieldOrigin << endl;
-    cout << "Playfield rect: "   << mConfig->fieldRect   << endl;
+//    cout << "Playfield size: "   << mConfig->fieldSize   << endl;
+//    cout << "Playfield origin: " << mConfig->fieldOrigin << endl;
+//    cout << "Playfield rect: "   << mConfig->fieldRect   << endl;
 }

@@ -32,27 +32,28 @@ inline void WTextLabel::alignCenter()
 void WTextLabel::draw()
 {
     gl::color(color);
+    Vec2f drawPos = mConfig->fieldOrigin + pos;
+    drawPos = Vec2f(floor(drawPos.x), floor(drawPos.y));
+    Vec2f offset  = Vec2f(2,2);
     switch (type) {
         case FONT_TYPE_SMALL:
-            mConfig->fontSmall->drawString(text, mConfig->fieldOrigin + pos);
+            mConfig->fontSmall->drawString(text, drawPos);
             gl::color(color.r, color.g, color.b, color.a * 0.25);
-            mConfig->fontSmall->drawString(text, mConfig->fieldOrigin + pos + Vec2f(2,2));
+            mConfig->fontSmall->drawString(text, drawPos + offset);
             break;
         case FONT_TYPE_MEDIUM:
-            mConfig->fontMedium->drawString(text, mConfig->fieldOrigin + pos);
+            mConfig->fontMedium->drawString(text, drawPos);
             gl::color(color.r, color.g, color.b, color.a * 0.25);
-            mConfig->fontMedium->drawString(text, mConfig->fieldOrigin + pos + Vec2f(2,2));
+            mConfig->fontMedium->drawString(text, drawPos + offset);
             break;
         case FONT_TYPE_LARGE:
-            mConfig->fontLarge->drawString(text, mConfig->fieldOrigin + pos);
+            mConfig->fontLarge->drawString(text, drawPos);
             gl::color(color.r, color.g, color.b, color.a * 0.25);
-            mConfig->fontLarge->drawString(text, mConfig->fieldOrigin + pos + Vec2f(2,2));
+            mConfig->fontLarge->drawString(text, drawPos + offset);
             break;
     }
     
-    if (drawBox) {
-        gl::drawStrokedRect(boundingBox + mConfig->fieldOrigin);        
-    }
+    if (drawBox) { gl::drawStrokedRect(boundingBox + mConfig->fieldOrigin); }
 }
 
 inline Vec2f WTextLabel::getSize()
