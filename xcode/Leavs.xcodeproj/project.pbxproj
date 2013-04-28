@@ -31,6 +31,7 @@
 		052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1492168B36D5006CF846 /* WTextLabel.cpp */; };
 		052E1497168B5A68006CF846 /* int001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 052E1496168B5A68006CF846 /* int001.wav */; };
 		052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1498168B5FDD006CF846 /* WTextButton.cpp */; };
+		052F2639172593CE00E4B7CA /* HighScores.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052F2637172593CE00E4B7CA /* HighScores.cpp */; };
 		052FED161674E4C20001E076 /* Fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED141674E4C20001E076 /* Fader.cpp */; };
 		052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED181674E4D20001E076 /* FaderPack.cpp */; };
 		053BA841163D79B40095EBEF /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83B163D79B30095EBEF /* kiss_fft.c */; };
@@ -98,6 +99,8 @@
 		052E1496168B5A68006CF846 /* int001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = int001.wav; path = ../resources/int001.wav; sourceTree = "<group>"; };
 		052E1498168B5FDD006CF846 /* WTextButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextButton.cpp; sourceTree = "<group>"; };
 		052E1499168B5FDD006CF846 /* WTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextButton.h; sourceTree = "<group>"; };
+		052F2637172593CE00E4B7CA /* HighScores.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HighScores.cpp; sourceTree = "<group>"; };
+		052F2638172593CE00E4B7CA /* HighScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScores.h; sourceTree = "<group>"; };
 		052FED141674E4C20001E076 /* Fader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fader.cpp; sourceTree = "<group>"; };
 		052FED151674E4C20001E076 /* Fader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fader.h; sourceTree = "<group>"; };
 		052FED181674E4D20001E076 /* FaderPack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaderPack.cpp; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				052FED151674E4C20001E076 /* Fader.h */,
 				052FED181674E4D20001E076 /* FaderPack.cpp */,
 				052FED191674E4D20001E076 /* FaderPack.h */,
+				052F2637172593CE00E4B7CA /* HighScores.cpp */,
+				052F2638172593CE00E4B7CA /* HighScores.h */,
 				059425E6168888CE00057DFE /* LevelData.h */,
 				05782ED91670A04B00FD39B7 /* LVSEngine.cpp */,
 				05782EDA1670A04B00FD39B7 /* LVSEngine.h */,
@@ -463,6 +468,7 @@
 				059425E5168886E300057DFE /* TileLevel.cpp in Sources */,
 				052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */,
 				052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */,
+				052F2639172593CE00E4B7CA /* HighScores.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,8 +478,12 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = ../../cinder_0.8.5_mac;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_MODEL_TUNING = G5;
@@ -488,7 +498,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../irrKlang-1.4.0/bin/macosx-gcc\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					"-lcurl",
@@ -503,9 +513,13 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = ../../cinder_0.8.5_mac;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_FAST_MATH = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -521,7 +535,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../irrKlang-1.4.0/bin/macosx-gcc\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
 					"-lcurl",
@@ -539,12 +553,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = ../../cinder_0.8.4_mac;
+				CINDER_PATH = ../../cinder_dev/cinder_master;
+				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Debug;
@@ -554,12 +569,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = ../../cinder_0.8.4_mac;
+				CINDER_PATH = ../../cinder_dev/cinder_master;
+				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Release;
