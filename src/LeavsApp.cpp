@@ -18,7 +18,7 @@ public:
     void mouseUp ( MouseEvent event );
     void mouseDrag ( MouseEvent event );
     void keyDown( KeyEvent event );
-    void resize	( ResizeEvent event ) { };
+    //void resize	( ResizeEvent event ) { };
 private:
     LVSEngine *engine;
 };
@@ -28,6 +28,7 @@ void LeavsApp::prepareSettings( Settings *settings )
     settings->setWindowSize( PLAYFIELD_W , PLAYFIELD_H );
     settings->setFrameRate( 30.0f );
     settings->setResizable(false);
+    settings->enableHighDensityDisplay();
 }
 
 void LeavsApp::setup()
@@ -44,7 +45,7 @@ void LeavsApp::setup()
     glDisable(GL_LIGHTING);
     gl::enableAlphaBlending();
     
-    glLineWidth(1.5f);
+    glLineWidth( toPixels(1.7f) );
 
     Configuration *config = new Configuration();
     config->tileSize = 50.0f;
@@ -52,8 +53,8 @@ void LeavsApp::setup()
     config->tileGrid = 120.0f;
     config->toolbarHeight = 75;
     config->tileBorderSpacing = 10.0f;
-    config->worldWidth = 5;
-    config->worldHeight = 11;
+    config->worldWidth = 5; // 5
+    config->worldHeight = 12;
     config->padding = 10.0f;
     config->numTileTypes = TILE_TYPES;
     config->solverDelayFrames = 2;
