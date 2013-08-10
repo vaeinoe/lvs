@@ -31,9 +31,6 @@ using namespace std;
 
 #define NUM_ANGLES 32
 
-// #define PLAYFIELD_W 950
-// #define PLAYFIELD_H 650
-
 #define PLAYFIELD_W 1024
 #define PLAYFIELD_H 768
 
@@ -53,7 +50,7 @@ using namespace std;
 
 #define LEVEL_SCORE_MODIFIER 50
 
-#define GAME_NAME "in_d"
+#define GAME_NAME "valo"
 #define ENDGAME_STR "Fin."
 #define WINGAME_STR "You are victorious."
 

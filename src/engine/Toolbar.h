@@ -16,7 +16,7 @@ class WTextLabel;
 class Toolbar {
 public:
 	void setup( Configuration *config, const Vec2i loc, const Vec2i size );
-	void update( int fftDataBins );
+	void update();
 	void draw();
 	void shutdown();
     void reset();

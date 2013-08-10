@@ -54,8 +54,9 @@ void LeavsApp::setup()
     config->toolbarHeight = 75;
     config->tileBorderSpacing = 10.0f;
     config->worldWidth = 5; // 5
-    config->worldHeight = 12;
-    config->padding = 10.0f;
+    config->worldHeight = 13;
+    config->padding_x = 40.0f;
+    config->padding_y = 20.0f;
     config->numTileTypes = TILE_TYPES;
     config->solverDelayFrames = 2;
     

@@ -5,7 +5,7 @@
 //  Created by Väinö Ala-Härkönen on 12/4/12.
 //  Copyright (c) 2012 Lumeet. All rights reserved.
 //
-
+/*
 #pragma once
 #include "Configuration.h"
 #include "FadeObserver.h"
@@ -54,3 +54,4 @@ private:
     double volume;
     bool fading;
 };
+*/

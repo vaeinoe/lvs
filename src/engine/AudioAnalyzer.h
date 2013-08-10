@@ -9,27 +9,21 @@
 #pragma once
 #include "Configuration.h"
 #include "KissFFT.h"
-#include "irrKlang.h"
 
-class AudioTrack;
-
-using namespace irrklang;
-
-class AudioAnalyzer: public ISoundMixedOutputReceiver {
+class AudioAnalyzer {
 public:
     void setup(Configuration *config);
     void update();
     void draw(float scaleIn, float offsetIn);
-    void OnAudioDataReady ( const void * data, int byteCount, int playbackrate );
+    void updateData ( const void * data, int byteCount, int playbackrate );
 
-    friend class Audio;
+    friend class AudioEngine;
 private:
     Configuration *mConfig;
     KissRef	mFft;
 
     PolyLine<Vec2f> prevLines[5];
 
-    int16_t *audioData;
     int32_t audioSize;
     float *audioFloat;
     

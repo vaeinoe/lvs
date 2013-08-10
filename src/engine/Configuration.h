@@ -14,7 +14,7 @@ class World;
 class LVSEngine;
 class Toolbar;
 class FaderPack;
-class Audio;
+class AudioEngine;
 class OverlayFxManager;
 class TileLevel;
 
@@ -28,7 +28,8 @@ public:
     int worldWidth;
     int worldHeight;
     int numTileTypes;
-    float padding;
+    float padding_x;
+    float padding_y;
     int solverDelayFrames;
     
     Vec2f fieldOrigin;
@@ -42,7 +43,7 @@ public:
     LVSEngine *engine;
     Toolbar *toolbar;
     FaderPack *faders;
-    Audio *audio;
+    AudioEngine *audio;
     OverlayFxManager *overlayFx;
     
     gl::TextureFontRef fontSmall;

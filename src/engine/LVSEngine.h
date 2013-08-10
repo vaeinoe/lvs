@@ -59,6 +59,7 @@ public:
 
 private:
     inline bool checkVictory();
+    inline void checkTime();
     
     inline void drawGame(float lightness);
     inline void drawBuffer();
@@ -71,6 +72,7 @@ private:
     double endGameTime;
     
     int gameState;
+    bool timeRunningOut;
     bool fullScreen;
 
     int loadState;
@@ -87,7 +89,7 @@ private:
     Toolbar *mToolbar;
     World *mWorld;
     Player *mPlayer;
-    Audio *mAudio;
+    AudioEngine *mAudio;
     FaderPack *mFaders;
     OverlayFxManager *overlayFx;
 
