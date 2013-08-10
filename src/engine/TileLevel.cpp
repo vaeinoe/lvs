@@ -10,6 +10,7 @@
 #include "Toolbar.h"
 #include "LVSEngine.h"
 #include "OverlayFxManager.h"
+#include "AudioEngine.h"
 
 int TileLevel::numLevels[TILE_TYPES] = { 2, 2, 2, 2 };
 
@@ -64,6 +65,7 @@ void TileLevel::addScore(int newScore)
         if (score < 0) score = 0;
         if (score >= maxScore) levelUp();
         mConfig->toolbar->updateScore(score, maxScore, level + 1, type, finished);
+        mConfig->audio->e_scoreChange(newScore, score);
     }
 }
 
@@ -90,6 +92,8 @@ inline void TileLevel::levelUp()
     mConfig->toolbar->updateScore(score, maxScore, level + 1, type, finished);
     mConfig->overlayFx->createText(Vec2f(0,0), msgColors[type],
                                    FONT_TYPE_MEDIUM, lup);
+    
+    mConfig->audio->e_levelUp(type, level);
 }
 
 bool TileLevel::isFinished() { return finished; }

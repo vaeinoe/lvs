@@ -99,7 +99,7 @@ void Toolbar::draw() {
     }
 }
 
-void Toolbar::update( int fftDataBins )
+void Toolbar::update()
 {    
     timerBar->setValue(mConfig->engine->getGameTime(), mConfig->engine->getMaxTime());
 }

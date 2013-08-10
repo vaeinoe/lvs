@@ -15,6 +15,7 @@
 #include "World.h"
 #include "OverlayFxManager.h"
 #include "TileLevel.h"
+#include "AudioEngine.h"
 
 #define FADEFADER 0
 #define GROWFADER 1
@@ -100,6 +101,7 @@ int Tile::kill(int mult)
     dead = true;
     mConfig->levels[type]->addScore(mult);
     mConfig->overlayFx->createExplosion(getScreenPositionVector(Vec2i(pos->x, pos->y), false), ColorA(1.0, 1.0, 1.0, 1.0));
+    mConfig->audio->e_tileDestroy(Vec2i(pos->x, pos->y));
     type = -1;
     
     fadeFader->fade(0.0, FADE_TIME_SEC);
@@ -148,6 +150,8 @@ void Tile::moveTo( Vec2i newPos )
         
         movePos = 0.0;
         moveFader->fade(1.0, MOVE_TIME_SEC);
+        
+        mConfig->audio->e_tileMove(Vec2i(pos->x, pos->y));
     }
 }
 
@@ -193,8 +197,8 @@ void Tile::update( bool hovering, const float dist, const float modifier )
 
 inline Vec2f Tile::getScreenPositionVector(Vec2i loc, bool shiftOrigin)
 {
-    float x = mConfig->padding + (mConfig->tileGrid / 2) + loc.x * (1.5 * mConfig->tileGrid);
-    float y = mConfig->padding + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid) + 7;
+    float x = mConfig->padding_x + (mConfig->tileGrid / 2) + loc.x * (1.5 * mConfig->tileGrid);
+    float y = mConfig->padding_y + (mConfig->tileGrid / 2) + loc.y * (0.43 * mConfig->tileGrid) + 7;
     if (loc.y % 2 != 0) { x += (0.74 * mConfig->tileGrid); }
     
     if (shiftOrigin) {

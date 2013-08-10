@@ -6,6 +6,7 @@
  *  Copyright 2012 Lumeet. All rights reserved.
  *
  */
+/*
 #pragma once
 #include "Configuration.h"
 #include "FadeObserver.h"
@@ -53,5 +54,5 @@ private:
     double mainVol;
     bool fading;
 };
-
+*/
 

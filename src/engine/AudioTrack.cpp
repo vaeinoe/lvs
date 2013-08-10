@@ -5,7 +5,7 @@
 //  Created by Väinö Ala-Härkönen on 12/4/12.
 //  Copyright (c) 2012 Lumeet. All rights reserved.
 //
-
+/*
 #define TYPE_PRC
 #define TYPE_PAD
 #define TYPE_SEQ
@@ -76,17 +76,9 @@ void AudioTrack::onFadeEnd(int typeId)
     fading = false;
 }
 
+
 // Ugly hack due to the way Cinder handles resources
 DataSourceRef AudioTrack::loadTrack(int trackNo) {
-    /*
-     2 random track sets, each:
-       - 2 sequences (1,2)
-       - 1 pad (3)
-       - 1 melody (4)
-       - 1 bass (5)
-       - 1 drums (6)
-       - 2 percussion (7,8)
-    */
     switch(trackNo) {
         case 0:
             return loadResource( RES_SEQ001 );
@@ -104,3 +96,4 @@ DataSourceRef AudioTrack::loadTrack(int trackNo) {
             return loadResource( RES_PAD001 );
     }
 }
+ */

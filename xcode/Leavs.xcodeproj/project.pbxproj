@@ -16,20 +16,8 @@
 		00BAE65A0E7ED9C10018A608 /* LeavsApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
 		050BC5AE16764BB500E83B71 /* AudioFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 050BC5AC16764BB300E83B71 /* AudioFx.cpp */; };
-		050BC5B11676510B00E83B71 /* tfx001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 050BC5B01676510B00E83B71 /* tfx001.wav */; };
-		0512834C1673CBD700A4AAB1 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0512834B1673CBD700A4AAB1 /* libirrklang.dylib */; };
-		0512834F1673CD5200A4AAB1 /* libirrklang.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0512834B1673CBD700A4AAB1 /* libirrklang.dylib */; };
-		051283581673E1FB00A4AAB1 /* drs001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283501673E1FB00A4AAB1 /* drs001.wav */; };
-		051283591673E1FB00A4AAB1 /* pad001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283511673E1FB00A4AAB1 /* pad001.wav */; };
-		0512835A1673E1FB00A4AAB1 /* prc001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283521673E1FB00A4AAB1 /* prc001.wav */; };
-		0512835B1673E1FB00A4AAB1 /* prc002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283531673E1FB00A4AAB1 /* prc002.wav */; };
-		0512835C1673E1FB00A4AAB1 /* prc003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283541673E1FB00A4AAB1 /* prc003.wav */; };
-		0512835D1673E1FB00A4AAB1 /* seq001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283551673E1FB00A4AAB1 /* seq001.wav */; };
-		0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283561673E1FB00A4AAB1 /* seq002.wav */; };
-		0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */ = {isa = PBXBuildFile; fileRef = 051283571673E1FB00A4AAB1 /* seq003.wav */; };
 		051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */; };
 		052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1492168B36D5006CF846 /* WTextLabel.cpp */; };
-		052E1497168B5A68006CF846 /* int001.wav in Resources */ = {isa = PBXBuildFile; fileRef = 052E1496168B5A68006CF846 /* int001.wav */; };
 		052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1498168B5FDD006CF846 /* WTextButton.cpp */; };
 		052F2639172593CE00E4B7CA /* HighScores.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052F2637172593CE00E4B7CA /* HighScores.cpp */; };
 		052FED161674E4C20001E076 /* Fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED141674E4C20001E076 /* Fader.cpp */; };
@@ -46,17 +34,44 @@
 		05782EEB1670A04B00FD39B7 /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE11670A04B00FD39B7 /* Toolbar.cpp */; };
 		05782EEC1670A04B00FD39B7 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE31670A04B00FD39B7 /* World.cpp */; };
 		059425E5168886E300057DFE /* TileLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059425E3168886E200057DFE /* TileLevel.cpp */; };
+		05A270A417B1452900A23855 /* libpd-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A270A117B144B600A23855 /* libpd-osx.a */; };
+		05A270A717B14A6300A23855 /* AudioEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A270A517B14A6300A23855 /* AudioEngine.cpp */; };
+		05A270AD17B1600600A23855 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A270AC17B1600600A23855 /* CoreServices.framework */; };
+		05A270B017B163BF00A23855 /* portaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A270AF17B163BF00A23855 /* portaudio.a */; };
 		05A44AF5167278F8000089A3 /* nevis.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05782EED1670A05E00FD39B7 /* nevis.ttf */; };
 		05A9643A1687A19E003669E0 /* logo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 05A964391687A19E003669E0 /* logo.svg */; };
 		05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */; };
 		05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */; };
 		05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A7701678DEDF00777C55 /* OverlayFx.cpp */; };
-		05E57D0A168A19EC00E0E337 /* drs004.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05E57D09168A19EC00E0E337 /* drs004.wav */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
 		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05A2709E17B144B600A23855 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A2709917B144B600A23855 /* libpd.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = "libpd-ios";
+		};
+		05A270A017B144B600A23855 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A2709917B144B600A23855 /* libpd.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 119013AB1486450C00086F19;
+			remoteInfo = "libpd-osx";
+		};
+		05A270A217B1451C00A23855 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05A2709917B144B600A23855 /* libpd.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1190134E1486450C00086F19;
+			remoteInfo = "libpd-osx";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0512834E1673CD4300A4AAB1 /* CopyFiles */ = {
@@ -65,7 +80,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0512834F1673CD5200A4AAB1 /* libirrklang.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,21 +96,10 @@
 		00CCAF14116A9FEE008396D5 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CinderApp.icns; sourceTree = SOURCE_ROOT; };
 		050BC5AC16764BB300E83B71 /* AudioFx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFx.cpp; sourceTree = "<group>"; };
 		050BC5AD16764BB400E83B71 /* AudioFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFx.h; sourceTree = "<group>"; };
-		050BC5B01676510B00E83B71 /* tfx001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tfx001.wav; path = ../resources/tfx001.wav; sourceTree = "<group>"; };
-		0512834B1673CBD700A4AAB1 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = "../../irrKlang-1.4.0/bin/macosx-gcc/libirrklang.dylib"; sourceTree = "<group>"; };
-		051283501673E1FB00A4AAB1 /* drs001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drs001.wav; path = ../resources/drs001.wav; sourceTree = "<group>"; };
-		051283511673E1FB00A4AAB1 /* pad001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pad001.wav; path = ../resources/pad001.wav; sourceTree = "<group>"; };
-		051283521673E1FB00A4AAB1 /* prc001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = prc001.wav; path = ../resources/prc001.wav; sourceTree = "<group>"; };
-		051283531673E1FB00A4AAB1 /* prc002.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = prc002.wav; path = ../resources/prc002.wav; sourceTree = "<group>"; };
-		051283541673E1FB00A4AAB1 /* prc003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = prc003.wav; path = ../resources/prc003.wav; sourceTree = "<group>"; };
-		051283551673E1FB00A4AAB1 /* seq001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq001.wav; path = ../resources/seq001.wav; sourceTree = "<group>"; };
-		051283561673E1FB00A4AAB1 /* seq002.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq002.wav; path = ../resources/seq002.wav; sourceTree = "<group>"; };
-		051283571673E1FB00A4AAB1 /* seq003.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = seq003.wav; path = ../resources/seq003.wav; sourceTree = "<group>"; };
 		051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioAnalyzer.cpp; sourceTree = "<group>"; };
 		051283611673EDC400A4AAB1 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
 		052E1492168B36D5006CF846 /* WTextLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextLabel.cpp; sourceTree = "<group>"; };
 		052E1493168B36D6006CF846 /* WTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextLabel.h; sourceTree = "<group>"; };
-		052E1496168B5A68006CF846 /* int001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = int001.wav; path = ../resources/int001.wav; sourceTree = "<group>"; };
 		052E1498168B5FDD006CF846 /* WTextButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextButton.cpp; sourceTree = "<group>"; };
 		052E1499168B5FDD006CF846 /* WTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextButton.h; sourceTree = "<group>"; };
 		052F2637172593CE00E4B7CA /* HighScores.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HighScores.cpp; sourceTree = "<group>"; };
@@ -136,6 +139,11 @@
 		059425E3168886E200057DFE /* TileLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileLevel.cpp; sourceTree = "<group>"; };
 		059425E4168886E300057DFE /* TileLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileLevel.h; sourceTree = "<group>"; };
 		059425E6168888CE00057DFE /* LevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelData.h; sourceTree = "<group>"; };
+		05A2709917B144B600A23855 /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = ../../libpd/libpd.xcodeproj; sourceTree = "<group>"; };
+		05A270A517B14A6300A23855 /* AudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEngine.cpp; sourceTree = "<group>"; };
+		05A270A617B14A6300A23855 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
+		05A270AC17B1600600A23855 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		05A270AF17B163BF00A23855 /* portaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = portaudio.a; path = ../../portaudio/lib/.libs/portaudio.a; sourceTree = "<group>"; };
 		05A964391687A19E003669E0 /* logo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = logo.svg; path = ../resources/logo.svg; sourceTree = "<group>"; };
 		05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WProgressBar.cpp; sourceTree = "<group>"; };
 		05BA87E7167CBFD400FC9B6F /* WProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WProgressBar.h; sourceTree = "<group>"; };
@@ -143,7 +151,6 @@
 		05C4A76D1678DE0600777C55 /* OverlayFxManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayFxManager.h; sourceTree = "<group>"; };
 		05C4A7701678DEDF00777C55 /* OverlayFx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFx.cpp; sourceTree = "<group>"; };
 		05C4A7711678DEDF00777C55 /* OverlayFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayFx.h; sourceTree = "<group>"; };
-		05E57D09168A19EC00E0E337 /* drs004.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drs004.wav; path = ../resources/drs004.wav; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -161,6 +168,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05A270AD17B1600600A23855 /* CoreServices.framework in Frameworks */,
+				05A270A417B1452900A23855 /* libpd-osx.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */,
 				53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */,
@@ -171,7 +180,7 @@
 				00B784B40FF439BC000DE1D7 /* AudioToolbox.framework in Frameworks */,
 				00B784B50FF439BC000DE1D7 /* AudioUnit.framework in Frameworks */,
 				00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */,
-				0512834C1673CBD700A4AAB1 /* libirrklang.dylib in Frameworks */,
+				05A270B017B163BF00A23855 /* portaudio.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,42 +213,60 @@
 		05782ED21670A04B00FD39B7 /* engine */ = {
 			isa = PBXGroup;
 			children = (
+				05A270B817B168B400A23855 /* AudioEngine */,
+				05A270B117B167D800A23855 /* AudioOld */,
+				05A270B617B1688B00A23855 /* Common */,
+				05A270B417B1684300A23855 /* Effects */,
+				05A270B717B1689B00A23855 /* Engine */,
+				05A270B217B1680200A23855 /* Fader */,
+				05A270B517B1687400A23855 /* Gameplay */,
+				05A270B317B1682C00A23855 /* UIElements */,
+			);
+			name = engine;
+			path = ../src/engine;
+			sourceTree = "<group>";
+		};
+		05A2709A17B144B600A23855 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				05A2709F17B144B600A23855 /* libpd-ios.a */,
+				05A270A117B144B600A23855 /* libpd-osx.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		05A270B117B167D800A23855 /* AudioOld */ = {
+			isa = PBXGroup;
+			children = (
 				05782ED31670A04B00FD39B7 /* Audio.cpp */,
 				05782ED41670A04B00FD39B7 /* Audio.h */,
-				051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */,
-				051283611673EDC400A4AAB1 /* AudioAnalyzer.h */,
 				050BC5AC16764BB300E83B71 /* AudioFx.cpp */,
 				050BC5AD16764BB400E83B71 /* AudioFx.h */,
 				05782ED51670A04B00FD39B7 /* AudioTrack.cpp */,
 				05782ED61670A04B00FD39B7 /* AudioTrack.h */,
-				05782ED71670A04B00FD39B7 /* Common.h */,
-				05782ED81670A04B00FD39B7 /* Configuration.h */,
+			);
+			name = AudioOld;
+			sourceTree = "<group>";
+		};
+		05A270B217B1680200A23855 /* Fader */ = {
+			isa = PBXGroup;
+			children = (
 				054B263716751DA60088AD3A /* FadeObserver.h */,
 				052FED141674E4C20001E076 /* Fader.cpp */,
 				052FED151674E4C20001E076 /* Fader.h */,
 				052FED181674E4D20001E076 /* FaderPack.cpp */,
 				052FED191674E4D20001E076 /* FaderPack.h */,
-				052F2637172593CE00E4B7CA /* HighScores.cpp */,
-				052F2638172593CE00E4B7CA /* HighScores.h */,
-				059425E6168888CE00057DFE /* LevelData.h */,
-				05782ED91670A04B00FD39B7 /* LVSEngine.cpp */,
-				05782EDA1670A04B00FD39B7 /* LVSEngine.h */,
-				05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */,
-				05782EDC1670A04B00FD39B7 /* Mainmenu.h */,
-				05C4A7701678DEDF00777C55 /* OverlayFx.cpp */,
-				05C4A7711678DEDF00777C55 /* OverlayFx.h */,
-				05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */,
-				05C4A76D1678DE0600777C55 /* OverlayFxManager.h */,
-				05782EDD1670A04B00FD39B7 /* Player.cpp */,
-				05782EDE1670A04B00FD39B7 /* Player.h */,
-				05782EDF1670A04B00FD39B7 /* Tile.cpp */,
-				05782EE01670A04B00FD39B7 /* Tile.h */,
-				059425E3168886E200057DFE /* TileLevel.cpp */,
-				059425E4168886E300057DFE /* TileLevel.h */,
+			);
+			name = Fader;
+			sourceTree = "<group>";
+		};
+		05A270B317B1682C00A23855 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
 				05782EE11670A04B00FD39B7 /* Toolbar.cpp */,
 				05782EE21670A04B00FD39B7 /* Toolbar.h */,
-				05782EE31670A04B00FD39B7 /* World.cpp */,
-				05782EE41670A04B00FD39B7 /* World.h */,
+				05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */,
+				05782EDC1670A04B00FD39B7 /* Mainmenu.h */,
 				05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */,
 				05BA87E7167CBFD400FC9B6F /* WProgressBar.h */,
 				052E1498168B5FDD006CF846 /* WTextButton.cpp */,
@@ -247,8 +274,65 @@
 				052E1492168B36D5006CF846 /* WTextLabel.cpp */,
 				052E1493168B36D6006CF846 /* WTextLabel.h */,
 			);
-			name = engine;
-			path = ../src/engine;
+			name = UIElements;
+			sourceTree = "<group>";
+		};
+		05A270B417B1684300A23855 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				05C4A7701678DEDF00777C55 /* OverlayFx.cpp */,
+				05C4A7711678DEDF00777C55 /* OverlayFx.h */,
+				05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */,
+				05C4A76D1678DE0600777C55 /* OverlayFxManager.h */,
+			);
+			name = Effects;
+			sourceTree = "<group>";
+		};
+		05A270B517B1687400A23855 /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+				052F2637172593CE00E4B7CA /* HighScores.cpp */,
+				052F2638172593CE00E4B7CA /* HighScores.h */,
+				059425E6168888CE00057DFE /* LevelData.h */,
+				05782EDD1670A04B00FD39B7 /* Player.cpp */,
+				05782EDE1670A04B00FD39B7 /* Player.h */,
+				05782EDF1670A04B00FD39B7 /* Tile.cpp */,
+				05782EE01670A04B00FD39B7 /* Tile.h */,
+				059425E3168886E200057DFE /* TileLevel.cpp */,
+				059425E4168886E300057DFE /* TileLevel.h */,
+				05782EE31670A04B00FD39B7 /* World.cpp */,
+				05782EE41670A04B00FD39B7 /* World.h */,
+			);
+			name = Gameplay;
+			sourceTree = "<group>";
+		};
+		05A270B617B1688B00A23855 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				05782ED71670A04B00FD39B7 /* Common.h */,
+				05782ED81670A04B00FD39B7 /* Configuration.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		05A270B717B1689B00A23855 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				05782ED91670A04B00FD39B7 /* LVSEngine.cpp */,
+				05782EDA1670A04B00FD39B7 /* LVSEngine.h */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
+		05A270B817B168B400A23855 /* AudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+				05A270A517B14A6300A23855 /* AudioEngine.cpp */,
+				05A270A617B14A6300A23855 /* AudioEngine.h */,
+				051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */,
+				051283611673EDC400A4AAB1 /* AudioAnalyzer.h */,
+			);
+			name = AudioEngine;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* Source */ = {
@@ -265,7 +349,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0512834B1673CBD700A4AAB1 /* libirrklang.dylib */,
+				05A270AF17B163BF00A23855 /* portaudio.a */,
 				00B784AF0FF439BC000DE1D7 /* Accelerate.framework */,
 				00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */,
 				00B784B10FF439BC000DE1D7 /* AudioUnit.framework */,
@@ -301,6 +385,8 @@
 		29B97314FDCFA39411CA2CEA /* Leavs */ = {
 			isa = PBXGroup;
 			children = (
+				05A270AC17B1600600A23855 /* CoreServices.framework */,
+				05A2709917B144B600A23855 /* libpd.xcodeproj */,
 				29B97315FDCFA39411CA2CEA /* Headers */,
 				080E96DDFE201D6D7F000001 /* Source */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -322,17 +408,6 @@
 			isa = PBXGroup;
 			children = (
 				05A964391687A19E003669E0 /* logo.svg */,
-				052E1496168B5A68006CF846 /* int001.wav */,
-				051283501673E1FB00A4AAB1 /* drs001.wav */,
-				051283511673E1FB00A4AAB1 /* pad001.wav */,
-				051283521673E1FB00A4AAB1 /* prc001.wav */,
-				051283531673E1FB00A4AAB1 /* prc002.wav */,
-				051283541673E1FB00A4AAB1 /* prc003.wav */,
-				051283551673E1FB00A4AAB1 /* seq001.wav */,
-				05E57D09168A19EC00E0E337 /* drs004.wav */,
-				051283561673E1FB00A4AAB1 /* seq002.wav */,
-				051283571673E1FB00A4AAB1 /* seq003.wav */,
-				050BC5B01676510B00E83B71 /* tfx001.wav */,
 				05782EED1670A05E00FD39B7 /* nevis.ttf */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				00CCAF14116A9FEE008396D5 /* CinderApp.icns */,
@@ -365,6 +440,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				05A270A317B1451C00A23855 /* PBXTargetDependency */,
 			);
 			name = Leavs;
 			productInstallPath = "$(HOME)/Applications";
@@ -393,12 +469,35 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Leavs */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 05A2709A17B144B600A23855 /* Products */;
+					ProjectRef = 05A2709917B144B600A23855 /* libpd.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Leavs */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		05A2709F17B144B600A23855 /* libpd-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libpd-ios.a";
+			remoteRef = 05A2709E17B144B600A23855 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		05A270A117B144B600A23855 /* libpd-osx.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libpd-osx.a";
+			remoteRef = 05A270A017B144B600A23855 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D1107290486CEB800E47090 /* Resources */ = {
@@ -407,18 +506,7 @@
 			files = (
 				05A44AF5167278F8000089A3 /* nevis.ttf in Resources */,
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
-				051283581673E1FB00A4AAB1 /* drs001.wav in Resources */,
-				051283591673E1FB00A4AAB1 /* pad001.wav in Resources */,
-				0512835A1673E1FB00A4AAB1 /* prc001.wav in Resources */,
-				0512835B1673E1FB00A4AAB1 /* prc002.wav in Resources */,
-				0512835C1673E1FB00A4AAB1 /* prc003.wav in Resources */,
-				0512835D1673E1FB00A4AAB1 /* seq001.wav in Resources */,
-				0512835E1673E1FB00A4AAB1 /* seq002.wav in Resources */,
-				0512835F1673E1FB00A4AAB1 /* seq003.wav in Resources */,
-				050BC5B11676510B00E83B71 /* tfx001.wav in Resources */,
 				05A9643A1687A19E003669E0 /* logo.svg in Resources */,
-				05E57D0A168A19EC00E0E337 /* drs004.wav in Resources */,
-				052E1497168B5A68006CF846 /* int001.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,10 +557,19 @@
 				052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */,
 				052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */,
 				052F2639172593CE00E4B7CA /* HighScores.cpp in Sources */,
+				05A270A717B14A6300A23855 /* AudioEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05A270A317B1451C00A23855 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libpd-osx";
+			targetProxy = 05A270A217B1451C00A23855 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C01FCF4B08A954540054247B /* Debug */ = {
@@ -497,6 +594,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../irrKlang-1.4.0/bin/macosx-gcc\"",
+					"\"$(SRCROOT)/../../portaudio/lib/.libs\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
@@ -505,7 +603,7 @@
 				);
 				PRODUCT_NAME = LVS;
 				SYMROOT = ./build;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../irrKlang-1.4.0/include";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../irrKlang-1.4.0/include ../../libpd/** ../../portaudio/include/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -534,6 +632,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../irrKlang-1.4.0/bin/macosx-gcc\"",
+					"\"$(SRCROOT)/../../portaudio/lib/.libs\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
@@ -543,7 +642,7 @@
 				PRODUCT_NAME = LVS;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../irrKlang-1.4.0/include";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../irrKlang-1.4.0/include ../../libpd/** ../../portaudio/include/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

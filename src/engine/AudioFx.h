@@ -5,7 +5,7 @@
 //  Created by Väinö Ala-Härkönen on 12/10/12.
 //  Copyright (c) 2012 Lumeet. All rights reserved.
 //
-
+/*
 #pragma once
 #include "Configuration.h"
 #include "irrKlang.h"
@@ -27,3 +27,4 @@ private:
 };
 
 
+*/

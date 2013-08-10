@@ -21,7 +21,7 @@
 #include "World.h"
 #include "Toolbar.h"
 #include "Player.h"
-#include "Audio.h"
+#include "AudioEngine.h"
 #include "Mainmenu.h"
 #include "FaderPack.h"
 #include "Fader.h"
@@ -29,11 +29,12 @@
 #include "TileLevel.h"
 
 void LVSEngine::setup(Configuration *config)
-{    
+{
     fadeVal = 1.0;
+    timeRunningOut = false;
 
     mConfig = config;
-    mAudio = new Audio();
+    mAudio = new AudioEngine();
     mToolbar = new Toolbar();
     mWorld = new World();
     mPlayer = new Player();
@@ -131,9 +132,10 @@ void LVSEngine::update()
             mMenu->update();
             break;
         case S_INGAME_1:
+            checkTime();
             mAudio->update();
             overlayFx->update();
-            mToolbar->update(mAudio->getDataSize());
+            mToolbar->update();
             mWorld->update(mMouseLoc, mAudio->getFreqData(), mAudio->getDataSize());
             mPlayer->update();
             break;
@@ -149,13 +151,25 @@ void LVSEngine::update()
     }
 }
 
+inline void LVSEngine::checkTime() {
+    double gameTime = getGameTime();
+    if (!timeRunningOut && gameTime <= WARN_GAME_TIME && gameTime > 0.0) {
+        timeRunningOut = true;
+        mAudio->e_timeEnding();
+    }
+    else if (timeRunningOut && gameTime > WARN_GAME_TIME) {
+        timeRunningOut = false;
+        mAudio->e_timeNormal();
+    }
+}
+
 inline void LVSEngine::drawGame(float lightness)
 {
     gl::color( 0, 0, lightness * 0.4 );
     gl::drawSolidRect(mConfig->fieldRect);
 
-    double gameTime = getGameTime();
-    if (gameTime < WARN_GAME_TIME && gameTime > 0.0) {
+    if (timeRunningOut) {
+        double gameTime = getGameTime();
         double bri = fmod(gameTime, 1);
         double a   = (1 - (gameTime / WARN_GAME_TIME)) * 0.3;
         gl::color(bri, bri / 2, bri, a);
@@ -303,7 +317,7 @@ inline bool LVSEngine::checkVictory()
     if (gameState == S_INGAME_1 && isVictory()) {
         gameFader->stop();
         gameState = S_VICTORY;
-        mAudio->fadeToPreset(1, 5.0);
+        mAudio->e_gameWin();
         mWorld->shrink();
         screenFader->fade(1.0, SHRINK_TIME_SEC);
                 
@@ -318,17 +332,18 @@ void LVSEngine::startGame()
 {
     gameState = S_INGAME_1;
     mMenu->deactivate();
-    mAudio->fadeToPreset(2, 5.0);
     
     if (paused) {
         // cout << "Resuming" << endl;
         gameFader->resume();
         mWorld->resume();
+        mAudio->e_gameResume();
     }
     else {
         mConfig->overlayFx->createText(Vec2f(0,0), ColorA(1.0, 1.0, 1.0, 0.5),
                                        FONT_TYPE_MEDIUM, "Commence.");
         gameFader->fade(0.0, INIT_GAME_TIME);
+        mAudio->e_gameStart();
     }
     paused = false;
 }
@@ -337,7 +352,7 @@ void LVSEngine::backToMain()
 {
     gameState = S_MAINMENU;
     mMenu->activate();
-    mAudio->fadeToPreset(1, 5.0);
+    mAudio->e_gamePause();
     
     gameFader->pause();
     mWorld->pause();
@@ -349,7 +364,7 @@ void LVSEngine::quitGame()
 {
     gameState = S_QUITTING;
     mMenu->deactivate();
-    mAudio->fadeToPreset(0, 2.5);
+    mAudio->e_gameQuit();
     
     screenFader->fade(1.0, 3.0);
 }
@@ -357,7 +372,7 @@ void LVSEngine::quitGame()
 void LVSEngine::gameOver()
 {
     gameState = S_GAMEOVER;
-    mAudio->fadeToPreset(1, 5.0);
+    mAudio->e_gameLose();
     screenFader->fade(1.0, 3.0);
 }
 
@@ -533,7 +548,4 @@ void LVSEngine::setPlayfield()
     mConfig->fieldRect = Rectf(mConfig->fieldOrigin.x, mConfig->fieldOrigin.y,
                                mConfig->fieldOrigin.x + mConfig->fieldSize.x,
                                mConfig->fieldOrigin.y + mConfig->fieldSize.y);
-//    cout << "Playfield size: "   << mConfig->fieldSize   << endl;
-//    cout << "Playfield origin: " << mConfig->fieldOrigin << endl;
-//    cout << "Playfield rect: "   << mConfig->fieldRect   << endl;
 }

@@ -7,7 +7,6 @@
 //
 
 #include "AudioAnalyzer.h"
-#include "AudioTrack.h"
 
 void AudioAnalyzer::setup(Configuration *config)
 {
@@ -27,13 +26,6 @@ void AudioAnalyzer::update()
 {
     if (audioSize > 0) {
         if ( !mFft ) { mFft = Kiss::create( audioSize ); }
-
-		if (!audioFloat) audioFloat = new float[audioSize];
-        
-        int16_t * srcBuffer = reinterpret_cast<int16_t *>( audioData );
-        for( uint32_t i = 0; i < ( audioSize ); i++ ) {
-            audioFloat[i] = ( ( srcBuffer[i] / 32767.0f * ANALYSIS_GAIN) + 1.0f ) * 0.5f;
-        }
         
         mFft->setData( audioFloat );
 
@@ -90,13 +82,9 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
     
 }
 
-void AudioAnalyzer::OnAudioDataReady ( const void * data, int byteCount, int playbackrate )
+void AudioAnalyzer::updateData ( const void * data, int byteCount, int playbackrate )
 {
     audioSize = byteCount / 2;
     sampleRate = playbackrate;
-    
-    audioData = (int16_t *)data;
-    //audioData = new int16_t[ byteCount ];
-    //memcpy( audioData, data, mDataSize );
-    // cout << "Received " << byteCount << "/" << playbackrate << endl;
+    audioFloat = (float *)data;
 }
