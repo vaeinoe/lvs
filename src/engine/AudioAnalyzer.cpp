@@ -40,11 +40,12 @@ void AudioAnalyzer::update()
 void AudioAnalyzer::draw(float scaleIn, float offsetIn)
 {
     if ( mFft ) {
+        glLineWidth( toPixels(2.6f) );
         
 		float dataSizef = (float)dataSize;
         
 		// Get dimensions
-		float scale = (( (float)mConfig->fieldSize.x - 20.0f ) / dataSizef) * scaleIn;
+		float scale = (( (float)mConfig->fieldSize.x ) / dataSizef) * scaleIn;
 		float windowHeight = (float)mConfig->fieldSize.y + offsetIn;
         
 		// Use polylines to depict time and frequency domains
@@ -59,9 +60,9 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
 			float x = (float)( ( math<float>::log( (float)i ) / logSize ) * dataSizef );
 			float y = math<float>::clamp( freqData[ i ] * ( x / dataSizef ) * ( math<float>::log( ( dataSizef - (float)i ) ) ), 0.0f, 2.0f );
             
-			freqLine.push_back( Vec2f( mConfig->fieldOrigin.x + x * scale + 10.0f,
+			freqLine.push_back( Vec2f( mConfig->fieldOrigin.x + x * scale,
                                        mConfig->fieldOrigin.y + -y * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight - 10.0f ) ) );
-			timeLine.push_back( Vec2f( mConfig->fieldOrigin.x + (float)i * scale + 10.0f,
+			timeLine.push_back( Vec2f( mConfig->fieldOrigin.x + (float)i * scale,
                                        mConfig->fieldOrigin.y + timeData[ i ] * ( windowHeight - 20.0f ) * 0.25f + ( windowHeight * 0.5f ) ) );
 		}
         
@@ -76,8 +77,10 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
         prevLines[4] = timeLine;
         
         gl::color( 0.7, 0.4, 0.8, 0.6);
-		//gl::draw( freqLine );
+		// gl::draw( freqLine );
 		gl::draw( timeLine );
+        
+        glLineWidth( toPixels(1.7f) );
     }
     
 }

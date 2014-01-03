@@ -25,7 +25,7 @@ using namespace std;
 #define FONT_TYPE_MEDIUM 1
 #define FONT_TYPE_LARGE  2
 
-#define FONT_SIZE_SMALL  16
+#define FONT_SIZE_SMALL  14
 #define FONT_SIZE_MEDIUM 32
 #define FONT_SIZE_LARGE  64
 
@@ -50,8 +50,11 @@ using namespace std;
 
 #define LEVEL_SCORE_MODIFIER 50
 
-#define GAME_NAME "valo"
-#define ENDGAME_STR "Fin."
-#define WINGAME_STR "You are victorious."
+#define GAME_NAME "lvs"
+#define ENDGAME_STR "fin."
+#define WINGAME_STR "you are victorious."
+#define GAME_START_STR "commence."
+
+#define GAME_FONT "Helvetica Bold"
 
 #define HIGHSCORE_STR "longcatislong"

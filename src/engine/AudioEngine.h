@@ -29,6 +29,7 @@ public:
     inline void updateAnalyzer(const void * data, int byteCount);
 
     // events. tacky.
+    void e_gameLoaded();
     void e_gameStart();
     void e_gamePause();
     void e_gameResume();

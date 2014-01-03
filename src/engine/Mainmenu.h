@@ -24,6 +24,8 @@ public:
     void mouseDown ( const MouseEvent event );
 	void guiEvent( ciUIEvent *event );
     
+    void setPaused(bool paused);
+    
     void activate();
     void deactivate();
 private:
