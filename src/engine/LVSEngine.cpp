@@ -64,11 +64,11 @@ void LVSEngine::setup(Configuration *config)
     gameState = S_LOADING;
     paused = false;
 
-    Font loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_SMALL);
+    Font loadFont = Font( GAME_FONT, FONT_SIZE_SMALL);
     mConfig->fontSmall = gl::TextureFont::create(loadFont);
-    loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_MEDIUM);
+    loadFont = Font( GAME_FONT, FONT_SIZE_MEDIUM);
     mConfig->fontMedium = gl::TextureFont::create(loadFont);
-    loadFont = Font( loadResource( RES_FONT ), FONT_SIZE_LARGE);
+    loadFont = Font( GAME_FONT, FONT_SIZE_LARGE);
     mConfig->fontLarge = gl::TextureFont::create(loadFont);
 
     loadState = 0;
@@ -112,6 +112,7 @@ void LVSEngine::loadAll() {
             gameState = S_MAINMENU;
             
             screenFader->fade(0.0, 2.5);
+            mAudio->e_gameLoaded();
             break;
     }
 
@@ -227,7 +228,7 @@ void LVSEngine::draw()
     }
     if (gameState == S_VICTORY) {
         gl::color(1, 1, 1, fadeVal);
-        string score = "Time: " + toString(floor(endGameTime + 0.5)) + " seconds.";
+        string score = "time: " + toString(floor(endGameTime + 0.5)) + " seconds.";
         Vec2f winSize     = mConfig->fontMedium->measureString(WINGAME_STR) / 2;
         Vec2f scoreOffset = Vec2f(0, 16);
         Vec2f scoreSize   = mConfig->fontSmall->measureString(score) / 2;
@@ -294,11 +295,11 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
     }
 
     // XXX implement proper support or remove
-    if ( event.getCode() == KeyEvent::KEY_f ) {
+    /* if ( event.getCode() == KeyEvent::KEY_f ) {
         fullScreen = !fullScreen;
         setFullScreen(fullScreen);
         setPlayfield();
-    }
+    }*/
 }
 
 bool LVSEngine::isVictory()
@@ -319,6 +320,7 @@ inline bool LVSEngine::checkVictory()
         gameState = S_VICTORY;
         mAudio->e_gameWin();
         mWorld->shrink();
+        mMenu->setPaused(false);
         screenFader->fade(1.0, SHRINK_TIME_SEC);
                 
         endGameTime = gameFader->timeElapsed();
@@ -341,11 +343,12 @@ void LVSEngine::startGame()
     }
     else {
         mConfig->overlayFx->createText(Vec2f(0,0), ColorA(1.0, 1.0, 1.0, 0.5),
-                                       FONT_TYPE_MEDIUM, "Commence.");
+                                       FONT_TYPE_MEDIUM, GAME_START_STR);
         gameFader->fade(0.0, INIT_GAME_TIME);
         mAudio->e_gameStart();
     }
     paused = false;
+    mMenu->setPaused(false);
 }
 
 void LVSEngine::backToMain()
@@ -353,6 +356,7 @@ void LVSEngine::backToMain()
     gameState = S_MAINMENU;
     mMenu->activate();
     mAudio->e_gamePause();
+    mMenu->setPaused(true);
     
     gameFader->pause();
     mWorld->pause();
@@ -373,6 +377,7 @@ void LVSEngine::gameOver()
 {
     gameState = S_GAMEOVER;
     mAudio->e_gameLose();
+    mMenu->setPaused(false);
     screenFader->fade(1.0, 3.0);
 }
 

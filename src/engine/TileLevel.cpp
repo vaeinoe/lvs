@@ -27,10 +27,10 @@ ColorA TileLevel::msgColors[TILE_TYPES] = {
 };
 
 std::string TileLevel::msgText[TILE_TYPES] = {
-    "Blue",
-    "White",
-    "Red",
-    "Green"
+    "blue",
+    "white",
+    "red",
+    "green"
 };
 
 void TileLevel::setup(Configuration *config, int newType)

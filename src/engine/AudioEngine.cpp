@@ -13,7 +13,7 @@
 #define NBCHANNEL 2
 #define BLOCKSIZE 256
 #define TICK 4
-#define PATCH_FILE "randomperc1.pd"
+#define PATCH_FILE "lvs.pd"
 
 int pa_callback(const void *inputBuffer, void *outputBuffer,
                              unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo,
@@ -144,9 +144,10 @@ void AudioEngine::portAudioError(PaError err) {
 
 // ================= EVENTS
 
-void AudioEngine::e_gameStart()  { src->sendBang("game_start"); }
-void AudioEngine::e_gamePause()  { src->sendBang("game_pause"); }
-void AudioEngine::e_gameResume() { src->sendBang("game_resume"); }
+void AudioEngine::e_gameLoaded() { src->sendBang("to_mainmenu"); }
+void AudioEngine::e_gameStart()  { src->sendBang("reset_all"); src->sendBang("to_game"); }
+void AudioEngine::e_gamePause()  { src->sendBang("to_mainmenu"); }
+void AudioEngine::e_gameResume() { src->sendBang("to_game"); }
 void AudioEngine::e_gameQuit()   { src->sendBang("game_quit"); }
 void AudioEngine::e_gameWin()    { src->sendBang("game_win"); }
 void AudioEngine::e_gameLose()   { src->sendBang("game_lose"); }
@@ -161,17 +162,22 @@ void AudioEngine::e_scoreChange(int change, int score) {
 }
 
 void AudioEngine::e_levelUp(int tile, int level) {
-    src->startMessage();
+    if      (tile == 0) { src->sendBang("level_up_1"); }
+    else if (tile == 1) { src->sendBang("level_up_2"); }
+    else if (tile == 2) { src->sendBang("level_up_3"); }
+    else if (tile == 3) { src->sendBang("level_up_4"); }
+/*  src->startMessage();
     src->addFloat(tile);
     src->addFloat(level);
-    src->finishList("level_up");
+    src->finishList("level_up"); */
 }
 
 void AudioEngine::e_tileDestroy(Vec2i pos) {
-    src->startMessage();
-    src->addFloat((float)pos.x);
-    src->addFloat((float)pos.y);
-    src->finishList("tile_destroy");
+    src->sendBang("hit");
+//    src->startMessage();
+//    src->addFloat((float)pos.x);
+//    src->addFloat((float)pos.y);
+//    src->finishList("tile_destroy");
 }
 
 void AudioEngine::e_tileMove(Vec2i pos) {

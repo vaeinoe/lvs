@@ -43,5 +43,5 @@ void WTextButton::shutdown() { delete label; }
 
 void WTextButton::setValue(string newText)
 {
-    label->setValue(newText);
+    if (label) { label->setValue(newText); }
 }
