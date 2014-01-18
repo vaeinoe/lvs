@@ -11,7 +11,6 @@
 		0097E3E50F3E9819005A4392 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0097E3E40F3E9819005A4392 /* QuickTime.framework */; };
 		00BAE65A0E7ED9C10018A608 /* LeavsApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
-		050BC5AE16764BB500E83B71 /* AudioFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 050BC5AC16764BB300E83B71 /* AudioFx.cpp */; };
 		051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */; };
 		052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1492168B36D5006CF846 /* WTextLabel.cpp */; };
 		052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1498168B5FDD006CF846 /* WTextButton.cpp */; };
@@ -26,8 +25,6 @@
 		056A1DFC18776EC1001AF7BD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */; };
 		056A1DFE18776F4A001AF7BD /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFD18776F4A001AF7BD /* CoreAudio.framework */; };
 		056A1E0018776F83001AF7BD /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFF18776F83001AF7BD /* Accelerate.framework */; };
-		05782EE51670A04B00FD39B7 /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED31670A04B00FD39B7 /* Audio.cpp */; };
-		05782EE61670A04B00FD39B7 /* AudioTrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED51670A04B00FD39B7 /* AudioTrack.cpp */; };
 		05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED91670A04B00FD39B7 /* LVSEngine.cpp */; };
 		05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */; };
 		05782EE91670A04B00FD39B7 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDD1670A04B00FD39B7 /* Player.cpp */; };
@@ -88,8 +85,6 @@
 		0097E3E40F3E9819005A4392 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
 		00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LeavsApp.cpp; path = ../src/LeavsApp.cpp; sourceTree = SOURCE_ROOT; };
 		00CCAF14116A9FEE008396D5 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CinderApp.icns; sourceTree = SOURCE_ROOT; };
-		050BC5AC16764BB300E83B71 /* AudioFx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFx.cpp; sourceTree = "<group>"; };
-		050BC5AD16764BB400E83B71 /* AudioFx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFx.h; sourceTree = "<group>"; };
 		051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioAnalyzer.cpp; sourceTree = "<group>"; };
 		051283611673EDC400A4AAB1 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
 		052E1492168B36D5006CF846 /* WTextLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextLabel.cpp; sourceTree = "<group>"; };
@@ -116,10 +111,6 @@
 		056A1DFD18776F4A001AF7BD /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
 		056A1DFF18776F83001AF7BD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		05734F141670C9AA00205DAD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
-		05782ED31670A04B00FD39B7 /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
-		05782ED41670A04B00FD39B7 /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
-		05782ED51670A04B00FD39B7 /* AudioTrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioTrack.cpp; sourceTree = "<group>"; };
-		05782ED61670A04B00FD39B7 /* AudioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioTrack.h; sourceTree = "<group>"; };
 		05782ED71670A04B00FD39B7 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		05782ED81670A04B00FD39B7 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		05782ED91670A04B00FD39B7 /* LVSEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LVSEngine.cpp; sourceTree = "<group>"; };
@@ -210,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				05A270B817B168B400A23855 /* AudioEngine */,
-				05A270B117B167D800A23855 /* AudioOld */,
 				05A270B617B1688B00A23855 /* Common */,
 				05A270B417B1684300A23855 /* Effects */,
 				05A270B717B1689B00A23855 /* Engine */,
@@ -229,19 +219,6 @@
 				05A270A117B144B600A23855 /* libpd-osx.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		05A270B117B167D800A23855 /* AudioOld */ = {
-			isa = PBXGroup;
-			children = (
-				05782ED31670A04B00FD39B7 /* Audio.cpp */,
-				05782ED41670A04B00FD39B7 /* Audio.h */,
-				050BC5AC16764BB300E83B71 /* AudioFx.cpp */,
-				050BC5AD16764BB400E83B71 /* AudioFx.h */,
-				05782ED51670A04B00FD39B7 /* AudioTrack.cpp */,
-				05782ED61670A04B00FD39B7 /* AudioTrack.h */,
-			);
-			name = AudioOld;
 			sourceTree = "<group>";
 		};
 		05A270B217B1680200A23855 /* Fader */ = {
@@ -530,8 +507,6 @@
 				053BA841163D79B40095EBEF /* kiss_fft.c in Sources */,
 				053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */,
 				053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */,
-				05782EE51670A04B00FD39B7 /* Audio.cpp in Sources */,
-				05782EE61670A04B00FD39B7 /* AudioTrack.cpp in Sources */,
 				05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */,
 				05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */,
 				05782EE91670A04B00FD39B7 /* Player.cpp in Sources */,
@@ -541,7 +516,6 @@
 				051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */,
 				052FED161674E4C20001E076 /* Fader.cpp in Sources */,
 				052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */,
-				050BC5AE16764BB500E83B71 /* AudioFx.cpp in Sources */,
 				05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */,
 				05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */,
 				05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */,
