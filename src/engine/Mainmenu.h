@@ -28,6 +28,7 @@ public:
     
     void activate();
     void deactivate();
+    void updateScore();
 private:
     bool active;
     ciUICanvas *gui;
@@ -37,4 +38,8 @@ private:
     WTextLabel *title;
     WTextButton *buttonStart;
     WTextButton *buttonQuit;
+    WTextLabel *score;
+    WTextLabel *scoreVal;
+
+    WTextLabel *author;
 };

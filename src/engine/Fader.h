@@ -30,9 +30,6 @@ public:
     double timeTotal();
     double timeElapsed();
     
-    // XXX: temporary faders
-    // XXX: void setCurve(int curveType);
-    // XXX: void bindFinishedCallback();
     void bindParam(double *param);
     void addObserver(FadeObserver *obs);
     

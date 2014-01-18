@@ -97,19 +97,19 @@ void AudioEngine::initAudio() {
     initPD();
     initPA();
 
-    cout << "Audio engine initialized" << endl;
+//    cout << "Audio engine initialized" << endl;
 }
 
 void AudioEngine::update() {
     analyzer->update();
     processMessages();
 }
-void AudioEngine::draw()   { analyzer->draw(4, 0); }
+void AudioEngine::draw()   { analyzer->draw(2, 40); }
 
 void AudioEngine::processMessages() {
     while(src->numMessages() > 0) {
         pd::Message& msg = src->nextMessage();
-        switch(msg.type) {
+/*        switch(msg.type) {
             case PRINT:
                 cout << "got print: " << msg.symbol << endl;
                 break;
@@ -128,7 +128,7 @@ void AudioEngine::processMessages() {
             default:
                 cout << "got an unspecified message!" << endl;
                 break;
-        }
+        } */
     }
 }
 

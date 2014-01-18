@@ -17,6 +17,7 @@ class FaderPack;
 class AudioEngine;
 class OverlayFxManager;
 class TileLevel;
+class HighScores;
 
 class Configuration {
 public:
@@ -45,6 +46,7 @@ public:
     FaderPack *faders;
     AudioEngine *audio;
     OverlayFxManager *overlayFx;
+    HighScores *hiScores;
     
     gl::TextureFontRef fontSmall;
     gl::TextureFontRef fontMedium;

@@ -75,7 +75,7 @@ inline Vec2f WTextLabel::getSize()
 
 void WTextLabel::shutdown() { }
 
-void WTextLabel::setValue(string newText)
+void WTextLabel::setValue(string newText, bool centered)
 {
     text = newText;
     
@@ -83,6 +83,8 @@ void WTextLabel::setValue(string newText)
     Vec2f top = Vec2f(pos.x, pos.y - (0.8 * size.y));
     
     boundingBox = Rectf(top, top + size);
+    
+    if (centered) { alignCenter(); }
 }
 
 void WTextLabel::setColor(ColorA newColor)

@@ -10,12 +10,23 @@
 
 #include "Configuration.h"
 
+#define SCORE_FILE "mystery.txt"
+#define DUMMY_SCORE 9999
+
 class HighScores {
 public:
 	void setup(Configuration *config);
 	void shutdown();
-    void saveScore(int score); // TODO: pass some kind of score object or player name and a bunch of scores?
+    void saveScore(int score);
+    int getScore();
 private:
+    int topScore;
+
+    string xorString(string str);
+    void loadScoreFile();
+    void saveScoreFile();
+    int decodeScore(string score_str);
+    string encodeScore(int score);
     Configuration *mConfig;
     bool active;
 };

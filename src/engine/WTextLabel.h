@@ -15,7 +15,7 @@ public:
                int newType, ColorA newColor, bool centered = false);
 	void draw();
 	void shutdown();
-    void setValue(string newText);
+    void setValue(string newText, bool centered = false);
     void setColor(ColorA newColor);
     
     bool isHit(Vec2f pos);
