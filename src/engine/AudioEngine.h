@@ -44,7 +44,7 @@ public:
     void e_scoreChange(int change, int score);
     void e_levelUp(int tile, int level);
     
-    void e_tileDestroy(Vec2i pos);
+    void e_tileDestroy(int tile);
     void e_tileMove(Vec2i pos);
 
 private:

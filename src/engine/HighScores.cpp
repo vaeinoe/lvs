@@ -44,7 +44,8 @@ string HighScores::xorString(string inStr) {
 inline void HighScores::loadScoreFile() {
     string line;
     string scoreStr;
-    ifstream scores (toString(cinder::app::getAssetPath(SCORE_FILE)));
+    ifstream scores;
+    scores.open(toString(cinder::app::getAssetPath(SCORE_FILE)));
     
     // TODO: have to read all lines, encryption can cause \n
     if (scores.is_open())
@@ -57,7 +58,9 @@ inline void HighScores::loadScoreFile() {
 }
 
 inline void HighScores::saveScoreFile() {
-    ofstream scores (toString(cinder::app::getAssetPath(SCORE_FILE)));
+    ofstream scores;
+    scores.open(toString(cinder::app::getAssetPath(SCORE_FILE)));
+    
     if (scores.is_open())
     {
         scores << encodeScore(topScore);

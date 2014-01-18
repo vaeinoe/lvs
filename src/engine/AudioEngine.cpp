@@ -11,8 +11,8 @@
 #define NUMBERSECOND 10
 #define SAMPLE_RATE 44100
 #define NBCHANNEL 2
-#define BLOCKSIZE 256
-#define TICK 4
+#define BLOCKSIZE 512
+#define TICK 8
 #define PATCH_FILE "lvs.pd"
 
 int pa_callback(const void *inputBuffer, void *outputBuffer,
@@ -148,11 +148,11 @@ void AudioEngine::e_gameLoaded() { src->sendBang("to_mainmenu"); }
 void AudioEngine::e_gameStart()  { src->sendBang("reset_all"); src->sendBang("to_game"); }
 void AudioEngine::e_gamePause()  { src->sendBang("to_mainmenu"); }
 void AudioEngine::e_gameResume() { src->sendBang("to_game"); }
-void AudioEngine::e_gameQuit()   { src->sendBang("game_quit"); }
-void AudioEngine::e_gameWin()    { src->sendBang("game_win"); }
-void AudioEngine::e_gameLose()   { src->sendBang("game_lose"); }
-void AudioEngine::e_timeEnding() { src->sendBang("time_ending"); }
-void AudioEngine::e_timeNormal() { src->sendBang("time_normal"); }
+void AudioEngine::e_gameQuit()   { src->sendBang("quit_game"); }
+void AudioEngine::e_gameWin()    { src->sendBang("win_game"); }
+void AudioEngine::e_gameLose()   { src->sendBang("to_mainmenu"); src->sendBang("reset_all"); } // TODO: is this OK? TEST!
+void AudioEngine::e_timeEnding() { src->sendBang("time_ending"); } // TODO!
+void AudioEngine::e_timeNormal() { src->sendBang("time_normal"); } // TODO!
 
 void AudioEngine::e_scoreChange(int change, int score) {
     src->startMessage();
@@ -166,18 +166,13 @@ void AudioEngine::e_levelUp(int tile, int level) {
     else if (tile == 1) { src->sendBang("level_up_2"); }
     else if (tile == 2) { src->sendBang("level_up_3"); }
     else if (tile == 3) { src->sendBang("level_up_4"); }
-/*  src->startMessage();
-    src->addFloat(tile);
-    src->addFloat(level);
-    src->finishList("level_up"); */
 }
 
-void AudioEngine::e_tileDestroy(Vec2i pos) {
-    src->sendBang("hit");
-//    src->startMessage();
-//    src->addFloat((float)pos.x);
-//    src->addFloat((float)pos.y);
-//    src->finishList("tile_destroy");
+void AudioEngine::e_tileDestroy(int tile) {
+    if      (tile == 0) { src->sendBang("hit_1"); }
+    else if (tile == 1) { src->sendBang("hit_2"); }
+    else if (tile == 2) { src->sendBang("hit_3"); }
+    else if (tile == 3) { src->sendBang("hit_4"); }
 }
 
 void AudioEngine::e_tileMove(Vec2i pos) {

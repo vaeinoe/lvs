@@ -33,6 +33,7 @@ void World::setup( Configuration *config, const Vec2i newSize )
 void World::reset() {
     for( vector<Tile*>::iterator t = tiles.begin(); t != tiles.end(); ++t ){
         (*t)->shutdown();
+        delete (*t);
     }
     
     tiles.clear();

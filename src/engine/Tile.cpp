@@ -101,7 +101,7 @@ int Tile::kill(int mult)
     dead = true;
     mConfig->levels[type]->addScore(mult);
     mConfig->overlayFx->createExplosion(getScreenPositionVector(Vec2i(pos->x, pos->y), false), ColorA(1.0, 1.0, 1.0, 1.0));
-    mConfig->audio->e_tileDestroy(Vec2i(pos->x, pos->y));
+    mConfig->audio->e_tileDestroy(type);
     type = -1;
     
     fadeFader->fade(0.0, FADE_TIME_SEC);

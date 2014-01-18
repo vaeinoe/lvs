@@ -25,6 +25,8 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
 {
     mConfig = config;
 
+    toolbarFbo = gl::Fbo( mConfig->fieldSize.x, mConfig->fieldSize.y, true );
+
     int windowWidth = mConfig->fieldSize.x;
     Vec2f levelLblPos   = Vec2f(10, 17);
     
@@ -56,6 +58,10 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
     }
 }
 
+void Toolbar::updateSurface() {
+    
+}
+
 void Toolbar::reset() {
     Vec2f firstPos      = Vec2f(70, 5);
     Vec2f offset        = Vec2f(140, 0);
@@ -84,6 +90,8 @@ void Toolbar::updateScore( int score, int maxScore, int level, int type, bool fi
 }
 
 void Toolbar::draw() {
+    toolbarFbo.bindFramebuffer();
+    
     Vec2f start = mConfig->fieldOrigin + Vec2f(0,0);
     Vec2f end   = mConfig->fieldOrigin + Vec2f(mConfig->fieldSize.x, 25);
                         
@@ -97,6 +105,9 @@ void Toolbar::draw() {
         scoreBars[i]->draw();
         levelLabels[i]->draw();
     }
+    toolbarFbo.unbindFramebuffer();
+    
+    gl::draw( toolbarFbo.getTexture() );
 }
 
 void Toolbar::update()
