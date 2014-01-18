@@ -10,7 +10,7 @@
 
 #include "Configuration.h"
 
-#define SCORE_FILE "mystery.txt"
+#define SCORE_FILE "00"
 #define DUMMY_SCORE 9999
 
 class HighScores {

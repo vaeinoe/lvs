@@ -8,6 +8,7 @@
  */
 #pragma once
 #include "Configuration.h"
+#include "cinder/gl/Fbo.h"
 
 class Configuration;
 class WProgressBar;
@@ -23,6 +24,9 @@ public:
     void updateScore( int score, int maxScore, int level, int type, bool finished = false );
 private:
     static double barColors[][4];
+
+    gl::Fbo toolbarFbo;
+    void updateSurface();
     
     Configuration *mConfig;
     

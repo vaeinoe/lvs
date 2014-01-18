@@ -294,7 +294,6 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 quitGame();
                 break;
             case S_INGAME_1:
-                // TODO: add a return button to main?
                 backToMain();
                 break;
         }
