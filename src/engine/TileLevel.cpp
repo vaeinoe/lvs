@@ -12,7 +12,7 @@
 #include "OverlayFxManager.h"
 #include "AudioEngine.h"
 
-int TileLevel::numLevels[TILE_TYPES] = { 3, 3, 3, 3 };
+int TileLevel::numLevels[TILE_TYPES] = { 4, 4, 4, 4 };
 
 // 0: blue
 // 1: white
