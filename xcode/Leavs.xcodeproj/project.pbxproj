@@ -427,9 +427,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* Leavs */ = {
+		8D1107260486CEB800E47090 /* LVS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Leavs" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "LVS" */;
 			buildPhases = (
 				0512834E1673CD4300A4AAB1 /* CopyFiles */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -442,7 +442,7 @@
 			dependencies = (
 				05A270A317B1451C00A23855 /* PBXTargetDependency */,
 			);
-			name = Leavs;
+			name = LVS;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Leavs;
 			productReference = 8D1107320486CEB800E47090 /* LVS.app */;
@@ -477,7 +477,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* Leavs */,
+				8D1107260486CEB800E47090 /* LVS */,
 			);
 		};
 /* End PBXProject section */
@@ -659,7 +659,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx10.7;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
@@ -675,7 +675,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx10.7;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
@@ -684,7 +684,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Leavs" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "LVS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
