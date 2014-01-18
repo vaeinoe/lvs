@@ -5,9 +5,9 @@
 #X obj 32 437 r to_mainmenu;
 #X obj 135 437 r to_game;
 #X obj 41 79 s start;
-#X obj 39 114 r start;
-#X obj 30 171 throw~ menu_l;
-#X obj 119 171 throw~ menu_r;
+#X obj 39 116 r start;
+#X obj 30 173 throw~ menu_l;
+#X obj 119 173 throw~ menu_r;
 #X obj 93 501 s main_cross;
 #X msg 50 464 1 0 6000;
 #X msg 127 463 0 1 6000;
@@ -38,82 +38,82 @@
 #X obj 32 311 r start;
 #X obj 32 360 throw~ game_l;
 #X obj 209 360 throw~ game_r;
-#X obj 238 113 r start;
-#X obj 218 168 throw~ game_l;
-#X obj 311 169 throw~ game_r;
-#X obj 241 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 238 115 r start;
+#X obj 218 170 throw~ game_l;
+#X obj 311 171 throw~ game_r;
+#X obj 240 11 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 161 33 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 160 8 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 401 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 400 11 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 321 36 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 320 11 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 119 222 r level_up_1;
 #X obj 120 312 r level_up_2;
-#X obj 161 55 s level_up_1;
-#X obj 241 55 s level_up_2;
-#X obj 321 55 s level_up_3;
-#X obj 401 55 s level_up_4;
-#X obj 357 112 bang;
-#X obj 160 117 bang;
+#X obj 160 30 s level_up_1;
+#X obj 240 30 s level_up_2;
+#X obj 320 30 s level_up_3;
+#X obj 400 30 s level_up_4;
+#X obj 357 114 bang;
+#X obj 160 119 bang;
 #X obj 324 313 r start;
 #X obj 442 311 r level_up_4;
 #X obj 324 359 throw~ game_l;
 #X obj 442 359 throw~ game_r;
-#X obj 482 55 s reset_all;
-#X obj 482 35 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 160 72 s reset_all;
+#X obj 160 52 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 208 220 r reset_all;
 #X obj 209 311 r reset_all;
 #X obj 500 221 r reset_all;
 #X obj 561 310 r reset_all;
-#X obj 427 175 throw~ game_l;
-#X obj 522 176 throw~ game_r;
-#X obj 440 102 r start;
-#X obj 539 102 r hit;
+#X obj 427 177 throw~ game_l;
+#X obj 522 178 throw~ game_r;
+#X obj 440 104 r start;
+#X obj 539 104 r hit;
 #X obj 21 18 loadbang;
 #X msg 61 42 \; pd dsp 1;
-#X obj 626 155 throw~ game_l;
-#X obj 737 156 throw~ game_r;
-#X obj 626 102 r start;
-#X obj 776 103 r level_up_4;
-#X obj 681 103 r loop_start_4;
+#X obj 647 177 throw~ game_l;
+#X obj 758 178 throw~ game_r;
+#X obj 647 124 r start;
+#X obj 797 125 r level_up_4;
+#X obj 702 125 r loop_start_4;
 #X obj 561 358 s loop_start_4;
 #X msg 81 8 \; pd dsp 0;
 #X obj 211 464 *~ 0.85;
 #X obj 286 463 *~ 0.85;
-#X obj 558 55 s hit;
-#X obj 558 34 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 241 72 s hit;
+#X obj 241 51 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 439 150 *~ 0.33;
-#X obj 489 149 *~ 0.33;
-#X obj 39 143 stereo_loop~ 00_01;
-#X obj 238 142 stereo_loop~ 00_02;
-#X obj 626 130 oneshot_sync~ 04_u1;
+#X obj 439 152 *~ 0.33;
+#X obj 489 151 *~ 0.33;
+#X obj 39 145 stereo_loop~ 00_01;
+#X obj 238 144 stereo_loop~ 00_02;
+#X obj 647 152 oneshot_sync~ 04_u1;
 #X obj 31 248 track~ 01_01 01_02 01_03 01_04;
 #X obj 323 250 track~ 02_01 02_02 02_03 02_04;
 #X obj 324 335 track_seq~ 04_01 04_02 04_03 04_04 04_05;
-#X obj 440 125 stereo_loop~ 99_01;
+#X obj 440 127 stereo_loop~ 99_01;
 #X obj 32 336 track~ 03_01 03_02 03_03 03_04;
-#X obj 874 158 throw~ game_l;
-#X obj 985 159 throw~ game_r;
-#X obj 874 105 r start;
-#X obj 929 106 r loop_start_4;
-#X obj 874 133 oneshot_sync~ 02_u1;
-#X obj 1024 106 r level_up_2;
-#X obj 628 74 throw~ game_l;
-#X obj 739 75 throw~ game_r;
-#X obj 628 21 r start;
-#X obj 683 22 r loop_start_4;
-#X obj 628 49 oneshot_sync~ 01_u1;
-#X obj 778 22 r level_up_1;
-#X obj 874 75 throw~ game_l;
-#X obj 985 76 throw~ game_r;
-#X obj 874 22 r start;
-#X obj 929 23 r loop_start_4;
-#X obj 1024 23 r level_up_3;
-#X obj 874 50 oneshot_sync~ 03_u1;
+#X obj 886 180 throw~ game_l;
+#X obj 997 181 throw~ game_r;
+#X obj 886 127 r start;
+#X obj 941 128 r loop_start_4;
+#X obj 886 155 oneshot_sync~ 02_u1;
+#X obj 1036 128 r level_up_2;
+#X obj 649 96 throw~ game_l;
+#X obj 760 97 throw~ game_r;
+#X obj 649 43 r start;
+#X obj 704 44 r loop_start_4;
+#X obj 649 71 oneshot_sync~ 01_u1;
+#X obj 799 44 r level_up_1;
+#X obj 886 97 throw~ game_l;
+#X obj 997 98 throw~ game_r;
+#X obj 886 44 r start;
+#X obj 941 45 r loop_start_4;
+#X obj 1036 45 r level_up_3;
+#X obj 886 72 oneshot_sync~ 03_u1;
 #X connect 1 0 4 0;
 #X connect 2 0 9 0;
 #X connect 3 0 10 0;
