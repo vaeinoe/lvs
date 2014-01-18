@@ -107,8 +107,8 @@ void AudioEngine::update() {
 void AudioEngine::draw()   { analyzer->draw(2, 40); }
 
 void AudioEngine::processMessages() {
-    while(src->numMessages() > 0) {
-        pd::Message& msg = src->nextMessage();
+//    while(src->numMessages() > 0) {
+//        pd::Message& msg = src->nextMessage();
 /*        switch(msg.type) {
             case PRINT:
                 cout << "got print: " << msg.symbol << endl;
@@ -129,7 +129,7 @@ void AudioEngine::processMessages() {
                 cout << "got an unspecified message!" << endl;
                 break;
         } */
-    }
+//    }
 }
 
 void AudioEngine::shutdown() {

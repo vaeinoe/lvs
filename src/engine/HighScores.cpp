@@ -74,10 +74,11 @@ string HighScores::encodeScore(int score) {
 int HighScores::decodeScore(string score_str) {
     string decrypted = xorString(score_str);
     
-    int newScore = std::stoi(decrypted.substr(12,decrypted.length()));
+//    int newScore = std::stoi(decrypted.substr(12,decrypted.length()));
 //    cout << "Decrypted score: " << toString(newScore);
     
-    return newScore;
+//    return newScore;
+    return 9999;
 }
 
 int HighScores::getScore() {
