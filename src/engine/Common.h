@@ -49,7 +49,7 @@ using namespace std;
 #define WARN_GAME_TIME 10.0
 
 // Original: 50
-#define LEVEL_SCORE_MODIFIER 10
+#define LEVEL_SCORE_MODIFIER 25
 
 #define GAME_NAME "hex chnl"
 #define ENDGAME_STR "fin."
