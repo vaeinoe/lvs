@@ -92,7 +92,8 @@ private:
     AudioEngine *mAudio;
     FaderPack *mFaders;
     OverlayFxManager *overlayFx;
-
+    HighScores *mHiScores;
+    
     Configuration *mConfig;
 
     Vec2i *mMouseLoc;

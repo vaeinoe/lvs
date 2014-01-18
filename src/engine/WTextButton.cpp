@@ -41,7 +41,7 @@ bool WTextButton::isHit(Vec2f pos)
 
 void WTextButton::shutdown() { delete label; }
 
-void WTextButton::setValue(string newText)
+void WTextButton::setValue(string newText, bool centered)
 {
-    if (label) { label->setValue(newText); }
+    if (label) { label->setValue(newText, centered); }
 }

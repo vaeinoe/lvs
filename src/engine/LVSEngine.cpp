@@ -27,6 +27,7 @@
 #include "Fader.h"
 #include "OverlayFxManager.h"
 #include "TileLevel.h"
+#include "HighScores.h"
 
 void LVSEngine::setup(Configuration *config)
 {
@@ -40,6 +41,8 @@ void LVSEngine::setup(Configuration *config)
     mPlayer = new Player();
     mMenu = new Mainmenu();
     mFaders = new FaderPack();
+    mHiScores = new HighScores();
+    
     overlayFx = new OverlayFxManager();
 
     mConfig->engine = this;
@@ -49,6 +52,7 @@ void LVSEngine::setup(Configuration *config)
     mConfig->faders = mFaders;
     mConfig->audio = mAudio;
     mConfig->overlayFx = overlayFx;
+    mConfig->hiScores = mHiScores;
 
     setPlayfield();
     
@@ -100,7 +104,9 @@ void LVSEngine::loadAll() {
             loadStr = "filling the glass half full";
             break;
         case 3:
+            mHiScores->setup(mConfig);
             mMenu->setup(mConfig);
+            mMenu->updateScore();
             loadStr = "preparing the picardy third";
             break;
         case 4:
@@ -324,6 +330,9 @@ inline bool LVSEngine::checkVictory()
         screenFader->fade(1.0, SHRINK_TIME_SEC);
                 
         endGameTime = gameFader->timeElapsed();
+        mHiScores->saveScore(endGameTime);
+        mMenu->updateScore();
+
         return true;
     }
     
@@ -430,6 +439,7 @@ void LVSEngine::shutdown()
     mPlayer->shutdown();
     mMenu->shutdown();
     mFaders->shutdown();
+    mHiScores->shutdown();
     
     delete mToolbar;
     delete mWorld;
@@ -437,6 +447,7 @@ void LVSEngine::shutdown()
     delete mAudio;
     delete mMenu;
     delete mFaders;
+    delete mHiScores;
 }
 
 void LVSEngine::bufferSolidCircle( const Vec2f &center, const float radius, int numSegments, const ColorA &color )

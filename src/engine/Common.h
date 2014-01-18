@@ -48,7 +48,8 @@ using namespace std;
 #define INIT_GAME_TIME 120.0
 #define WARN_GAME_TIME 10.0
 
-#define LEVEL_SCORE_MODIFIER 50
+// Original: 50
+#define LEVEL_SCORE_MODIFIER 10
 
 #define GAME_NAME "lvs"
 #define ENDGAME_STR "fin."
@@ -57,4 +58,4 @@ using namespace std;
 
 #define GAME_FONT "Helvetica Bold"
 
-#define HIGHSCORE_STR "longcatislong"
+#define HIGHSCORE_KEY "30DFB6B8LONG1D8D4CAT929A3CFIS4D0726LONGCC05E7"
