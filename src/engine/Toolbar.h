@@ -25,8 +25,7 @@ public:
 private:
     static double barColors[][4];
 
-    gl::Fbo toolbarFbo;
-    void updateSurface();
+//    gl::Fbo toolbarFbo;
     
     Configuration *mConfig;
     
