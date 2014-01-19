@@ -54,6 +54,8 @@ void AudioEngine::initPD() {
 }
 
 void AudioEngine::initPDArrays() {
+    // TODO: we can't do this conveniently like this, need to use resource macros...
+    
     string files [29] = { "00_00", "00_01", "00_02",
                           "01_01", "01_02", "01_03", "01_04", "01_u1",
                           "02_01", "02_02", "02_03", "02_04", "02_u1",
