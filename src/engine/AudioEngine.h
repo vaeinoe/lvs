@@ -52,6 +52,7 @@ private:
 
     void initAudio();
     void initPD();
+    void initPDArrays();
     void initPA();
     void portAudioError(PaError err);
     void processMessages();

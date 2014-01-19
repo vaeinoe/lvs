@@ -48,9 +48,26 @@ void AudioEngine::initPD() {
     src = new PdBase();
     src->init(0, NBCHANNEL, SAMPLE_RATE);
     src->openPatch(PATCH_FILE, getAssetPath("").string());
+    initPDArrays();
+    
     src->computeAudio(true);
+}
 
-    src->subscribe("test_foo");
+void AudioEngine::initPDArrays() {
+    string files [29] = { "00_00", "00_01", "00_02",
+                          "01_01", "01_02", "01_03", "01_04", "01_u1",
+                          "02_01", "02_02", "02_03", "02_04", "02_u1",
+                          "03_01", "03_02", "03_03", "03_04", "03_u1",
+                          "04_01", "04_02", "04_03", "04_04", "04_05", "04_u1",
+                          "99_01", "99_02", "99_03", "99_04", "99_99" };
+    
+    for (int i = 0; i < 29; i++) {
+        string filename = files[i] + ".ogg";
+        string arr_l    = files[i] + "_l";
+        string arr_r    = files[i] + "_r";
+        
+        cout << "filename " << filename << ", arr_l " << arr_l << ", arr_r" << arr_r << "\n";
+    }
 }
 
 void AudioEngine::initPA() {
@@ -107,29 +124,6 @@ void AudioEngine::update() {
 void AudioEngine::draw()   { analyzer->draw(2, 40); }
 
 void AudioEngine::processMessages() {
-//    while(src->numMessages() > 0) {
-//        pd::Message& msg = src->nextMessage();
-/*        switch(msg.type) {
-            case PRINT:
-                cout << "got print: " << msg.symbol << endl;
-                break;
-            case BANG:
-                cout << "go a bang to " << msg.dest << endl;
-                break;
-            case LIST:
-                cout << "got a list: " << msg.list << endl;
-                break;
-            case FLOAT:
-                cout << "got a float " << msg.num << endl;
-                break;
-            case SYMBOL:
-                cout << "got a symbol " << msg.symbol << endl;
-                break;
-            default:
-                cout << "got an unspecified message!" << endl;
-                break;
-        } */
-//    }
 }
 
 void AudioEngine::shutdown() {

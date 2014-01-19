@@ -17,6 +17,7 @@ xcuserdata
 
 *.mp3
 *.wav
+*.ogg
 
 # Ignore Visual Studio 2010 files
 *.obj
