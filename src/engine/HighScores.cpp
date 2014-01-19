@@ -42,35 +42,31 @@ string HighScores::xorString(string inStr) {
 }
 
 inline void HighScores::loadScoreFile() {
-    string line;
-    string scoreStr;
-    ifstream scores;
-    scores.open(toString(cinder::app::getAssetPath(SCORE_FILE)));
+#ifdef __APPLE__
     
-    // TODO: have to read all lines, encryption can cause \n
-    if (scores.is_open())
-    {
-        getline(scores,line);
-        topScore = decodeScore(line);
-        scores.close();
-    }
-    else cout << "Unable to open score file for reading." << "\n";
+#endif
+    
+#ifdef _WIN32
+    
+#endif
+    std::string line = "";
+    topScore = decodeScore(line);
 }
 
 inline void HighScores::saveScoreFile() {
-    ofstream scores;
-    scores.open(toString(cinder::app::getAssetPath(SCORE_FILE)));
+    string highScore = encodeScore(topScore);
+
+#ifdef __APPLE__
+    saveScoreToPrefs(highScore);
+#endif
     
-    if (scores.is_open())
-    {
-        scores << encodeScore(topScore);
-        scores.close();
-    }
-    else cout << "Unable to open score file for writing.";
+#ifdef _WIN32
+    
+#endif
 }
 
 string HighScores::encodeScore(int score) {
-    string scoreStr = "LONG CAT IS: " + toString(score);
+    string scoreStr = toString(score);
     return xorString(scoreStr);
 }
 
