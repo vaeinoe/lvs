@@ -9,8 +9,8 @@
 #pragma once
 
 #include "Configuration.h"
+#include "PreferenceWrapper.h"
 
-#define SCORE_FILE "00"
 #define DUMMY_SCORE 9999
 
 class HighScores {
@@ -22,6 +22,7 @@ public:
 private:
     int topScore;
 
+    string getFilePath();
     string xorString(string str);
     void loadScoreFile();
     void saveScoreFile();

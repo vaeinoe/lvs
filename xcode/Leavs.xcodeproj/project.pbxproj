@@ -35,6 +35,7 @@
 		05A270A417B1452900A23855 /* libpd-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A270A117B144B600A23855 /* libpd-osx.a */; };
 		05A270A717B14A6300A23855 /* AudioEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A270A517B14A6300A23855 /* AudioEngine.cpp */; };
 		05A270B017B163BF00A23855 /* portaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A270AF17B163BF00A23855 /* portaudio.a */; };
+		05A823A2188BF299009B5EDB /* PreferenceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */; };
 		05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */; };
 		05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */; };
 		05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A7701678DEDF00777C55 /* OverlayFx.cpp */; };
@@ -132,6 +133,8 @@
 		05A270A517B14A6300A23855 /* AudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEngine.cpp; sourceTree = "<group>"; };
 		05A270A617B14A6300A23855 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
 		05A270AF17B163BF00A23855 /* portaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = portaudio.a; path = ../../portaudio/lib/.libs/portaudio.a; sourceTree = "<group>"; };
+		05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreferenceWrapper.mm; sourceTree = "<group>"; };
+		05A823A3188BF471009B5EDB /* PreferenceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceWrapper.h; sourceTree = "<group>"; };
 		05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WProgressBar.cpp; sourceTree = "<group>"; };
 		05BA87E7167CBFD400FC9B6F /* WProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WProgressBar.h; sourceTree = "<group>"; };
 		05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFxManager.cpp; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 		05A270B517B1687400A23855 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */,
+				05A823A3188BF471009B5EDB /* PreferenceWrapper.h */,
 				052F2637172593CE00E4B7CA /* HighScores.cpp */,
 				052F2638172593CE00E4B7CA /* HighScores.h */,
 				059425E6168888CE00057DFE /* LevelData.h */,
@@ -323,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				05A270AF17B163BF00A23855 /* portaudio.a */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */,
 				056A1DF918776EAC001AF7BD /* CoreServices.framework */,
 				056A1DF718776E7C001AF7BD /* AudioUnit.framework */,
@@ -341,7 +347,6 @@
 			children = (
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */,
 				05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */,
 				059425E5168886E300057DFE /* TileLevel.cpp in Sources */,
+				05A823A2188BF299009B5EDB /* PreferenceWrapper.mm in Sources */,
 				052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */,
 				052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */,
 				052F2639172593CE00E4B7CA /* HighScores.cpp in Sources */,
