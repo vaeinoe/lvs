@@ -36,6 +36,7 @@
 		05A270A717B14A6300A23855 /* AudioEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A270A517B14A6300A23855 /* AudioEngine.cpp */; };
 		05A270B017B163BF00A23855 /* portaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A270AF17B163BF00A23855 /* portaudio.a */; };
 		05A823A2188BF299009B5EDB /* PreferenceWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */; };
+		05A823A5188C1FF6009B5EDB /* Base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A823A4188C1FF6009B5EDB /* Base64.cpp */; };
 		05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */; };
 		05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */; };
 		05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C4A7701678DEDF00777C55 /* OverlayFx.cpp */; };
@@ -133,8 +134,10 @@
 		05A270A517B14A6300A23855 /* AudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEngine.cpp; sourceTree = "<group>"; };
 		05A270A617B14A6300A23855 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
 		05A270AF17B163BF00A23855 /* portaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = portaudio.a; path = ../../portaudio/lib/.libs/portaudio.a; sourceTree = "<group>"; };
-		05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PreferenceWrapper.mm; sourceTree = "<group>"; };
-		05A823A3188BF471009B5EDB /* PreferenceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceWrapper.h; sourceTree = "<group>"; };
+		05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PreferenceWrapper.mm; path = ../src/engine/PreferenceWrapper.mm; sourceTree = "<group>"; };
+		05A823A3188BF471009B5EDB /* PreferenceWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PreferenceWrapper.h; path = ../src/engine/PreferenceWrapper.h; sourceTree = "<group>"; };
+		05A823A4188C1FF6009B5EDB /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base64.cpp; path = ../src/Base64.cpp; sourceTree = "<group>"; };
+		05A823A6188C222E009B5EDB /* Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../src/Base64.h; sourceTree = "<group>"; };
 		05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WProgressBar.cpp; sourceTree = "<group>"; };
 		05BA87E7167CBFD400FC9B6F /* WProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WProgressBar.h; sourceTree = "<group>"; };
 		05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFxManager.cpp; sourceTree = "<group>"; };
@@ -267,8 +270,6 @@
 		05A270B517B1687400A23855 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
-				05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */,
-				05A823A3188BF471009B5EDB /* PreferenceWrapper.h */,
 				052F2637172593CE00E4B7CA /* HighScores.cpp */,
 				052F2638172593CE00E4B7CA /* HighScores.h */,
 				059425E6168888CE00057DFE /* LevelData.h */,
@@ -317,9 +318,13 @@
 			isa = PBXGroup;
 			children = (
 				05734F141670C9AA00205DAD /* Resources.h */,
+				05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */,
+				05A823A3188BF471009B5EDB /* PreferenceWrapper.h */,
 				05782ED21670A04B00FD39B7 /* engine */,
 				053BA838163D79B30095EBEF /* kissfft */,
 				00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */,
+				05A823A4188C1FF6009B5EDB /* Base64.cpp */,
+				05A823A6188C222E009B5EDB /* Base64.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				052FED161674E4C20001E076 /* Fader.cpp in Sources */,
 				052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */,
 				05C4A76E1678DE0600777C55 /* OverlayFxManager.cpp in Sources */,
+				05A823A5188C1FF6009B5EDB /* Base64.cpp in Sources */,
 				05C4A7721678DEDF00777C55 /* OverlayFx.cpp in Sources */,
 				05BA87E8167CBFD400FC9B6F /* WProgressBar.cpp in Sources */,
 				059425E5168886E300057DFE /* TileLevel.cpp in Sources */,

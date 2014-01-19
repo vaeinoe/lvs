@@ -9,16 +9,16 @@
 #include "HighScores.h"
 #include <iostream>
 #include <fstream>
+#include "../Base64.h"
+
 using namespace std;
 
 void HighScores::setup( Configuration *config )
 {
+    topScore = DUMMY_SCORE;
+
     mConfig = config;
     loadScoreFile();
-    
-    topScore = DUMMY_SCORE;
-    
-    encodeScore(topScore);
 }
 
 string HighScores::xorString(string inStr) {
@@ -35,27 +35,26 @@ string HighScores::xorString(string inStr) {
     }
     encrypted[messagelen] = '\0';
     
-//    cout << "Key: " << str  << "\n";
-//    cout << "Encrypted key: " << encrypted << "\n\n";
-    
     return encrypted;
 }
 
 inline void HighScores::loadScoreFile() {
-#ifdef __APPLE__
+    std::string scoreStr;
     
+#ifdef __APPLE__
+    scoreStr = loadScoreFromPrefs();
 #endif
     
 #ifdef _WIN32
     
 #endif
-    std::string line = "";
-    topScore = decodeScore(line);
+    
+    topScore = decodeScore(scoreStr);
 }
 
 inline void HighScores::saveScoreFile() {
     string highScore = encodeScore(topScore);
-
+    
 #ifdef __APPLE__
     saveScoreToPrefs(highScore);
 #endif
@@ -66,18 +65,29 @@ inline void HighScores::saveScoreFile() {
 }
 
 string HighScores::encodeScore(int score) {
-    string scoreStr = toString(score);
-    return xorString(scoreStr);
+    string scoreStr = "LONGCATISLONG" + toString(score);
+    string xorStr = xorString(scoreStr);
+    string encodedStr = base64_encode((unsigned char const*)xorStr.c_str(), xorStr.length());
+
+    return encodedStr;
 }
 
 int HighScores::decodeScore(string score_str) {
-    string decrypted = xorString(score_str);
+    string decoded   = base64_decode(score_str);
+    string decrypted = xorString(decoded);
     
-//    int newScore = std::stoi(decrypted.substr(12,decrypted.length()));
-//    cout << "Decrypted score: " << toString(newScore);
-    
-//    return newScore;
-    return 9999;
+    int newScore = DUMMY_SCORE;
+    try
+    {
+        newScore = std::stoi(decrypted.substr(13,decrypted.length()));
+    }
+    catch (...)
+    {
+        cout << "Unable to decode high score, using default.\n";
+        newScore = DUMMY_SCORE;
+    }
+
+    return newScore;
 }
 
 int HighScores::getScore() {

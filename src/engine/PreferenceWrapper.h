@@ -11,3 +11,4 @@
 #include <string>
 
 void saveScoreToPrefs(std::string scoreStr);
+std::string loadScoreFromPrefs();

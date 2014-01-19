@@ -4,5 +4,13 @@
 void saveScoreToPrefs(std::string scoreStr) {
     NSString* result = [NSString stringWithUTF8String:scoreStr.c_str()];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:result forKey:@"topScore"];
+    [prefs setObject:result forKey:@"mysteryMeat"];
+    [prefs synchronize];
+}
+
+std::string loadScoreFromPrefs() {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString* result = [prefs objectForKey:@"mysteryMeat"];
+    std::string *res = new std::string([result UTF8String]);
+    return *res;
 }
