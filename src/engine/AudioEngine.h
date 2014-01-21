@@ -22,6 +22,8 @@ public:
     void draw();
 	void shutdown();
 
+    void initAudio();
+
     float* getFreqData();
     int32_t getDataSize();
     
@@ -48,11 +50,14 @@ public:
     void e_tileMove(Vec2i pos);
 
 private:
+    int loadState;
+    
     PdBase *src;
 
-    void initAudio();
     void initPD();
     void initPDArrays();
+    DataSourceRef getAudioResource(string identifier);
+    void loadOGGToArray(DataSourceRef ref, string id);
     void initPA();
     void portAudioError(PaError err);
     void processMessages();

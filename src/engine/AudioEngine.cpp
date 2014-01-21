@@ -7,6 +7,10 @@
 //
 
 #include "AudioEngine.h"
+#include "Resources.h"
+#include "../stb_vorbis.h"
+#include <vector>
+#include <stdlib.h>
 
 #define NUMBERSECOND 10
 #define SAMPLE_RATE 44100
@@ -14,6 +18,11 @@
 #define BLOCKSIZE 512
 #define TICK 8
 #define PATCH_FILE "lvs.pd"
+
+typedef struct AudioResource {
+    DataSourceRef file;
+    string name;
+} AudioResource;
 
 int pa_callback(const void *inputBuffer, void *outputBuffer,
                              unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo,
@@ -26,11 +35,7 @@ int pa_callback(const void *inputBuffer, void *outputBuffer,
 
 void AudioEngine::setup (Configuration *config) {
     mConfig = config;
-    
-    initAudio();
-
-    analyzer = new AudioAnalyzer();
-    analyzer->setup(config);
+    loadState = 0;
 }
 
 float* AudioEngine::getFreqData()  { return analyzer->freqData; }
@@ -44,32 +49,104 @@ inline void AudioEngine::updateAnalyzer(const void * data, int byteCount) {
     analyzer->updateData(data, byteCount, SAMPLE_RATE);
 }
 
-void AudioEngine::initPD() {
-    src = new PdBase();
-    src->init(0, NBCHANNEL, SAMPLE_RATE);
-    src->openPatch(PATCH_FILE, getAssetPath("").string());
-    initPDArrays();
-    
-    src->computeAudio(true);
+void AudioEngine::initAudio() {
+    string files[29] = { "00_00", "00_01", "00_02",
+                         "01_01", "01_02", "01_03", "01_04", "01_u1",
+                         "02_01", "02_02", "02_03", "02_04", "02_u1",
+                         "03_01", "03_02", "03_03", "03_04", "03_u1",
+                         "04_01", "04_02", "04_03", "04_04", "04_05", "04_u1",
+                         "99_01", "99_02", "99_03", "99_04", "99_99" };
+
+    DataSourceRef ref;
+    switch (loadState) {
+        case 0:
+            src = new PdBase();
+            src->init(0, NBCHANNEL, SAMPLE_RATE);
+            src->openPatch(PATCH_FILE, App::getResourcePath().string());
+            
+            break;
+        case 1:
+            for (int i = 0; i < 8; i++) {
+                ref = getAudioResource(files[i]);
+                loadOGGToArray(ref, files[i]);
+            }
+
+            for (int i = 8; i < 18; i++) {
+                ref = getAudioResource(files[i]);
+                loadOGGToArray(ref, files[i]);
+            }
+            
+            break;
+        case 2:
+            for (int i = 18; i < 29; i++) {
+                ref = getAudioResource(files[i]);
+                loadOGGToArray(ref, files[i]);
+            }
+            
+            src->computeAudio(true);
+            initPA();
+
+            analyzer = new AudioAnalyzer();
+            analyzer->setup(mConfig);
+
+            break;
+    }
+
+    loadState++;
 }
 
-void AudioEngine::initPDArrays() {
-    // TODO: we can't do this conveniently like this, need to use resource macros...
-    
-    string files [29] = { "00_00", "00_01", "00_02",
-                          "01_01", "01_02", "01_03", "01_04", "01_u1",
-                          "02_01", "02_02", "02_03", "02_04", "02_u1",
-                          "03_01", "03_02", "03_03", "03_04", "03_u1",
-                          "04_01", "04_02", "04_03", "04_04", "04_05", "04_u1",
-                          "99_01", "99_02", "99_03", "99_04", "99_99" };
-    
-    for (int i = 0; i < 29; i++) {
-        string filename = files[i] + ".ogg";
-        string arr_l    = files[i] + "_l";
-        string arr_r    = files[i] + "_r";
+void AudioEngine::loadOGGToArray(DataSourceRef ref, string id) {
+    string arr_l    = id + "_l";
+    string arr_r    = id + "_r";
+
+    Buffer buf = ref->getBuffer();
+    size_t dataSize = buf.getDataSize();
+    unsigned char *data = (unsigned char *)(buf.getData());
         
-        cout << "filename " << filename << ", arr_l " << arr_l << ", arr_r" << arr_r << "\n";
+    short *sample_buf;
+    int channels = 0;
+    
+    int sample_count = stb_vorbis_decode_memory(data, dataSize, &channels, &sample_buf);
+    
+    assert(sample_count > 0);
+    
+    float** read_samples = (float**)calloc(2, sizeof(float*));
+    read_samples[0] = (float*)calloc(sample_count, sizeof(float));
+    read_samples[1] = (float*)calloc(sample_count, sizeof(float));
+    
+    assert(channels == 2);
+    
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < sample_count; j++) {
+            read_samples[i][j] = (float)sample_buf[2 * j + i] * (1.0f / 32768.0f);
+        }
     }
+    
+    //cout << "buffer id: " << id << " data size: " << toString(dataSize) << ", channels: " << channels << ", samples per channel: "
+    //<< toString(sample_count) << "\n";
+
+    bool success_l, success_r;
+    
+    src->startMessage();
+    src->addFloat(sample_count);
+    src->finishMessage(arr_l, "resize");
+    src->clearArray(arr_l);
+
+    src->startMessage();
+    src->addFloat(sample_count);
+    src->finishMessage(arr_r, "resize");
+    src->clearArray(arr_r);
+    
+    std::vector<float> s1(read_samples[0], read_samples[0] + sample_count - 1);
+    success_l = src->writeArray(arr_l, s1);
+    
+    std::vector<float> s2(read_samples[1], read_samples[1] + sample_count - 1);
+    success_r = src->writeArray(arr_r, s2);
+    
+    free(sample_buf);
+    free(read_samples[0]);
+    free(read_samples[1]);
+    free(read_samples);
 }
 
 void AudioEngine::initPA() {
@@ -110,13 +187,6 @@ void AudioEngine::initPA() {
     
     err = Pa_StartStream( stream );
     if( err != paNoError ) portAudioError(err);
-}
-
-void AudioEngine::initAudio() {
-    initPD();
-    initPA();
-
-//    cout << "Audio engine initialized" << endl;
 }
 
 void AudioEngine::update() {
@@ -172,8 +242,48 @@ void AudioEngine::e_tileDestroy(int tile) {
 }
 
 void AudioEngine::e_tileMove(Vec2i pos) {
-    src->startMessage();
-    src->addFloat((float)pos.x);
-    src->addFloat((float)pos.y);
-    src->finishList("tile_move");
+//    src->startMessage();
+//    src->addFloat((float)pos.x);
+//    src->addFloat((float)pos.y);
+//    src->finishList("tile_move");
+}
+
+DataSourceRef AudioEngine::getAudioResource(string identifier) {
+    if (identifier == "00_00") return loadResource(RES_00_00);
+    if (identifier == "00_01") return loadResource(RES_00_01);
+    if (identifier == "00_02") return loadResource(RES_00_02);
+    
+    if (identifier == "01_01") return loadResource(RES_01_01);
+    if (identifier == "01_02") return loadResource(RES_01_02);
+    if (identifier == "01_03") return loadResource(RES_01_03);
+    if (identifier == "01_04") return loadResource(RES_01_04);
+    if (identifier == "01_u1") return loadResource(RES_01_u1);
+    
+    if (identifier == "02_01") return loadResource(RES_02_01);
+    if (identifier == "02_02") return loadResource(RES_02_02);
+    if (identifier == "02_03") return loadResource(RES_02_03);
+    if (identifier == "02_04") return loadResource(RES_02_04);
+    if (identifier == "02_u1") return loadResource(RES_02_u1);
+
+    if (identifier == "03_01") return loadResource(RES_03_01);
+    if (identifier == "03_02") return loadResource(RES_03_02);
+    if (identifier == "03_03") return loadResource(RES_03_03);
+    if (identifier == "03_04") return loadResource(RES_03_04);
+    if (identifier == "03_u1") return loadResource(RES_03_u1);
+
+    if (identifier == "04_01") return loadResource(RES_04_01);
+    if (identifier == "04_02") return loadResource(RES_04_02);
+    if (identifier == "04_03") return loadResource(RES_04_03);
+    if (identifier == "04_04") return loadResource(RES_04_04);
+    if (identifier == "04_05") return loadResource(RES_04_05);
+    if (identifier == "04_u1") return loadResource(RES_04_u1);
+
+    if (identifier == "99_01") return loadResource(RES_99_01);
+    if (identifier == "99_02") return loadResource(RES_99_02);
+    if (identifier == "99_03") return loadResource(RES_99_03);
+    if (identifier == "99_04") return loadResource(RES_99_04);
+    if (identifier == "99_99") return loadResource(RES_99_99);
+
+    cout << "No resource found for id " << identifier << "\n";
+    return NULL;
 }
