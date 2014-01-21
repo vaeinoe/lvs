@@ -27,7 +27,7 @@ using namespace std;
 
 #define FONT_SIZE_SMALL  14
 #define FONT_SIZE_MEDIUM 32
-#define FONT_SIZE_LARGE  48
+#define FONT_SIZE_LARGE  56
 
 #define NUM_ANGLES 32
 
@@ -45,13 +45,13 @@ using namespace std;
 #define GROW_TIME_SEC 6.0
 #define SHRINK_TIME_SEC 10.0
 
-#define INIT_GAME_TIME 120.0
+#define INIT_GAME_TIME 60.0
 #define WARN_GAME_TIME 10.0
 
 // Original: 50
 #define LEVEL_SCORE_MODIFIER 25
 
-#define GAME_NAME "hex chnl"
+#define GAME_NAME "lvs"
 #define ENDGAME_STR "fin."
 #define WINGAME_STR "you are victorious."
 #define GAME_START_STR "commence."
