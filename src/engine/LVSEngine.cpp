@@ -90,28 +90,31 @@ void LVSEngine::setup(Configuration *config)
 void LVSEngine::loadAll() {
     switch (loadState) {
         case 0:
-            mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
-            loadStr = "slicing the world into shards";
+            loadStr = "[waking up]";
             break;
         case 1:
-            precalc();
-            overlayFx->setup(mConfig);
+            mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
             mWorld->setup(mConfig, Vec2i(mConfig->worldWidth, mConfig->worldHeight));
-            loadStr = "remembering your eyes";
-            break;
-        case 2:
+            overlayFx->setup(mConfig);
             mPlayer->setup(mConfig);
-            loadStr = "filling the glass half full";
-            break;
-        case 3:
             mHiScores->setup(mConfig);
             mMenu->setup(mConfig);
             mMenu->updateScore();
-            loadStr = "preparing the picardy third";
+            mAudio->setup(mConfig);
+            precalc();
+            loadStr = "[slicing the world into shards]";
+            break;
+        case 2:
+            mAudio->initAudio();
+            loadStr = "[filling the glass half full]";
+            break;
+        case 3:
+            mAudio->initAudio();
+            loadStr = "[preparing the picardy third]";
             break;
         case 4:
-            mAudio->setup(mConfig);
-            loadStr = "ready for action";
+            mAudio->initAudio();
+            loadStr = "go.";
             break;
         case 5:
             // cout << "Running." << endl;

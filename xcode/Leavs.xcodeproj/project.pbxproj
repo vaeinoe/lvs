@@ -14,6 +14,14 @@
 		051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */; };
 		052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1492168B36D5006CF846 /* WTextLabel.cpp */; };
 		052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1498168B5FDD006CF846 /* WTextButton.cpp */; };
+		052E6D39188EE6E900D183C8 /* count_n.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D31188EE6E900D183C8 /* count_n.pd */; };
+		052E6D3A188EE6E900D183C8 /* crossfade~.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D32188EE6E900D183C8 /* crossfade~.pd */; };
+		052E6D3B188EE6E900D183C8 /* lvs.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D33188EE6E900D183C8 /* lvs.pd */; };
+		052E6D3C188EE6E900D183C8 /* oneshot_sync~.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D34188EE6E900D183C8 /* oneshot_sync~.pd */; };
+		052E6D3D188EE6E900D183C8 /* stereo_loop~.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D35188EE6E900D183C8 /* stereo_loop~.pd */; };
+		052E6D3E188EE6E900D183C8 /* stereo_vol~.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D36188EE6E900D183C8 /* stereo_vol~.pd */; };
+		052E6D3F188EE6E900D183C8 /* track_seq~.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D37188EE6E900D183C8 /* track_seq~.pd */; };
+		052E6D40188EE6E900D183C8 /* track~.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D38188EE6E900D183C8 /* track~.pd */; };
 		052F2639172593CE00E4B7CA /* HighScores.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052F2637172593CE00E4B7CA /* HighScores.cpp */; };
 		052FED161674E4C20001E076 /* Fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED141674E4C20001E076 /* Fader.cpp */; };
 		052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED181674E4D20001E076 /* FaderPack.cpp */; };
@@ -123,6 +131,15 @@
 		052E1493168B36D6006CF846 /* WTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextLabel.h; sourceTree = "<group>"; };
 		052E1498168B5FDD006CF846 /* WTextButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextButton.cpp; sourceTree = "<group>"; };
 		052E1499168B5FDD006CF846 /* WTextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextButton.h; sourceTree = "<group>"; };
+		052E6D2F188D690700D183C8 /* stb_vorbis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_vorbis.h; path = ../src/stb_vorbis.h; sourceTree = "<group>"; };
+		052E6D31188EE6E900D183C8 /* count_n.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = count_n.pd; path = ../resources/count_n.pd; sourceTree = "<group>"; };
+		052E6D32188EE6E900D183C8 /* crossfade~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "crossfade~.pd"; path = "../resources/crossfade~.pd"; sourceTree = "<group>"; };
+		052E6D33188EE6E900D183C8 /* lvs.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lvs.pd; path = ../resources/lvs.pd; sourceTree = "<group>"; };
+		052E6D34188EE6E900D183C8 /* oneshot_sync~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "oneshot_sync~.pd"; path = "../resources/oneshot_sync~.pd"; sourceTree = "<group>"; };
+		052E6D35188EE6E900D183C8 /* stereo_loop~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "stereo_loop~.pd"; path = "../resources/stereo_loop~.pd"; sourceTree = "<group>"; };
+		052E6D36188EE6E900D183C8 /* stereo_vol~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "stereo_vol~.pd"; path = "../resources/stereo_vol~.pd"; sourceTree = "<group>"; };
+		052E6D37188EE6E900D183C8 /* track_seq~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "track_seq~.pd"; path = "../resources/track_seq~.pd"; sourceTree = "<group>"; };
+		052E6D38188EE6E900D183C8 /* track~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "track~.pd"; path = "../resources/track~.pd"; sourceTree = "<group>"; };
 		052F2637172593CE00E4B7CA /* HighScores.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HighScores.cpp; sourceTree = "<group>"; };
 		052F2638172593CE00E4B7CA /* HighScores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScores.h; sourceTree = "<group>"; };
 		052FED141674E4C20001E076 /* Fader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fader.cpp; sourceTree = "<group>"; };
@@ -386,6 +403,7 @@
 				05A823A4188C1FF6009B5EDB /* Base64.cpp */,
 				05A823A6188C222E009B5EDB /* Base64.h */,
 				05A823A7188C59BE009B5EDB /* stb_vorbis.c */,
+				052E6D2F188D690700D183C8 /* stb_vorbis.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -449,6 +467,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				052E6D31188EE6E900D183C8 /* count_n.pd */,
+				052E6D32188EE6E900D183C8 /* crossfade~.pd */,
+				052E6D33188EE6E900D183C8 /* lvs.pd */,
+				052E6D34188EE6E900D183C8 /* oneshot_sync~.pd */,
+				052E6D35188EE6E900D183C8 /* stereo_loop~.pd */,
+				052E6D36188EE6E900D183C8 /* stereo_vol~.pd */,
+				052E6D37188EE6E900D183C8 /* track_seq~.pd */,
+				052E6D38188EE6E900D183C8 /* track~.pd */,
 				05C65F96188C5C6E00D0E22A /* 00_00.ogg */,
 				05C65F97188C5C6E00D0E22A /* 00_01.ogg */,
 				05C65F98188C5C6E00D0E22A /* 00_02.ogg */,
@@ -498,9 +524,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* LVS */ = {
+		8D1107260486CEB800E47090 /* Lvs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "LVS" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Lvs" */;
 			buildPhases = (
 				0512834E1673CD4300A4AAB1 /* CopyFiles */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -513,7 +539,7 @@
 			dependencies = (
 				05A270A317B1451C00A23855 /* PBXTargetDependency */,
 			);
-			name = LVS;
+			name = Lvs;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Leavs;
 			productReference = 8D1107320486CEB800E47090 /* LVS.app */;
@@ -548,7 +574,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* LVS */,
+				8D1107260486CEB800E47090 /* Lvs */,
 			);
 		};
 /* End PBXProject section */
@@ -582,10 +608,12 @@
 				05C65FCD188C5C6E00D0E22A /* 99_03.ogg in Resources */,
 				05C65FC0188C5C6E00D0E22A /* 03_01.ogg in Resources */,
 				05C65FB7188C5C6E00D0E22A /* 01_02.ogg in Resources */,
+				052E6D3A188EE6E900D183C8 /* crossfade~.pd in Resources */,
 				05C65FC4188C5C6E00D0E22A /* 03_u1.ogg in Resources */,
 				05C65FC3188C5C6E00D0E22A /* 03_04.ogg in Resources */,
 				05C65FC8188C5C6E00D0E22A /* 04_04.ogg in Resources */,
 				05C65FC5188C5C6E00D0E22A /* 04_01.ogg in Resources */,
+				052E6D3D188EE6E900D183C8 /* stereo_loop~.pd in Resources */,
 				05C65FCC188C5C6E00D0E22A /* 99_02.ogg in Resources */,
 				05C65FCB188C5C6E00D0E22A /* 99_01.ogg in Resources */,
 				05C65FCF188C5C6E00D0E22A /* 99_99.ogg in Resources */,
@@ -595,16 +623,22 @@
 				05C65FBE188C5C6E00D0E22A /* 02_04.ogg in Resources */,
 				05C65FC1188C5C6E00D0E22A /* 03_02.ogg in Resources */,
 				05C65FB5188C5C6E00D0E22A /* 00_02.ogg in Resources */,
+				052E6D40188EE6E900D183C8 /* track~.pd in Resources */,
 				05C65FB8188C5C6E00D0E22A /* 01_03.ogg in Resources */,
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
 				05C65FC7188C5C6E00D0E22A /* 04_03.ogg in Resources */,
 				05C65FBA188C5C6E00D0E22A /* 01_u1.ogg in Resources */,
 				05C65FB6188C5C6E00D0E22A /* 01_01.ogg in Resources */,
+				052E6D3C188EE6E900D183C8 /* oneshot_sync~.pd in Resources */,
+				052E6D3E188EE6E900D183C8 /* stereo_vol~.pd in Resources */,
 				05C65FC6188C5C6E00D0E22A /* 04_02.ogg in Resources */,
 				05C65FBB188C5C6E00D0E22A /* 02_01.ogg in Resources */,
+				052E6D39188EE6E900D183C8 /* count_n.pd in Resources */,
 				05C65FCE188C5C6E00D0E22A /* 99_04.ogg in Resources */,
 				05C65FCA188C5C6E00D0E22A /* 04_u1.ogg in Resources */,
 				05C65FB3188C5C6E00D0E22A /* 00_00.ogg in Resources */,
+				052E6D3F188EE6E900D183C8 /* track_seq~.pd in Resources */,
+				052E6D3B188EE6E900D183C8 /* lvs.pd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +728,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../portaudio/lib/.libs\"",
 				);
+				LLVM_LTO = NO;
 				LLVM_VECTORIZE_LOOPS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
@@ -734,7 +769,8 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../portaudio/lib/.libs\"",
 				);
-				LLVM_VECTORIZE_LOOPS = NO;
+				LLVM_LTO = YES;
+				LLVM_VECTORIZE_LOOPS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
@@ -753,7 +789,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = i386;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CINDER_PATH = ../../cinder_dev/cinder_master;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -769,7 +805,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = i386;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CINDER_PATH = ../../cinder_dev/cinder_master;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -784,7 +820,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "LVS" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Lvs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,

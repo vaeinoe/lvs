@@ -1,3 +1,6 @@
+#define STB_VORBIS_NO_STDIO
+#define STB_VORBIS_NO_FAST_SCALED_FLOAT
+
 // Ogg Vorbis I audio decoder  -- version 0.99996
 //
 // Written in April 2007 by Sean Barrett, sponsored by RAD Game Tools.
@@ -397,7 +400,7 @@ extern "C" {
 //     I forgot to account for. Can probably go as low as 8 (7.1 audio),
 //     6 (5.1 audio), or 2 (stereo only).
 #ifndef STB_VORBIS_MAX_CHANNELS
-#define STB_VORBIS_MAX_CHANNELS    16  // enough for anyone?
+#define STB_VORBIS_MAX_CHANNELS    2  // enough for anyone?
 #endif
 
 // STB_VORBIS_PUSHDATA_CRC_COUNT [number]
