@@ -63,7 +63,7 @@ void Mainmenu::shutdown() {
 
 void Mainmenu::setPaused ( bool paused ) {
     if (paused == true) { buttonStart->setValue("resume", true); }
-    else { buttonStart->setValue("play", true); }
+    else { buttonStart->setValue("new game", true); }
 }
 
 void Mainmenu::updateScore ( ) {
