@@ -11,6 +11,11 @@ void saveScoreToPrefs(std::string scoreStr) {
 std::string loadScoreFromPrefs() {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString* result = [prefs objectForKey:@"mysteryMeat"];
-    std::string *res = new std::string([result UTF8String]);
-    return *res;
+    if (!result) {
+        return "";
+    }
+    else {
+        std::string *res = new std::string([result UTF8String]);
+        return *res;
+    }
 }
