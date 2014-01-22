@@ -5,7 +5,7 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
-class LeavsApp : public AppBasic {
+class Lvs : public AppBasic {
 public:
 	void setup();
 	void update();
@@ -23,7 +23,7 @@ private:
     LVSEngine *engine;
 };
 
-void LeavsApp::prepareSettings( Settings *settings )
+void Lvs::prepareSettings( Settings *settings )
 {
     settings->setWindowSize( PLAYFIELD_W , PLAYFIELD_H );
     settings->setFrameRate( 30.0f );
@@ -31,7 +31,7 @@ void LeavsApp::prepareSettings( Settings *settings )
     settings->enableHighDensityDisplay();
 }
 
-void LeavsApp::setup()
+void Lvs::setup()
 {
     gl::disableVerticalSync();
     gl::disableDepthRead();
@@ -64,20 +64,20 @@ void LeavsApp::setup()
     engine->setup(config);
 }
 
-void LeavsApp::shutdown()
+void Lvs::shutdown()
 {
     engine->shutdown();
     delete engine;
 }
 
-void LeavsApp::mouseDown( MouseEvent event ) { engine->mouseDown ( event ); }
-void LeavsApp::mouseMove( MouseEvent event ) { engine->mouseMove ( event ); }
-void LeavsApp::mouseUp  ( MouseEvent event ) { engine->mouseUp   ( event ); }
-void LeavsApp::mouseDrag( MouseEvent event ) { engine->mouseDrag ( event ); }
+void Lvs::mouseDown( MouseEvent event ) { engine->mouseDown ( event ); }
+void Lvs::mouseMove( MouseEvent event ) { engine->mouseMove ( event ); }
+void Lvs::mouseUp  ( MouseEvent event ) { engine->mouseUp   ( event ); }
+void Lvs::mouseDrag( MouseEvent event ) { engine->mouseDrag ( event ); }
 
 
-void LeavsApp::update() { engine->update(); }
-void LeavsApp::draw() { engine->draw(); }
-void LeavsApp::keyDown( KeyEvent event ) { engine->keyDown(event); }
+void Lvs::update() { engine->update(); }
+void Lvs::draw() { engine->draw(); }
+void Lvs::keyDown( KeyEvent event ) { engine->keyDown(event); }
 
-CINDER_APP_BASIC( LeavsApp, RendererGl )
+CINDER_APP_BASIC( Lvs, RendererGl )

@@ -28,11 +28,12 @@
 		053BA841163D79B40095EBEF /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83B163D79B30095EBEF /* kiss_fft.c */; };
 		053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83D163D79B30095EBEF /* kiss_fftr.c */; };
 		053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83F163D79B30095EBEF /* KissFFT.cpp */; };
+		0567EEDB188F025A006ED0EB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0567EEDA188F025A006ED0EB /* Accelerate.framework */; };
+		0567EEDD188F02A0006ED0EB /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0567EEDC188F02A0006ED0EB /* CoreAudio.framework */; };
+		0567EEDF188F02CC006ED0EB /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0567EEDE188F02CC006ED0EB /* QTKit.framework */; };
 		056A1DF818776E7C001AF7BD /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DF718776E7C001AF7BD /* AudioUnit.framework */; };
 		056A1DFA18776EAC001AF7BD /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DF918776EAC001AF7BD /* CoreServices.framework */; };
 		056A1DFC18776EC1001AF7BD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */; };
-		056A1DFE18776F4A001AF7BD /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFD18776F4A001AF7BD /* CoreAudio.framework */; };
-		056A1E0018776F83001AF7BD /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFF18776F83001AF7BD /* Accelerate.framework */; };
 		05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED91670A04B00FD39B7 /* LVSEngine.cpp */; };
 		05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */; };
 		05782EE91670A04B00FD39B7 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDD1670A04B00FD39B7 /* Player.cpp */; };
@@ -79,8 +80,6 @@
 		05C65FCE188C5C6E00D0E22A /* 99_04.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 05C65FB1188C5C6E00D0E22A /* 99_04.ogg */; };
 		05C65FCF188C5C6E00D0E22A /* 99_99.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 05C65FB2188C5C6E00D0E22A /* 99_99.ogg */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
-		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
-		53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E3CDFB0E86099300238D2B /* Carbon.framework */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,11 +153,13 @@
 		053BA83F163D79B30095EBEF /* KissFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KissFFT.cpp; sourceTree = "<group>"; };
 		053BA840163D79B30095EBEF /* KissFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissFFT.h; sourceTree = "<group>"; };
 		054B263716751DA60088AD3A /* FadeObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FadeObserver.h; sourceTree = "<group>"; };
+		0567EEDA188F025A006ED0EB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0567EEDC188F02A0006ED0EB /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		0567EEDE188F02CC006ED0EB /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
+		0567EEE0188F048F006ED0EB /* libcinder.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcinder.a; path = ../../cinder_dev/cinder_master/lib/libcinder.a; sourceTree = "<group>"; };
 		056A1DF718776E7C001AF7BD /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AudioUnit.framework; sourceTree = DEVELOPER_DIR; };
 		056A1DF918776EAC001AF7BD /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
-		056A1DFD18776F4A001AF7BD /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
-		056A1DFF18776F83001AF7BD /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		05734F141670C9AA00205DAD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 		05782ED71670A04B00FD39B7 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		05782ED81670A04B00FD39B7 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
@@ -222,15 +223,12 @@
 		05C65FB1188C5C6E00D0E22A /* 99_04.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = 99_04.ogg; path = ../resources/99_04.ogg; sourceTree = "<group>"; };
 		05C65FB2188C5C6E00D0E22A /* 99_99.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = 99_99.ogg; path = ../resources/99_99.ogg; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Lvs_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lvs_Prefix.pch; sourceTree = "<group>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
-		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
-		53E3CDFB0E86099300238D2B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* LVS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LVS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Lvs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lvs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,19 +236,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				056A1E0018776F83001AF7BD /* Accelerate.framework in Frameworks */,
-				056A1DFE18776F4A001AF7BD /* CoreAudio.framework in Frameworks */,
+				05A270A417B1452900A23855 /* libpd-osx.a in Frameworks */,
+				05A270B017B163BF00A23855 /* portaudio.a in Frameworks */,
+				0567EEDF188F02CC006ED0EB /* QTKit.framework in Frameworks */,
+				0567EEDD188F02A0006ED0EB /* CoreAudio.framework in Frameworks */,
+				0567EEDB188F025A006ED0EB /* Accelerate.framework in Frameworks */,
 				056A1DFC18776EC1001AF7BD /* AudioToolbox.framework in Frameworks */,
 				056A1DFA18776EAC001AF7BD /* CoreServices.framework in Frameworks */,
 				056A1DF818776E7C001AF7BD /* AudioUnit.framework in Frameworks */,
-				05A270A417B1452900A23855 /* libpd-osx.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				0091D8F90E81B9330029341E /* OpenGL.framework in Frameworks */,
-				53E3CDFC0E86099300238D2B /* Carbon.framework in Frameworks */,
 				5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */,
-				5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */,
 				0097E3E50F3E9819005A4392 /* QuickTime.framework in Frameworks */,
-				05A270B017B163BF00A23855 /* portaudio.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,9 +414,7 @@
 				056A1DF918776EAC001AF7BD /* CoreServices.framework */,
 				056A1DF718776E7C001AF7BD /* AudioUnit.framework */,
 				0097E3E40F3E9819005A4392 /* QuickTime.framework */,
-				5323E6B50EAFCA7E003A9687 /* QTKit.framework */,
 				5323E6B10EAFCA74003A9687 /* CoreVideo.framework */,
-				53E3CDFB0E86099300238D2B /* Carbon.framework */,
 				0091D8F80E81B9330029341E /* OpenGL.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -430,7 +425,6 @@
 			isa = PBXGroup;
 			children = (
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -438,7 +432,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* LVS.app */,
+				8D1107320486CEB800E47090 /* Lvs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -513,8 +507,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				056A1DFF18776F83001AF7BD /* Accelerate.framework */,
-				056A1DFD18776F4A001AF7BD /* CoreAudio.framework */,
+				0567EEE0188F048F006ED0EB /* libcinder.a */,
+				0567EEDE188F02CC006ED0EB /* QTKit.framework */,
+				0567EEDA188F025A006ED0EB /* Accelerate.framework */,
+				0567EEDC188F02A0006ED0EB /* CoreAudio.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -542,7 +538,7 @@
 			name = Lvs;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Leavs;
-			productReference = 8D1107320486CEB800E47090 /* LVS.app */;
+			productReference = 8D1107320486CEB800E47090 /* Lvs.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -551,8 +547,8 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = Lumeet;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = vae.fi;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Lvs" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -707,7 +703,7 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CINDER_PATH = ../../cinder_0.8.5_mac;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -726,7 +722,9 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../portaudio/lib/.libs\"",
+					"\\\"$(SRCROOT)/../../portaudio/lib/.libs\\\"",
+					/Users/vae/Documents/code/portaudio/lib/.libs,
+					/Users/vae/Documents/code/cinder_dev/cinder_master/lib,
 				);
 				LLVM_LTO = NO;
 				LLVM_VECTORIZE_LOOPS = NO;
@@ -735,8 +733,8 @@
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					"-lcurl",
 				);
-				PRODUCT_NAME = LVS;
-				SDKROOT = macosx10.8;
+				PRODUCT_NAME = Lvs;
+				SDKROOT = macosx;
 				SYMROOT = ./build;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../libpd/** ../../portaudio/include/**";
 				WRAPPER_EXTENSION = app;
@@ -746,7 +744,7 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CINDER_PATH = ../../cinder_0.8.5_mac;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -767,7 +765,9 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../portaudio/lib/.libs\"",
+					"\\\"$(SRCROOT)/../../portaudio/lib/.libs\\\"",
+					/Users/vae/Documents/code/portaudio/lib/.libs,
+					/Users/vae/Documents/code/cinder_dev/cinder_master/lib,
 				);
 				LLVM_LTO = YES;
 				LLVM_VECTORIZE_LOOPS = YES;
@@ -776,8 +776,8 @@
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
 					"-lcurl",
 				);
-				PRODUCT_NAME = LVS;
-				SDKROOT = macosx10.8;
+				PRODUCT_NAME = Lvs;
+				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 				SYMROOT = ./build;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include ../../libpd/** ../../portaudio/include/**";
@@ -789,15 +789,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CINDER_PATH = ../../cinder_dev/cinder_master;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Lvs;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Debug;
@@ -806,7 +807,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CINDER_PATH = ../../cinder_dev/cinder_master;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -814,7 +815,7 @@
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = Lvs;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Release;
