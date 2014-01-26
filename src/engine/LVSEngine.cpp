@@ -13,6 +13,7 @@
 #define S_GAMEOVER  3
 #define S_VICTORY   4
 #define S_QUITTING  5
+#define S_OVER      6
 
 #define FADEFADER 0
 #define GAMEFADER 1
@@ -29,8 +30,12 @@
 #include "TileLevel.h"
 #include "HighScores.h"
 
-void LVSEngine::setup(Configuration *config)
+#include "../LeavsApp.h"
+
+void LVSEngine::setup(Lvs *lvsApp, Configuration *config)
 {
+	mApp = lvsApp;
+
     fadeVal = 1.0;
     timeRunningOut = false;
 
@@ -130,7 +135,9 @@ void LVSEngine::loadAll() {
 
 void LVSEngine::update()
 {
-    checkVictory();
+	if (gameState == S_OVER) return;
+
+	checkVictory();
     mFaders->update();
     
     switch (gameState) {
@@ -196,6 +203,8 @@ inline void LVSEngine::drawGame(float lightness)
 
 void LVSEngine::draw()
 {
+	if (gameState == S_OVER) return;
+
     gl::clear( Color( 0.0, 0.0, 0.0 ) );
     
     float lightness = sin(getElapsedSeconds() / 10);
@@ -381,7 +390,7 @@ void LVSEngine::quitGame()
     mMenu->deactivate();
     mAudio->e_gameQuit();
     
-    screenFader->fade(1.0, 3.0);
+    screenFader->fade(1.0, 4.0);
 }
 
 void LVSEngine::gameOver()
@@ -417,8 +426,10 @@ void LVSEngine::onFadeEnd(int typeId)
         // Final fade, quit game
         else if (gameState == S_QUITTING) {
             gl::clear( Color( 0, 0, 0 ) );
-            shutdown();
-            exit(0);
+            //shutdown();
+            //exit(0);
+			gameState = S_OVER;
+			mApp->quit();
         }
         else if (gameState == S_VICTORY) {
             resetGame();

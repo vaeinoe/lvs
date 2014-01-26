@@ -25,9 +25,17 @@ using namespace std;
 #define FONT_TYPE_MEDIUM 1
 #define FONT_TYPE_LARGE  2
 
+#ifdef __APPLE__
 #define FONT_SIZE_SMALL  14
 #define FONT_SIZE_MEDIUM 32
 #define FONT_SIZE_LARGE  56
+#endif
+
+#ifdef _WIN32
+#define FONT_SIZE_SMALL  16
+#define FONT_SIZE_MEDIUM 38
+#define FONT_SIZE_LARGE  64
+#endif
 
 #define NUM_ANGLES 32
 
