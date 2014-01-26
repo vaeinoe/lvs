@@ -10,6 +10,10 @@
 #include <iostream>
 #include <fstream>
 #include "../Base64.h"
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/ini_parser.hpp>
+
+#define WIN32_SCORE_FILE "lvs.ini"
 
 using namespace std;
 
@@ -46,7 +50,7 @@ inline void HighScores::loadScoreFile() {
 #endif
     
 #ifdef _WIN32
-    
+    scoreStr = loadScoreWin32();
 #endif
     
     topScore = decodeScore(scoreStr);
@@ -60,7 +64,7 @@ inline void HighScores::saveScoreFile() {
 #endif
     
 #ifdef _WIN32
-    
+    saveScoreWin32(highScore);
 #endif
 }
 
@@ -105,3 +109,22 @@ void HighScores::saveScore(int score) {
         saveScoreFile();
     }
 }
+
+#ifdef _WIN32
+void HighScores::saveScoreWin32(string score) {
+	using boost::property_tree::ptree;
+
+	ptree pt;
+	pt.put("lvs.score", score);
+
+	write_ini( WIN32_SCORE_FILE, pt );
+}
+
+string HighScores::loadScoreWin32() {
+	using boost::property_tree::ptree;
+
+	ptree pt;
+	boost::property_tree::ini_parser::read_ini(WIN32_SCORE_FILE, pt);
+	return pt.get<std::string>("lvs.score");
+}
+#endif

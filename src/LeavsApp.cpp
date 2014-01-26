@@ -1,27 +1,11 @@
+#pragma once
 #include "engine/Common.h"
 #include "engine/LVSEngine.h"
+#include "LeavsApp.h"
 
 using namespace ci;
 using namespace ci::app;
 using namespace std;
-
-class Lvs : public AppBasic {
-public:
-	void setup();
-	void update();
-	void draw();
-	void shutdown();
-//	void guiEvent( ciUIEvent *event );
-	void prepareSettings( Settings *settings );
-    void mouseDown ( MouseEvent event );
-    void mouseMove ( MouseEvent event );
-    void mouseUp ( MouseEvent event );
-    void mouseDrag ( MouseEvent event );
-    void keyDown( KeyEvent event );
-    //void resize	( ResizeEvent event ) { };
-private:
-    LVSEngine *engine;
-};
 
 void Lvs::prepareSettings( Settings *settings )
 {
@@ -69,7 +53,7 @@ void Lvs::setup()
 	// App::addAssetDirectory("content");
     
     engine = new LVSEngine();
-    engine->setup(config);
+    engine->setup(this, config);
 }
 
 void Lvs::shutdown()

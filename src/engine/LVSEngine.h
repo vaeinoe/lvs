@@ -20,10 +20,11 @@ class Mainmenu;
 class FaderPack;
 class Fader;
 class OverlayFxManager;
+class Lvs;
 
 class LVSEngine : public FadeObserver {
 public:
-	void setup(Configuration *config);
+	void setup(Lvs *lvsApp, Configuration *config);
 	void update();
 	void draw();
 	void shutdown();
@@ -58,6 +59,8 @@ public:
     bool isVictory();
 
 private:
+	Lvs *mApp;
+
     inline bool checkVictory();
     inline void checkTime();
     

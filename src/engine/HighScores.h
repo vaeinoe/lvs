@@ -30,5 +30,9 @@ private:
     string encodeScore(int score);
     Configuration *mConfig;
     bool active;
+#ifdef _WIN32
+	void saveScoreWin32(string score);
+	string loadScoreWin32();
+#endif
 };
 

@@ -90,7 +90,7 @@
       <ShowProgress>true</ShowProgress>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>libpd.lib;cinder.lib;KissFFT.lib;portaudio_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libpd.lib;cinder.lib;KissFFT.lib;portaudio.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\libpd\libs;..\..\portaudio\build\msvc\Win32\ReleaseMinDependency;..\..\cinder_0.8.5_vc2010\lib;..\..\cinder_0.8.5_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
@@ -157,6 +157,7 @@
     <ClInclude Include="..\src\engine\WProgressBar.h" />
     <ClInclude Include="..\src\engine\WTextButton.h" />
     <ClInclude Include="..\src\engine\WTextLabel.h" />
+    <ClInclude Include="..\src\LeavsApp.h" />
     <ClInclude Include="..\src\stb_vorbis.h" />
   </ItemGroup>
   <ItemGroup>
