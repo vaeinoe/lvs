@@ -1,5 +1,4 @@
 #define STB_VORBIS_NO_STDIO
-#define STB_VORBIS_NO_FAST_SCALED_FLOAT
 
 // Ogg Vorbis I audio decoder  -- version 0.99996
 //

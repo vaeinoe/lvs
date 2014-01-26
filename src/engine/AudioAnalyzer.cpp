@@ -12,12 +12,12 @@ void AudioAnalyzer::setup(Configuration *config)
 {
     mConfig = config;
     audioSize = 0;
-	audioFloat = NULL;
+    audioFloat = NULL;
 
     for (int i = 0; i < 5; i++) {
         PolyLine<Vec2f> line;
-		line.push_back(Vec2f(0,0));
-		line.push_back(Vec2f(0,0));
+        line.push_back(Vec2f(0,0));
+        line.push_back(Vec2f(0,0));
         prevLines[i] = line;
     }
 }
