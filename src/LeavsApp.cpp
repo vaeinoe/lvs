@@ -1,4 +1,3 @@
-#pragma once
 #include "engine/Common.h"
 #include "engine/LVSEngine.h"
 #include "LeavsApp.h"

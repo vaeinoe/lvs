@@ -187,6 +187,7 @@
 		05A823A4188C1FF6009B5EDB /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base64.cpp; path = ../src/Base64.cpp; sourceTree = "<group>"; };
 		05A823A6188C222E009B5EDB /* Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../src/Base64.h; sourceTree = "<group>"; };
 		05A823A7188C59BE009B5EDB /* stb_vorbis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stb_vorbis.c; path = ../src/stb_vorbis.c; sourceTree = "<group>"; };
+		05A8BDBF18959EC7001A3C12 /* LeavsApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeavsApp.h; path = ../src/LeavsApp.h; sourceTree = "<group>"; };
 		05BA87E6167CBFD400FC9B6F /* WProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WProgressBar.cpp; sourceTree = "<group>"; };
 		05BA87E7167CBFD400FC9B6F /* WProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WProgressBar.h; sourceTree = "<group>"; };
 		05C4A76C1678DE0600777C55 /* OverlayFxManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverlayFxManager.cpp; sourceTree = "<group>"; };
@@ -397,6 +398,7 @@
 				05782ED21670A04B00FD39B7 /* engine */,
 				053BA838163D79B30095EBEF /* kissfft */,
 				00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */,
+				05A8BDBF18959EC7001A3C12 /* LeavsApp.h */,
 				05A823A4188C1FF6009B5EDB /* Base64.cpp */,
 				05A823A6188C222E009B5EDB /* Base64.h */,
 				05A823A7188C59BE009B5EDB /* stb_vorbis.c */,
