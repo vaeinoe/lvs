@@ -47,7 +47,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss;..\..\irrKlang-1.4.0\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\libpd\libpd_wrapper\util;..\..\libpd\pure-data\src;..\..\libpd\libpd_wrapper;..\..\libpd\cpp;..\..\portaudio\include;..\include;..\..\cinder_0.8.5_vc2010\include;..\..\cinder_0.8.5_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -61,8 +61,8 @@
       <AdditionalIncludeDirectories>..\..\cinder_0.8.4_vc2010\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder_d.lib;KissFFT_d.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_vc2010\lib;..\..\cinder_0.8.4_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;..\..\irrKlang-1.4.0\lib\Win32-visualStudio;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libpd.lib;cinder.lib;KissFFT.lib;portaudio_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\libpd\libs;..\..\portaudio\build\msvc\Win32\ReleaseMinDependency;..\..\cinder_0.8.5_vc2010\lib;..\..\cinder_0.8.5_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -74,7 +74,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\cinder_0.8.4_vc2010\include;..\..\cinder_0.8.4_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss;..\..\irrKlang-1.4.0\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\libpd\libpd_wrapper\util;..\..\libpd\pure-data\src;..\..\libpd\libpd_wrapper;..\..\libpd\cpp;..\..\portaudio\include;..\include;..\..\cinder_0.8.5_vc2010\include;..\..\cinder_0.8.5_vc2010\boost;..\..\Cinder-KissFft\src;..\..\Cinder-KissFft\src\kiss</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -86,12 +86,13 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>..\..\cinder_0.8.4_vc2010\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\cinder_0.8.5_vc2010\include;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ShowProgress>true</ShowProgress>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>cinder.lib;KissFFT.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\cinder_0.8.4_vc2010\lib;..\..\cinder_0.8.4_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;..\..\irrKlang-1.4.0\lib\Win32-visualStudio;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>libpd.lib;cinder.lib;KissFFT.lib;portaudio_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\libpd\libs;..\..\portaudio\build\msvc\Win32\ReleaseMinDependency;..\..\cinder_0.8.5_vc2010\lib;..\..\cinder_0.8.5_vc2010\lib\msw;..\..\Cinder-KissFft\lib\msw;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -104,12 +105,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\engine\Audio.cpp" />
+    <ClCompile Include="..\..\libpd\cpp\PdBase.cpp" />
+    <ClCompile Include="..\..\libpd\cpp\PdTypes.cpp" />
+    <ClCompile Include="..\src\Base64.cpp" />
     <ClCompile Include="..\src\engine\AudioAnalyzer.cpp" />
-    <ClCompile Include="..\src\engine\AudioFx.cpp" />
-    <ClCompile Include="..\src\engine\AudioTrack.cpp" />
+    <ClCompile Include="..\src\engine\AudioEngine.cpp" />
     <ClCompile Include="..\src\engine\Fader.cpp" />
     <ClCompile Include="..\src\engine\FaderPack.cpp" />
+    <ClCompile Include="..\src\engine\HighScores.cpp" />
     <ClCompile Include="..\src\engine\LVSEngine.cpp" />
     <ClCompile Include="..\src\engine\Mainmenu.cpp" />
     <ClCompile Include="..\src\engine\OverlayFx.cpp" />
@@ -123,24 +126,30 @@
     <ClCompile Include="..\src\engine\WTextButton.cpp" />
     <ClCompile Include="..\src\engine\WTextLabel.cpp" />
     <ClCompile Include="..\src\LeavsApp.cpp" />
+    <ClCompile Include="..\src\stb_vorbis.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\libpd\cpp\PdBase.hpp" />
+    <ClInclude Include="..\..\libpd\cpp\PdMidiReceiver.hpp" />
+    <ClInclude Include="..\..\libpd\cpp\PdReceiver.hpp" />
+    <ClInclude Include="..\..\libpd\cpp\PdTypes.hpp" />
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\src\engine\Audio.h" />
+    <ClInclude Include="..\src\Base64.h" />
     <ClInclude Include="..\src\engine\AudioAnalyzer.h" />
-    <ClInclude Include="..\src\engine\AudioFx.h" />
-    <ClInclude Include="..\src\engine\AudioTrack.h" />
+    <ClInclude Include="..\src\engine\AudioEngine.h" />
     <ClInclude Include="..\src\engine\Common.h" />
     <ClInclude Include="..\src\engine\Configuration.h" />
     <ClInclude Include="..\src\engine\FadeObserver.h" />
     <ClInclude Include="..\src\engine\Fader.h" />
     <ClInclude Include="..\src\engine\FaderPack.h" />
+    <ClInclude Include="..\src\engine\HighScores.h" />
     <ClInclude Include="..\src\engine\LevelData.h" />
     <ClInclude Include="..\src\engine\LVSEngine.h" />
     <ClInclude Include="..\src\engine\Mainmenu.h" />
     <ClInclude Include="..\src\engine\OverlayFx.h" />
     <ClInclude Include="..\src\engine\OverlayFxManager.h" />
     <ClInclude Include="..\src\engine\Player.h" />
+    <ClInclude Include="..\src\engine\PreferenceWrapper.h" />
     <ClInclude Include="..\src\engine\Tile.h" />
     <ClInclude Include="..\src\engine\TileLevel.h" />
     <ClInclude Include="..\src\engine\Toolbar.h" />
@@ -148,9 +157,13 @@
     <ClInclude Include="..\src\engine\WProgressBar.h" />
     <ClInclude Include="..\src\engine\WTextButton.h" />
     <ClInclude Include="..\src\engine\WTextLabel.h" />
+    <ClInclude Include="..\src\stb_vorbis.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\engine\PreferenceWrapper.mm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

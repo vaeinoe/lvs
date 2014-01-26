@@ -19,17 +19,13 @@
 #define TICK 8
 #define PATCH_FILE "lvs.pd"
 
-typedef struct AudioResource {
-    DataSourceRef file;
-    string name;
-} AudioResource;
-
 int pa_callback(const void *inputBuffer, void *outputBuffer,
-                             unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo,
-                             PaStreamCallbackFlags statusFlags, void *userData ) {    
+                unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo,
+                PaStreamCallbackFlags statusFlags, void *userData ) {
     AudioEngine *engine = ((AudioEngine*)userData);
     engine->processFloat(TICK, NULL, (float *)outputBuffer);
     engine->updateAnalyzer(outputBuffer, framesPerBuffer);
+
     return 0;
 }
 
@@ -58,11 +54,29 @@ void AudioEngine::initAudio() {
                          "99_01", "99_02", "99_03", "99_04", "99_99" };
 
     DataSourceRef ref;
+	Patch patch;
+	bool success;
+
     switch (loadState) {
         case 0:
+            analyzer = new AudioAnalyzer();
+            analyzer->setup(mConfig);
+
             src = new PdBase();
-            src->init(0, NBCHANNEL, SAMPLE_RATE);
-            src->openPatch(PATCH_FILE, App::getResourcePath().string());
+            success = src->init(0, NBCHANNEL, SAMPLE_RATE);
+            assert(success == true);
+
+#ifdef __APPLE__
+            patch = src->openPatch(PATCH_FILE, App::getResourcePath().string());
+            assert(patch.isValid() == true);
+#endif
+#ifdef _WIN32
+            src->addToSearchPath(toString(getAppPath()));
+            src->addToSearchPath(toString(getAssetPath("")));
+
+            patch = src->openPatch(PATCH_FILE, ".");
+            assert(patch.isValid() == true);
+#endif
             
             break;
         case 1:
@@ -82,12 +96,8 @@ void AudioEngine::initAudio() {
                 ref = getAudioResource(files[i]);
                 loadOGGToArray(ref, files[i]);
             }
-            
             src->computeAudio(true);
             initPA();
-
-            analyzer = new AudioAnalyzer();
-            analyzer->setup(mConfig);
 
             break;
     }
@@ -98,6 +108,8 @@ void AudioEngine::initAudio() {
 void AudioEngine::loadOGGToArray(DataSourceRef ref, string id) {
     string arr_l    = id + "_l";
     string arr_r    = id + "_r";
+
+    assert(ref);
 
     Buffer buf = ref->getBuffer();
     size_t dataSize = buf.getDataSize();
@@ -122,8 +134,8 @@ void AudioEngine::loadOGGToArray(DataSourceRef ref, string id) {
         }
     }
     
-    //cout << "buffer id: " << id << " data size: " << toString(dataSize) << ", channels: " << channels << ", samples per channel: "
-    //<< toString(sample_count) << "\n";
+    // cout << "buffer id: " << id << " data size: " << toString(dataSize) << ", channels: " << channels << ", samples per channel: "
+    // << toString(sample_count) << "\n";
 
     bool success_l, success_r;
     
@@ -151,14 +163,14 @@ void AudioEngine::loadOGGToArray(DataSourceRef ref, string id) {
 
 void AudioEngine::initPA() {
     // Initialize PortAudio
-	PaStreamParameters inputParameters, outputParameters;
+
+    PaStreamParameters inputParameters, outputParameters;
     PaError err;
     
     err = Pa_Initialize();
     if( err != paNoError ) portAudioError(err);
-    
-	// input
-    inputParameters.device = Pa_GetDefaultInputDevice(); /* default input device */
+
+    inputParameters.device = Pa_GetDefaultInputDevice(); /* default input device */	
     if (inputParameters.device == paNoDevice) portAudioError(err);
     
     inputParameters.channelCount = NBCHANNEL;
@@ -166,7 +178,6 @@ void AudioEngine::initPA() {
     inputParameters.suggestedLatency = Pa_GetDeviceInfo( inputParameters.device )->defaultHighInputLatency;
     inputParameters.hostApiSpecificStreamInfo = NULL;
     
-	// output
     outputParameters.device = Pa_GetDefaultOutputDevice(); /* default output device */
     if (outputParameters.device == paNoDevice) portAudioError(err);
     
@@ -174,9 +185,9 @@ void AudioEngine::initPA() {
     outputParameters.sampleFormat = paFloat32;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo( outputParameters.device )->defaultHighOutputLatency;
     outputParameters.hostApiSpecificStreamInfo = NULL;
-    
+
     err = Pa_OpenStream(&stream,
-                        &inputParameters,
+                        NULL,
                         &outputParameters,
                         SAMPLE_RATE,
                         BLOCKSIZE,
@@ -201,6 +212,8 @@ void AudioEngine::processMessages() {
 void AudioEngine::shutdown() {
     Pa_StopStream(stream);
     Pa_Terminate();
+    //src->clear();
+    //delete src;
 }
 
 void AudioEngine::portAudioError(PaError err) {

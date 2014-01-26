@@ -13,143 +13,175 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="Source Files\engine">
-      <UniqueIdentifier>{0654d22e-ab65-4345-a2a7-009a7d85ecdc}</UniqueIdentifier>
+    <Filter Include="Source Files\pd">
+      <UniqueIdentifier>{41003e8c-bd47-4c39-b7e1-3d5a009447a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\LeavsApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\engine\Audio.cpp">
-      <Filter>Source Files\engine</Filter>
+    <ClCompile Include="..\src\Base64.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\engine\AudioTrack.cpp">
-      <Filter>Source Files\engine</Filter>
+    <ClCompile Include="..\src\stb_vorbis.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\engine\LVSEngine.cpp">
-      <Filter>Source Files\engine</Filter>
+    <ClCompile Include="..\src\engine\AudioEngine.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\engine\Mainmenu.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\engine\Player.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\engine\Tile.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\engine\Toolbar.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\engine\World.cpp">
-      <Filter>Source Files\engine</Filter>
+    <ClCompile Include="..\src\engine\HighScores.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\engine\AudioAnalyzer.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\engine\AudioFx.cpp">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\engine\Fader.cpp">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\engine\FaderPack.cpp">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\LVSEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Mainmenu.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\engine\OverlayFx.cpp">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\engine\OverlayFxManager.cpp">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\engine\WProgressBar.cpp">
-      <Filter>Source Files\engine</Filter>
+    <ClCompile Include="..\src\engine\Player.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\engine\WTextButton.cpp">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\engine\WTextLabel.cpp">
-      <Filter>Source Files\engine</Filter>
+    <ClCompile Include="..\src\engine\Tile.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\engine\TileLevel.cpp">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\Toolbar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\WProgressBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\WTextButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\engine\WTextLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libpd\cpp\PdTypes.cpp">
+      <Filter>Source Files\pd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libpd\cpp\PdBase.cpp">
+      <Filter>Source Files\pd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\World.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\Base64.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\Audio.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\stb_vorbis.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\AudioTrack.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\engine\AudioEngine.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\Common.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\engine\HighScores.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\Configuration.h">
-      <Filter>Source Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\engine\LVSEngine.h">
-      <Filter>Source Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\engine\Mainmenu.h">
-      <Filter>Source Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\engine\Player.h">
-      <Filter>Source Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\engine\Tile.h">
-      <Filter>Source Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\engine\Toolbar.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\engine\PreferenceWrapper.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\AudioAnalyzer.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\AudioFx.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\engine\Common.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Configuration.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\FadeObserver.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\Fader.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\FaderPack.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\LevelData.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\LVSEngine.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Mainmenu.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\OverlayFx.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\OverlayFxManager.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\WProgressBar.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\engine\Player.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\engine\WTextButton.h">
-      <Filter>Source Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\engine\WTextLabel.h">
-      <Filter>Source Files\engine</Filter>
+    <ClInclude Include="..\src\engine\Tile.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\TileLevel.h">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\Toolbar.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\World.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\WProgressBar.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\WTextButton.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\engine\WTextLabel.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libpd\cpp\PdMidiReceiver.hpp">
+      <Filter>Source Files\pd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libpd\cpp\PdReceiver.hpp">
+      <Filter>Source Files\pd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libpd\cpp\PdTypes.hpp">
+      <Filter>Source Files\pd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libpd\cpp\PdBase.hpp">
+      <Filter>Source Files\pd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\engine\PreferenceWrapper.mm">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

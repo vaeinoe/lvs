@@ -54,8 +54,14 @@ using namespace std;
 #define GAME_NAME "lvs"
 #define ENDGAME_STR "fin."
 #define WINGAME_STR "you are victorious."
-#define GAME_START_STR "commence."
+#define GAME_START_STR "match vertical rows to play the song."
 
+#ifdef __APPLE__
 #define GAME_FONT "Helvetica Bold"
+#endif
+
+#ifdef _WIN32
+#define GAME_FONT "Arial Bold"
+#endif
 
 #define HIGHSCORE_KEY "30DFB6B8LONG1D8D4CAT929A3CFIS4D0726LONGCC05E7"

@@ -33,6 +33,12 @@ void Lvs::prepareSettings( Settings *settings )
 
 void Lvs::setup()
 {
+//Used for WIN32 ad hoc debugging
+//AllocConsole();
+//freopen("CONIN$", "r", stdin);
+//freopen("CONOUT$", "w", stdout);
+//freopen("CONOUT$", "w", stderr);
+
     gl::disableVerticalSync();
     gl::disableDepthRead();
     gl::disableDepthWrite();
@@ -59,6 +65,8 @@ void Lvs::setup()
     config->padding_y = 20.0f;
     config->numTileTypes = TILE_TYPES;
     config->solverDelayFrames = 2;
+
+	// App::addAssetDirectory("content");
     
     engine = new LVSEngine();
     engine->setup(config);

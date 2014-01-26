@@ -435,9 +435,9 @@ void LVSEngine::onFadeEnd(int typeId)
 
 void LVSEngine::shutdown()
 {
+    mAudio->shutdown();
     mToolbar->shutdown();
     mWorld->shutdown();
-    mAudio->shutdown();
     mPlayer->shutdown();
     mMenu->shutdown();
     mFaders->shutdown();
