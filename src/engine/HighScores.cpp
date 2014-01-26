@@ -10,8 +10,11 @@
 #include <iostream>
 #include <fstream>
 #include "../Base64.h"
+
+#ifdef _WIN32
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
+#endif
 
 #define WIN32_SCORE_FILE "lvs.ini"
 
