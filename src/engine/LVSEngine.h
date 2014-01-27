@@ -52,6 +52,8 @@ public:
                         const int numSegments, const ColorA &color );
     void bufferSolidCircle( const Vec2f &center, const float radius,
                             int numSegments, const ColorA &color );
+    void bufferStrokedStar( const Vec2f &center, const float radius,
+                            int numSegments, float slimness, const ColorA &color);
     void bufferLine( const Vec2f start, const Vec2f end,
                      const ColorA colorStart, const ColorA colorEnd );
     
