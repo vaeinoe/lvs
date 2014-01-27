@@ -331,35 +331,43 @@ inline void Tile::drawPlant(Vec2f draw_pos, float val, int level) {
         }       
     }
 
-    // TODO
-    else if (level == 2) {
-        int segments = 4;
-        for (int i = 0; i < FILTER_SIZE; i++) {
-            float a = i * 1.0 / FILTER_SIZE;
+    else if (level == 3) {
+        int segments = 16;
+        float slimness = 0.66;
+        int n = FILTER_SIZE - 4;
+        for (int i = 3; i < n - 2; i++) {
+            float a = i * 1.0 / n + 0.1;
             ColorA color;
             if (growing) {
                 color = ColorA(0.5 * val * i, 0.5 * val * i, 0.5 * val * i, a * baseAlpha * 0.2);
             }
             else {
-                color = ColorA(0.25, 0.75 * val * i, 0.4, a * baseAlpha * 0.5);
+                color = ColorA(0.6,
+                               0.75 * val * i,
+                               0.2,
+                               a * baseAlpha * 0.6);
             }
-            mConfig->engine->bufferStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2) * 0.75, segments, color );
+            mConfig->engine->bufferStrokedStar( draw_pos, prevTileSize[i] - (n - i) * (mConfig->tileBorderSpacing) * 0.6, segments, slimness, color );
         }
     }
 
-    // TODO
-    else if (level == 3) {
-        int segments = 4;
-        for (int i = 0; i < FILTER_SIZE; i++) {
-            float a = i * 1.0 / FILTER_SIZE;
+    else if (level == 2) {
+        int segments = 12;
+        float slimness = 0.60;
+        int n = FILTER_SIZE - 6;
+        for (int i = 2; i < n - 2; i++) {
+            float a = i * 1.0 / n + 0.1;
             ColorA color;
             if (growing) {
                 color = ColorA(0.5 * val * i, 0.5 * val * i, 0.5 * val * i, a * baseAlpha * 0.2);
             }
             else {
-                color = ColorA(0.25, 0.75 * val * i, 0.4, a * baseAlpha * 0.5);
+                color = ColorA(0.5,
+                               0.75 * val * i,
+                               0.2,
+                               a * baseAlpha * 0.55);
             }
-            mConfig->engine->bufferStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2) * 0.75, segments, color );
+            mConfig->engine->bufferStrokedStar( draw_pos, prevTileSize[i] - (n - i) * (mConfig->tileBorderSpacing) * 0.6, segments, slimness, color );
         }
     }
 
@@ -403,35 +411,43 @@ inline void Tile::drawGram(Vec2f draw_pos, float val, int level)
         }        
     }
 
-    // TODO
-    else if (level == 2) {
-        int segments = 4;
-        for (int i = 0; i < FILTER_SIZE; i++) {
-            float a = i * 1.0 / FILTER_SIZE;
+    else if (level == 3) {
+        int n = FILTER_SIZE - 2;
+        float slimness = 0.7;
+        int numSegments = 16;
+        for (int i = 0; i < n; i++) {
+            float a = (i * 1.0 / n) + 0.1;
             ColorA color;
             if (growing) {
-                color = ColorA(0.1 * (i / FILTER_SIZE) * val, 0.1 * (i / FILTER_SIZE) * val, 0.1 * (i / FILTER_SIZE) * val, a * baseAlpha * 0.75);
+                color = ColorA(0.1 * (i / n) * val, 0.1 * (i / n) * val, 0.1 * (i / n) * val, a * baseAlpha * 0.75);
             }
             else {
-                color = ColorA(0.6, 0.1 * (i / FILTER_SIZE) * val, 1.0 - val * 0.25 * i, a * baseAlpha * 0.75);
+                color = ColorA(0.7,
+                               0.4 * (i / n) * val,
+                               0.1,
+                               a * baseAlpha * 0.666);
             }
-            mConfig->engine->bufferStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2) * 0.75, segments, color );
+            mConfig->engine->bufferStrokedStar( draw_pos, prevTileSize[i] - (n - i) * (mConfig->tileBorderSpacing) * 0.42, numSegments, slimness, color );
         }
     }
 
-    // TODO
-    else if (level == 3) {
-        int segments = 4;
-        for (int i = 0; i < FILTER_SIZE; i++) {
-            float a = i * 1.0 / FILTER_SIZE;
+    else if (level == 2) {
+        int n = FILTER_SIZE - 4;
+        float slimness = 0.63;
+        int numSegments = 12;
+        for (int i = 0; i < n; i++) {
+            float a = (i * 1.0 / n) - 0.1;
             ColorA color;
             if (growing) {
-                color = ColorA(0.1 * (i / FILTER_SIZE) * val, 0.1 * (i / FILTER_SIZE) * val, 0.1 * (i / FILTER_SIZE) * val, a * baseAlpha * 0.75);
+                color = ColorA(0.1 * (i / n) * val, 0.1 * (i / n) * val, 0.1 * (i / n) * val, a * baseAlpha * 0.75);
             }
             else {
-                color = ColorA(0.6, 0.1 * (i / FILTER_SIZE) * val, 1.0 - val * 0.25 * i, a * baseAlpha * 0.75);
+                color = ColorA(0.8,
+                               0.5 * (i / n) * val,
+                               0.1 * val,
+                               a * baseAlpha * 0.7);
             }
-            mConfig->engine->bufferStrokedCircle( draw_pos, prevTileSize[i] - (FILTER_SIZE - i) * (mConfig->tileBorderSpacing / 2) * 0.75, segments, color );
+            mConfig->engine->bufferStrokedStar( draw_pos, prevTileSize[i] - (n - i) * (mConfig->tileBorderSpacing) * 0.65, numSegments, slimness, color );
         }
     }
     
@@ -447,9 +463,9 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
 {
     int hexCount = 4;
 
-    // TODO
-    if (level == 3) {
-        int segments = 4;
+    if (level == 2) {
+        int segments = 12;
+        float slimness = 0.50;
         for (int i = 0; i < FILTER_SIZE; i++) {
             float a = i * 1.0 / FILTER_SIZE;
             for (int j = 0; j < hexCount; j++) {
@@ -458,17 +474,21 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
                     color = ColorA(0.1 * j * val, 0.1 * j * val, 0.1 * j * val, 0.25 * a * baseAlpha);
                 }
                 else {
-                    color = ColorA((i / FILTER_SIZE) * 0.25, 0.1 * j * val, 1.0 - val * 0.25 * j, 0.5 * a * baseAlpha);
+                    color = ColorA((i / FILTER_SIZE) * 0.25,
+                                   0.1 * j * val,
+                                   1.0 - val * 0.25 * j,
+                                   0.5 * a * baseAlpha);
                 }
                 
-                mConfig->engine->bufferStrokedCircle( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments, color );
+                mConfig->engine->bufferStrokedStar( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing * 1.1, segments, slimness, color );
             }
         }
     }
     
-    // TODO
-    else if (level == 2) {
-        int segments = 4;
+    else if (level == 3) {
+        int segments = 16;
+        float slimness = 0.62;
+        hexCount = 5;
         for (int i = 0; i < FILTER_SIZE; i++) {
             float a = i * 1.0 / FILTER_SIZE;
             for (int j = 0; j < hexCount; j++) {
@@ -477,10 +497,13 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
                     color = ColorA(0.1 * j * val, 0.1 * j * val, 0.1 * j * val, 0.25 * a * baseAlpha);
                 }
                 else {
-                    color = ColorA((i / FILTER_SIZE) * 0.25, 0.1 * j * val, 1.0 - val * 0.25 * j, 0.5 * a * baseAlpha);
+                    color = ColorA((1 - (i * 1.0 / FILTER_SIZE)) * 0.15,
+                                   0,
+                                   1.0 - val * 0.25 * j,
+                                   0.5 * a * baseAlpha);
                 }
                 
-                mConfig->engine->bufferStrokedCircle( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments, color );
+                mConfig->engine->bufferStrokedStar( draw_pos, prevTileSize[i] - (hexCount - j) * mConfig->tileBorderSpacing, segments, slimness, color );
             }
         }
     }
@@ -502,7 +525,6 @@ inline void Tile::drawHex(Vec2f draw_pos, float val, int level)
             }
         }        
     }
-    
     else if (level == 0) {
         int segments = 6;
         for (int i = 0; i < FILTER_SIZE; i++) {
@@ -551,23 +573,24 @@ inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
         }
         else {
             if (level == 3) { // TODO
-                colorStart = ColorA(0.2, 0.2, 0.2, a * baseAlpha);
+                colorStart = ColorA(1.0, 0.5, 0.0, a * baseAlpha);
                 colorEnd   = ColorA(1.0, 1.0, 1.0, a * baseAlpha);
             }
-            if (level == 2) { // TODO
+            else if (level == 2) { // TODO
+                colorStart = ColorA(0.4, 0.4, 0.2, a * baseAlpha);
+                colorEnd   = ColorA(1.0, 1.0, 1.0, a * baseAlpha);
+            } // 1
+            else if (level == 1) {
                 colorStart = ColorA(0.2, 0.2, 0.2, a * baseAlpha);
                 colorEnd   = ColorA(1.0, 1.0, 1.0, a * baseAlpha);
-            }
-            if (level == 1) {
-                colorStart = ColorA(0.2, 0.2, 0.2, a * baseAlpha);
-                colorEnd   = ColorA(1.0, 1.0, 1.0, a * baseAlpha);
-            }
+            } // 0
             else if (level == 0) {
                 colorStart = ColorA(0.0, 0.6, 1.0, a * baseAlpha);
-                colorEnd   = ColorA(1.0, 0.6, 1.0, a * baseAlpha);
+                colorEnd   = ColorA(0.8, 0.6, 0.8, a * baseAlpha);
             }
         }
         
+        // TODO: precalc!
         float angle = (i / (1.0 * LINE_COUNT)) * (2 * M_PI);
         float x = draw_pos.x + tileSize * 1.5 * cos(angle);
         float y = draw_pos.y + tileSize * 1.5 * sin(angle);

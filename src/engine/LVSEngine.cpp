@@ -501,6 +501,30 @@ void LVSEngine::bufferLine( const Vec2f start, const Vec2f end,
     lineColors.push_back(colorEnd.b); lineColors.push_back(colorEnd.a);
 }
 
+void LVSEngine::bufferStrokedStar( const Vec2f &center, const float radius, int numSegments,
+                                   float slimness, const ColorA &color) {
+    GLfloat firstX = center.x + precalcAngles[numSegments][0].x * radius;
+    GLfloat firstY = center.y + precalcAngles[numSegments][0].y * radius;
+    lineVerts.push_back(firstX); lineVerts.push_back(firstY);
+    lineColors.push_back(color.r); lineColors.push_back(color.g);
+    lineColors.push_back(color.b); lineColors.push_back(color.a);
+
+	for( int s = 1; s < numSegments; s++ ) {
+        float r = (s % 2 == 0) ? radius : radius * slimness;
+        for (int i = 0; i < 2; i++) {
+            lineVerts.push_back(center.x + precalcAngles[numSegments][s].x * r);
+            lineVerts.push_back(center.y + precalcAngles[numSegments][s].y * r);
+            lineColors.push_back(color.r); lineColors.push_back(color.g);
+            lineColors.push_back(color.b); lineColors.push_back(color.a);
+        }
+	}
+    
+    // drawing line loops = back to first vertex in the end
+    lineVerts.push_back(firstX); lineVerts.push_back(firstY);
+    lineColors.push_back(color.r); lineColors.push_back(color.g);
+    lineColors.push_back(color.b); lineColors.push_back(color.a);
+}
+
 // Adds a polygon to rendering queue
 void LVSEngine::bufferStrokedCircle( const Vec2f &center, const float radius, int numSegments, const ColorA &color )
 {
