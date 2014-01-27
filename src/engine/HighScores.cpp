@@ -90,7 +90,7 @@ int HighScores::decodeScore(string score_str) {
     }
     catch (...)
     {
-        cout << "Unable to decode high score, using default.\n";
+        // cout << "Unable to decode high score, using default.\n";
         newScore = DUMMY_SCORE;
     }
 
