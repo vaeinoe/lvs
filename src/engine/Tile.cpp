@@ -289,7 +289,7 @@ inline void Tile::drawFinished()
 
 inline void Tile::drawGrow(float lightness)
 {
-    // XXX
+    // Not used after all
 }
 
 // Draw debug label
@@ -572,11 +572,11 @@ inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
             colorEnd   = ColorA(1.0, 1.0, 1.0, a * baseAlpha * 0.33);
         }
         else {
-            if (level == 3) { // TODO
+            if (level == 3) {
                 colorStart = ColorA(1.0, 0.5, 0.0, a * baseAlpha);
                 colorEnd   = ColorA(1.0, 1.0, 1.0, a * baseAlpha);
             }
-            else if (level == 2) { // TODO
+            else if (level == 2) {
                 colorStart = ColorA(0.4, 0.4, 0.2, a * baseAlpha);
                 colorEnd   = ColorA(1.0, 1.0, 1.0, a * baseAlpha);
             } // 1

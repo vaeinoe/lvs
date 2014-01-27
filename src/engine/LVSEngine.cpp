@@ -95,7 +95,7 @@ void LVSEngine::setup(Lvs *lvsApp, Configuration *config)
 void LVSEngine::loadAll() {
     switch (loadState) {
         case 0:
-            loadStr = "[waking up]";
+            loadStr = "waking up";
             break;
         case 1:
             mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
@@ -107,15 +107,15 @@ void LVSEngine::loadAll() {
             mMenu->updateScore();
             mAudio->setup(mConfig);
             precalc();
-            loadStr = "[slicing the world into shards]";
+            loadStr = "slicing the world into shards...";
             break;
         case 2:
             mAudio->initAudio();
-            loadStr = "[filling the glass half full]";
+            loadStr = "filling the glass half full...";
             break;
         case 3:
             mAudio->initAudio();
-            loadStr = "[preparing the picardy third]";
+            loadStr = "preparing the picardy third...";
             break;
         case 4:
             mAudio->initAudio();
@@ -310,13 +310,6 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 break;
         }
     }
-
-    // XXX implement proper support or remove
-    /* if ( event.getCode() == KeyEvent::KEY_f ) {
-        fullScreen = !fullScreen;
-        setFullScreen(fullScreen);
-        setPlayfield();
-    }*/
 }
 
 bool LVSEngine::isVictory()
@@ -390,7 +383,7 @@ void LVSEngine::quitGame()
     mMenu->deactivate();
     mAudio->e_gameQuit();
     
-    screenFader->fade(1.0, 4.0);
+    screenFader->fade(1.0, 5.0);
 }
 
 void LVSEngine::gameOver()

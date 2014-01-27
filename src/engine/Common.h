@@ -27,13 +27,13 @@ using namespace std;
 
 #ifdef __APPLE__
 #define FONT_SIZE_SMALL  14
-#define FONT_SIZE_MEDIUM 32
+#define FONT_SIZE_MEDIUM 30
 #define FONT_SIZE_LARGE  56
 #endif
 
 #ifdef _WIN32
 #define FONT_SIZE_SMALL  16
-#define FONT_SIZE_MEDIUM 38
+#define FONT_SIZE_MEDIUM 36
 #define FONT_SIZE_LARGE  64
 #endif
 
@@ -42,19 +42,17 @@ using namespace std;
 #define PLAYFIELD_W 1024
 #define PLAYFIELD_H 768
 
-#define MAIN_VOLUME 0.8
 #define ANALYSIS_GAIN 1.0
 
 #define TILE_TYPES 4
-#define NUMTRACKS 6
 
 #define MOVE_TIME_SEC 0.75
 #define FADE_TIME_SEC 2.0
 #define GROW_TIME_SEC 6.0
 #define SHRINK_TIME_SEC 10.0
 
-#define INIT_GAME_TIME 60.0
-#define WARN_GAME_TIME 10.0
+#define INIT_GAME_TIME 55.0
+#define WARN_GAME_TIME 15.0
 
 // Original: 50
 #define LEVEL_SCORE_MODIFIER 25
@@ -62,7 +60,7 @@ using namespace std;
 #define GAME_NAME "lvs"
 #define ENDGAME_STR "fin."
 #define WINGAME_STR "you are victorious."
-#define GAME_START_STR "match vertical rows to play the song."
+#define GAME_START_STR "match vertical rows."
 
 #ifdef __APPLE__
 #define GAME_FONT "Helvetica Bold"
