@@ -12,6 +12,7 @@
 		00BAE65A0E7ED9C10018A608 /* LeavsApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* LeavsApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
 		051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */; };
+		0523F91D189838E0004C1D93 /* rd.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 0523F91C189838E0004C1D93 /* rd.ogg */; };
 		052E1494168B36D6006CF846 /* WTextLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1492168B36D5006CF846 /* WTextLabel.cpp */; };
 		052E149A168B5FDE006CF846 /* WTextButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052E1498168B5FDD006CF846 /* WTextButton.cpp */; };
 		052E6D39188EE6E900D183C8 /* count_n.pd in Resources */ = {isa = PBXBuildFile; fileRef = 052E6D31188EE6E900D183C8 /* count_n.pd */; };
@@ -126,6 +127,7 @@
 		00CCAF14116A9FEE008396D5 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CinderApp.icns; sourceTree = SOURCE_ROOT; };
 		051283601673EDC300A4AAB1 /* AudioAnalyzer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioAnalyzer.cpp; sourceTree = "<group>"; };
 		051283611673EDC400A4AAB1 /* AudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAnalyzer.h; sourceTree = "<group>"; };
+		0523F91C189838E0004C1D93 /* rd.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = rd.ogg; path = ../resources/rd.ogg; sourceTree = "<group>"; };
 		052E1492168B36D5006CF846 /* WTextLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextLabel.cpp; sourceTree = "<group>"; };
 		052E1493168B36D6006CF846 /* WTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTextLabel.h; sourceTree = "<group>"; };
 		052E1498168B5FDD006CF846 /* WTextButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WTextButton.cpp; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				052E6D36188EE6E900D183C8 /* stereo_vol~.pd */,
 				052E6D37188EE6E900D183C8 /* track_seq~.pd */,
 				052E6D38188EE6E900D183C8 /* track~.pd */,
+				0523F91C189838E0004C1D93 /* rd.ogg */,
 				05C65F96188C5C6E00D0E22A /* 00_00.ogg */,
 				05C65F97188C5C6E00D0E22A /* 00_01.ogg */,
 				05C65F98188C5C6E00D0E22A /* 00_02.ogg */,
@@ -599,6 +602,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0523F91D189838E0004C1D93 /* rd.ogg in Resources */,
 				05C65FBD188C5C6E00D0E22A /* 02_03.ogg in Resources */,
 				05C65FC2188C5C6E00D0E22A /* 03_03.ogg in Resources */,
 				05C65FBC188C5C6E00D0E22A /* 02_02.ogg in Resources */,
