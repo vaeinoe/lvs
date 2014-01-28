@@ -606,11 +606,6 @@ inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
             }
         }
         
-        // TODO: precalc!
-        //float angle = (i / (1.0 * LINE_COUNT)) * (2 * M_PI);
-        //float x = draw_pos.x + tileSize * 1.5 * cos(angle);
-        //float y = draw_pos.y + tileSize * 1.5 * sin(angle);
-        
         float x = draw_pos.x + tileSize * 1.5 * precalcCos[i];
         float y = draw_pos.y + tileSize * 1.5 * precalcSin[i];
         

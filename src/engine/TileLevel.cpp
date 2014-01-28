@@ -71,6 +71,8 @@ void TileLevel::addScore(int newScore)
 
 inline void TileLevel::levelUp()
 {
+    int level_times[4] = {20,40,60,40};
+
     cumulScore += score;
 
     level += 1;
@@ -85,7 +87,7 @@ inline void TileLevel::levelUp()
         }
     }
     else {
-        mConfig->engine->addGameTime(0.75 * maxScore);
+        mConfig->engine->addGameTime(level_times[level]);
         lup = msgText[type] + std::string(" level ") + toString(level + 1) + ".";
     }
     
