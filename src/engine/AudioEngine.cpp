@@ -134,8 +134,8 @@ void AudioEngine::loadOGGToArray(DataSourceRef ref, string id) {
         }
     }
     
-    // cout << "buffer id: " << id << " data size: " << toString(dataSize) << ", channels: " << channels << ", samples per channel: "
-    // << toString(sample_count) << "\n";
+    //cout << "buffer id: " << id << " data size: " << toString(dataSize) << ", channels: " << channels << ", samples per channel: "
+    //<< toString(sample_count) << "\n";
 
     bool success_l, success_r;
     
@@ -229,7 +229,7 @@ void AudioEngine::e_gamePause()  { src->sendBang("to_mainmenu"); }
 void AudioEngine::e_gameResume() { src->sendBang("to_game"); }
 void AudioEngine::e_gameQuit()   { src->sendBang("quit_game"); }
 void AudioEngine::e_gameWin()    { src->sendBang("win_game"); }
-void AudioEngine::e_gameLose()   { src->sendBang("to_mainmenu"); src->sendBang("reset_all"); } // TODO: is this OK? TEST!
+void AudioEngine::e_gameLose()   { src->sendBang("to_mainmenu"); src->sendBang("reset_all"); }
 void AudioEngine::e_timeEnding() { src->sendBang("time_ending"); } // TODO!
 void AudioEngine::e_timeNormal() { src->sendBang("time_normal"); } // TODO!
 
