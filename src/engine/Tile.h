@@ -14,6 +14,9 @@ class Configuration;
 class Fader;
 class FaderPack;
 
+#define LINE_COUNT 32
+#define FILTER_SIZE 16
+
 class Tile : public FadeObserver {
 public:
     void setup( Configuration *config, const Vec2i pos, int type, bool grow );
@@ -44,9 +47,6 @@ private:
     bool dead;
     Vec2f getScreenPositionVector(Vec2i loc, bool shiftOrigin = true);
     
-    const static int LINE_COUNT = 32;
-    
-    const static int FILTER_SIZE = 16;
     float prevTileSize[FILTER_SIZE];
     
     float tileSize;

@@ -21,10 +21,26 @@
 #define GROWFADER 1
 #define MOVEFADER 2
 
+static float precalcSin[LINE_COUNT];
+static float precalcCos[LINE_COUNT];
+static bool precalcDone = false;
+
+// Precalculate angle arrays for polygon drawing
+inline void precalcLines() {
+    for (int i = 0; i < LINE_COUNT; i++) {
+        float angle = (i / (1.0 * LINE_COUNT)) * (2 * M_PI);
+        precalcSin[i] = sin(angle);
+        precalcCos[i] = cos(angle);
+    }
+    precalcDone = true;
+}
+
 // Init defaults
 void Tile::setup( Configuration *config, const Vec2i newPos, int newType, bool grow )
 {
     mConfig = config;
+    
+    if (!precalcDone) precalcLines();
     
     pos = new Vec2i( newPos.x, newPos.y );
     active = false;
@@ -591,9 +607,12 @@ inline void Tile::drawStar(Vec2f draw_pos, float val, int level)
         }
         
         // TODO: precalc!
-        float angle = (i / (1.0 * LINE_COUNT)) * (2 * M_PI);
-        float x = draw_pos.x + tileSize * 1.5 * cos(angle);
-        float y = draw_pos.y + tileSize * 1.5 * sin(angle);
+        //float angle = (i / (1.0 * LINE_COUNT)) * (2 * M_PI);
+        //float x = draw_pos.x + tileSize * 1.5 * cos(angle);
+        //float y = draw_pos.y + tileSize * 1.5 * sin(angle);
+        
+        float x = draw_pos.x + tileSize * 1.5 * precalcCos[i];
+        float y = draw_pos.y + tileSize * 1.5 * precalcSin[i];
         
         mConfig->engine->bufferLine(Vec2f(x,y), Vec2f(draw_pos.x, draw_pos.y), colorStart, colorEnd);
     }
@@ -642,6 +661,3 @@ void Tile::onFadeEnd(int typeId)
             break;
     }
 }
-
-
-
