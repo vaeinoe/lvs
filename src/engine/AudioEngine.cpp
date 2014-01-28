@@ -46,12 +46,12 @@ inline void AudioEngine::updateAnalyzer(const void * data, int byteCount) {
 }
 
 void AudioEngine::initAudio() {
-    string files[29] = { "00_00", "00_01", "00_02",
+    string files[30] = { "00_00", "00_01", "00_02",
                          "01_01", "01_02", "01_03", "01_04", "01_u1",
                          "02_01", "02_02", "02_03", "02_04", "02_u1",
                          "03_01", "03_02", "03_03", "03_04", "03_u1",
                          "04_01", "04_02", "04_03", "04_04", "04_05", "04_u1",
-                         "99_01", "99_02", "99_03", "99_04", "99_99" };
+                         "99_01", "99_02", "99_03", "99_04", "99_99", "rd" };
 
     DataSourceRef ref;
 	Patch patch;
@@ -92,7 +92,7 @@ void AudioEngine::initAudio() {
             
             break;
         case 2:
-            for (int i = 18; i < 29; i++) {
+            for (int i = 18; i < 30; i++) {
                 ref = getAudioResource(files[i]);
                 loadOGGToArray(ref, files[i]);
             }
@@ -230,8 +230,8 @@ void AudioEngine::e_gameResume() { src->sendBang("to_game"); }
 void AudioEngine::e_gameQuit()   { src->sendBang("quit_game"); }
 void AudioEngine::e_gameWin()    { src->sendBang("win_game"); }
 void AudioEngine::e_gameLose()   { src->sendBang("to_mainmenu"); src->sendBang("reset_all"); }
-void AudioEngine::e_timeEnding() { src->sendBang("time_ending"); } // TODO!
-void AudioEngine::e_timeNormal() { src->sendBang("time_normal"); } // TODO!
+void AudioEngine::e_timeEnding() { src->sendBang("time_ending"); }
+void AudioEngine::e_timeNormal() { src->sendBang("time_normal"); }
 
 void AudioEngine::e_scoreChange(int change, int score) {
     src->startMessage();
@@ -296,6 +296,8 @@ DataSourceRef AudioEngine::getAudioResource(string identifier) {
     if (identifier == "99_03") return loadResource(RES_99_03);
     if (identifier == "99_04") return loadResource(RES_99_04);
     if (identifier == "99_99") return loadResource(RES_99_99);
+    
+    if (identifier == "rd") return loadResource(RES_RD);
 
     cout << "No resource found for id " << identifier << "\n";
     return NULL;
