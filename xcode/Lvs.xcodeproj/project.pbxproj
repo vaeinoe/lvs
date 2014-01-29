@@ -35,6 +35,7 @@
 		056A1DF818776E7C001AF7BD /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DF718776E7C001AF7BD /* AudioUnit.framework */; };
 		056A1DFA18776EAC001AF7BD /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DF918776EAC001AF7BD /* CoreServices.framework */; };
 		056A1DFC18776EC1001AF7BD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */; };
+		0573896F1899723D003773F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0573896E1899723D003773F5 /* Images.xcassets */; };
 		05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED91670A04B00FD39B7 /* LVSEngine.cpp */; };
 		05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */; };
 		05782EE91670A04B00FD39B7 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDD1670A04B00FD39B7 /* Player.cpp */; };
@@ -163,6 +164,7 @@
 		056A1DF918776EAC001AF7BD /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		05734F141670C9AA00205DAD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
+		0573896E1899723D003773F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Lvs/Images.xcassets; sourceTree = "<group>"; };
 		05782ED71670A04B00FD39B7 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		05782ED81670A04B00FD39B7 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		05782ED91670A04B00FD39B7 /* LVSEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LVSEngine.cpp; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0573896E1899723D003773F5 /* Images.xcassets */,
 				052E6D31188EE6E900D183C8 /* count_n.pd */,
 				052E6D32188EE6E900D183C8 /* crossfade~.pd */,
 				052E6D33188EE6E900D183C8 /* lvs.pd */,
@@ -634,6 +637,7 @@
 				052E6D3C188EE6E900D183C8 /* oneshot_sync~.pd in Resources */,
 				052E6D3E188EE6E900D183C8 /* stereo_vol~.pd in Resources */,
 				05C65FC6188C5C6E00D0E22A /* 04_02.ogg in Resources */,
+				0573896F1899723D003773F5 /* Images.xcassets in Resources */,
 				05C65FBB188C5C6E00D0E22A /* 02_01.ogg in Resources */,
 				052E6D39188EE6E900D183C8 /* count_n.pd in Resources */,
 				05C65FCE188C5C6E00D0E22A /* 99_04.ogg in Resources */,
