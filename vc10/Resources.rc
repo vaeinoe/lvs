@@ -1,5 +1,5 @@
 #include "../include/Resources.h"
-//ID ICON "cinder_app_icon.ico"
+ID ICON "cinder_app_icon.ico"
 RES_00_00
 RES_00_01
 RES_00_02
