@@ -127,7 +127,14 @@ string HighScores::loadScoreWin32() {
 	using boost::property_tree::ptree;
 
 	ptree pt;
-	boost::property_tree::ini_parser::read_ini(WIN32_SCORE_FILE, pt);
+
+	try {
+		boost::property_tree::ini_parser::read_ini(WIN32_SCORE_FILE, pt);
+	}
+	catch(...) {
+		return "";
+	}
+
 	return pt.get<std::string>("lvs.score");
 }
 #endif
