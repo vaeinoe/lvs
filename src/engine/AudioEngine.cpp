@@ -18,6 +18,7 @@
 #define BLOCKSIZE 512
 #define TICK 8
 #define PATCH_FILE "lvs.pd"
+#define WIN32_PATH "content\\"
 
 int pa_callback(const void *inputBuffer, void *outputBuffer,
                 unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo,
@@ -72,9 +73,9 @@ void AudioEngine::initAudio() {
 #endif
 #ifdef _WIN32
             src->addToSearchPath(toString(getAppPath()));
-            src->addToSearchPath(toString(getAssetPath("")));
+            src->addToSearchPath(WIN32_PATH);
 
-            patch = src->openPatch(PATCH_FILE, ".");
+            patch = src->openPatch(PATCH_FILE, WIN32_PATH);
             assert(patch.isValid() == true);
 #endif
             

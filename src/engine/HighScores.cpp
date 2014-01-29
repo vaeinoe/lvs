@@ -16,7 +16,7 @@
 #include <boost/property_tree/ini_parser.hpp>
 #endif
 
-#define WIN32_SCORE_FILE "lvs.ini"
+#define WIN32_SCORE_FILE "content\\lvs.ini"
 
 using namespace std;
 
