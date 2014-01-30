@@ -201,6 +201,7 @@
 #X obj 1324 439 r start;
 #X msg 1349 137 1.75 1000;
 #X msg 1333 541 1 0 40000;
+#X obj 1308 413 r win_game;
 #X connect 1 0 4 0;
 #X connect 2 0 9 0;
 #X connect 3 0 10 0;
@@ -366,3 +367,4 @@
 #X connect 169 0 167 0;
 #X connect 170 0 158 2;
 #X connect 171 0 165 0;
+#X connect 172 0 167 0;
