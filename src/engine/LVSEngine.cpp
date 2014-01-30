@@ -310,9 +310,13 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 break;
         }
     }
+#ifdef __APPLE__
     else if(event.getCode() == KeyEvent::KEY_f) {
-        toggleFullscreen();
+		if (gameState > S_LOADING && gameState <= S_QUITTING) {
+	        toggleFullscreen();
+		}
     }
+#endif
 }
 
 bool LVSEngine::isVictory()
