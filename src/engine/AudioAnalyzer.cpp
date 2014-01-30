@@ -53,7 +53,7 @@ void AudioAnalyzer::draw(float scaleIn, float offsetIn)
 		PolyLine<Vec2f> timeLine;
         
 		// Iterate through data
-		for ( int32_t i = 0; i < dataSize; i++ ) {
+		for ( int32_t i = 0; i <= dataSize; i++ ) {
             
 			// Do logarithmic plotting for frequency domain
 			float logSize = math<float>::log( dataSizef );

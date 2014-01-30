@@ -181,7 +181,6 @@
 		05782EE41670A04B00FD39B7 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		059425E3168886E200057DFE /* TileLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileLevel.cpp; sourceTree = "<group>"; };
 		059425E4168886E300057DFE /* TileLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileLevel.h; sourceTree = "<group>"; };
-		059425E6168888CE00057DFE /* LevelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelData.h; sourceTree = "<group>"; };
 		05A2709917B144B600A23855 /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = ../../libpd/libpd.xcodeproj; sourceTree = "<group>"; };
 		05A270A517B14A6300A23855 /* AudioEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioEngine.cpp; sourceTree = "<group>"; };
 		05A270A617B14A6300A23855 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
@@ -351,7 +350,6 @@
 			children = (
 				052F2637172593CE00E4B7CA /* HighScores.cpp */,
 				052F2638172593CE00E4B7CA /* HighScores.h */,
-				059425E6168888CE00057DFE /* LevelData.h */,
 				05782EDD1670A04B00FD39B7 /* Player.cpp */,
 				05782EDE1670A04B00FD39B7 /* Player.h */,
 				05782EDF1670A04B00FD39B7 /* Tile.cpp */,

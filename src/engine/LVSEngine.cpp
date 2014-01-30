@@ -310,6 +310,9 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 break;
         }
     }
+    else if(event.getCode() == KeyEvent::KEY_f) {
+        toggleFullscreen();
+    }
 }
 
 bool LVSEngine::isVictory()
@@ -594,4 +597,12 @@ void LVSEngine::setPlayfield()
     mConfig->fieldRect = Rectf(mConfig->fieldOrigin.x, mConfig->fieldOrigin.y,
                                mConfig->fieldOrigin.x + mConfig->fieldSize.x,
                                mConfig->fieldOrigin.y + mConfig->fieldSize.y);
+}
+
+// Set playfield parameters - called when switching between fullscreen and windowed
+void LVSEngine::toggleFullscreen()
+{
+    fullScreen = !fullScreen;
+    setFullScreen(fullScreen);
+    setPlayfield();
 }

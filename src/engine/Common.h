@@ -51,7 +51,7 @@ using namespace std;
 #define GROW_TIME_SEC 6.0
 #define SHRINK_TIME_SEC 10.0
 
-#define INIT_GAME_TIME 55.0
+#define INIT_GAME_TIME 80.0
 #define WARN_GAME_TIME 15.0
 
 // Original: 50
@@ -60,7 +60,7 @@ using namespace std;
 #define GAME_NAME "lvs"
 #define ENDGAME_STR "fin."
 #define WINGAME_STR "you are victorious."
-#define GAME_START_STR "match vertical rows."
+#define GAME_START_STR "commence."
 
 #ifdef __APPLE__
 #define GAME_FONT "Helvetica Bold"

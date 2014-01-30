@@ -207,7 +207,6 @@ bool World::resolveTile(int x, int y, bool act) {
     }
 
     if (act) {
-//OBS:        mConfig->audio->playTileFx(0, 1);
         tiles[tileIdx]->kill();
         
         int mult = 2;

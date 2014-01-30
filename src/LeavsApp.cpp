@@ -8,10 +8,17 @@ using namespace std;
 
 void Lvs::prepareSettings( Settings *settings )
 {
-    settings->setWindowSize( PLAYFIELD_W , PLAYFIELD_H );
+    Window::Format fmt;
+    fmt.setTitle( GAME_NAME );
+    fmt.setSize( PLAYFIELD_W, PLAYFIELD_H );
+    fmt.setResizable(false);
+    settings->prepareWindow( fmt );
+    
+    //settings->setWindowSize( PLAYFIELD_W , PLAYFIELD_H );
     settings->setFrameRate( 30.0f );
-    settings->setResizable(false);
+    //settings->setResizable(false);
     settings->enableHighDensityDisplay();
+    //settings->setTitle( GAME_NAME );
 }
 
 void Lvs::setup()
