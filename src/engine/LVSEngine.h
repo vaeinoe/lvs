@@ -66,6 +66,8 @@ private:
     inline bool checkVictory();
     inline void checkTime();
     
+    void toggleFullscreen();
+    
     inline void drawGame(float lightness);
     inline void drawBuffer();
     inline void gameOver();

@@ -205,7 +205,7 @@ void AudioEngine::update() {
     analyzer->update();
     processMessages();
 }
-void AudioEngine::draw()   { analyzer->draw(2, 40); }
+void AudioEngine::draw()   { analyzer->draw(1, 40); }
 
 void AudioEngine::processMessages() {
 }

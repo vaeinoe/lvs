@@ -71,7 +71,7 @@ void TileLevel::addScore(int newScore)
 
 inline void TileLevel::levelUp()
 {
-    int level_times[4] = {20,40,60,40};
+    int level_times[4] = {40,30,30,40};
 
     cumulScore += score;
 
@@ -87,10 +87,11 @@ inline void TileLevel::levelUp()
         }
     }
     else {
-        mConfig->engine->addGameTime(level_times[level]);
         lup = msgText[type] + std::string(" level ") + toString(level + 1) + ".";
     }
     
+    if (level <= numLevels[type]) mConfig->engine->addGameTime(level_times[level-1]);
+
     mConfig->toolbar->updateScore(score, maxScore, level + 1, type, finished);
     mConfig->overlayFx->createText(Vec2f(0,0), msgColors[type],
                                    FONT_TYPE_MEDIUM, lup);

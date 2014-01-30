@@ -54,7 +54,7 @@ void Toolbar::setup( Configuration *config, const Vec2i loc, const Vec2i size )
         scoreBars[i]->setup(mConfig, firstPos + (i * offset), barSize, barColor, 100, 0);
 
         levelLabels[i] = new WTextLabel();
-        levelLabels[i]->setup(mConfig, firstPos + (i * offset + labelOffset), "1", FONT_TYPE_SMALL, ColorA(1.0, 1.0, 1.0, 0.4));
+        levelLabels[i]->setup(mConfig, firstPos + (i * offset + labelOffset), "1/4", FONT_TYPE_SMALL, ColorA(1.0, 1.0, 1.0, 0.4));
     }
 }
 
@@ -69,7 +69,7 @@ void Toolbar::reset() {
                                  barColors[i][2], barColors[i][3]);
         scoreBars[i]->setup(mConfig, firstPos + (i * offset), barSize, barColor, 100, 0);
         
-        levelLabels[i]->setup(mConfig, firstPos + (i * offset + labelOffset), "1", FONT_TYPE_SMALL, ColorA(1.0, 1.0, 1.0, 0.4));
+        levelLabels[i]->setup(mConfig, firstPos + (i * offset + labelOffset), "1/4", FONT_TYPE_SMALL, ColorA(1.0, 1.0, 1.0, 0.4));
     }
 }
 
@@ -81,7 +81,7 @@ void Toolbar::updateScore( int score, int maxScore, int level, int type, bool fi
     }
     else {        
         scoreBars[type]->setValue(score, maxScore);
-        levelLabels[type]->setValue(toString(level));
+        levelLabels[type]->setValue(toString(level) + "/4");
     }
 }
 
