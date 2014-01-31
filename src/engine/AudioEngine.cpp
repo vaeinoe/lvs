@@ -20,6 +20,8 @@
 #define PATCH_FILE "lvs.pd"
 #define WIN32_PATH "content\\"
 
+using namespace chunkware_simple;
+
 int pa_callback(const void *inputBuffer, void *outputBuffer,
                 unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo,
                 PaStreamCallbackFlags statusFlags, void *userData ) {
@@ -33,6 +35,12 @@ int pa_callback(const void *inputBuffer, void *outputBuffer,
 void AudioEngine::setup (Configuration *config) {
     mConfig = config;
     loadState = 0;
+    limiter = new SimpleLimit();
+    limiter->setThresh(-0.1);
+    limiter->setSampleRate(SAMPLE_RATE);
+    limiter->setAttack(1.0);
+    limiter->setRelease(10.0);
+    limiter->initRuntime();
 }
 
 float* AudioEngine::getFreqData()  { return analyzer->freqData; }
@@ -40,6 +48,27 @@ int32_t AudioEngine::getDataSize() { return analyzer->dataSize; }
 
 inline void AudioEngine::processFloat(int numTicks, float *inputBuffer, float *outputBuffer) {
     src->processFloat(numTicks, inputBuffer, outputBuffer);
+    limit(outputBuffer);
+}
+
+inline void AudioEngine::limit(float *buf) {
+    int i, j;
+    int size = BLOCKSIZE;
+    for (i = 0, j = 0; i < size; i++, j += 2)
+    {
+        double l = (double)buf[j];
+        double r = (double)buf[j+1];
+        limiter->process(l,r);
+
+        if      ( l > 1  ) l = 1;
+        else if ( l < -1 ) l = -1;
+        
+        if      ( r > 1  ) r = 1;
+        else if ( r < -1 ) r = -1;
+        
+        buf[j] = (float)l;
+        buf[j+1] = (float)r;
+    }
 }
 
 inline void AudioEngine::updateAnalyzer(const void * data, int byteCount) {

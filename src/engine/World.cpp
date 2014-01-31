@@ -227,7 +227,7 @@ bool World::resolveTile(int x, int y, bool act) {
             for (int i = 0; i < 3; i++) {
                 if (bonusTiles[i] < tiles.size() && bonusTiles[i] > 0 &&
                     tiles[bonusTiles[i]]->selectable() && tiles[bonusTiles[i]]->type == type) {
-                    tiles[bonusTiles[i]]->kill(mult + (2 * (i + 1)));
+                    tiles[bonusTiles[i]]->kill(mult + (2 * (i+1)));
                 }
                 else {
                     break;

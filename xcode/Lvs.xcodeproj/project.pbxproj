@@ -36,6 +36,13 @@
 		056A1DFA18776EAC001AF7BD /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DF918776EAC001AF7BD /* CoreServices.framework */; };
 		056A1DFC18776EC1001AF7BD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */; };
 		0573896F1899723D003773F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0573896E1899723D003773F5 /* Images.xcassets */; };
+		0573897E189ADE08003773F5 /* SimpleComp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05738971189ADE08003773F5 /* SimpleComp.cpp */; };
+		0573897F189ADE08003773F5 /* SimpleCompProcess.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05738973189ADE08003773F5 /* SimpleCompProcess.inl */; };
+		05738980189ADE08003773F5 /* SimpleEnvelope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05738974189ADE08003773F5 /* SimpleEnvelope.cpp */; };
+		05738981189ADE08003773F5 /* SimpleGate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05738977189ADE08003773F5 /* SimpleGate.cpp */; };
+		05738982189ADE08003773F5 /* SimpleGateProcess.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05738979189ADE08003773F5 /* SimpleGateProcess.inl */; };
+		05738983189ADE08003773F5 /* SimpleLimit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0573897B189ADE08003773F5 /* SimpleLimit.cpp */; };
+		05738984189ADE08003773F5 /* SimpleLimitProcess.inl in Resources */ = {isa = PBXBuildFile; fileRef = 0573897D189ADE08003773F5 /* SimpleLimitProcess.inl */; };
 		05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED91670A04B00FD39B7 /* LVSEngine.cpp */; };
 		05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */; };
 		05782EE91670A04B00FD39B7 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDD1670A04B00FD39B7 /* Player.cpp */; };
@@ -165,6 +172,19 @@
 		056A1DFB18776EC1001AF7BD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		05734F141670C9AA00205DAD /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 		0573896E1899723D003773F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Lvs/Images.xcassets; sourceTree = "<group>"; };
+		05738971189ADE08003773F5 /* SimpleComp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleComp.cpp; sourceTree = "<group>"; };
+		05738972189ADE08003773F5 /* SimpleComp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleComp.h; sourceTree = "<group>"; };
+		05738973189ADE08003773F5 /* SimpleCompProcess.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleCompProcess.inl; sourceTree = "<group>"; };
+		05738974189ADE08003773F5 /* SimpleEnvelope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleEnvelope.cpp; sourceTree = "<group>"; };
+		05738975189ADE08003773F5 /* SimpleEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleEnvelope.h; sourceTree = "<group>"; };
+		05738976189ADE08003773F5 /* SimpleGain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleGain.h; sourceTree = "<group>"; };
+		05738977189ADE08003773F5 /* SimpleGate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleGate.cpp; sourceTree = "<group>"; };
+		05738978189ADE08003773F5 /* SimpleGate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleGate.h; sourceTree = "<group>"; };
+		05738979189ADE08003773F5 /* SimpleGateProcess.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleGateProcess.inl; sourceTree = "<group>"; };
+		0573897A189ADE08003773F5 /* SimpleHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleHeader.h; sourceTree = "<group>"; };
+		0573897B189ADE08003773F5 /* SimpleLimit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleLimit.cpp; sourceTree = "<group>"; };
+		0573897C189ADE08003773F5 /* SimpleLimit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleLimit.h; sourceTree = "<group>"; };
+		0573897D189ADE08003773F5 /* SimpleLimitProcess.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleLimitProcess.inl; sourceTree = "<group>"; };
 		05782ED71670A04B00FD39B7 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		05782ED81670A04B00FD39B7 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
 		05782ED91670A04B00FD39B7 /* LVSEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LVSEngine.cpp; sourceTree = "<group>"; };
@@ -281,6 +301,27 @@
 			path = kiss;
 			sourceTree = "<group>";
 		};
+		05738970189ADE08003773F5 /* chunkware */ = {
+			isa = PBXGroup;
+			children = (
+				05738971189ADE08003773F5 /* SimpleComp.cpp */,
+				05738972189ADE08003773F5 /* SimpleComp.h */,
+				05738973189ADE08003773F5 /* SimpleCompProcess.inl */,
+				05738974189ADE08003773F5 /* SimpleEnvelope.cpp */,
+				05738975189ADE08003773F5 /* SimpleEnvelope.h */,
+				05738976189ADE08003773F5 /* SimpleGain.h */,
+				05738977189ADE08003773F5 /* SimpleGate.cpp */,
+				05738978189ADE08003773F5 /* SimpleGate.h */,
+				05738979189ADE08003773F5 /* SimpleGateProcess.inl */,
+				0573897A189ADE08003773F5 /* SimpleHeader.h */,
+				0573897B189ADE08003773F5 /* SimpleLimit.cpp */,
+				0573897C189ADE08003773F5 /* SimpleLimit.h */,
+				0573897D189ADE08003773F5 /* SimpleLimitProcess.inl */,
+			);
+			name = chunkware;
+			path = ../src/chunkware;
+			sourceTree = "<group>";
+		};
 		05782ED21670A04B00FD39B7 /* engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +435,7 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				05738970189ADE08003773F5 /* chunkware */,
 				05734F141670C9AA00205DAD /* Resources.h */,
 				05A823A1188BF299009B5EDB /* PreferenceWrapper.mm */,
 				05A823A3188BF471009B5EDB /* PreferenceWrapper.h */,
@@ -608,6 +650,8 @@
 				05C65FC2188C5C6E00D0E22A /* 03_03.ogg in Resources */,
 				05C65FBC188C5C6E00D0E22A /* 02_02.ogg in Resources */,
 				05C65FB9188C5C6E00D0E22A /* 01_04.ogg in Resources */,
+				0573897F189ADE08003773F5 /* SimpleCompProcess.inl in Resources */,
+				05738982189ADE08003773F5 /* SimpleGateProcess.inl in Resources */,
 				05C65FCD188C5C6E00D0E22A /* 99_03.ogg in Resources */,
 				05C65FC0188C5C6E00D0E22A /* 03_01.ogg in Resources */,
 				05C65FB7188C5C6E00D0E22A /* 01_02.ogg in Resources */,
@@ -638,6 +682,7 @@
 				0573896F1899723D003773F5 /* Images.xcassets in Resources */,
 				05C65FBB188C5C6E00D0E22A /* 02_01.ogg in Resources */,
 				052E6D39188EE6E900D183C8 /* count_n.pd in Resources */,
+				05738984189ADE08003773F5 /* SimpleLimitProcess.inl in Resources */,
 				05C65FCE188C5C6E00D0E22A /* 99_04.ogg in Resources */,
 				05C65FCA188C5C6E00D0E22A /* 04_u1.ogg in Resources */,
 				05C65FB3188C5C6E00D0E22A /* 00_00.ogg in Resources */,
@@ -675,10 +720,14 @@
 				053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */,
 				053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */,
 				05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */,
+				05738983189ADE08003773F5 /* SimpleLimit.cpp in Sources */,
 				05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */,
 				05782EE91670A04B00FD39B7 /* Player.cpp in Sources */,
+				0573897E189ADE08003773F5 /* SimpleComp.cpp in Sources */,
 				05782EEA1670A04B00FD39B7 /* Tile.cpp in Sources */,
+				05738980189ADE08003773F5 /* SimpleEnvelope.cpp in Sources */,
 				05782EEB1670A04B00FD39B7 /* Toolbar.cpp in Sources */,
+				05738981189ADE08003773F5 /* SimpleGate.cpp in Sources */,
 				05782EEC1670A04B00FD39B7 /* World.cpp in Sources */,
 				051283621673EDC400A4AAB1 /* AudioAnalyzer.cpp in Sources */,
 				052FED161674E4C20001E076 /* Fader.cpp in Sources */,

@@ -55,7 +55,7 @@ using namespace std;
 #define WARN_GAME_TIME 15.0
 
 // Original: 50
-#define LEVEL_SCORE_MODIFIER 25
+#define LEVEL_SCORE_MODIFIER 30
 
 #define GAME_NAME "lvs"
 #define ENDGAME_STR "fin."
