@@ -84,6 +84,18 @@
     <ClCompile Include="..\..\libpd\cpp\PdBase.cpp">
       <Filter>Source Files\pd</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\chunkware\SimpleComp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chunkware\SimpleEnvelope.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chunkware\SimpleGate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\chunkware\SimpleLimit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
@@ -176,6 +188,24 @@
     <ClInclude Include="..\src\LeavsApp.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\chunkware\SimpleComp.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chunkware\SimpleEnvelope.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chunkware\SimpleGain.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chunkware\SimpleGate.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chunkware\SimpleHeader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\chunkware\SimpleLimit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc">
@@ -184,6 +214,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\engine\PreferenceWrapper.mm">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\src\chunkware\SimpleCompProcess.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\src\chunkware\SimpleGateProcess.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\src\chunkware\SimpleLimitProcess.inl">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

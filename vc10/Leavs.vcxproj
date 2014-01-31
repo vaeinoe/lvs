@@ -109,6 +109,10 @@
     <ClCompile Include="..\..\libpd\cpp\PdBase.cpp" />
     <ClCompile Include="..\..\libpd\cpp\PdTypes.cpp" />
     <ClCompile Include="..\src\Base64.cpp" />
+    <ClCompile Include="..\src\chunkware\SimpleComp.cpp" />
+    <ClCompile Include="..\src\chunkware\SimpleEnvelope.cpp" />
+    <ClCompile Include="..\src\chunkware\SimpleGate.cpp" />
+    <ClCompile Include="..\src\chunkware\SimpleLimit.cpp" />
     <ClCompile Include="..\src\engine\AudioAnalyzer.cpp" />
     <ClCompile Include="..\src\engine\AudioEngine.cpp" />
     <ClCompile Include="..\src\engine\Fader.cpp" />
@@ -136,6 +140,12 @@
     <ClInclude Include="..\..\libpd\cpp\PdTypes.hpp" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\src\Base64.h" />
+    <ClInclude Include="..\src\chunkware\SimpleComp.h" />
+    <ClInclude Include="..\src\chunkware\SimpleEnvelope.h" />
+    <ClInclude Include="..\src\chunkware\SimpleGain.h" />
+    <ClInclude Include="..\src\chunkware\SimpleGate.h" />
+    <ClInclude Include="..\src\chunkware\SimpleHeader.h" />
+    <ClInclude Include="..\src\chunkware\SimpleLimit.h" />
     <ClInclude Include="..\src\engine\AudioAnalyzer.h" />
     <ClInclude Include="..\src\engine\AudioEngine.h" />
     <ClInclude Include="..\src\engine\Common.h" />
@@ -165,6 +175,9 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\src\chunkware\SimpleCompProcess.inl" />
+    <None Include="..\src\chunkware\SimpleGateProcess.inl" />
+    <None Include="..\src\chunkware\SimpleLimitProcess.inl" />
     <None Include="..\src\engine\PreferenceWrapper.mm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
