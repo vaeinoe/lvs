@@ -12,6 +12,7 @@
 #include "portaudio.h"
 #include "PdBase.hpp"
 #include "AudioAnalyzer.h"
+#include "../chunkware/SimpleLimit.h"
 
 using namespace pd;
 
@@ -52,8 +53,9 @@ public:
 private:
     int loadState;
     
+    chunkware_simple::SimpleLimit *limiter;
     PdBase *src;
-
+    
     void initPD();
     void initPDArrays();
     DataSourceRef getAudioResource(string identifier);
@@ -61,6 +63,7 @@ private:
     void initPA();
     void portAudioError(PaError err);
     void processMessages();
+    void limit(float *buf);
     
     Configuration *mConfig;
     PaStream *stream;
