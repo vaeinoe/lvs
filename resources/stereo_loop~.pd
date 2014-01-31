@@ -1,0 +1,17 @@
+#N canvas 624 157 528 461 10;
+#X obj 21 21 inlet start;
+#X obj 21 238 bang;
+#X obj 30 418 outlet~ l;
+#X obj 149 417 outlet~ r;
+#X obj 272 417 outlet loop_end;
+#X obj 264 208 inlet retrig;
+#X obj 390 120 table \$1_l 3.2e+06;
+#X obj 388 155 table \$1_r 3.2e+06;
+#X obj 140 307 tabplay~ \$1_r;
+#X obj 24 308 tabplay~ \$1_l;
+#X connect 1 0 8 0;
+#X connect 1 0 9 0;
+#X connect 5 0 1 0;
+#X connect 8 0 3 0;
+#X connect 8 1 4 0;
+#X connect 9 0 2 0;
