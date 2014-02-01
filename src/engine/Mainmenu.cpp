@@ -12,24 +12,26 @@
 #include "WTextButton.h"
 #include "HighScores.h"
 
+#define MENU_OFFSET 140
+
 void Mainmenu::setup(Configuration *config)
 {
     mConfig = config;
     
     title = new WTextLabel();
-    title->setup(mConfig, Vec2f(16,1+164), GAME_NAME, FONT_TYPE_LARGE,
+    title->setup(mConfig, Vec2f(16,1 + MENU_OFFSET), GAME_NAME, FONT_TYPE_LARGE,
                  ColorA(0.7, 0.5, 0.7, 0.80), true);
 
     buttonStart = new WTextButton();
-    buttonStart->setup(mConfig, Vec2f(16,47+164), "new game", FONT_TYPE_MEDIUM,
+    buttonStart->setup(mConfig, Vec2f(16,47 + MENU_OFFSET), "new game", FONT_TYPE_MEDIUM,
                        ColorA(0.8, 0.5, 0.8, 0.66), true);
 
     buttonHow = new WTextButton();
-    buttonHow->setup(mConfig, Vec2f(16,85+164), "how to play", FONT_TYPE_MEDIUM,
+    buttonHow->setup(mConfig, Vec2f(16,85 + MENU_OFFSET), "how to play", FONT_TYPE_MEDIUM,
                       ColorA(0.8, 0.5, 0.8, 0.66), true);
 
     buttonQuit = new WTextButton();
-    buttonQuit->setup(mConfig, Vec2f(16,123+164), "quit", FONT_TYPE_MEDIUM,
+    buttonQuit->setup(mConfig, Vec2f(16,123 + MENU_OFFSET), "quit", FONT_TYPE_MEDIUM,
                       ColorA(0.8, 0.5, 0.8, 0.66), true);
 
     score = new WTextLabel();
@@ -41,7 +43,7 @@ void Mainmenu::setup(Configuration *config)
                  ColorA(0.9, 0.7, 0.9, 0.80), false);
 
     author = new WTextLabel();
-    author->setup(mConfig, Vec2f(900,758), toString(VERSION_STR) + toString(" vae.fi"), FONT_TYPE_SMALL,
+    author->setup(mConfig, Vec2f(940,758), toString("v") + toString(VERSION_STR) + toString("   vae.fi"), FONT_TYPE_SMALL,
                     ColorA(0.7, 0.5, 0.7, 0.80), false);
 
     active = true;
