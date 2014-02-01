@@ -24,10 +24,14 @@ void Mainmenu::setup(Configuration *config)
     buttonStart->setup(mConfig, Vec2f(16,47+164), "new game", FONT_TYPE_MEDIUM,
                        ColorA(0.8, 0.5, 0.8, 0.66), true);
 
-    buttonQuit = new WTextButton();
-    buttonQuit->setup(mConfig, Vec2f(16,85+164), "quit", FONT_TYPE_MEDIUM,
+    buttonHow = new WTextButton();
+    buttonHow->setup(mConfig, Vec2f(16,85+164), "how to play", FONT_TYPE_MEDIUM,
                       ColorA(0.8, 0.5, 0.8, 0.66), true);
-    
+
+    buttonQuit = new WTextButton();
+    buttonQuit->setup(mConfig, Vec2f(16,123+164), "quit", FONT_TYPE_MEDIUM,
+                      ColorA(0.8, 0.5, 0.8, 0.66), true);
+
     score = new WTextLabel();
     score->setup(mConfig, Vec2f(8,758), "best time:", FONT_TYPE_SMALL,
                  ColorA(1.0, 1.0, 1.0, 0.80), false);
@@ -37,7 +41,7 @@ void Mainmenu::setup(Configuration *config)
                  ColorA(0.9, 0.7, 0.9, 0.80), false);
 
     author = new WTextLabel();
-    author->setup(mConfig, Vec2f(980,758), "vae.fi", FONT_TYPE_SMALL,
+    author->setup(mConfig, Vec2f(900,758), toString(VERSION_STR) + toString(" vae.fi"), FONT_TYPE_SMALL,
                     ColorA(0.7, 0.5, 0.7, 0.80), false);
 
     active = true;
@@ -46,6 +50,7 @@ void Mainmenu::setup(Configuration *config)
 void Mainmenu::draw() {
     title->draw();
     buttonStart->draw();
+    buttonHow->draw();
     buttonQuit->draw();
     score->draw();
     scoreVal->draw();
@@ -57,8 +62,11 @@ void Mainmenu::update() { }
 void Mainmenu::shutdown() {
     delete title;
     delete buttonStart;
+    delete buttonHow;
     delete buttonQuit;
     delete score;
+    delete scoreVal;
+    delete author;
 }
 
 void Mainmenu::setPaused ( bool paused ) {
@@ -75,7 +83,8 @@ void Mainmenu::mouseMove ( const MouseEvent event )
     if (active) {
         Vec2f pos = event.getPos();
         buttonStart->mousePos(pos);
-        buttonQuit->mousePos(pos);        
+        buttonHow->mousePos(pos);
+        buttonQuit->mousePos(pos);
     }
 }
 
@@ -88,6 +97,9 @@ void Mainmenu::mouseDown ( const MouseEvent event )
         }
         else if (buttonQuit->isHit(pos)) {
             mConfig->engine->quitGame();
+        }
+        else if (buttonHow->isHit(pos)) {
+            mConfig->engine->showInstructions();
         }
     }
 }

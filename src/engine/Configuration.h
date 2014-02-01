@@ -9,7 +9,6 @@
 #pragma once
 #include "Common.h"
 
-class Player;
 class World;
 class LVSEngine;
 class Toolbar;
@@ -39,7 +38,6 @@ public:
     
     TileLevel *levels[TILE_TYPES];
     
-    Player *player;
     World *world;
     LVSEngine *engine;
     Toolbar *toolbar;

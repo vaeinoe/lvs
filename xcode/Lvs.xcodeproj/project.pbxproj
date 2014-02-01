@@ -26,6 +26,7 @@
 		052F2639172593CE00E4B7CA /* HighScores.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052F2637172593CE00E4B7CA /* HighScores.cpp */; };
 		052FED161674E4C20001E076 /* Fader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED141674E4C20001E076 /* Fader.cpp */; };
 		052FED1A1674E4D20001E076 /* FaderPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052FED181674E4D20001E076 /* FaderPack.cpp */; };
+		053182FA189D555900EBBFDF /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 053182F9189D555900EBBFDF /* instructions.png */; };
 		053BA841163D79B40095EBEF /* kiss_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83B163D79B30095EBEF /* kiss_fft.c */; };
 		053BA842163D79B40095EBEF /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83D163D79B30095EBEF /* kiss_fftr.c */; };
 		053BA843163D79B40095EBEF /* KissFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 053BA83F163D79B30095EBEF /* KissFFT.cpp */; };
@@ -45,7 +46,6 @@
 		05738984189ADE08003773F5 /* SimpleLimitProcess.inl in Resources */ = {isa = PBXBuildFile; fileRef = 0573897D189ADE08003773F5 /* SimpleLimitProcess.inl */; };
 		05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782ED91670A04B00FD39B7 /* LVSEngine.cpp */; };
 		05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */; };
-		05782EE91670A04B00FD39B7 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDD1670A04B00FD39B7 /* Player.cpp */; };
 		05782EEA1670A04B00FD39B7 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EDF1670A04B00FD39B7 /* Tile.cpp */; };
 		05782EEB1670A04B00FD39B7 /* Toolbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE11670A04B00FD39B7 /* Toolbar.cpp */; };
 		05782EEC1670A04B00FD39B7 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05782EE31670A04B00FD39B7 /* World.cpp */; };
@@ -155,6 +155,7 @@
 		052FED151674E4C20001E076 /* Fader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fader.h; sourceTree = "<group>"; };
 		052FED181674E4D20001E076 /* FaderPack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FaderPack.cpp; sourceTree = "<group>"; };
 		052FED191674E4D20001E076 /* FaderPack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaderPack.h; sourceTree = "<group>"; };
+		053182F9189D555900EBBFDF /* instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = instructions.png; path = ../resources/instructions.png; sourceTree = "<group>"; };
 		053BA83A163D79B30095EBEF /* _kiss_fft_guts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _kiss_fft_guts.h; sourceTree = "<group>"; };
 		053BA83B163D79B30095EBEF /* kiss_fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kiss_fft.c; sourceTree = "<group>"; };
 		053BA83C163D79B30095EBEF /* kiss_fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kiss_fft.h; sourceTree = "<group>"; };
@@ -191,8 +192,6 @@
 		05782EDA1670A04B00FD39B7 /* LVSEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVSEngine.h; sourceTree = "<group>"; };
 		05782EDB1670A04B00FD39B7 /* Mainmenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mainmenu.cpp; sourceTree = "<group>"; };
 		05782EDC1670A04B00FD39B7 /* Mainmenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mainmenu.h; sourceTree = "<group>"; };
-		05782EDD1670A04B00FD39B7 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
-		05782EDE1670A04B00FD39B7 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		05782EDF1670A04B00FD39B7 /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
 		05782EE01670A04B00FD39B7 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		05782EE11670A04B00FD39B7 /* Toolbar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Toolbar.cpp; sourceTree = "<group>"; };
@@ -391,8 +390,6 @@
 			children = (
 				052F2637172593CE00E4B7CA /* HighScores.cpp */,
 				052F2638172593CE00E4B7CA /* HighScores.h */,
-				05782EDD1670A04B00FD39B7 /* Player.cpp */,
-				05782EDE1670A04B00FD39B7 /* Player.h */,
 				05782EDF1670A04B00FD39B7 /* Tile.cpp */,
 				05782EE01670A04B00FD39B7 /* Tile.h */,
 				059425E3168886E200057DFE /* TileLevel.cpp */,
@@ -508,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				0573896E1899723D003773F5 /* Images.xcassets */,
+				053182F9189D555900EBBFDF /* instructions.png */,
 				052E6D31188EE6E900D183C8 /* count_n.pd */,
 				052E6D32188EE6E900D183C8 /* crossfade~.pd */,
 				052E6D33188EE6E900D183C8 /* lvs.pd */,
@@ -685,6 +683,7 @@
 				05738984189ADE08003773F5 /* SimpleLimitProcess.inl in Resources */,
 				05C65FCE188C5C6E00D0E22A /* 99_04.ogg in Resources */,
 				05C65FCA188C5C6E00D0E22A /* 04_u1.ogg in Resources */,
+				053182FA189D555900EBBFDF /* instructions.png in Resources */,
 				05C65FB3188C5C6E00D0E22A /* 00_00.ogg in Resources */,
 				052E6D3F188EE6E900D183C8 /* track_seq~.pd in Resources */,
 				052E6D3B188EE6E900D183C8 /* lvs.pd in Resources */,
@@ -722,7 +721,6 @@
 				05782EE71670A04B00FD39B7 /* LVSEngine.cpp in Sources */,
 				05738983189ADE08003773F5 /* SimpleLimit.cpp in Sources */,
 				05782EE81670A04B00FD39B7 /* Mainmenu.cpp in Sources */,
-				05782EE91670A04B00FD39B7 /* Player.cpp in Sources */,
 				0573897E189ADE08003773F5 /* SimpleComp.cpp in Sources */,
 				05782EEA1670A04B00FD39B7 /* Tile.cpp in Sources */,
 				05738980189ADE08003773F5 /* SimpleEnvelope.cpp in Sources */,

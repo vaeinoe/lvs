@@ -9,7 +9,6 @@
 
 #include "Toolbar.h"
 #include "LVSEngine.h"
-#include "Player.h"
 #include "WProgressBar.h"
 #include "WTextLabel.h"
 #include <string>

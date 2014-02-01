@@ -38,7 +38,8 @@ public:
     void loadAll();
     void quitGame();
     void startGame();
-    void backToMain();
+    void backToMain(bool fromGame = true);
+    void showInstructions();
     
     void setPlayfield();
     
@@ -62,6 +63,8 @@ public:
 
 private:
 	Lvs *mApp;
+    
+    gl::Texture instructions;
 
     inline bool checkVictory();
     inline void checkTime();
