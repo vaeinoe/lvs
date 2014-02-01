@@ -37,6 +37,7 @@ private:
     
     WTextLabel *title;
     WTextButton *buttonStart;
+    WTextButton *buttonHow;
     WTextButton *buttonQuit;
     WTextLabel *score;
     WTextLabel *scoreVal;

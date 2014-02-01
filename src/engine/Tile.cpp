@@ -9,7 +9,6 @@
 
 #include "Tile.h"
 #include "LVSEngine.h"
-#include "Player.h"
 #include "Fader.h"
 #include "FaderPack.h"
 #include "World.h"
