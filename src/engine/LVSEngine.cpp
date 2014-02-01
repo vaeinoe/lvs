@@ -29,6 +29,8 @@
 #include "OverlayFxManager.h"
 #include "TileLevel.h"
 #include "HighScores.h"
+#include "cinder/ImageIo.h"
+#include "cinder/gl/Texture.h"
 
 #include "../LeavsApp.h"
 
@@ -81,7 +83,7 @@ void LVSEngine::setup(Lvs *lvsApp, Configuration *config)
     loadState = 0;
     loadStr = "mixing cupcake batter";
     
-    instructions = loadImage( loadResource( RES_INSTRUCTIONS ) );
+    instructions = ci::loadImage( loadResource( RES_INSTRUCTIONS ) );
     
     fullScreen = false;
 
@@ -308,6 +310,7 @@ void LVSEngine::mouseDown ( const MouseEvent event ) {
 void LVSEngine::keyDown ( const KeyEvent event ) {
     if( gameState == S_INSTRUCTIONS) {
         backToMain(false);
+		return;
     }
     
     if( event.getCode() == KeyEvent::KEY_ESCAPE ) {
@@ -322,7 +325,7 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
     }
     else if(event.getCode() == KeyEvent::KEY_s) {
         string filename = toString(std::time(0)) + "_screen.png";
-        writeImage( filename, copyWindowSurface() );
+        cinder::writeImage( filename, copyWindowSurface() );
     }
 #ifdef __APPLE__
     else if(event.getCode() == KeyEvent::KEY_f) {

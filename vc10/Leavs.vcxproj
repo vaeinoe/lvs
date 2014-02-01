@@ -122,7 +122,6 @@
     <ClCompile Include="..\src\engine\Mainmenu.cpp" />
     <ClCompile Include="..\src\engine\OverlayFx.cpp" />
     <ClCompile Include="..\src\engine\OverlayFxManager.cpp" />
-    <ClCompile Include="..\src\engine\Player.cpp" />
     <ClCompile Include="..\src\engine\Tile.cpp" />
     <ClCompile Include="..\src\engine\TileLevel.cpp" />
     <ClCompile Include="..\src\engine\Toolbar.cpp" />
@@ -159,7 +158,6 @@
     <ClInclude Include="..\src\engine\Mainmenu.h" />
     <ClInclude Include="..\src\engine\OverlayFx.h" />
     <ClInclude Include="..\src\engine\OverlayFxManager.h" />
-    <ClInclude Include="..\src\engine\Player.h" />
     <ClInclude Include="..\src\engine\PreferenceWrapper.h" />
     <ClInclude Include="..\src\engine\Tile.h" />
     <ClInclude Include="..\src\engine\TileLevel.h" />

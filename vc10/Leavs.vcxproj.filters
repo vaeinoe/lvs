@@ -54,9 +54,6 @@
     <ClCompile Include="..\src\engine\OverlayFxManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\engine\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\engine\Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -147,9 +144,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\OverlayFxManager.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\engine\Player.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\engine\Tile.h">
