@@ -7,13 +7,14 @@
  *
  */
 
-#define S_LOADING   0
-#define S_MAINMENU  1
-#define S_INGAME_1  2
-#define S_GAMEOVER  3
-#define S_VICTORY   4
-#define S_QUITTING  5
-#define S_OVER      6
+#define S_LOADING      0
+#define S_MAINMENU     1
+#define S_INSTRUCTIONS 2
+#define S_INGAME_1     3
+#define S_GAMEOVER     4
+#define S_VICTORY      5
+#define S_QUITTING     6
+#define S_OVER         7
 
 #define FADEFADER 0
 #define GAMEFADER 1
@@ -21,7 +22,6 @@
 #include "LVSEngine.h"
 #include "World.h"
 #include "Toolbar.h"
-#include "Player.h"
 #include "AudioEngine.h"
 #include "Mainmenu.h"
 #include "FaderPack.h"
@@ -43,7 +43,6 @@ void LVSEngine::setup(Lvs *lvsApp, Configuration *config)
     mAudio = new AudioEngine();
     mToolbar = new Toolbar();
     mWorld = new World();
-    mPlayer = new Player();
     mMenu = new Mainmenu();
     mFaders = new FaderPack();
     mHiScores = new HighScores();
@@ -53,7 +52,6 @@ void LVSEngine::setup(Lvs *lvsApp, Configuration *config)
     mConfig->engine = this;
     mConfig->toolbar = mToolbar;
     mConfig->world = mWorld;
-    mConfig->player = mPlayer;
     mConfig->faders = mFaders;
     mConfig->audio = mAudio;
     mConfig->overlayFx = overlayFx;
@@ -83,6 +81,8 @@ void LVSEngine::setup(Lvs *lvsApp, Configuration *config)
     loadState = 0;
     loadStr = "mixing cupcake batter";
     
+    instructions = loadImage( loadResource( RES_INSTRUCTIONS ) );
+    
     fullScreen = false;
 
     mFaders->setup(mConfig, true);
@@ -101,7 +101,6 @@ void LVSEngine::loadAll() {
             mToolbar->setup(mConfig, Vec2i(0, 0), Vec2i(getWindowWidth(), mConfig->toolbarHeight));
             mWorld->setup(mConfig, Vec2i(mConfig->worldWidth, mConfig->worldHeight));
             overlayFx->setup(mConfig);
-            mPlayer->setup(mConfig);
             mHiScores->setup(mConfig);
             mMenu->setup(mConfig);
             mMenu->updateScore();
@@ -154,7 +153,6 @@ void LVSEngine::update()
             overlayFx->update();
             mToolbar->update();
             mWorld->update(mMouseLoc, mAudio->getFreqData(), mAudio->getDataSize());
-            mPlayer->update();
             break;
         case S_QUITTING:
             mAudio->update();
@@ -197,7 +195,6 @@ inline void LVSEngine::drawGame(float lightness)
     overlayFx->drawDelayed();
     drawBuffer();
     mToolbar->draw();
-    mPlayer->draw();
     overlayFx->drawImmediate();
 }
 
@@ -224,6 +221,11 @@ void LVSEngine::draw()
         case S_INGAME_1:
             drawGame(lightness);
             break;
+        case S_INSTRUCTIONS:
+            gl::color(1,1,1,1.0);
+            gl::draw(instructions, mConfig->fieldRect);
+            return;
+            break;
         case S_QUITTING:
             gl::color( lightness * 0.4, 0, 0.2 );
             gl::drawSolidRect(mConfig->fieldRect);
@@ -232,6 +234,7 @@ void LVSEngine::draw()
             break;
         case S_VICTORY:
             drawGame(lightness);
+            break;
     }
     gl::color(1.0, 1.0, 1.0, 0.3);
     gl::drawStrokedRect (mConfig->fieldRect);
@@ -296,10 +299,17 @@ void LVSEngine::mouseDown ( const MouseEvent event ) {
         case S_MAINMENU:
             mMenu->mouseDown(event);
             break;
+        case S_INSTRUCTIONS:
+            backToMain(false);
+            break;
     }
 }
 
 void LVSEngine::keyDown ( const KeyEvent event ) {
+    if( gameState == S_INSTRUCTIONS) {
+        backToMain(false);
+    }
+    
     if( event.getCode() == KeyEvent::KEY_ESCAPE ) {
         switch (gameState) {
             case S_MAINMENU:
@@ -309,6 +319,10 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 backToMain();
                 break;
         }
+    }
+    else if(event.getCode() == KeyEvent::KEY_s) {
+        string filename = toString(std::time(0)) + "_screen.png";
+        writeImage( filename, copyWindowSurface() );
     }
 #ifdef __APPLE__
     else if(event.getCode() == KeyEvent::KEY_f) {
@@ -371,17 +385,26 @@ void LVSEngine::startGame()
     mMenu->setPaused(false);
 }
 
-void LVSEngine::backToMain()
+void LVSEngine::backToMain(bool fromGame)
 {
     gameState = S_MAINMENU;
     mMenu->activate();
-    mAudio->e_gamePause();
-    mMenu->setPaused(true);
     
-    gameFader->pause();
-    mWorld->pause();
-    
-    paused = true;
+    if (fromGame) {
+        mAudio->e_gamePause();
+        mMenu->setPaused(true);
+        
+        gameFader->pause();
+        mWorld->pause();
+        
+        paused = true;
+    }
+}
+
+void LVSEngine::showInstructions()
+{
+    gameState = S_INSTRUCTIONS;
+    mMenu->deactivate();
 }
 
 void LVSEngine::quitGame()
@@ -449,14 +472,12 @@ void LVSEngine::shutdown()
     mAudio->shutdown();
     mToolbar->shutdown();
     mWorld->shutdown();
-    mPlayer->shutdown();
     mMenu->shutdown();
     mFaders->shutdown();
     mHiScores->shutdown();
     
     delete mToolbar;
     delete mWorld;
-    delete mPlayer;
     delete mAudio;
     delete mMenu;
     delete mFaders;

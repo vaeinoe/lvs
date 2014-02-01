@@ -30,3 +30,4 @@
 #define RES_99_04 CINDER_RESOURCE( ../resources/, 99_04.ogg, 156, OGG )
 #define RES_99_99 CINDER_RESOURCE( ../resources/, 99_99.ogg, 157, OGG )
 #define RES_RD CINDER_RESOURCE( ../resources/, rd.ogg, 158, OGG )
+#define RES_INSTRUCTIONS CINDER_RESOURCE( ../resources/, instructions.png, 159, PNG )
