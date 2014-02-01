@@ -8,7 +8,6 @@
  */
 
 #include "World.h"
-#include "Player.h"
 #include "Tile.h"
 #include "LVSEngine.h"
 #include "TileLevel.h"
