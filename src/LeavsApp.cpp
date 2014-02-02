@@ -65,7 +65,7 @@ void Lvs::setup()
 void Lvs::shutdown()
 {
     engine->shutdown();
-    delete engine;
+    //delete engine;
 }
 
 void Lvs::mouseDown( MouseEvent event ) { engine->mouseDown ( event ); }
