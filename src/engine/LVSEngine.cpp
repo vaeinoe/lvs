@@ -320,10 +320,10 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 break;
         }
     }
-    else if(event.getCode() == KeyEvent::KEY_s) {
+/*    else if(event.getCode() == KeyEvent::KEY_s) {
         string filename = toString(std::time(0)) + "_screen.png";
         writeImage( filename, copyWindowSurface() );
-    }
+    }*/
 #ifdef __APPLE__
     else if(event.getCode() == KeyEvent::KEY_f) {
 		if (gameState > S_LOADING && gameState <= S_QUITTING) {
