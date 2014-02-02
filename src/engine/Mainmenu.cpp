@@ -39,7 +39,7 @@ void Mainmenu::setup(Configuration *config)
                  ColorA(1.0, 1.0, 1.0, 0.80), false);
 
     scoreVal = new WTextLabel();
-    scoreVal->setup(mConfig, Vec2f(78,758), "n/a", FONT_TYPE_SMALL,
+    scoreVal->setup(mConfig, Vec2f(78,758), "-", FONT_TYPE_SMALL,
                  ColorA(0.9, 0.7, 0.9, 0.80), false);
 
     author = new WTextLabel();
@@ -77,7 +77,14 @@ void Mainmenu::setPaused ( bool paused ) {
 }
 
 void Mainmenu::updateScore ( ) {
-    scoreVal->setValue(toString(mConfig->hiScores->getScore()), false);
+    int score = mConfig->hiScores->getScore();
+    if (score == 9999) {
+        scoreVal->setValue("-", false);
+    }
+    else {
+        scoreVal->setValue(toString(score), false);
+    }
+    
 }
 
 void Mainmenu::mouseMove ( const MouseEvent event )
