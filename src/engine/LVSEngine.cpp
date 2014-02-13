@@ -313,6 +313,7 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
 		return;
     }
     
+#ifndef TARGET_OS_IPHONE
     if( event.getCode() == KeyEvent::KEY_ESCAPE ) {
         switch (gameState) {
             case S_MAINMENU:
@@ -323,16 +324,19 @@ void LVSEngine::keyDown ( const KeyEvent event ) {
                 break;
         }
     }
-/*    else if(event.getCode() == KeyEvent::KEY_s) {
+    else if(event.getCode() == KeyEvent::KEY_s) {
         string filename = toString(std::time(0)) + "_screen.png";
         writeImage( filename, copyWindowSurface() );
-    }*/
+    }
+#endif
 #ifdef __APPLE__
+#ifndef TARGET_OS_IPHONE
     else if(event.getCode() == KeyEvent::KEY_f) {
 		if (gameState > S_LOADING && gameState <= S_QUITTING) {
 	        toggleFullscreen();
 		}
     }
+#endif
 #endif
 }
 

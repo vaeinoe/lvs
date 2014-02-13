@@ -8,6 +8,11 @@
  */
 
 #pragma once
+
+#ifdef __APPLE__
+    #include <TargetConditionals.h>
+#endif
+
 #include "cinder/app/AppBasic.h"
 #include "cinder/gl/gl.h"
 #include "cinder/CinderMath.h"
