@@ -11,25 +11,40 @@
 #include "../stb_vorbis.h"
 #include <vector>
 #include <stdlib.h>
+#include <math.h>
 
-#define NUMBERSECOND 10
 #define SAMPLE_RATE 44100
 #define NBCHANNEL 2
-#define BLOCKSIZE 512
-#define TICK 8
 #define PATCH_FILE "lvs.pd"
 #define WIN32_PATH "content\\"
 
+#define BLOCKSIZE 512
+#define TICK 8
+
+#define PD_TICK_SIZE 64
+
 using namespace chunkware_simple;
 
-int pa_callback(const void *inputBuffer, void *outputBuffer,
-                unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo,
-                PaStreamCallbackFlags statusFlags, void *userData ) {
-    AudioEngine *engine = ((AudioEngine*)userData);
-    engine->processFloat(TICK, NULL, (float *)outputBuffer);
-    engine->updateAnalyzer(outputBuffer, framesPerBuffer);
+void AudioEngine::audioCallback( uint64_t inSampleOffset, uint32_t ioSampleCount, ci::audio::Buffer32f * ioBuffer ) {
+    
+    int ticks = ioSampleCount / PD_TICK_SIZE;
+    
+    processFloat(ticks, NULL, ioBuffer->mData);
+    updateAnalyzer(ioBuffer->mData, ioSampleCount);
 
-    return 0;
+    /*
+    // frequency over sample rate times two_pi
+    phaseIncrement = (300.0/44100.0)*(float)M_PI*2.0;
+    for ( uint32_t i = 0; i < ioSampleCount; i++ ) {
+        phase += phaseIncrement;
+        float tempVal = sin(phase);
+        ioBuffer->mData[ i * ioBuffer->mNumberChannels ] = tempVal;
+        ioBuffer->mData[ i * ioBuffer->mNumberChannels + 1 ] = tempVal;
+        
+        //prevent weird overflow problems
+        if (phase >= (float)M_PI*2.0)
+            phase -= ((float)M_PI*2.0);
+    }*/
 }
 
 void AudioEngine::setup (Configuration *config) {
@@ -43,8 +58,12 @@ void AudioEngine::setup (Configuration *config) {
     limiter->initRuntime();
 }
 
-float* AudioEngine::getFreqData()  { return analyzer->freqData; }
-int32_t AudioEngine::getDataSize() { return analyzer->dataSize; }
+float* AudioEngine::getFreqData()  {
+    return analyzer->freqData;
+}
+int32_t AudioEngine::getDataSize() {
+    return analyzer->dataSize;
+}
 
 inline void AudioEngine::processFloat(int numTicks, float *inputBuffer, float *outputBuffer) {
     src->processFloat(numTicks, inputBuffer, outputBuffer);
@@ -127,7 +146,7 @@ void AudioEngine::initAudio() {
                 loadOGGToArray(ref, files[i]);
             }
             src->computeAudio(true);
-            initPA();
+            initIO();
 
             break;
     }
@@ -164,9 +183,6 @@ void AudioEngine::loadOGGToArray(DataSourceRef ref, string id) {
         }
     }
     
-    //cout << "buffer id: " << id << " data size: " << toString(dataSize) << ", channels: " << channels << ", samples per channel: "
-    //<< toString(sample_count) << "\n";
-
     bool success_l, success_r;
     
     src->startMessage();
@@ -191,43 +207,8 @@ void AudioEngine::loadOGGToArray(DataSourceRef ref, string id) {
     free(read_samples);
 }
 
-void AudioEngine::initPA() {
-    // Initialize PortAudio
-
-    PaStreamParameters inputParameters, outputParameters;
-    PaError err;
-    
-    err = Pa_Initialize();
-    if( err != paNoError ) portAudioError(err);
-
-    inputParameters.device = Pa_GetDefaultInputDevice(); /* default input device */	
-    if (inputParameters.device == paNoDevice) portAudioError(err);
-    
-    inputParameters.channelCount = NBCHANNEL;
-    inputParameters.sampleFormat = paFloat32;
-    inputParameters.suggestedLatency = Pa_GetDeviceInfo( inputParameters.device )->defaultHighInputLatency;
-    inputParameters.hostApiSpecificStreamInfo = NULL;
-    
-    outputParameters.device = Pa_GetDefaultOutputDevice(); /* default output device */
-    if (outputParameters.device == paNoDevice) portAudioError(err);
-    
-    outputParameters.channelCount = NBCHANNEL;
-    outputParameters.sampleFormat = paFloat32;
-    outputParameters.suggestedLatency = Pa_GetDeviceInfo( outputParameters.device )->defaultHighOutputLatency;
-    outputParameters.hostApiSpecificStreamInfo = NULL;
-
-    err = Pa_OpenStream(&stream,
-                        NULL,
-                        &outputParameters,
-                        SAMPLE_RATE,
-                        BLOCKSIZE,
-                        paClipOff,
-                        pa_callback,
-                        this);
-    if( err != paNoError ) portAudioError(err);
-    
-    err = Pa_StartStream( stream );
-    if( err != paNoError ) portAudioError(err);
+void AudioEngine::initIO() {
+    audio::Output::play( audio::createCallback( this, &AudioEngine::audioCallback, false, SAMPLE_RATE, NBCHANNEL ) );
 }
 
 void AudioEngine::update() {
@@ -240,28 +221,41 @@ void AudioEngine::processMessages() {
 }
 
 void AudioEngine::shutdown() {
-    Pa_StopStream(stream);
-    Pa_Terminate();
-    //src->clear();
-    //delete src;
-}
-
-void AudioEngine::portAudioError(PaError err) {
-    cout << "Could not initialize audio engine: " << Pa_GetErrorText(err) << endl;
-    Pa_Terminate();
+    // XIOS: stop audio here
+    src->clear();
+    delete src;
 }
 
 // ================= EVENTS
 
-void AudioEngine::e_gameLoaded() { src->sendBang("to_mainmenu"); }
-void AudioEngine::e_gameStart()  { src->sendBang("reset_all"); src->sendBang("to_game"); }
-void AudioEngine::e_gamePause()  { src->sendBang("to_mainmenu"); }
-void AudioEngine::e_gameResume() { src->sendBang("to_game"); }
-void AudioEngine::e_gameQuit()   { src->sendBang("quit_game"); }
-void AudioEngine::e_gameWin()    { src->sendBang("win_game"); }
-void AudioEngine::e_gameLose()   { src->sendBang("to_mainmenu"); src->sendBang("reset_all"); }
-void AudioEngine::e_timeEnding() { src->sendBang("time_ending"); }
-void AudioEngine::e_timeNormal() { src->sendBang("time_normal"); }
+void AudioEngine::e_gameLoaded() {
+    src->sendBang("to_mainmenu");
+}
+void AudioEngine::e_gameStart()  {
+    src->sendBang("reset_all"); src->sendBang("to_game");
+}
+void AudioEngine::e_gamePause()  {
+    src->sendBang("to_mainmenu");
+}
+void AudioEngine::e_gameResume() {
+    src->sendBang("to_game");
+}
+void AudioEngine::e_gameQuit()   {
+    src->sendBang("quit_game");
+}
+void AudioEngine::e_gameWin()    {
+    src->sendBang("win_game");
+}
+void AudioEngine::e_gameLose()   {
+    src->sendBang("to_mainmenu");
+    src->sendBang("reset_all");
+}
+void AudioEngine::e_timeEnding() {
+    src->sendBang("time_ending");
+}
+void AudioEngine::e_timeNormal() {
+    src->sendBang("time_normal");
+}
 
 void AudioEngine::e_scoreChange(int change, int score) {
     src->startMessage();
@@ -271,17 +265,33 @@ void AudioEngine::e_scoreChange(int change, int score) {
 }
 
 void AudioEngine::e_levelUp(int tile, int level) {
-    if      (tile == 0) { src->sendBang("level_up_1"); }
-    else if (tile == 1) { src->sendBang("level_up_2"); }
-    else if (tile == 2) { src->sendBang("level_up_3"); }
-    else if (tile == 3) { src->sendBang("level_up_4"); }
+    if      (tile == 0) {
+        src->sendBang("level_up_1");
+    }
+    else if (tile == 1) {
+        src->sendBang("level_up_2");
+    }
+    else if (tile == 2) {
+        src->sendBang("level_up_3");
+    }
+    else if (tile == 3) {
+        src->sendBang("level_up_4");
+    }
 }
 
 void AudioEngine::e_tileDestroy(int tile) {
-    if      (tile == 0) { src->sendBang("hit_1"); }
-    else if (tile == 1) { src->sendBang("hit_2"); }
-    else if (tile == 2) { src->sendBang("hit_3"); }
-    else if (tile == 3) { src->sendBang("hit_4"); }
+    if      (tile == 0) {
+        src->sendBang("hit_1");
+    }
+    else if (tile == 1) {
+        src->sendBang("hit_2");
+    }
+    else if (tile == 2) {
+        src->sendBang("hit_3");
+    }
+    else if (tile == 3) {
+        src->sendBang("hit_4");
+    }
 }
 
 void AudioEngine::e_tileMove(Vec2i pos) {

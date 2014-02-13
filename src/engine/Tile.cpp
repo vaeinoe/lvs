@@ -241,7 +241,7 @@ void Tile::draw()
         if (growing) { drawGrow(lightness); }
     }
     
-#ifdef DEBUG
+#ifdef LVS_DEBUG
     drawLabel(drawPos);
 #endif
 }
@@ -258,7 +258,7 @@ inline void Tile::drawAlive(float lightness)
     
     gl::color (1.0, 1.0, 1.0, val * baseAlpha);
     
-#ifndef DEBUG
+#ifndef LVS_DEBUG
     if (type == 0) drawHex(drawPos, val, mConfig->levels[0]->getLevel());
     else if (type == 1) drawStar(drawPos, val, mConfig->levels[1]->getLevel());
     else if (type == 2) drawGram(drawPos, val, mConfig->levels[2]->getLevel());

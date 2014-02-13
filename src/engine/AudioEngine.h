@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Lumeet. All rights reserved.
 //
 
-
 #pragma once
 #include "Configuration.h"
-#include "portaudio.h"
 #include "PdBase.hpp"
+#include "cinder/audio/Output.h"
+#include "cinder/audio/Callback.h"
 #include "AudioAnalyzer.h"
 #include "../chunkware/SimpleLimit.h"
 
@@ -53,6 +53,7 @@ public:
 private:
     int loadState;
     
+    void audioCallback( uint64_t inSampleOffset, uint32_t ioSampleCount, ci::audio::Buffer32f * ioBuffer );
     chunkware_simple::SimpleLimit *limiter;
     PdBase *src;
     
@@ -60,12 +61,10 @@ private:
     void initPDArrays();
     DataSourceRef getAudioResource(string identifier);
     void loadOGGToArray(DataSourceRef ref, string id);
-    void initPA();
-    void portAudioError(PaError err);
+    void initIO();
     void processMessages();
     void limit(float *buf);
     
     Configuration *mConfig;
-    PaStream *stream;
     AudioAnalyzer *analyzer;
 };
