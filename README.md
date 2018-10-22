@@ -2,7 +2,7 @@
 
 Match hexagonal tiles to play a little song. Keep focused to finish on time. Rewind and play again to beat your personal high score.
 
-LVS is a small game / audiovisual toy developed during the Christmas holiday season 2012-2013. Download at https://vae.fi/lvs/
+LVS is a small game / audiovisual toy developed during the Christmas holiday season 2013-2014. Download at https://vae.fi/lvs/
 
 # Technical
 
